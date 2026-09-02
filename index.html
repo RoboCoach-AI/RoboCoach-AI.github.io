@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="RoboCoach uses an action-conditioned world model to identify first unresolved subtask-expert pairs and direct modular VLA specialization.">
   <meta name="robots" content="noindex,nofollow,noarchive">
-  <meta name="color-scheme" content="light">
+  <meta name="color-scheme" content="dark">
   <meta property="og:title" content="RoboCoach: World Models as Active Coaches for Compositional Robot Skills">
   <meta property="og:description" content="Anonymous project page for a double-blind submission.">
   <meta property="og:image" content="assets/figures/robocoach_overview.png">
@@ -142,7 +142,6 @@
 
       <figure class="paper-results-figure">
         <img src="assets/figures/coaching_rounds.png?v=paper-sync-1" alt="Complete-task success over three coaching rounds on LIBERO-Long, RoboTwin 2.0, Franka, and AgileX" loading="lazy">
-        <figcaption>Complete-task success over coaching rounds. Simulation compares four matched conditions. Hardware compares Single VLA + Uniform with RoboCoach.</figcaption>
       </figure>
 
       <div class="modularity-finding">
@@ -150,72 +149,62 @@
         <p>Holding the world-model-targeted demonstration IDs fixed, selected-expert updates add <strong>+3.4 points</strong> final success on LIBERO and <strong>+13.2 points</strong> on RoboTwin over one shared global adapter. The corresponding Budget-AUC gains are +2.3 and +7.9 points.</p>
       </div>
 
-      <p class="results-footnote">Round 0 is the shared starting policy. Curves report frozen success rates at cumulative budgets 0, B, 2B, and 3B; simulation compares four methods, while hardware compares RoboCoach with Single VLA + Uniform.</p>
     </section>
 
     <section id="hardware" class="section section-hardware" aria-labelledby="hardware-title">
       <div class="section-heading section-heading-row">
         <div>
           <p class="kicker">Real-robot task suite</p>
-          <h2 id="hardware-title">Seven long-horizon tasks on two robot platforms</h2>
-          <p>Franka contributes <span class="text-highlight">three single-arm tasks</span> and AgileX contributes <span class="text-highlight">four bimanual tasks</span>. Each card follows the ordered decomposition used in the paper.</p>
+          <h2 id="hardware-title">Real-robot episodes across platforms and compositions</h2>
         </div>
-        <div class="hardware-count"><strong>3 + 4</strong><span>real-robot tasks</span></div>
+        <div class="segmented hardware-segmented" role="group" aria-label="Filter real-robot videos">
+          <button type="button" class="is-active" data-hardware-filter="single" aria-pressed="true">Single-arm</button>
+          <button type="button" data-hardware-filter="dual" aria-pressed="false">Bimanual</button>
+          <button type="button" data-hardware-filter="composition" aria-pressed="false">Compositional</button>
+        </div>
       </div>
 
-      <div class="platform-grid">
-        <article class="platform-card platform-franka">
-          <header class="platform-card-media">
-            <img src="assets/figures/franka_platform.png" alt="Franka Research 3 with a Robotiq gripper" loading="lazy">
-            <div><span>Single arm</span><h3>Franka Research 3</h3></div>
-          </header>
-          <div class="task-route-list">
-            <article class="task-route-card has-video">
-              <span class="task-index">F1</span>
-              <div><h4>Lamp switch and cord</h4><p>press the lamp switch <b>→</b> pull the lamp cord</p></div>
-              <div class="task-video-preview"><video controls muted playsinline preload="metadata" poster="assets/posters/hardware/franka_lamp.jpg?v=bright1" aria-label="Franka lamp switch and cord task"><source src="assets/videos/hardware/franka_lamp.mp4?v=bright1" type="video/mp4"></video></div>
-            </article>
-            <article class="task-route-card has-video">
-              <span class="task-index">F2</span>
-              <div><h4>Two buttons press</h4><p>press the green button <b>→</b> press the red button</p></div>
-              <div class="task-video-preview"><video controls muted playsinline preload="metadata" poster="assets/posters/hardware/franka_buttons.jpg?v=bright1" aria-label="Franka two-button task"><source src="assets/videos/hardware/franka_buttons.mp4?v=bright1" type="video/mp4"></video></div>
-            </article>
-            <article class="task-route-card has-video">
-              <span class="task-index">F3</span>
-              <div><h4>Bread and pan</h4><p>pick the bread <b>→</b> place the bread into the pan <b>→</b> pick the lid <b>→</b> place the lid over the pan</p></div>
-              <div class="task-video-preview"><video controls muted playsinline preload="metadata" poster="assets/posters/hardware/franka_bread_pan.jpg?v=bright1" aria-label="Franka bread and pan task"><source src="assets/videos/hardware/franka_bread_pan.mp4?v=bright1" type="video/mp4"></video></div>
-            </article>
-          </div>
-        </article>
+      <div class="hardware-video-browser">
+        <div class="hardware-video-grid" data-hardware-group="single" style="--hardware-columns: 4" aria-label="Single-arm real-robot videos">
+          <div class="hardware-video-tile"><video controls muted playsinline preload="metadata" poster="assets/posters/hardware/franka_lamp.jpg?v=bright1" aria-label="Franka lamp task"><source src="assets/videos/hardware/franka_lamp.mp4?v=bright1" type="video/mp4"></video><div class="hardware-video-rate"><span>Success rate</span><strong>85%</strong></div></div>
+          <div class="hardware-video-tile"><video controls muted playsinline preload="metadata" poster="assets/posters/hardware/franka_buttons.jpg?v=bright1" aria-label="Franka button task"><source src="assets/videos/hardware/franka_buttons.mp4?v=bright1" type="video/mp4"></video><div class="hardware-video-rate"><span>Success rate</span><strong>70%</strong></div></div>
+          <div class="hardware-video-tile"><video controls muted playsinline preload="metadata" poster="assets/posters/hardware/franka_bread_pan.jpg?v=bright1" aria-label="Franka bread and pan task"><source src="assets/videos/hardware/franka_bread_pan.mp4?v=bright1" type="video/mp4"></video><div class="hardware-video-rate"><span>Success rate</span><strong>70%</strong></div></div>
+        </div>
 
-        <article class="platform-card platform-agilex">
-          <header class="platform-card-media">
-            <img src="assets/figures/agilex_platform.png" alt="AgileX Split Aloha with dual Piper arms" loading="lazy">
-            <div><span>Bimanual</span><h3>AgileX dual-Piper</h3></div>
-          </header>
-          <div class="task-route-list">
-            <article class="task-route-card has-video">
-              <span class="task-index">A1</span>
-              <div><h4>Block and drawer</h4><p>pick the red block <b>→</b> place the block into the drawer <b>→</b> close the drawer</p></div>
-              <div class="task-video-preview"><video controls muted playsinline preload="metadata" poster="assets/posters/hardware/agilex_block_drawer.jpg?v=bright2" aria-label="AgileX block and drawer task"><source src="assets/videos/hardware/agilex_block_drawer.mp4?v=bright2" type="video/mp4"></video></div>
-            </article>
-            <article class="task-route-card has-video">
-              <span class="task-index">A2</span>
-              <div><h4>Shoes and box</h4><p>pick the right shoe <b>→</b> place the right shoe into the shoebox <b>→</b> pick the left shoe <b>→</b> place the left shoe into the shoebox <b>→</b> close the box</p></div>
-              <div class="task-video-preview"><video controls muted playsinline preload="metadata" poster="assets/posters/hardware/agilex_shoes_box.jpg?v=bright2" aria-label="AgileX shoes and box task"><source src="assets/videos/hardware/agilex_shoes_box.mp4?v=bright2" type="video/mp4"></video></div>
-            </article>
-            <article class="task-route-card has-video">
-              <span class="task-index">A3</span>
-              <div><h4>Table setting</h4><p>pick the cloth <b>→</b> wipe the table <b>→</b> push the plate to the center of the table <b>→</b> pick the cup <b>→</b> place the cup on the plate</p></div>
-              <div class="task-video-preview"><video controls muted playsinline preload="metadata" poster="assets/posters/hardware/agilex_table_setting.jpg?v=bright2" aria-label="AgileX table-setting task"><source src="assets/videos/hardware/agilex_table_setting.mp4?v=bright2" type="video/mp4"></video></div>
-            </article>
-            <article class="task-route-card has-video">
-              <span class="task-index">A4</span>
-              <div><h4>Tea making</h4><p>pick up the tea bag <b>→</b> place the tea bag into cup <b>→</b> pour water into the cup</p></div>
-              <div class="task-video-preview"><video controls muted playsinline preload="metadata" poster="assets/posters/hardware/agilex_tea_making.jpg?v=bright2" aria-label="AgileX tea-making task"><source src="assets/videos/hardware/agilex_tea_making.mp4?v=bright2" type="video/mp4"></video></div>
-            </article>
-          </div>
-        </article>
+        <div class="hardware-video-grid" data-hardware-group="dual" style="--hardware-columns: 4" aria-label="Bimanual real-robot videos" hidden>
+          <div class="hardware-video-tile"><video controls muted playsinline preload="metadata" poster="assets/posters/hardware/agilex_block_drawer.jpg?v=bright2" aria-label="AgileX block and drawer task"><source src="assets/videos/hardware/agilex_block_drawer.mp4?v=bright2" type="video/mp4"></video><div class="hardware-video-rate"><span>Success rate</span><strong>85%</strong></div></div>
+          <div class="hardware-video-tile"><video controls muted playsinline preload="metadata" poster="assets/posters/hardware/agilex_shoes_box.jpg?v=bright2" aria-label="AgileX shoes and box task"><source src="assets/videos/hardware/agilex_shoes_box.mp4?v=bright2" type="video/mp4"></video><div class="hardware-video-rate"><span>Success rate</span><strong>60%</strong></div></div>
+          <div class="hardware-video-tile"><video controls muted playsinline preload="metadata" poster="assets/posters/hardware/agilex_table_setting.jpg?v=bright2" aria-label="AgileX table-setting task"><source src="assets/videos/hardware/agilex_table_setting.mp4?v=bright2" type="video/mp4"></video><div class="hardware-video-rate"><span>Success rate</span><strong>100%</strong></div></div>
+          <div class="hardware-video-tile"><video controls muted playsinline preload="metadata" poster="assets/posters/hardware/agilex_tea_making.jpg?v=bright2" aria-label="AgileX tea-making task"><source src="assets/videos/hardware/agilex_tea_making.mp4?v=bright2" type="video/mp4"></video><div class="hardware-video-rate"><span>Success rate</span><strong>90%</strong></div></div>
+        </div>
+
+        <div class="hardware-video-grid" data-hardware-group="composition" style="--hardware-columns: 4" aria-label="Compositional generalization videos" hidden>
+          <div class="hardware-video-tile"><video controls muted playsinline preload="metadata" poster="assets/posters/generalization/button_lamp_two_view.jpg?v=fullspeed" aria-label="Button-to-lamp compositional rollout"><source src="assets/videos/generalization/button_lamp_two_view.mp4?v=fullspeed" type="video/mp4"></video><div class="hardware-video-rate"><span>Success rate</span><strong>15%</strong></div></div>
+          <div class="hardware-video-tile"><video controls muted playsinline preload="metadata" poster="assets/posters/generalization/cup_two_view.jpg?v=fullspeed" aria-label="Cup-serving compositional rollout"><source src="assets/videos/generalization/cup_two_view.mp4?v=fullspeed" type="video/mp4"></video><div class="hardware-video-rate"><span>Success rate</span><strong>65%</strong></div></div>
+          <div class="hardware-video-tile"><video controls muted playsinline preload="metadata" poster="assets/posters/generalization/red_green_two_view.jpg?v=fullspeed" aria-label="Button-reordering compositional rollout"><source src="assets/videos/generalization/red_green_two_view.mp4?v=fullspeed" type="video/mp4"></video><div class="hardware-video-rate"><span>Success rate</span><strong>35%</strong></div></div>
+          <div class="hardware-video-tile"><video controls muted playsinline preload="metadata" poster="assets/posters/generalization/shoes_two_view.jpg?v=fullspeed" aria-label="Shoe-reordering compositional rollout"><source src="assets/videos/generalization/shoes_two_view.mp4?v=fullspeed" type="video/mp4"></video><div class="hardware-video-rate"><span>Success rate</span><strong>25%</strong></div></div>
+        </div>
+      </div>
+
+      <div class="hardware-composition-taxonomy">
+        <p class="hardware-composition-kicker">Three compositional generalization patterns</p>
+        <div class="hardware-composition-strip" aria-label="Compositional task structures">
+          <article>
+            <p class="composition-label">Reordering</p>
+            <div class="skill-sequence skill-sequence-routes"><span class="seen-route">A → B</span><b>⇒</b><span class="heldout-route">B → A</span></div>
+            <p>The same atomic skills execute in a new order.</p>
+          </article>
+          <article>
+            <p class="composition-label">Recombination</p>
+            <div class="skill-sequence skill-sequence-routes"><span class="seen-route">A → B</span><i>+</i><span class="seen-route">C → D</span><b>⇒</b><span class="heldout-route">A → D</span></div>
+            <p>Skills from different tasks form an unseen composition.</p>
+          </article>
+          <article>
+            <p class="composition-label">Continuation</p>
+            <div class="skill-sequence skill-sequence-routes"><span class="seen-route">A → B</span><i>+</i><span class="seen-route">C → D</span><b>⇒</b><span class="heldout-route">A → B → C → D</span></div>
+            <p>Two seen routines are joined into one longer held-out route.</p>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -303,15 +292,10 @@
         </table>
       </div>
       <p class="table-note">Each domain contains 180 view-specific episodes. Two blind annotators independently score Instruction Following from 1 to 5 on a fixed 30-episode subset; scores are averaged across annotators and episodes, then divided by five to normalize them to [0,1].</p>
-    </section>
 
-    <section id="rollouts" class="section section-rollouts">
-      <div class="section-heading section-heading-row">
-        <div>
-          <p class="kicker">Closed-loop generation</p>
-          <h2>CoachWorld imagines full robot episodes in closed loop</h2>
-          <p>Each video places <span class="text-highlight">ground truth</span> on the left and <span class="text-highlight">CoachWorld</span> on the right. Choose an embodiment, then compare real-world and simulated rollouts within the same view.</p>
-        </div>
+      <div id="rollouts" class="coachworld-rollout-browser">
+        <div class="coachworld-rollout-toolbar">
+          <p>Closed-loop rollout comparisons</p>
         <div class="segmented" role="group" aria-label="Filter rollouts by embodiment">
           <button type="button" class="is-active" data-rollout-filter="single" aria-pressed="true">Single-arm</button>
           <button type="button" data-rollout-filter="dual" aria-pressed="false">Bimanual</button>
@@ -433,6 +417,7 @@
           </div>
         </article>
       </div>
+      </div>
     </section>
 
     <section id="coaching" class="section section-coaching" aria-labelledby="coaching-title">
@@ -478,16 +463,16 @@
         </div>
       </div>
 
-      <figure class="judge-live-demo" data-judge-sync>
+      <figure class="judge-live-demo" data-judge-sync data-judge-duration="60">
         <div class="judge-sync-grid">
           <div class="judge-rollout-panel">
             <div class="judge-panel-label"><strong>Policy rollout</strong><span>RoboTwin · failure 18</span></div>
             <video autoplay muted loop playsinline controls preload="metadata" poster="assets/posters/robometer_stack_blocks_three_rollout.jpg" data-judge-video>
-              <source src="coaching/assets/videos/02_place_the_blue_block/robotwin_stack_blocks_three_failure18.mp4" type="video/mp4">
+              <source src="coaching/assets/videos/02_place_the_blue_block/robotwin_stack_blocks_three_failure18_original_speed.mp4?v=1" type="video/mp4">
             </video>
           </div>
           <div class="judge-progress-panel">
-            <div class="judge-panel-label"><strong>RoboMeter progress</strong><span><b data-judge-time>0.0</b> / 9.1 s trace</span></div>
+            <div class="judge-panel-label"><strong>RoboMeter progress</strong><span><b data-judge-time>0.0</b> / 60.0 s rollout</span></div>
             <svg class="judge-progress-chart" viewBox="0 0 600 245" role="img" aria-label="Six stage progress traces synchronized to the stack blocks rollout">
               <g>
                 <rect x="42" y="22" width="77.4" height="189" fill="#eaf2fa"/><text x="80.7" y="16" text-anchor="middle" fill="#2166ac">P1 pick</text>
@@ -501,24 +486,24 @@
                 <line x1="42" y1="32" x2="584" y2="32"/><line x1="42" y1="121.5" x2="584" y2="121.5"/><line x1="42" y1="211" x2="584" y2="211"/>
                 <line x1="119.4" y1="22" x2="119.4" y2="211"/><line x1="184" y1="22" x2="184" y2="211"/><line x1="300.1" y1="22" x2="300.1" y2="211"/><line x1="390.4" y1="22" x2="390.4" y2="211"/><line x1="493.7" y1="22" x2="493.7" y2="211"/>
               </g>
-              <g class="judge-chart-axis"><text x="12" y="36">1.0</text><text x="12" y="125">0.5</text><text x="20" y="215">0</text><text x="42" y="235">0.7 s</text><text x="584" y="235" text-anchor="end">9.1 s</text></g>
+              <g class="judge-chart-axis"><text x="12" y="36">1.0</text><text x="12" y="125">0.5</text><text x="20" y="215">0</text><text x="42" y="235">2.1 s</text><text x="584" y="235" text-anchor="end">27.3 s</text></g>
               <line class="judge-threshold" x1="42" y1="76.8" x2="584" y2="76.8"/><text class="judge-threshold-label" x="578" y="70" text-anchor="end">threshold 0.75</text>
-              <polyline class="judge-progress-trace" data-start="0.7" data-end="1.5" points="42,209.4 54.9,121.8 67.8,205.7 80.7,204.1 93.6,37.6" stroke="#2166ac"/>
-              <polyline class="judge-progress-trace" data-start="2.3" data-end="2.5" points="145.2,200.4 158.1,57.9" stroke="#1b9e77"/>
-              <polyline class="judge-progress-trace" data-start="3.3" data-end="4.3" points="209.8,209.9 222.7,209.3 235.6,206.5 248.5,206.3 261.4,142.5 274.3,40.4" stroke="#7570b3"/>
-              <polyline class="judge-progress-trace" data-start="5.1" data-end="5.7" points="325.9,189.1 338.8,209 351.7,191.3 364.6,47.4" stroke="#dfa600"/>
-              <polyline class="judge-progress-trace" data-start="6.5" data-end="7.3" points="416.2,210.5 429.1,200.9 442,210.2 455,204.1 467.9,45.3" stroke="#db2686"/>
-              <polyline class="judge-progress-trace" data-start="8.1" data-end="9.1" points="519.5,210.7 532.4,196.8 545.3,146.7 558.2,204.2 571.1,210.4 584,210.7" stroke="#d55e00"/>
+              <polyline class="judge-progress-trace" data-start="2.1" data-end="4.5" points="42,209.4 54.9,121.8 67.8,205.7 80.7,204.1 93.6,37.6" stroke="#2166ac"/>
+              <polyline class="judge-progress-trace" data-start="6.9" data-end="7.5" points="145.2,200.4 158.1,57.9" stroke="#1b9e77"/>
+              <polyline class="judge-progress-trace" data-start="9.9" data-end="12.9" points="209.8,209.9 222.7,209.3 235.6,206.5 248.5,206.3 261.4,142.5 274.3,40.4" stroke="#7570b3"/>
+              <polyline class="judge-progress-trace" data-start="15.3" data-end="17.1" points="325.9,189.1 338.8,209 351.7,191.3 364.6,47.4" stroke="#dfa600"/>
+              <polyline class="judge-progress-trace" data-start="19.5" data-end="21.9" points="416.2,210.5 429.1,200.9 442,210.2 455,204.1 467.9,45.3" stroke="#db2686"/>
+              <polyline class="judge-progress-trace" data-start="24.3" data-end="27.3" points="519.5,210.7 532.4,196.8 545.3,146.7 558.2,204.2 571.1,210.4 584,210.7" stroke="#d55e00"/>
             </svg>
           </div>
         </div>
         <ol class="judge-stage-strip" aria-label="Synchronized routed stage status">
-          <li data-judge-stage data-start="0.7" data-end="1.5" data-result="Confirmed"><span>P1</span><strong>pick red</strong><em>Pending</em></li>
-          <li data-judge-stage data-start="1.9" data-end="2.5" data-result="Confirmed"><span>P2</span><strong>place red</strong><em>Pending</em></li>
-          <li data-judge-stage data-start="2.9" data-end="4.3" data-result="Confirmed"><span>P3</span><strong>pick green</strong><em>Pending</em></li>
-          <li data-judge-stage data-start="4.7" data-end="5.7" data-result="Confirmed"><span>P4</span><strong>place green</strong><em>Pending</em></li>
-          <li data-judge-stage data-start="6.1" data-end="7.3" data-result="Confirmed"><span>P5</span><strong>pick blue</strong><em>Pending</em></li>
-          <li data-judge-stage data-start="7.7" data-end="9.1" data-result="First timeout"><span>P6</span><strong>place blue</strong><em>Pending</em></li>
+          <li data-judge-stage data-start="2.1" data-end="4.5" data-result="Confirmed"><span>P1</span><strong>pick red</strong><em>Pending</em></li>
+          <li data-judge-stage data-start="5.7" data-end="7.5" data-result="Confirmed"><span>P2</span><strong>place red</strong><em>Pending</em></li>
+          <li data-judge-stage data-start="8.7" data-end="12.9" data-result="Confirmed"><span>P3</span><strong>pick green</strong><em>Pending</em></li>
+          <li data-judge-stage data-start="14.1" data-end="17.1" data-result="Confirmed"><span>P4</span><strong>place green</strong><em>Pending</em></li>
+          <li data-judge-stage data-start="18.3" data-end="21.9" data-result="Confirmed"><span>P5</span><strong>pick blue</strong><em>Pending</em></li>
+          <li data-judge-stage data-start="23.1" data-end="27.3" data-result="First timeout"><span>P6</span><strong>place blue</strong><em>Pending</em></li>
         </ol>
         <figcaption>
           <span><strong>Left:</strong> policy rollout</span>
@@ -546,122 +531,6 @@
         <span>First timeout</span>
         <strong>place the blue block on the green block</strong>
         <small>place_expert receives the next targeted demonstration request</small>
-      </div>
-    </section>
-
-    <section id="generalization" class="section section-generalization" aria-labelledby="generalization-title">
-      <div class="section-heading section-heading-row">
-        <div>
-          <p class="kicker">Held-out composition</p>
-          <h2 id="generalization-title">Coached experts recombine beyond their training routes</h2>
-          <p>
-            Four unseen sequences and their paraphrases are excluded from policy and RoboMeter training, coaching data, router examples, threshold calibration, and checkpoint selection. RoboCoach reaches <span class="text-highlight">35.0% task-macro success</span>; the matched Single VLA baseline reaches <span class="text-highlight">0%</span>.
-          </p>
-        </div>
-        <div class="generalization-score"><strong>35.0%</strong><span>held-out task macro</span></div>
-      </div>
-
-      <div class="generalization-taxonomy">
-        <div class="taxonomy-heading">
-          <span>Composition taxonomy</span>
-          <h3>Three composition patterns in the held-out evaluation</h3>
-        </div>
-        <div class="composition-strip" aria-label="Compositional task structures">
-          <article>
-            <p class="composition-label">Reordering</p>
-            <div class="skill-sequence skill-sequence-routes"><span class="seen-route">A → B</span><b>⇒</b><span class="heldout-route">B → A</span></div>
-            <p>The same atomic skills execute in a new order.</p>
-          </article>
-          <article>
-            <p class="composition-label">Recombination</p>
-            <div class="skill-sequence skill-sequence-routes"><span class="seen-route">A → B</span><i>+</i><span class="seen-route">C → D</span><b>⇒</b><span class="heldout-route">A → D</span></div>
-            <p>Skills from different tasks form an unseen composition.</p>
-          </article>
-          <article>
-            <p class="composition-label">Continuation</p>
-            <div class="skill-sequence skill-sequence-routes"><span class="seen-route">A → B</span><i>+</i><span class="seen-route">C → D</span><b>⇒</b><span class="heldout-route">A → B → C → D</span></div>
-            <p>Two seen routines are joined into one longer held-out route.</p>
-          </article>
-        </div>
-      </div>
-
-      <div class="generalization-family">
-        <div class="generalization-rollouts" aria-label="Successful composition-generalization rollouts">
-          <article class="generalization-rollout">
-            <header>
-              <div>
-                <span>Recombination</span>
-                <h3>Press the green button, then pull the lamp cord</h3>
-              </div>
-              <strong>Case B · 3/20 success</strong>
-            </header>
-            <div class="generalization-video-frame">
-              <video autoplay muted loop controls playsinline preload="metadata" poster="assets/posters/generalization/button_lamp_two_view.jpg?v=fullspeed" aria-label="Synchronized robot and external views of the button-to-lamp task">
-                <source src="assets/videos/generalization/button_lamp_two_view.mp4?v=fullspeed" type="video/mp4">
-              </video>
-              <div class="generalization-view-labels" aria-hidden="true"><span class="is-main">Robot view</span><span class="is-inset">External view</span></div>
-            </div>
-          </article>
-
-          <article class="generalization-rollout">
-            <header>
-              <div>
-                <span>Continuation</span>
-                <h3>Complete the cup-serving routine</h3>
-              </div>
-              <strong>Case A · 13/20 success</strong>
-            </header>
-            <div class="generalization-video-frame">
-              <video autoplay muted loop controls playsinline preload="metadata" poster="assets/posters/generalization/cup_two_view.jpg?v=fullspeed" aria-label="Synchronized robot and external views of the bimanual cup-serving task">
-                <source src="assets/videos/generalization/cup_two_view.mp4?v=fullspeed" type="video/mp4">
-              </video>
-              <div class="generalization-view-labels" aria-hidden="true"><span class="is-main">Robot view</span><span class="is-inset">External view</span></div>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <div class="generalization-family">
-        <div class="generalization-rollouts" aria-label="Successful reorder rollouts">
-          <article class="generalization-rollout">
-            <header>
-              <div>
-                <span>Reorder</span>
-                <h3>Press the red button, then press the green button</h3>
-              </div>
-              <strong>Case D · 7/20 success</strong>
-            </header>
-            <div class="generalization-video-frame">
-              <video autoplay muted loop controls playsinline preload="metadata" poster="assets/posters/generalization/red_green_two_view.jpg?v=fullspeed" aria-label="Synchronized robot and external views of the red-then-green task">
-                <source src="assets/videos/generalization/red_green_two_view.mp4?v=fullspeed" type="video/mp4">
-              </video>
-              <div class="generalization-view-labels" aria-hidden="true"><span class="is-main">Robot view</span><span class="is-inset">External view</span></div>
-            </div>
-          </article>
-
-          <article class="generalization-rollout">
-            <header>
-              <div>
-                <span>Reorder</span>
-                <h3>Place both shoes in the box, then close the lid</h3>
-              </div>
-              <strong>Case C · 5/20 success</strong>
-            </header>
-            <div class="generalization-video-frame">
-              <video autoplay muted loop controls playsinline preload="metadata" poster="assets/posters/generalization/shoes_two_view.jpg?v=fullspeed" aria-label="Synchronized robot and external views of the bimanual shoe-placement task">
-                <source src="assets/videos/generalization/shoes_two_view.mp4?v=fullspeed" type="video/mp4">
-              </video>
-              <div class="generalization-view-labels" aria-hidden="true"><span class="is-main">Robot view</span><span class="is-inset">External view</span></div>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <div class="composition-results">
-        <article><span>Case A · Continuation</span><strong>13/20 <small>(65%)</small></strong><h3>AgileX five-stage routine</h3><p>Single VLA + Uniform: <b>0/20</b></p></article>
-        <article><span>Case B · Cross-task composition</span><strong>3/20 <small>(15%)</small></strong><h3>Franka button to lamp</h3><p>Single VLA + Uniform: <b>0/20</b></p></article>
-        <article><span>Case C · Reordering</span><strong>5/20 <small>(25%)</small></strong><h3>AgileX shoe reordering</h3><p>Single VLA + Uniform: <b>0/20</b></p></article>
-        <article><span>Case D · Reordering</span><strong>7/20 <small>(35%)</small></strong><h3>Franka button reordering</h3><p>Single VLA + Uniform: <b>0/20</b></p></article>
       </div>
     </section>
 

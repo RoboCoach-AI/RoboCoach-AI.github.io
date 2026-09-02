@@ -3,14 +3,10 @@ const navToggle = document.querySelector("[data-nav-toggle]");
 const siteNav = document.querySelector("[data-site-nav]");
 const filterButtons = document.querySelectorAll("[data-rollout-filter]");
 const rolloutCards = document.querySelectorAll("[data-rollout]");
+const hardwareFilterButtons = document.querySelectorAll("[data-hardware-filter]");
+const hardwareVideoGroups = document.querySelectorAll("[data-hardware-group]");
 const copyButton = document.querySelector("[data-copy-citation]");
 const readingProgress = document.querySelector("[data-reading-progress]");
-const hardwareSection = document.querySelector("#hardware");
-const generalizationSection = document.querySelector("#generalization");
-
-if (hardwareSection && generalizationSection) {
-  hardwareSection.insertAdjacentElement("afterend", generalizationSection);
-}
 
 const navLinks = [...document.querySelectorAll('.site-nav a[href^="#"]')];
 const observedSections = navLinks
@@ -52,6 +48,24 @@ filterButtons.forEach((button) => {
       const visible = card.dataset.rollout === filter;
       card.hidden = !visible;
       if (!visible) card.querySelectorAll("video").forEach((video) => video.pause());
+    });
+  });
+});
+
+hardwareFilterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const filter = button.dataset.hardwareFilter;
+
+    hardwareFilterButtons.forEach((candidate) => {
+      const active = candidate === button;
+      candidate.classList.toggle("is-active", active);
+      candidate.setAttribute("aria-pressed", String(active));
+    });
+
+    hardwareVideoGroups.forEach((group) => {
+      const visible = group.dataset.hardwareGroup === filter;
+      group.hidden = !visible;
+      if (!visible) group.querySelectorAll("video").forEach((video) => video.pause());
     });
   });
 });
@@ -212,6 +226,8 @@ document.querySelectorAll("[data-judge-sync]").forEach((demo) => {
   const traces = [...demo.querySelectorAll(".judge-progress-trace")];
   const stages = [...demo.querySelectorAll("[data-judge-stage]")];
   const result = document.querySelector("[data-judge-result]");
+  const rolloutDuration = Number(demo.dataset.judgeDuration);
+  const timeoutTime = Math.max(...stages.map((stage) => Number(stage.dataset.end)));
   let animationFrame;
 
   if (!(video instanceof HTMLVideoElement)) return;
@@ -220,7 +236,7 @@ document.querySelectorAll("[data-judge-sync]").forEach((demo) => {
 
   const syncJudgeTrace = () => {
     const time = video.currentTime;
-    if (timeLabel) timeLabel.textContent = Math.min(time, 9.1).toFixed(1);
+    if (timeLabel) timeLabel.textContent = Math.min(time, rolloutDuration).toFixed(1);
 
     traces.forEach((trace) => {
       const start = Number(trace.dataset.start);
@@ -246,7 +262,7 @@ document.querySelectorAll("[data-judge-sync]").forEach((demo) => {
       if (status) status.textContent = active ? "Active" : resolved ? stage.dataset.result : "Pending";
     });
 
-    result?.classList.toggle("is-visible", time >= 9.1);
+    result?.classList.toggle("is-visible", time >= timeoutTime);
   };
 
   const tickJudgeTrace = () => {

@@ -5454,3 +5454,434 @@ h3,
 .section-rollouts .video-shell {
   background: var(--paper-line);
 }
+
+/* Unified dark canvas: keep the page rhythm continuous across every section. */
+.section-results,
+.section-rollouts,
+.section-coaching,
+.section-generalization,
+.section-hardware + .section-generalization,
+.section-tinted,
+.section-resources {
+  --paper-line: rgba(224, 240, 234, 0.13);
+  --paper-soft: #10191a;
+  --paper-muted: #9aa8a4;
+  --paper-strong: #c0cbc7;
+  --page-bg: #070b0c;
+  --page-surface: #0c1314;
+  --page-surface-raised: #111a1b;
+  --page-line: var(--paper-line);
+  --page-text: #f3f7f5;
+  --page-muted: var(--paper-muted);
+  --line: var(--paper-line);
+  --muted: var(--paper-muted);
+  color: var(--page-text);
+  border-top-color: var(--page-line);
+  background: var(--page-bg);
+}
+
+.section-results .section-heading > div:first-child > p:last-child,
+.section-rollouts .section-heading > p:last-child,
+.section-coaching .section-heading > div:first-child > p:last-child,
+.section-generalization .section-heading > div:first-child > p:last-child,
+.section-tinted .section-heading > p:last-child {
+  color: var(--paper-strong);
+}
+
+.section-results .hardware-lead {
+  border-block-color: var(--page-line);
+}
+
+.section-results .hardware-lead > p,
+.section-results .round-card,
+.section-results .paper-results-figure,
+.section-results .modularity-finding,
+.section-rollouts .rollout-card,
+.section-rollouts .keyframe-panel,
+.section-rollouts .rollout-video-panel,
+.section-generalization .generalization-score,
+.section-generalization .composition-strip article,
+.section-generalization .composition-results article,
+.section-generalization .skill-sequence-routes .seen-route {
+  color: var(--page-text);
+  border-color: var(--page-line);
+  background: var(--page-surface-raised);
+  box-shadow: none;
+}
+
+.section-results .modularity-finding {
+  border-left-color: var(--accent-blue);
+  background: #101722;
+}
+
+.section-results .paper-results-figure figcaption,
+.section-rollouts .keyframe-panel figcaption,
+.section-rollouts .rollout-video-panel > p,
+.section-rollouts .rollout-meta p,
+.section-generalization .generalization-score span,
+.section-generalization .composition-strip article > p:last-child,
+.section-generalization .composition-results p {
+  color: var(--page-muted);
+}
+
+.section-rollouts .segmented,
+.coaching-round-framebar {
+  color: var(--page-muted);
+  border-color: var(--page-line);
+  background: var(--page-surface-raised);
+}
+
+.section-rollouts .segmented button {
+  color: var(--page-muted);
+}
+
+.section-rollouts .segmented button.is-active {
+  color: #07100f;
+  background: #b9eee5;
+  box-shadow: none;
+}
+
+.section-rollouts .rollout-meta,
+.section-rollouts .rollout-video-panel .video-shell {
+  border-color: var(--page-line);
+}
+
+.section-rollouts .rollout-pair,
+.section-rollouts .video-shell,
+.section-generalization .composition-results {
+  background: var(--page-line);
+}
+
+.coaching-round-frame {
+  border-color: var(--page-line);
+  background: var(--page-surface);
+  box-shadow: none;
+}
+
+.section-generalization .kicker,
+.section-generalization .composition-results span,
+.section-generalization .composition-results strong,
+.section-generalization .generalization-rollout header > strong {
+  color: #8ce5d8;
+}
+
+.section-generalization .composition-results p b,
+.section-generalization .composition-label,
+.section-generalization .taxonomy-heading h3,
+.section-generalization .generalization-rollout h3 {
+  color: var(--page-text);
+}
+
+.section-generalization .skill-sequence-routes .seen-route {
+  color: var(--paper-strong);
+}
+
+.section-results .paper-results-figure:hover,
+.section-rollouts .rollout-card:hover,
+.section-generalization .generalization-rollout:hover,
+.section-generalization .composition-strip article:hover {
+  border-color: rgba(125, 228, 216, 0.32);
+  box-shadow: 0 22px 52px rgba(0, 0, 0, 0.26);
+}
+
+/* Compact real-robot browser: one horizontal video row per embodiment. */
+.section-hardware .section-heading-row {
+  align-items: end;
+}
+
+.hardware-segmented {
+  flex: 0 0 auto;
+  border-color: var(--page-line);
+  background: var(--page-surface-raised);
+}
+
+.hardware-segmented button {
+  color: var(--page-muted);
+}
+
+.hardware-segmented button.is-active {
+  color: #07100f;
+  background: #b9eee5;
+  box-shadow: none;
+}
+
+.hardware-video-browser {
+  margin-top: 42px;
+}
+
+.hardware-video-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--hardware-columns), minmax(240px, 1fr));
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-color: rgba(125, 228, 216, 0.45) transparent;
+}
+
+.hardware-video-grid[hidden] {
+  display: none;
+}
+
+.hardware-video-tile {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--page-line);
+  border-radius: 6px;
+  background: #050909;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+@media (hover: hover) {
+  .hardware-video-tile:hover,
+  .hardware-video-tile:focus-within {
+    z-index: 1;
+    border-color: rgba(125, 228, 216, 0.42);
+    box-shadow: 0 22px 46px rgba(0, 0, 0, 0.34);
+    transform: translateY(-7px);
+  }
+}
+
+.hardware-video-tile video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #050909;
+}
+
+[data-hardware-group="composition"] .hardware-video-tile video {
+  aspect-ratio: 16 / 9;
+}
+
+.hardware-video-rate {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 11px;
+  border-top: 1px solid var(--page-line);
+  background: #0f1819;
+}
+
+.hardware-video-rate span {
+  color: var(--page-muted);
+  font-size: 9px;
+  font-weight: 760;
+  text-transform: uppercase;
+}
+
+.hardware-video-rate strong {
+  color: #8ce5d8;
+  font-size: 15px;
+  font-weight: 820;
+  line-height: 1;
+}
+
+.hardware-composition-taxonomy {
+  margin-top: 42px;
+  padding-top: 30px;
+  border-top: 1px solid var(--page-line);
+}
+
+.hardware-composition-kicker {
+  margin: 0 0 17px;
+  color: #8ce5d8;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.hardware-composition-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.hardware-composition-strip article {
+  min-width: 0;
+  min-height: 156px;
+  padding: 20px;
+  border: 1px solid var(--page-line);
+  border-top: 3px solid var(--blue-bright);
+  border-radius: 6px;
+  background: var(--page-surface-raised);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.hardware-composition-strip article:nth-child(2) {
+  border-top-color: var(--cyan);
+}
+
+.hardware-composition-strip article:nth-child(3) {
+  border-top-color: #75d5a3;
+}
+
+.hardware-composition-strip .composition-label {
+  margin: 0;
+  color: var(--page-text);
+  font-size: 14px;
+  font-weight: 760;
+}
+
+.hardware-composition-strip .skill-sequence {
+  margin-block: 16px;
+}
+
+.hardware-composition-strip .seen-route {
+  color: var(--paper-strong);
+  border-color: var(--page-line);
+  background: #10191a;
+}
+
+.hardware-composition-strip .heldout-route {
+  color: #07100f;
+  border-color: transparent;
+  background: #8ce5d8;
+}
+
+.hardware-composition-strip article > p:last-child {
+  margin: 0;
+  color: var(--page-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* CoachWorld rollouts live inside the model section as a compact evidence block. */
+.coachworld-rollout-browser {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--page-line);
+}
+
+.coachworld-rollout-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 12px;
+}
+
+.coachworld-rollout-toolbar > p {
+  margin: 0;
+  color: #8ce5d8;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.coachworld-rollout-toolbar .segmented {
+  flex: 0 0 auto;
+}
+
+#coachworld .rollout-grid {
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+#coachworld .rollout-card {
+  align-self: start;
+  overflow: visible;
+  border: 1px solid var(--page-line);
+  border-radius: 6px;
+  background: var(--page-surface);
+  box-shadow: none;
+}
+
+#coachworld .rollout-card:hover {
+  transform: none;
+  border-color: var(--page-line);
+  box-shadow: none;
+}
+
+#coachworld .rollout-meta {
+  padding: 12px 14px;
+}
+
+#coachworld .rollout-meta span {
+  margin-bottom: 2px;
+  font-size: 9px;
+}
+
+#coachworld .rollout-meta h3 {
+  font-size: 18px;
+}
+
+#coachworld .rollout-meta p {
+  font-size: 10px;
+}
+
+#coachworld .rollout-video-panel {
+  position: relative;
+  padding: 10px;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+#coachworld .rollout-video-panel > .rollout-video-caption {
+  min-height: 32px;
+  margin-bottom: 7px;
+}
+
+#coachworld .rollout-video-panel:nth-child(n + 3) {
+  border-top: 1px solid var(--page-line);
+}
+
+@media (hover: hover) {
+  #coachworld .rollout-video-panel:hover,
+  #coachworld .rollout-video-panel:focus-within {
+    z-index: 2;
+    transform: translateY(-5px);
+    background: color-mix(in srgb, var(--page-surface-raised) 88%, #0f766e 12%);
+    box-shadow:
+      0 0 0 1px rgba(125, 228, 216, 0.28),
+      0 18px 38px rgba(0, 0, 0, 0.28);
+  }
+}
+
+@media (hover: hover) {
+  .hardware-composition-strip article:hover {
+    border-color: rgba(125, 228, 216, 0.36);
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.26);
+    transform: translateY(-5px);
+  }
+}
+
+@media (max-width: 760px) {
+  .section-hardware .section-heading-row {
+    align-items: stretch;
+  }
+
+  .hardware-segmented {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .hardware-segmented button {
+    flex: 1 0 auto;
+  }
+
+  .hardware-video-grid {
+    grid-template-columns: repeat(var(--hardware-columns), calc(100vw - 40px));
+  }
+
+  .hardware-composition-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .coachworld-rollout-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .coachworld-rollout-toolbar .segmented {
+    width: 100%;
+  }
+
+  #coachworld .rollout-grid {
+    grid-template-columns: 1fr;
+  }
+}
