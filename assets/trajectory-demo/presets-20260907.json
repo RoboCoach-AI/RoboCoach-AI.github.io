@@ -1,0 +1,388 @@
+{
+  "scenes": [
+    {
+      "id": "place-shoe",
+      "label": "Place shoe",
+      "task": "Place the shoe",
+      "episode": "Episode 031",
+      "width": 768,
+      "height": 512,
+      "initial_image_source": "First frame of the default recorded chunk, decoded from video.",
+      "presets": [
+        {
+          "id": "near-vertical",
+          "label": "Near-vertical waypoints",
+          "description": "The saved waypoints run almost vertically in the image, at fixed depth and gripper command.",
+          "video": "assets/trajectory-demo/place-shoe-near-vertical.mp4",
+          "poster": "assets/trajectory-demo/place-shoe-near-vertical.jpg",
+          "record": "assets/trajectory-demo/place-shoe-near-vertical.json",
+          "duration": 1.8,
+          "inference_steps": 20,
+          "controls": [
+            {
+              "slot": 1,
+              "source": "manual_uv_depth",
+              "uv_depth": [
+                440.0,
+                285.0,
+                0.5394558906555176
+              ],
+              "path_uv_depth": [
+                {
+                  "u": 434.0,
+                  "v": 108.0,
+                  "depth": 0.5394558906555176,
+                  "gripper": 0.0
+                },
+                {
+                  "u": 436.0,
+                  "v": 200.0,
+                  "depth": 0.5394558906555176,
+                  "gripper": 0.0
+                },
+                {
+                  "u": 440.0,
+                  "v": 285.0,
+                  "depth": 0.5394558906555176,
+                  "gripper": 0.0
+                }
+              ],
+              "intermediate_points": 2,
+              "current_xyz": [
+                0.15371060371398926,
+                -0.03992940112948418,
+                0.9832330942153931
+              ],
+              "target_xyz": [
+                0.007817338220775127,
+                -0.14268425107002258,
+                0.9061669707298279
+              ],
+              "delta_xyz": [
+                -0.14589326083660126,
+                -0.10275484621524811,
+                -0.07706612348556519
+              ],
+              "gripper": 0.0
+            }
+          ]
+        },
+        {
+          "id": "detour",
+          "label": "Detour + gripper change",
+          "description": "The waypoints take a wide detour, with a change in depth and gripper command.",
+          "video": "assets/trajectory-demo/place-shoe-detour.mp4",
+          "poster": "assets/trajectory-demo/place-shoe-detour.jpg",
+          "record": "assets/trajectory-demo/place-shoe-detour.json",
+          "duration": 1.8,
+          "inference_steps": 20,
+          "controls": [
+            {
+              "slot": 1,
+              "source": "manual_uv_depth",
+              "uv_depth": [
+                409.0,
+                233.0,
+                0.5654823184013367
+              ],
+              "path_uv_depth": [
+                {
+                  "u": 332.0,
+                  "v": 78.0,
+                  "depth": 0.5481313665707906,
+                  "gripper": 0.32663318514823914
+                },
+                {
+                  "u": 602.0,
+                  "v": 298.0,
+                  "depth": 0.5568068424860636,
+                  "gripper": 0.6532663702964783
+                },
+                {
+                  "u": 409.0,
+                  "v": 233.0,
+                  "depth": 0.5654823184013367,
+                  "gripper": 0.979899525642395
+                }
+              ],
+              "intermediate_points": 2,
+              "current_xyz": [
+                0.15371060371398926,
+                -0.03992940112948418,
+                0.9832330942153931
+              ],
+              "target_xyz": [
+                -0.013162339106202126,
+                -0.09711133688688278,
+                0.9078136086463928
+              ],
+              "delta_xyz": [
+                -0.16687294840812683,
+                -0.057181935757398605,
+                -0.07541948556900024
+              ],
+              "gripper": 0.979899525642395
+            }
+          ]
+        }
+      ],
+      "image": "assets/trajectory-demo/place-shoe-near-vertical.jpg"
+    },
+    {
+      "id": "stamp-seal-005",
+      "label": "Stamp seal \u00b7 A",
+      "task": "Stamp the seal",
+      "episode": "Episode 005",
+      "width": 768,
+      "height": 512,
+      "initial_image_source": "First frame of the default recorded chunk, decoded from video.",
+      "presets": [
+        {
+          "id": "diagonal",
+          "label": "Diagonal waypoints",
+          "description": "The saved waypoints form a diagonal line, at fixed depth and gripper command.",
+          "video": "assets/trajectory-demo/stamp-seal-005-diagonal.mp4",
+          "poster": "assets/trajectory-demo/stamp-seal-005-diagonal.jpg",
+          "record": "assets/trajectory-demo/stamp-seal-005-diagonal.json",
+          "duration": 1.8,
+          "inference_steps": 20,
+          "controls": [
+            {
+              "slot": 1,
+              "source": "manual_uv_depth",
+              "uv_depth": [
+                495.0,
+                270.0,
+                0.5926159620285034
+              ],
+              "path_uv_depth": [
+                {
+                  "u": 606.4506429036459,
+                  "v": 111.82245127360027,
+                  "depth": 0.5926159620285034,
+                  "gripper": 0.0
+                },
+                {
+                  "u": 550.725321451823,
+                  "v": 190.91122563680014,
+                  "depth": 0.5926159620285034,
+                  "gripper": 0.0
+                },
+                {
+                  "u": 495.0,
+                  "v": 270.0,
+                  "depth": 0.5926159620285034,
+                  "gripper": 0.0
+                }
+              ],
+              "intermediate_points": 2,
+              "current_xyz": [
+                0.18374501168727875,
+                0.043915506452322006,
+                0.9796667098999023
+              ],
+              "target_xyz": [
+                0.05432092398405075,
+                -0.10310549288988113,
+                0.8694009184837341
+              ],
+              "delta_xyz": [
+                -0.1294240951538086,
+                -0.14702099561691284,
+                -0.11026579141616821
+              ],
+              "gripper": 0.0
+            }
+          ]
+        },
+        {
+          "id": "bent",
+          "label": "Bent waypoints",
+          "description": "The intermediate waypoints change direction before the final target, at the same fixed depth.",
+          "video": "assets/trajectory-demo/stamp-seal-005-bent.mp4",
+          "poster": "assets/trajectory-demo/stamp-seal-005-bent.jpg",
+          "record": "assets/trajectory-demo/stamp-seal-005-bent.json",
+          "duration": 1.8,
+          "inference_steps": 20,
+          "controls": [
+            {
+              "slot": 1,
+              "source": "manual_uv_depth",
+              "uv_depth": [
+                496.0,
+                298.0,
+                0.5926159620285034
+              ],
+              "path_uv_depth": [
+                {
+                  "u": 413.0,
+                  "v": 124.0,
+                  "depth": 0.5926159620285034,
+                  "gripper": 0.0
+                },
+                {
+                  "u": 580.0,
+                  "v": 281.0,
+                  "depth": 0.5926159620285034,
+                  "gripper": 0.0
+                },
+                {
+                  "u": 496.0,
+                  "v": 298.0,
+                  "depth": 0.5926159620285034,
+                  "gripper": 0.0
+                }
+              ],
+              "intermediate_points": 2,
+              "current_xyz": [
+                0.18374501168727875,
+                0.043915506452322006,
+                0.9796667098999023
+              ],
+              "target_xyz": [
+                0.05509510263800621,
+                -0.12045556306838989,
+                0.8563883900642395
+              ],
+              "delta_xyz": [
+                -0.12864990532398224,
+                -0.1643710732460022,
+                -0.12327831983566284
+              ],
+              "gripper": 0.0
+            }
+          ]
+        }
+      ],
+      "image": "assets/trajectory-demo/stamp-seal-005-diagonal.jpg"
+    },
+    {
+      "id": "stamp-seal-034",
+      "label": "Stamp seal \u00b7 B",
+      "task": "Stamp the seal",
+      "episode": "Episode 034",
+      "width": 768,
+      "height": 512,
+      "initial_image_source": "First frame of the default recorded chunk, decoded from video.",
+      "presets": [
+        {
+          "id": "across-image",
+          "label": "Across the image",
+          "description": "The future waypoints move across the image toward the left, at fixed depth.",
+          "video": "assets/trajectory-demo/stamp-seal-034-across-image.mp4",
+          "poster": "assets/trajectory-demo/stamp-seal-034-across-image.jpg",
+          "record": "assets/trajectory-demo/stamp-seal-034-across-image.json",
+          "duration": 1.8,
+          "inference_steps": 20,
+          "controls": [
+            {
+              "slot": 1,
+              "source": "manual_uv_depth",
+              "uv_depth": [
+                178.0,
+                283.0,
+                0.5647194981575012
+              ],
+              "path_uv_depth": [
+                {
+                  "u": 406.0887858072917,
+                  "v": 170.83484395345053,
+                  "depth": 0.5647194981575012,
+                  "gripper": 0.0
+                },
+                {
+                  "u": 292.04439290364587,
+                  "v": 226.91742197672525,
+                  "depth": 0.5647194981575012,
+                  "gripper": 0.0
+                },
+                {
+                  "u": 178.0,
+                  "v": 283.0,
+                  "depth": 0.5647194981575012,
+                  "gripper": 0.0
+                }
+              ],
+              "intermediate_points": 2,
+              "current_xyz": [
+                0.06879912316799164,
+                -0.027764832600951195,
+                0.9607769846916199
+              ],
+              "target_xyz": [
+                -0.1836046427488327,
+                -0.12711119651794434,
+                0.8862672448158264
+              ],
+              "delta_xyz": [
+                -0.25240376591682434,
+                -0.09934636205434799,
+                -0.07450973987579346
+              ],
+              "gripper": 0.0
+            }
+          ]
+        },
+        {
+          "id": "depth",
+          "label": "Depth change",
+          "description": "All three waypoints share the same image position. Their depths change, so the command moves in 3D even though the marker stays in place.",
+          "video": "assets/trajectory-demo/stamp-seal-034-depth.mp4",
+          "poster": "assets/trajectory-demo/stamp-seal-034-depth.jpg",
+          "record": "assets/trajectory-demo/stamp-seal-034-depth.json",
+          "duration": 1.8,
+          "inference_steps": 20,
+          "controls": [
+            {
+              "slot": 1,
+              "source": "manual_uv_depth",
+              "uv_depth": [
+                520.1331787109375,
+                114.75226593017578,
+                0.26471949815750095
+              ],
+              "path_uv_depth": [
+                {
+                  "u": 520.1331787109375,
+                  "v": 114.7522659301758,
+                  "depth": 0.11971949815750084,
+                  "gripper": 0.0
+                },
+                {
+                  "u": 520.1331787109375,
+                  "v": 114.75226593017578,
+                  "depth": 0.36471949815750104,
+                  "gripper": 0.0
+                },
+                {
+                  "u": 520.1331787109375,
+                  "v": 114.75226593017578,
+                  "depth": 0.26471949815750095,
+                  "gripper": 0.0
+                }
+              ],
+              "intermediate_points": 2,
+              "current_xyz": [
+                0.06879912316799164,
+                -0.027764832600951195,
+                0.9607769846916199
+              ],
+              "target_xyz": [
+                0.015250884927809238,
+                -0.25207188725471497,
+                1.1675467491149902
+              ],
+              "delta_xyz": [
+                -0.053548239171504974,
+                -0.22430706024169922,
+                0.20676976442337036
+              ],
+              "gripper": 0.0
+            }
+          ]
+        }
+      ],
+      "image": "assets/trajectory-demo/stamp-seal-034-across-image.jpg"
+    }
+  ]
+}

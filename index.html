@@ -1,0 +1,864 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="RoboCoach uses an action-conditioned world model to identify first unresolved subtask-expert pairs and direct modular VLA specialization.">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="RoboCoach: World Models as Active Coaches for Compositional Robot Skills">
+  <meta property="og:description" content="Anonymous project page for a double-blind submission.">
+  <meta property="og:image" content="assets/figures/robocoach_overview.png?hash=90d2eeae565d">
+  <title>RoboCoach | World Models as Active Coaches</title>
+  <link rel="icon" type="image/png" href="assets/figures/robocoach_mark.png?v=2">
+  <link rel="apple-touch-icon" href="assets/figures/robocoach_mark.png?v=2">
+  <link rel="stylesheet" href="assets/styles.css?hash=e34ce499d296">
+  <link rel="stylesheet" href="assets/curve-navigation.css?v=3"><script src="assets/curve-navigation.js?v=1" defer></script><script src="assets/video-playback.js?v=lazy-2" defer></script>
+  <script src="assets/site.js?v=pick-expert-1" defer></script>
+  <script src="assets/teabag-curves.js?v=curve-click-2" defer></script>
+  <link rel="stylesheet" href="assets/beige.css?hash=42eea91e89d6" data-theme-style="light">
+  <link rel="stylesheet" href="assets/theme.css?hash=16513040dc22">
+  <script src="assets/theme.js?hash=659067ef29a1"></script>
+  <link rel="canonical" href="index.html">
+  <link rel="stylesheet" href="assets/trajectory-demo.css">
+  <script src="assets/trajectory-demo.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="reading-progress" aria-hidden="true"><span data-reading-progress></span></div>
+
+  <header class="site-header" data-site-header>
+    <a class="brand" href="#top" aria-label="RoboCoach home">
+      <img src="assets/figures/robocoach_mark.png?v=2" alt="" width="40" height="40">
+      <span class="brand-name"><span class="brand-robo">Robo</span><span class="brand-coach">Coach</span></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+      Menu
+    </button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary navigation" data-site-nav>
+      <a href="#overview">Overview</a>
+      <a href="#teabag-diagnostics">Case Study</a>
+      <a href="#results">Results</a>
+      <a href="#hardware">Real Robots</a>
+      <a href="#coachworld">CoachWorld</a>
+      <a href="#trajectory-demo">Try trajectories</a>
+      <a href="#judge">Judge</a>
+      <a href="#coaching">Coaching</a>
+    </nav>
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme" title="Switch to dark theme">
+      <svg class="theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 13.2A8.7 8.7 0 0 1 10.8 3.1 9 9 0 1 0 20.8 13.2Z"/></svg>
+      <svg class="theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+    </button>
+  </header>
+
+  <main id="main">
+    <section id="top" class="hero" aria-labelledby="hero-title">
+      <video class="hero-media" muted loop playsinline preload="none" data-poster="assets/posters/hero_droid.jpg" aria-hidden="true">
+        <source data-src="assets/videos/hero_droid.mp4?media=20260907" type="video/mp4">
+      </video>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-content">
+        <h1 id="hero-title"><span class="hero-title-robo">Robo</span><span class="hero-title-coach">Coach</span></h1>
+        <p class="hero-subtitle">World Models as Active Coaches for Compositional Robot Skills</p>
+        <p class="hero-summary">
+          A world-model-guided framework that <span class="text-highlight">attributes the first timeout</span> to the active subtask–expert pair and directs <span class="text-highlight">limited demonstrations</span> to modular VLA experts.
+        </p>
+        <div class="resource-dock" aria-label="Project resources">
+          <span class="resource-pill" aria-label="arXiv paper coming soon">
+            <img class="resource-icon resource-icon-arxiv" src="assets/icons/arxiv-logomark.svg" alt="" width="25" height="34">
+            <span class="resource-copy"><strong>Paper</strong><small>Coming soon</small></span>
+            <span class="resource-arrow" aria-hidden="true">↗</span>
+          </span>
+          <span class="resource-pill" aria-label="GitHub code coming soon">
+            <svg class="resource-icon resource-icon-github" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .7a11.5 11.5 0 0 0-3.64 22.4c.58.11.79-.25.79-.56v-2.23c-3.23.7-3.91-1.37-3.91-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.72 1.27 3.39.97.1-.75.4-1.27.74-1.56-2.58-.29-5.29-1.29-5.29-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.47.11-3.05 0 0 .97-.31 3.16 1.18a10.9 10.9 0 0 1 5.76 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.58.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.4-2.72 5.38-5.31 5.67.42.36.79 1.07.79 2.17v3.22c0 .31.21.68.8.56A11.5 11.5 0 0 0 12 .7Z"/></svg>
+            <span class="resource-copy"><strong>Code</strong><small>Coming soon</small></span>
+            <span class="resource-arrow" aria-hidden="true">↗</span>
+          </span>
+          <span class="resource-pill" aria-label="Hugging Face model coming soon">
+            <span class="resource-icon resource-icon-hf" aria-hidden="true">🤗</span>
+            <span class="resource-copy"><strong>Model</strong><small>Coming soon</small></span>
+            <span class="resource-arrow" aria-hidden="true">↗</span>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section class="thesis-band" aria-label="Central thesis">
+      <p>World models should do <span class="thesis-accent">more</span> than <span class="thesis-accent thesis-accent-teal">simulate experience</span>. They should <span class="thesis-accent">decide</span> where scarce real experience is <span class="thesis-accent thesis-accent-teal">most valuable</span>.</p>
+    </section>
+
+    <section id="overview" class="section section-overview">
+      <div class="section-heading">
+        <p class="kicker">System overview</p>
+        <h2>From imagined execution to targeted improvement</h2>
+        <p>
+          RoboCoach connects two closed loops: an <span class="text-highlight">execution loop</span> that routes modular experts through an imagined rollout, and a <span class="text-highlight">coaching loop</span> that converts consistent first-timeout diagnoses into a focused data request.
+        </p>
+      </div>
+
+      <div class="overview-figure-layout">
+        <figure class="overview-figure">
+          <div class="overview-figure-panel">
+            <img class="overview-figure-image overview-figure-dark" src="assets/figures/robocoach_overview.png?hash=90d2eeae565d" alt="RoboCoach system overview showing routing, world-model rollout, progress judging, and targeted expert improvement" loading="lazy">
+            <img class="overview-figure-image overview-figure-light" src="assets/figures/robocoach_overview_light.png" alt="RoboCoach system overview showing routing, world-model rollout, progress judging, and targeted expert improvement" loading="lazy">
+          </div>
+          <figcaption>One closed loop turns a long-horizon task failure into a targeted update for one modular expert.</figcaption>
+        </figure>
+
+        <ol class="overview-stages" aria-label="Four stages of the RoboCoach loop">
+          <li class="overview-stage stage-route">
+            <a class="overview-stage-link" href="#tea-module-route" data-overview-module="route" aria-label="01 Route: explore the case study">
+              <span class="overview-stage-number">01</span>
+              <div>
+                <h3>Route</h3>
+                <p>Split the instruction into ordered subtasks and dispatch the matching expert for the active stage.</p>
+              </div>
+            </a>
+          </li>
+          <li class="overview-stage stage-imagine">
+            <a class="overview-stage-link" href="#tea-module-imagine" data-overview-module="imagine" aria-label="02 Imagine: explore the case study">
+              <span class="overview-stage-number">02</span>
+              <div>
+                <h3>Imagine</h3>
+                <p>CoachWorld rolls the routed experts forward in closed loop and predicts the full visual outcome.</p>
+              </div>
+            </a>
+          </li>
+          <li class="overview-stage stage-diagnose">
+            <a class="overview-stage-link" href="#tea-module-diagnose" data-overview-module="diagnose" aria-label="03 Diagnose: explore the case study">
+              <span class="overview-stage-number">03</span>
+              <div>
+                <h3>Diagnose</h3>
+                <p>RoboMeter tracks causal stage progress and attributes the first timeout to the active subtask–expert pair.</p>
+              </div>
+            </a>
+          </li>
+          <li class="overview-stage stage-improve">
+            <a class="overview-stage-link" href="#tea-module-improve" data-overview-module="improve" aria-label="04 Improve: explore the case study">
+              <span class="overview-stage-number">04</span>
+              <div>
+                <h3>Improve</h3>
+                <p>Collect targeted demonstrations, update only the selected LoRA, and return it to the expert bank.</p>
+              </div>
+            </a>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="teabag-diagnostics" class="section tea-demo" aria-labelledby="tea-demo-title">
+      <div class="tea-flow-eyebrow">
+        Case Study · Tea Making
+      </div>
+      <h2 id="tea-demo-title">
+        A coaching loop, through one task
+      </h2>
+      <p class="tea-flow-intro">
+        Follow the tea-making task from expert routing and imagined execution to failure diagnosis, targeted demonstrations, and successful execution.
+      </p>
+      <div class="tea-module-heading">
+        <h3>RoboCoach modules</h3>
+        <p class="tea-flow-module-hint">Select a module to explore its role in this task.</p>
+      </div>
+      <div class="tea-flow-modules" role="group" aria-label="Explore the four modules of RoboCoach">
+        <button type="button" class="tea-flow-module is-active" id="tea-module-route" data-tea-module="route" aria-pressed="true" aria-controls="tea-module-detail">
+          <small>
+            Execution
+          </small>
+          <b>
+            Route
+          </b>
+          <span class="tea-flow-module-summary">
+            Assign each subtask to its expert.
+          </span>
+        </button>
+        <button type="button" class="tea-flow-module" id="tea-module-imagine" data-tea-module="imagine" aria-pressed="false" aria-controls="tea-module-detail">
+          <small>
+            CoachWorld
+          </small>
+          <b>
+            Imagine
+          </b>
+          <span class="tea-flow-module-summary">
+            Predict the routed execution.
+          </span>
+        </button>
+        <button type="button" class="tea-flow-module" id="tea-module-diagnose" data-tea-module="diagnose" aria-pressed="false" aria-controls="tea-module-detail">
+          <small>
+            RoboMeter
+          </small>
+          <b>
+            Diagnose
+          </b>
+          <span class="tea-flow-module-summary">
+            Locate the first unresolved stage.
+          </span>
+        </button>
+        <button type="button" class="tea-flow-module" id="tea-module-improve" data-tea-module="improve" aria-pressed="false" aria-controls="tea-module-detail">
+          <small>
+            Coaching
+          </small>
+          <b>
+            Improve
+          </b>
+          <span class="tea-flow-module-summary">
+            Collect targeted data and update the selected expert.
+          </span>
+        </button>
+      </div>
+      <div id="tea-module-detail" class="tea-flow-module-detail" aria-live="polite" aria-atomic="true">
+        <strong data-tea-module-title>Route · Expert dispatch</strong>
+        <p data-tea-module-description>Split the tea-making task into pickup, placement, and pouring. Dispatch the matching expert for each active subtask in that order.</p>
+      </div>
+      <div class="tea-flow-story">
+        <h3 class="tea-story-heading">Tea-making walkthrough</h3>
+        <div class="tea-flow-chapters" role="group" aria-label="Story chapters">
+          <button type="button" data-tea-case="route" aria-label="Chapter 1: Route the task" aria-pressed="true" aria-controls="tea-route">
+            <small aria-hidden="true">1</small>
+            <strong>Route the task</strong>
+          </button>
+          <button data-tea-case="failure" aria-label="Chapter 2: Diagnose the failure" aria-pressed="false" aria-controls="tea-failure">
+            <small aria-hidden="true">2</small>
+            <strong>
+              Diagnose the failure
+            </strong>
+          </button>
+          <button data-tea-case="collection" aria-label="Chapter 3: Collect targeted data" aria-pressed="false" aria-controls="tea-collection">
+            <small aria-hidden="true">3</small>
+            <strong>
+              Collect targeted data
+            </strong>
+          </button>
+          <button data-tea-case="success" aria-label="Chapter 4: Successful execution" aria-pressed="false" aria-controls="tea-success">
+            <small aria-hidden="true">4</small>
+            <strong>
+              Successful execution
+            </strong>
+          </button>
+        </div>
+        <section class="tea-flow-panel" id="tea-route" data-tea-panel="route">
+          <div class="tea-flow-context">
+            <h3>Turn one instruction into an expert sequence</h3>
+            <p>Decompose the task, order the subtasks, and dispatch the matching skill expert. Select a planned step to inspect its assignment.</p>
+          </div>
+          <div class="tea-route-plan">
+            <div class="tea-route-instruction"><span>Task instruction</span><strong>“Place the tea bag into the cup, then pour water to brew tea.”</strong></div>
+            <p class="tea-route-label">Ordered subtasks → expert roles</p>
+            <ol class="tea-route-steps" aria-label="Planned tea-making route">
+              <li><button type="button" data-tea-route-step="0" aria-pressed="true" aria-controls="tea-route-dispatch"><small>S1 · Pick</small><strong>Pick up the tea bag</strong><span>Pick expert</span></button></li>
+              <li><button type="button" data-tea-route-step="1" aria-pressed="false" aria-controls="tea-route-dispatch"><small>S2 · Place</small><strong>Place the tea bag in the cup</strong><span>Placement expert</span></button></li>
+              <li><button type="button" data-tea-route-step="2" aria-pressed="false" aria-controls="tea-route-dispatch"><small>S3 · Pour</small><strong>Pour water into the cup</strong><span>Pouring expert</span></button></li>
+            </ol>
+            <div class="tea-route-dispatch" id="tea-route-dispatch" aria-live="polite" aria-atomic="true">
+              <div><span>Selected subtask</span><strong data-tea-route-task>Pick up the tea bag</strong></div>
+              <span class="tea-route-arrow" aria-hidden="true">→</span>
+              <div><span>Dispatched expert role</span><strong data-tea-route-expert>Pick expert</strong></div>
+              <p data-tea-route-next>Next in the plan: place the tea bag in the cup.</p>
+            </div>
+          </div>
+          <nav class="tea-chapter-nav" aria-label="Chapter navigation">
+            <a class="tea-nav-button tea-nav-back" href="#overview"><span aria-hidden="true">←</span> Back to overview</a>
+            <button class="tea-nav-button tea-nav-forward" type="button" data-tea-route-continue data-tea-continue="failure" aria-controls="tea-failure">Continue to diagnosis <span aria-hidden="true">→</span></button>
+          </nav>
+        </section>
+        <section class="tea-flow-panel" id="tea-failure" data-tea-panel="failure" hidden>
+          <div class="tea-flow-context">
+            <h3>
+              The tea bag is not picked up
+            </h3>
+            <p>
+              CoachWorld and the real-world rollout both expose a missed pickup. RoboMeter leaves S1 unconfirmed, identifying the stage that needs attention.
+            </p>
+          </div>
+          <div class="tea-flow-sources">
+            <strong>
+              Real-World rollout
+            </strong>
+            <strong>
+              CoachWorld rollout
+            </strong>
+          </div>
+          <video aria-label="Tea-bag pickup failure: real-world and CoachWorld rollouts with RoboMeter scores" data-tea-advance="collection" muted playsinline preload="none" data-poster="assets/videos/teabag/teabag_pick_failure_rollouts.jpg">
+            <source data-src="assets/videos/teabag/teabag_pick_failure_rollouts.mp4?v=1" type="video/mp4">
+          </video>
+          <div class="tea-live-curves" data-tea-curves="assets/videos/teabag/teabag_pick_failure_scores.json?v=2">
+            <div class="tea-chart-title"><strong>Completion score</strong><small class="seek-hint">Click a stage to seek</small><span data-tea-clock>0.0 / 16.2 s</span></div>
+            <div class="tea-chart-grid">
+              <div class="tea-chart-card" data-curve-source="real">
+                <div class="tea-chart-heading"><strong>Real-World</strong><span data-curve-stage>S1 · Pick tea bag</span></div>
+                <svg viewBox="0 0 600 220" role="img" aria-label="Real-world completion scores, revealed with video time"></svg>
+                <div class="tea-chart-legend"><span><i style="background:#1467b8"></i>S1 Pick</span><span><i style="background:#0f766e"></i>S2 Place</span><span><i style="background:#a45b12"></i>S3 Pour</span></div>
+              </div>
+              <div class="tea-chart-card" data-curve-source="wm">
+                <div class="tea-chart-heading"><strong>CoachWorld</strong><span data-curve-stage>S1 · Pick tea bag</span></div>
+                <svg viewBox="0 0 600 220" role="img" aria-label="CoachWorld completion scores, revealed with video time"></svg>
+                <div class="tea-chart-legend"><span><i style="background:#1467b8"></i>S1 Pick</span><span><i style="background:#0f766e"></i>S2 Place</span><span><i style="background:#a45b12"></i>S3 Pour</span></div>
+              </div>
+            </div>
+          </div>
+          <nav class="tea-chapter-nav" aria-label="Chapter navigation">
+            <button class="tea-nav-button tea-nav-back" type="button" data-tea-back="route" aria-controls="tea-route"><span aria-hidden="true">←</span> Back to Route</button>
+            <button class="tea-nav-button tea-nav-forward" type="button" data-tea-continue="collection" aria-controls="tea-collection">Continue to data collection <span aria-hidden="true">→</span></button>
+          </nav>
+        </section>
+        <section class="tea-flow-panel" id="tea-collection" data-tea-panel="collection" hidden>
+          <div class="tea-flow-context">
+            <h3>
+              Focus the next demonstration on pickup
+            </h3>
+            <p>
+              The diagnosis becomes a specific data request for the unresolved subtask.
+            </p>
+          </div>
+          <div class="tea-collection-media">
+            <div class="tea-collection-heading"><strong>Targeted demonstration</strong><span>Pick tea bag</span></div>
+            <video aria-label="Tea-bag pickup demonstration" muted loop playsinline preload="none" data-poster="assets/videos/teabag/collection_layout_preview.jpg">
+              <source data-src="assets/videos/teabag/collection_layout_preview.mp4?v=1" type="video/mp4">
+            </video>
+          </div>
+          <div class="tea-flow-update">
+            <span>
+              Targeted demonstration
+            </span>
+            →
+            <b>
+              Selected expert update
+            </b>
+            →
+            <span>
+              Re-evaluate the task
+            </span>
+          </div>
+          <nav class="tea-chapter-nav" aria-label="Chapter navigation">
+            <button class="tea-nav-button tea-nav-back" type="button" data-tea-back="failure" aria-controls="tea-failure"><span aria-hidden="true">←</span> Back to diagnosis</button>
+            <button class="tea-nav-button tea-nav-forward" type="button" data-tea-continue="success" aria-controls="tea-success">Continue to successful execution <span aria-hidden="true">→</span></button>
+          </nav>
+        </section>
+        <section class="tea-flow-panel" id="tea-success" data-tea-panel="success" hidden>
+          <div class="tea-flow-context">
+            <h3>
+              The task reaches successful execution
+            </h3>
+            <p>
+              Follow pickup, placement, and pouring in the real-world and CoachWorld rollouts.
+            </p>
+          </div>
+          <div class="tea-flow-sources">
+            <strong>
+              Real-World rollout
+            </strong>
+            <strong>
+              CoachWorld rollout
+            </strong>
+          </div>
+          <video aria-label="Successful tea-making: real-world and CoachWorld rollouts with RoboMeter scores" muted loop playsinline preload="none" data-poster="assets/videos/teabag/teabag_success_rollouts.jpg">
+            <source data-src="assets/videos/teabag/teabag_success_rollouts.mp4?v=1" type="video/mp4">
+          </video>
+          <div class="tea-live-curves" data-tea-curves="assets/videos/teabag/teabag_success_scores.json?v=2">
+            <div class="tea-chart-title"><strong>Completion score</strong><small class="seek-hint">Click a stage to seek</small><span data-tea-clock>0.0 / 42.0 s</span></div>
+            <div class="tea-chart-grid">
+              <div class="tea-chart-card" data-curve-source="real">
+                <div class="tea-chart-heading"><strong>Real-World</strong><span data-curve-stage>S1 · Pick tea bag</span></div>
+                <svg viewBox="0 0 600 220" role="img" aria-label="Real-world completion scores, revealed with video time"></svg>
+                <div class="tea-chart-legend"><span><i style="background:#1467b8"></i>S1 Pick</span><span><i style="background:#0f766e"></i>S2 Place</span><span><i style="background:#a45b12"></i>S3 Pour</span></div>
+              </div>
+              <div class="tea-chart-card" data-curve-source="wm">
+                <div class="tea-chart-heading"><strong>CoachWorld</strong><span data-curve-stage>S1 · Pick tea bag</span></div>
+                <svg viewBox="0 0 600 220" role="img" aria-label="CoachWorld completion scores, revealed with video time"></svg>
+                <div class="tea-chart-legend"><span><i style="background:#1467b8"></i>S1 Pick</span><span><i style="background:#0f766e"></i>S2 Place</span><span><i style="background:#a45b12"></i>S3 Pour</span></div>
+              </div>
+            </div>
+          </div>
+          <nav class="tea-chapter-nav" aria-label="Chapter navigation">
+            <button class="tea-nav-button tea-nav-back" type="button" data-tea-back="collection" aria-controls="tea-collection"><span aria-hidden="true">←</span> Back to data collection</button>
+            <button class="tea-nav-button tea-nav-forward" type="button" data-tea-continue="route" aria-controls="tea-route">Return to Route <span aria-hidden="true">→</span></button>
+          </nav>
+        </section>
+      </div>
+    </section>
+
+    <section id="results" class="section section-results" aria-labelledby="results-title">
+      <div class="section-heading section-heading-row">
+        <div>
+          <p class="kicker">Closed-loop improvement</p>
+          <h2 id="results-title">Three coaching rounds across four platforms</h2>
+          <p>
+            At <span class="text-highlight">matched acquisition budgets</span>, RoboCoach repeatedly diagnoses weak subtask-expert pairs and updates only the <span class="text-highlight">selected LoRA experts</span>. Simulation receives 100 accepted subtask demonstrations per round; hardware receives 50.
+          </p>
+        </div>
+      </div>
+
+      <div class="hardware-lead" aria-label="Real robot final success rates">
+        <div><span>Franka Research 3</span><strong>13.3% <b>→</b> 75.0%</strong><small>+34.2 points Budget AUC over uniform</small></div>
+        <div><span>AgileX dual-Piper</span><strong>40.0% <b>→</b> 83.8%</strong><small>+26.4 points Budget AUC over uniform</small></div>
+        <p>With 150 accepted hardware demonstrations, the matched Single VLA + Uniform baselines finish at 30.0% on Franka and 47.5% on AgileX.</p>
+      </div>
+
+      <figure class="paper-results-figure">
+        <img src="assets/figures/coaching_rounds.png?v=paper-sync-1" alt="Complete-task success over three coaching rounds on LIBERO-Long, RoboTwin 2.0, Franka, and AgileX" loading="lazy">
+      </figure>
+
+      <div class="modularity-finding">
+        <span>Why modularity matters</span>
+        <p>Holding the world-model-targeted demonstration IDs fixed, selected-expert updates add <strong>+3.4 points</strong> final success on LIBERO and <strong>+13.2 points</strong> on RoboTwin over one shared global adapter. The corresponding Budget-AUC gains are +2.3 and +7.9 points.</p>
+      </div>
+
+    </section>
+
+    <section id="hardware" class="section section-hardware" aria-labelledby="hardware-title">
+      <div class="section-heading section-heading-row">
+        <div>
+          <p class="kicker">Real-robot task suite</p>
+          <h2 id="hardware-title">Core Tasks</h2>
+        </div>
+        <div class="segmented hardware-segmented" role="group" aria-label="Browse real-robot videos">
+          <button type="button" class="is-active" data-hardware-filter="single" aria-pressed="true">Single-arm</button>
+          <button type="button" data-hardware-filter="dual" aria-pressed="false">Bimanual</button>
+          <a class="hardware-composition-link" href="#compositional-generalization">Compositional <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+
+      <div class="hardware-video-browser">
+        <div class="hardware-video-grid" data-hardware-group="single" style="--hardware-columns: 3" aria-label="Single-arm real-robot videos">
+          <div class="hardware-video-tile" data-hardware-task="franka_lamp"><video id="hardware-video-franka_lamp" muted playsinline preload="none" data-poster="assets/posters/hardware/franka_lamp.jpg?v=1x-hq1" aria-label="Franka lamp task" loop><source data-src="assets/videos/hardware/franka_lamp.mp4?v=1x-hq1&media=20260907" type="video/mp4"></video><div class="hardware-video-rate"><h4>Lamp switch and cord</h4><p class="hardware-task-prompt"><span class="hardware-prompt-label">Prompt</span><span class="hardware-prompt-text" id="hardware-prompt-1">close the laptop, then pull the lamp cord</span><button class="hardware-prompt-toggle" type="button" aria-expanded="false" aria-controls="hardware-prompt-1" hidden aria-label="Expand prompt"></button></p><details class="hardware-task-plan"><summary>Subtasks<span class="seek-hint"> · Click to seek</span></summary><ol><li><button type="button" class="hardware-subtask-button" data-subtask-start="0" aria-controls="hardware-video-franka_lamp">close the laptop</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="25" aria-controls="hardware-video-franka_lamp">pull the lamp cord</button></li></ol></details><span class="hardware-rate-value"><span class="hardware-rate-label"><span>Success rate</span><span class="hardware-comparison-label">Single VLA → RoboCoach</span></span><span class="hardware-rate-values"><span class="rate-before">15%</span><span class="rate-arrow" aria-hidden="true">→</span><strong>85%</strong></span></span></div></div>
+          <div class="hardware-video-tile" data-hardware-task="franka_buttons"><video id="hardware-video-franka_buttons" muted playsinline preload="none" data-poster="assets/posters/hardware/franka_buttons.jpg?v=1x-hq1" aria-label="Franka button task" loop><source data-src="assets/videos/hardware/franka_buttons.mp4?v=1x-hq1&media=20260907" type="video/mp4"></video><div class="hardware-video-rate"><h4>Two buttons press</h4><p class="hardware-task-prompt"><span class="hardware-prompt-label">Prompt</span><span class="hardware-prompt-text" id="hardware-prompt-2">press the green button, then press the red button</span><button class="hardware-prompt-toggle" type="button" aria-expanded="false" aria-controls="hardware-prompt-2" hidden aria-label="Expand prompt"></button></p><details class="hardware-task-plan"><summary>Subtasks<span class="seek-hint"> · Click to seek</span></summary><ol><li><button type="button" class="hardware-subtask-button" data-subtask-start="0" aria-controls="hardware-video-franka_buttons">press the green button</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="19" aria-controls="hardware-video-franka_buttons">press the red button</button></li></ol></details><span class="hardware-rate-value"><span class="hardware-rate-label"><span>Success rate</span><span class="hardware-comparison-label">Single VLA → RoboCoach</span></span><span class="hardware-rate-values"><span class="rate-before">15%</span><span class="rate-arrow" aria-hidden="true">→</span><strong>70%</strong></span></span></div></div>
+          <div class="hardware-video-tile" data-hardware-task="franka_bread_pan"><video id="hardware-video-franka_bread_pan" muted playsinline preload="none" data-poster="assets/posters/hardware/franka_bread_pan.jpg?v=1x-hq1" aria-label="Franka bread and pan task" loop><source data-src="assets/videos/hardware/franka_bread_pan.mp4?v=1x-hq1&media=20260907" type="video/mp4"></video><div class="hardware-video-rate"><h4>Bread and pan</h4><p class="hardware-task-prompt"><span class="hardware-prompt-label">Prompt</span><span class="hardware-prompt-text" id="hardware-prompt-3">put the bread into the pan, then close the lid</span><button class="hardware-prompt-toggle" type="button" aria-expanded="false" aria-controls="hardware-prompt-3" hidden aria-label="Expand prompt"></button></p><details class="hardware-task-plan"><summary>Subtasks<span class="seek-hint"> · Click to seek</span></summary><ol><li><button type="button" class="hardware-subtask-button" data-subtask-start="0" aria-controls="hardware-video-franka_bread_pan">pick the bread</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="22" aria-controls="hardware-video-franka_bread_pan">place the bread into the pan</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="33" aria-controls="hardware-video-franka_bread_pan">pick the lid</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="48" aria-controls="hardware-video-franka_bread_pan">place the lid over the pan</button></li></ol></details><span class="hardware-rate-value"><span class="hardware-rate-label"><span>Success rate</span><span class="hardware-comparison-label">Single VLA → RoboCoach</span></span><span class="hardware-rate-values"><span class="rate-before">10%</span><span class="rate-arrow" aria-hidden="true">→</span><strong>70%</strong></span></span></div></div>
+        </div>
+
+        <div class="hardware-video-grid" data-hardware-group="dual" style="--hardware-columns: 4" aria-label="Bimanual real-robot videos" hidden>
+          <div class="hardware-video-tile" data-hardware-task="agilex_block_drawer"><video id="hardware-video-agilex_block_drawer" muted playsinline preload="none" data-poster="assets/posters/hardware/agilex_block_drawer.jpg?v=1x-bright2" aria-label="AgileX block and drawer task" loop><source data-src="assets/videos/hardware/agilex_block_drawer.mp4?v=1x-bright2&media=20260907" type="video/mp4"></video><div class="hardware-video-rate"><h4>Block and drawer</h4><p class="hardware-task-prompt"><span class="hardware-prompt-label">Prompt</span><span class="hardware-prompt-text" id="hardware-prompt-4">Place the red block into the drawer, then close the drawer.</span><button class="hardware-prompt-toggle" type="button" aria-expanded="false" aria-controls="hardware-prompt-4" hidden aria-label="Expand prompt"></button></p><details class="hardware-task-plan"><summary>Subtasks<span class="seek-hint"> · Click to seek</span></summary><ol><li><button type="button" class="hardware-subtask-button" data-subtask-start="0" aria-controls="hardware-video-agilex_block_drawer">pick the red block</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="8" aria-controls="hardware-video-agilex_block_drawer">place the block into the drawer</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="22" aria-controls="hardware-video-agilex_block_drawer">close the drawer</button></li></ol></details><span class="hardware-rate-value"><span class="hardware-rate-label"><span>Success rate</span><span class="hardware-comparison-label">Single VLA → RoboCoach</span></span><span class="hardware-rate-values"><span class="rate-before">60%</span><span class="rate-arrow" aria-hidden="true">→</span><strong>85%</strong></span></span></div></div>
+          <div class="hardware-video-tile" data-hardware-task="agilex_shoes_box"><video id="hardware-video-agilex_shoes_box" muted playsinline preload="none" data-poster="assets/posters/hardware/agilex_shoes_box.jpg?v=1x-bright2" aria-label="AgileX shoes and box task" loop><source data-src="assets/videos/hardware/agilex_shoes_box.mp4?v=1x-bright2&media=20260907" type="video/mp4"></video><div class="hardware-video-rate"><h4>Shoes and box</h4><p class="hardware-task-prompt"><span class="hardware-prompt-label">Prompt</span><span class="hardware-prompt-text" id="hardware-prompt-5">Put the shoes in the shoebox, then close the box.</span><button class="hardware-prompt-toggle" type="button" aria-expanded="false" aria-controls="hardware-prompt-5" hidden aria-label="Expand prompt"></button></p><details class="hardware-task-plan"><summary>Subtasks<span class="seek-hint"> · Click to seek</span></summary><ol><li><button type="button" class="hardware-subtask-button" data-subtask-start="0" aria-controls="hardware-video-agilex_shoes_box">pick the right shoe</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="6" aria-controls="hardware-video-agilex_shoes_box">place the right shoe into the shoebox</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="22" aria-controls="hardware-video-agilex_shoes_box">pick the left shoe</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="31" aria-controls="hardware-video-agilex_shoes_box">place the left shoe into the shoebox</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="46" aria-controls="hardware-video-agilex_shoes_box">close the box</button></li></ol></details><span class="hardware-rate-value"><span class="hardware-rate-label"><span>Success rate</span><span class="hardware-comparison-label">Single VLA → RoboCoach</span></span><span class="hardware-rate-values"><span class="rate-before">25%</span><span class="rate-arrow" aria-hidden="true">→</span><strong>60%</strong></span></span></div></div>
+          <div class="hardware-video-tile" data-hardware-task="agilex_table_setting"><video id="hardware-video-agilex_table_setting" muted playsinline preload="none" data-poster="assets/posters/hardware/agilex_table_setting.jpg?v=1x-bright2" aria-label="AgileX table-setting task" loop><source data-src="assets/videos/hardware/agilex_table_setting.mp4?v=1x-bright2&media=20260907" type="video/mp4"></video><div class="hardware-video-rate"><h4>Table setting</h4><p class="hardware-task-prompt"><span class="hardware-prompt-label">Prompt</span><span class="hardware-prompt-text" id="hardware-prompt-6">Wipe the table, then push the plate to the center of the table. Place the cup on the plate.</span><button class="hardware-prompt-toggle" type="button" aria-expanded="false" aria-controls="hardware-prompt-6" hidden aria-label="Expand prompt"></button></p><details class="hardware-task-plan"><summary>Subtasks<span class="seek-hint"> · Click to seek</span></summary><ol><li><button type="button" class="hardware-subtask-button" data-subtask-start="0" aria-controls="hardware-video-agilex_table_setting">pick the cloth</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="10" aria-controls="hardware-video-agilex_table_setting">wipe the table</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="30" aria-controls="hardware-video-agilex_table_setting">push the plate to the center of the table</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="46" aria-controls="hardware-video-agilex_table_setting">pick the cup</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="54" aria-controls="hardware-video-agilex_table_setting">place the cup on the plate</button></li></ol></details><span class="hardware-rate-value"><span class="hardware-rate-label"><span>Success rate</span><span class="hardware-comparison-label">Single VLA → RoboCoach</span></span><span class="hardware-rate-values"><span class="rate-before">65%</span><span class="rate-arrow" aria-hidden="true">→</span><strong>100%</strong></span></span></div></div>
+          <div class="hardware-video-tile" data-hardware-task="agilex_tea_making"><video id="hardware-video-agilex_tea_making" muted playsinline preload="none" data-poster="assets/posters/hardware/agilex_tea_making.jpg?v=1x-bright2" aria-label="AgileX tea-making task" loop><source data-src="assets/videos/hardware/agilex_tea_making.mp4?v=1x-bright2&media=20260907" type="video/mp4"></video><div class="hardware-video-rate"><h4>Tea making</h4><p class="hardware-task-prompt"><span class="hardware-prompt-label">Prompt</span><span class="hardware-prompt-text" id="hardware-prompt-7">Place the tea bag into the cup, then pour water to brew tea.</span><button class="hardware-prompt-toggle" type="button" aria-expanded="false" aria-controls="hardware-prompt-7" hidden aria-label="Expand prompt"></button></p><details class="hardware-task-plan"><summary>Subtasks<span class="seek-hint"> · Click to seek</span></summary><ol><li><button type="button" class="hardware-subtask-button" data-subtask-start="0" aria-controls="hardware-video-agilex_tea_making">pick up the tea bag</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="10" aria-controls="hardware-video-agilex_tea_making">place the tea bag into cup</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="24" aria-controls="hardware-video-agilex_tea_making">pour water into the cup</button></li></ol></details><span class="hardware-rate-value"><span class="hardware-rate-label"><span>Success rate</span><span class="hardware-comparison-label">Single VLA → RoboCoach</span></span><span class="hardware-rate-values"><span class="rate-before">10%</span><span class="rate-arrow" aria-hidden="true">→</span><strong>90%</strong></span></span></div></div>
+        </div>
+
+
+      </div>
+
+      <section class="hardware-composition" id="compositional-generalization" aria-labelledby="composition-title">
+        <header class="composition-heading"><h3 id="composition-title">Compositional Generalization</h3></header>
+        <div class="composition-pattern-grid" aria-label="Three ways to compose subtasks">
+          <article class="composition-pattern" id="composition-reordering" data-composition-kind="reordering">
+            <h4>Reordering</h4>
+            <p>The same subtasks, in a different order.</p>
+            <div class="composition-route-row"><span class="composition-route-label">Seen</span><div><span class="composition-sequence"><b class="skill-chip skill-a">A</b><span class="composition-arrow" aria-hidden="true">→</span><b class="skill-chip skill-b">B</b></span></div></div>
+            <div class="composition-route-row composition-new"><span class="composition-route-label">New</span><div><span class="composition-sequence"><b class="skill-chip skill-b">B</b><span class="composition-arrow" aria-hidden="true">→</span><b class="skill-chip skill-a">A</b></span></div></div>
+          </article>
+          <article class="composition-pattern" id="composition-recombination" data-composition-kind="recombination">
+            <h4>Recombination</h4>
+            <p>Subtasks from different tasks, combined.</p>
+            <div class="composition-route-row"><span class="composition-route-label">Seen</span><div><span class="composition-sequence"><b class="skill-chip skill-a">A</b><span class="composition-arrow" aria-hidden="true">→</span><b class="skill-chip skill-b">B</b></span><span class="composition-plus">+</span><span class="composition-sequence"><b class="skill-chip skill-c">C</b><span class="composition-arrow" aria-hidden="true">→</span><b class="skill-chip skill-d">D</b></span></div></div>
+            <div class="composition-route-row composition-new"><span class="composition-route-label">New</span><div><span class="composition-sequence"><b class="skill-chip skill-a">A</b><span class="composition-arrow" aria-hidden="true">→</span><b class="skill-chip skill-d">D</b></span></div></div>
+          </article>
+          <article class="composition-pattern" id="composition-continuation" data-composition-kind="continuation">
+            <h4>Continuation</h4>
+            <p>Extend a task with subtasks from another.</p>
+            <div class="composition-route-row"><span class="composition-route-label">Seen</span><div><span class="composition-sequence"><b class="skill-chip skill-a">A</b><span class="composition-arrow" aria-hidden="true">→</span><b class="skill-chip skill-b">B</b></span><span class="composition-plus">+</span><span class="composition-sequence"><b class="skill-chip skill-c">C</b><span class="composition-arrow" aria-hidden="true">→</span><b class="skill-chip skill-d">D</b></span></div></div>
+            <div class="composition-route-row composition-new"><span class="composition-route-label">New</span><div><span class="composition-sequence"><b class="skill-chip skill-a">A</b><span class="composition-arrow" aria-hidden="true">→</span><b class="skill-chip skill-b">B</b><span class="composition-arrow" aria-hidden="true">→</span><b class="skill-chip skill-c">C</b><span class="composition-arrow" aria-hidden="true">→</span><b class="skill-chip skill-d">D</b></span></div></div>
+          </article>
+        </div>
+        <div class="composition-video-grid" aria-label="Compositional generalization videos">
+          <div class="hardware-video-tile" data-hardware-task="red_green_two_view"><div class="composition-media-frame" data-embodiment="single"><video id="hardware-video-red_green_two_view" width="960" height="540" muted playsinline preload="none" data-poster="assets/posters/generalization/red_green_two_view.jpg?v=1x-hq1" aria-label="Button-reordering compositional rollout" loop><source data-src="assets/videos/generalization/red_green_two_view.mp4?v=1x-hq1&media=20260907" type="video/mp4"></video></div><div class="hardware-video-rate" data-composition-kind="reordering"><a class="composition-kind" href="#composition-reordering">Reordering</a><h4>Button reordering</h4><p class="hardware-task-prompt"><span class="hardware-prompt-label">Prompt</span><span class="hardware-prompt-text" id="hardware-prompt-10">press the red button, then press the green button</span><button class="hardware-prompt-toggle" type="button" aria-expanded="false" aria-controls="hardware-prompt-10" hidden aria-label="Expand prompt"></button></p><details class="hardware-task-plan"><summary>Composed subtasks<span class="seek-hint"> · Click to seek</span></summary><ol><li><button type="button" class="hardware-subtask-button" data-subtask-start="0" aria-controls="hardware-video-red_green_two_view">press the red button</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="29" aria-controls="hardware-video-red_green_two_view">press the green button</button></li></ol></details><span class="hardware-rate-value"><span class="hardware-rate-label"><span>Success rate</span><span class="hardware-comparison-label">Single VLA → RoboCoach</span></span><span class="hardware-rate-values"><span class="rate-before">0%</span><span class="rate-arrow" aria-hidden="true">→</span><strong>35%</strong></span></span></div></div>
+          <div class="hardware-video-tile" data-hardware-task="shoes_two_view"><div class="composition-media-frame" data-embodiment="dual"><video id="hardware-video-shoes_two_view" width="720" height="540" muted playsinline preload="none" data-poster="assets/posters/generalization/shoes_two_view.jpg?v=1x-pip1" aria-label="Shoe-reordering compositional rollout" loop><source data-src="assets/videos/generalization/shoes_two_view.mp4?v=1x-pip1&media=20260907" type="video/mp4"></video></div><div class="hardware-video-rate" data-composition-kind="reordering"><a class="composition-kind" href="#composition-reordering">Reordering</a><h4>Shoe reordering</h4><p class="hardware-task-prompt"><span class="hardware-prompt-label">Prompt</span><span class="hardware-prompt-text" id="hardware-prompt-11">Put the left shoe in the shoebox, then the right shoe, then close the box.</span><button class="hardware-prompt-toggle" type="button" aria-expanded="false" aria-controls="hardware-prompt-11" hidden aria-label="Expand prompt"></button></p><details class="hardware-task-plan"><summary>Composed subtasks<span class="seek-hint"> · Click to seek</span></summary><ol><li><button type="button" class="hardware-subtask-button" data-subtask-start="0" aria-controls="hardware-video-shoes_two_view">pick the left shoe</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="8" aria-controls="hardware-video-shoes_two_view">place the left shoe into the shoebox</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="23" aria-controls="hardware-video-shoes_two_view">pick the right shoe</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="31" aria-controls="hardware-video-shoes_two_view">place the right shoe into the shoebox</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="46" aria-controls="hardware-video-shoes_two_view">close the box</button></li></ol></details><span class="hardware-rate-value"><span class="hardware-rate-label"><span>Success rate</span><span class="hardware-comparison-label">Single VLA → RoboCoach</span></span><span class="hardware-rate-values"><span class="rate-before">0%</span><span class="rate-arrow" aria-hidden="true">→</span><strong>25%</strong></span></span></div></div>
+          <div class="hardware-video-tile" data-hardware-task="button_lamp_two_view"><div class="composition-media-frame" data-embodiment="single"><video id="hardware-video-button_lamp_two_view" width="960" height="540" muted playsinline preload="none" data-poster="assets/posters/generalization/button_lamp_two_view.jpg?v=1x-hq1" aria-label="Button-to-lamp compositional rollout" loop><source data-src="assets/videos/generalization/button_lamp_two_view.mp4?v=1x-hq1&media=20260907" type="video/mp4"></video></div><div class="hardware-video-rate" data-composition-kind="recombination"><a class="composition-kind" href="#composition-recombination">Recombination</a><h4>Button to lamp</h4><p class="hardware-task-prompt"><span class="hardware-prompt-label">Prompt</span><span class="hardware-prompt-text" id="hardware-prompt-8">press the green button, then pull the lamp cord</span><button class="hardware-prompt-toggle" type="button" aria-expanded="false" aria-controls="hardware-prompt-8" hidden aria-label="Expand prompt"></button></p><details class="hardware-task-plan"><summary>Composed subtasks<span class="seek-hint"> · Click to seek</span></summary><ol><li><button type="button" class="hardware-subtask-button" data-subtask-start="0" aria-controls="hardware-video-button_lamp_two_view">press the green button</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="30" aria-controls="hardware-video-button_lamp_two_view">pull the lamp cord</button></li></ol></details><span class="hardware-rate-value"><span class="hardware-rate-label"><span>Success rate</span><span class="hardware-comparison-label">Single VLA → RoboCoach</span></span><span class="hardware-rate-values"><span class="rate-before">0%</span><span class="rate-arrow" aria-hidden="true">→</span><strong>15%</strong></span></span></div></div>
+          <div class="hardware-video-tile" data-hardware-task="cup_two_view"><div class="composition-media-frame" data-embodiment="dual"><video id="hardware-video-cup_two_view" width="720" height="540" muted playsinline preload="none" data-poster="assets/posters/generalization/cup_two_view.jpg?v=1x-pip1" aria-label="Cup-serving compositional rollout" loop><source data-src="assets/videos/generalization/cup_two_view.mp4?v=1x-pip1&media=20260907" type="video/mp4"></video></div><div class="hardware-video-rate" data-composition-kind="continuation"><a class="composition-kind" href="#composition-continuation">Continuation</a><h4>Table setting to tea making</h4><p class="hardware-task-prompt"><span class="hardware-prompt-label">Prompt</span><span class="hardware-prompt-text" id="hardware-prompt-9">Wipe the table, then push the plate to the center of the table. Place the cup on the plate, place the tea bag into the cup, then pour water to brew tea.</span><button class="hardware-prompt-toggle" type="button" aria-expanded="false" aria-controls="hardware-prompt-9" hidden aria-label="Expand prompt"></button></p><details class="hardware-task-plan"><summary>Composed subtasks<span class="seek-hint"> · Click to seek</span></summary><ol><li><button type="button" class="hardware-subtask-button" data-subtask-start="0" aria-controls="hardware-video-cup_two_view">pick the cloth</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="9" aria-controls="hardware-video-cup_two_view">wipe the table</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="29" aria-controls="hardware-video-cup_two_view">push the plate to the center of the table</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="47" aria-controls="hardware-video-cup_two_view">pick the cup</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="55" aria-controls="hardware-video-cup_two_view">place the cup on the plate</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="70" aria-controls="hardware-video-cup_two_view">pick up the tea bag</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="83" aria-controls="hardware-video-cup_two_view">place the tea bag into cup</button></li><li><button type="button" class="hardware-subtask-button" data-subtask-start="95" aria-controls="hardware-video-cup_two_view">pour water into the cup</button></li></ol></details><span class="hardware-rate-value"><span class="hardware-rate-label"><span>Success rate</span><span class="hardware-comparison-label">Single VLA → RoboCoach</span></span><span class="hardware-rate-values"><span class="rate-before">0%</span><span class="rate-arrow" aria-hidden="true">→</span><strong>65%</strong></span></span></div></div>
+        </div>
+      </section>
+    </section>
+
+    <section id="coachworld" class="section section-tinted">
+      <div class="section-heading">
+        <p class="kicker">Predictive model</p>
+        <h2>CoachWorld: one camera-aware action-conditioned world model across embodiments</h2>
+        <p>
+          CoachWorld starts from Wan2.2 TI2V-5B and predicts future video from sparse visual history and future robot states. A <span class="text-highlight">shared two-slot state contract</span> supports Franka and bimanual systems; <span class="text-highlight">calibrated intrinsics and extrinsics</span> ground state conditioning in each camera view.
+        </p>
+      </div>
+
+      <div class="coachworld-architecture-layout">
+        <figure class="coachworld-architecture">
+          <a class="architecture-link" href="assets/figures/coachworld_architecture.png" target="_blank" rel="noopener" title="Open the full-resolution CoachWorld architecture figure">
+            <img src="assets/figures/coachworld_architecture.png" alt="CoachWorld architecture showing multi-view heterogeneous robot data, unified camera calibration, sparse visual history, noised future video, text and state conditioning, and temporal state injection into Wan DiT blocks" loading="lazy">
+            <span class="architecture-open" aria-hidden="true">↗</span>
+          </a>
+          <figcaption>Calibrated two-slot end-effector trajectories condition video prediction across single-arm and bimanual embodiments. Sparse and generated histories support autoregressive rollout.</figcaption>
+        </figure>
+
+        <ol class="overview-stages coachworld-stages" aria-label="Four design elements of CoachWorld">
+          <li class="overview-stage coachworld-stage coachworld-adapt">
+            <span class="overview-stage-number">01</span>
+            <div>
+              <h3>Adapt native actions</h3>
+              <p>Frozen embodiment adapters convert each expert's native action chunk into a shared Cartesian end-effector trajectory.</p>
+            </div>
+          </li>
+          <li class="overview-stage coachworld-stage coachworld-contract">
+            <span class="overview-stage-number">02</span>
+            <div>
+              <h3>Unify embodiments</h3>
+              <p>Two arm slots encode position, 6D rotation, gripper state, and an existence mask; Franka uses one slot and bimanual robots use both.</p>
+            </div>
+          </li>
+          <li class="overview-stage coachworld-stage coachworld-ground">
+            <span class="overview-stage-number">03</span>
+            <div>
+              <h3>Ground every camera</h3>
+              <p>Intrinsics and extrinsics project future states into each view, while trajectory rasters and camera rays condition the video denoiser.</p>
+            </div>
+          </li>
+          <li class="overview-stage coachworld-stage coachworld-rollout">
+            <span class="overview-stage-number">04</span>
+            <div>
+              <h3>Roll forward in closed loop</h3>
+              <p>Sparse history, instruction, and future state generate the next chunk; its final frame becomes the next policy observation.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div id="trajectory-demo" class="trajectory-demo" data-trajectory-demo aria-labelledby="trajectory-demo-title">
+        <p class="kicker">Interactive · Recorded control</p>
+        <h3 id="trajectory-demo-title">Choose a path. See the predicted motion.</h3>
+        <p class="trajectory-intro">Pick a scene. Click a colored segment to play that part of the motion, or choose Full trajectory to watch now → 1 → 2 → target.</p>
+        <div data-trajectory-scenes class="trajectory-scenes" role="group" aria-label="Choose a control scene"></div>
+        <div data-trajectory-content hidden>
+          <div class="trajectory-scene-info"><strong data-trajectory-task></strong><span data-trajectory-episode></span></div>
+          <div class="trajectory-panels">
+            <figure class="trajectory-panel">
+              <figcaption><strong>Input + control waypoints</strong><span>Click a segment</span></figcaption>
+              <div class="trajectory-canvas">
+                <img data-trajectory-seed alt="" width="768" height="512">
+                <svg data-trajectory-paths viewBox="0 0 768 512" role="group" aria-label="Interactive control path"></svg>
+              </div>
+            </figure>
+            <figure class="trajectory-panel">
+              <figcaption><strong>CoachWorld prediction</strong><span data-trajectory-result-label></span></figcaption>
+              <video data-trajectory-video data-manual-playback controls muted playsinline preload="metadata" width="768" height="512"></video>
+            </figure>
+          </div>
+          <div class="trajectory-controls">
+            <div data-trajectory-ranges class="trajectory-ranges" role="group" aria-label="Choose full trajectory or a segment"></div>
+            <button data-trajectory-replay class="trajectory-replay" type="button">Replay ↺</button>
+          </div>
+          <p data-trajectory-detail class="trajectory-detail"></p>
+          <details class="trajectory-parameters">
+            <summary>Recorded control details</summary>
+            <dl>
+              <div><dt>Depth · now → 1 → 2 → target</dt><dd data-trajectory-depth></dd></div>
+              <div><dt>Gripper · 1 → 2 → target</dt><dd data-trajectory-gripper></dd></div>
+              <div><dt>Clip</dt><dd data-trajectory-duration></dd></div>
+            </dl>
+          </details>
+          <p class="trajectory-footnote">Segments follow the recorded control timing at 5 fps. Nodes show requested EEF positions; the video shows the model’s response. The input image is the clip’s first decoded frame. These are short control previews, not completed-task demonstrations.</p>
+        </div>
+        <p data-trajectory-status class="trajectory-status" role="status">Loading recorded controls…</p>
+        <noscript>Enable JavaScript to switch between the recorded control presets.</noscript>
+      </div>
+
+      <div class="metric-table-wrap">
+        <table class="metric-table">
+          <caption>Paired full-episode action-conditioned prediction</caption>
+          <thead>
+            <tr>
+              <th scope="col">Method</th>
+              <th scope="col">DROID LPIPS ↓</th>
+              <th scope="col">DROID FVD ↓</th>
+              <th scope="col">DROID instruction ↑</th>
+              <th scope="col">Lab LPIPS ↓</th>
+              <th scope="col">Lab FVD ↓</th>
+              <th scope="col">Lab instruction ↑</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Ctrl-World</th><td>0.2078</td><td>102.97</td><td>0.7860</td><td>0.3060</td><td>493.20</td><td>0.2460</td>
+            </tr>
+            <tr>
+              <th scope="row">Cosmos 3</th><td>0.2830</td><td>140.62</td><td>0.5460</td><td>0.3397</td><td>634.75</td><td>0.2460</td>
+            </tr>
+            <tr>
+              <th scope="row">OSCAR-2B</th><td>0.2248</td><td>101.92</td><td>0.5460</td><td>0.2014</td><td><strong>236.78</strong></td><td><strong>0.5840</strong></td>
+            </tr>
+            <tr class="metric-highlight">
+              <th scope="row">CoachWorld mixed-domain</th><td><strong>0.0996</strong></td><td><strong>51.71</strong></td><td><strong>0.8800</strong></td><td><strong>0.1712</strong></td><td>284.76</td><td>0.5300</td>
+            </tr>
+            <tr>
+              <th scope="row">CoachWorld single-domain</th><td>0.1067</td><td>56.56</td><td>0.8660</td><td>0.1768</td><td>297.56</td><td>0.4240</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Each domain contains 180 view-specific episodes. Two blind annotators independently score Instruction Following from 1 to 5 on a fixed 30-episode subset; scores are averaged across annotators and episodes, then divided by five to normalize them to [0,1].</p>
+
+      <div id="rollouts" class="coachworld-rollout-browser">
+        <div class="coachworld-rollout-toolbar">
+          <p>Closed-loop rollout comparisons</p>
+        <div class="segmented" role="group" aria-label="Filter rollouts by embodiment">
+          <button type="button" class="is-active" data-rollout-filter="single" aria-pressed="true">Single-arm</button>
+          <button type="button" data-rollout-filter="dual" aria-pressed="false">Bimanual</button>
+        </div>
+      </div>
+
+      <div class="rollout-grid" data-rollout-grid>
+        <article class="rollout-card" data-rollout="single">
+          <header class="rollout-meta"><div><span>Single-arm rollouts</span><h3>Real-World</h3></div><p>2 prompted episodes</p></header>
+          <div class="rollout-pair">
+            <div class="rollout-video-panel">
+              <p class="rollout-video-caption"><strong>Put potatoes on a ceramic plate</strong><span>5.8 s</span></p>
+              <div class="video-shell">
+                <video playsinline preload="none" data-poster="assets/posters/rollouts/robomind_009.jpg?v=refresh1" muted loop>
+                  <source data-src="assets/videos/rollouts/robomind_009.mp4?v=refresh1&media=20260907" type="video/mp4">
+                </video>
+                <span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span>
+              </div>
+            </div>
+            <div class="rollout-video-panel">
+              <p class="rollout-video-caption"><strong>Move the marker to the right</strong><span>14.6 s</span></p>
+              <div class="video-shell">
+                <video playsinline preload="none" data-poster="assets/posters/rollouts/droid_000.jpg?v=refresh1" muted loop>
+                  <source data-src="assets/videos/rollouts/droid_000.mp4?v=refresh1&media=20260907" type="video/mp4">
+                </video>
+                <span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="rollout-card" data-rollout="single">
+          <header class="rollout-meta"><div><span>Single-arm rollouts</span><h3>Simulation</h3></div><p>2 prompted episodes</p></header>
+          <div class="rollout-pair">
+            <div class="rollout-video-panel">
+              <p class="rollout-video-caption"><strong>Close the bottom drawer of the cabinet</strong><span>5.0 s</span></p>
+              <div class="video-shell">
+                <video playsinline preload="none" data-poster="assets/posters/rollouts/libero_013.jpg?v=refresh1" muted loop>
+                  <source data-src="assets/videos/rollouts/libero_013.mp4?v=refresh1&media=20260907" type="video/mp4">
+                </video>
+                <span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span>
+              </div>
+            </div>
+            <div class="rollout-video-panel">
+              <p class="rollout-video-caption"><strong>Push the plate to the front of the stove</strong><span>9.0 s</span></p>
+              <div class="video-shell">
+                <video playsinline preload="none" data-poster="assets/posters/rollouts/libero_015.jpg?v=refresh1" muted loop>
+                  <source data-src="assets/videos/rollouts/libero_015.mp4?v=refresh1&media=20260907" type="video/mp4">
+                </video>
+                <span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="rollout-card" data-rollout="dual" hidden>
+          <header class="rollout-meta"><div><span>Bimanual rollouts</span><h3>Real-World</h3></div><p>4 prompted episodes</p></header>
+          <div class="rollout-pair">
+            <div class="rollout-video-panel">
+              <p class="rollout-video-caption"><strong>Stack the cup and cola can</strong><span>9.0 s</span></p>
+              <div class="video-shell">
+                <video playsinline preload="none" data-poster="assets/posters/rollouts/vifailback_005.jpg?v=refresh1" muted loop>
+                  <source data-src="assets/videos/rollouts/vifailback_005.mp4?v=refresh1&media=20260907" type="video/mp4">
+                </video>
+                <span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span>
+              </div>
+            </div>
+            <div class="rollout-video-panel">
+              <p class="rollout-video-caption"><strong>Stack three colored cubes</strong><span>7.4 s</span></p>
+              <div class="video-shell">
+                <video playsinline preload="none" data-poster="assets/posters/rollouts/vifailback_009.jpg?v=refresh1" muted loop>
+                  <source data-src="assets/videos/rollouts/vifailback_009.mp4?v=refresh1&media=20260907" type="video/mp4">
+                </video>
+                <span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span>
+              </div>
+            </div>
+            <div class="rollout-video-panel">
+              <p class="rollout-video-caption"><strong>Fold towels</strong><span>22.6 s</span></p>
+              <div class="video-shell">
+                <video playsinline preload="none" data-poster="assets/posters/rollouts/robocoin_008.jpg?v=refresh1" muted loop>
+                  <source data-src="assets/videos/rollouts/robocoin_008.mp4?v=refresh1&media=20260907" type="video/mp4">
+                </video>
+                <span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span>
+              </div>
+            </div>
+            <div class="rollout-video-panel">
+              <p class="rollout-video-caption"><strong>Make sandwiches</strong><span>56.2 s</span></p>
+              <div class="video-shell">
+                <video playsinline preload="none" data-poster="assets/posters/rollouts/robocoin_009.jpg?v=refresh1" muted loop>
+                  <source data-src="assets/videos/rollouts/robocoin_009.mp4?v=refresh1&media=20260907" type="video/mp4">
+                </video>
+                <span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="rollout-card" data-rollout="dual" hidden>
+          <header class="rollout-meta"><div><span>Bimanual rollouts</span><h3>Simulation</h3></div><p>2 prompted episodes</p></header>
+          <div class="rollout-pair">
+            <div class="rollout-video-panel">
+              <p class="rollout-video-caption"><strong>Stack the green block on the red block</strong><span>9.8 s</span></p>
+              <div class="video-shell">
+                <video playsinline preload="none" data-poster="assets/posters/rollouts/robotwin_000.jpg?v=refresh1" muted loop>
+                  <source data-src="assets/videos/rollouts/robotwin_000.mp4?v=refresh1&media=20260907" type="video/mp4">
+                </video>
+                <span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span>
+              </div>
+            </div>
+            <div class="rollout-video-panel">
+              <p class="rollout-video-caption"><strong>Place two bread loaves in the breadbasket</strong><span>7.4 s</span></p>
+              <div class="video-shell">
+                <video playsinline preload="none" data-poster="assets/posters/rollouts/robotwin_001.jpg?v=refresh1" muted loop>
+                  <source data-src="assets/videos/rollouts/robotwin_001.mp4?v=refresh1&media=20260907" type="video/mp4">
+                </video>
+                <span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+      </div>
+    </section>
+
+    <section id="judge" class="section section-diagnosis section-judge-demo" aria-labelledby="judge-demo-title">
+      <div class="judge-demo-heading">
+        <div>
+          <p class="kicker">RoboMeter progress judge</p>
+          <h2 id="judge-demo-title">We use RoboMeter to track progress and attribute the first timeout</h2>
+          <p>
+            For every routed subtask, RoboMeter scores progress from the causal video prefix. A stage is confirmed only when its trace crosses a calibrated threshold; the earliest reached stage that never confirms is assigned to the active expert.
+          </p>
+        </div>
+        <div class="judge-case-label" aria-label="Demonstration details">
+          <span>Live diagnosis</span>
+          <strong>stack_blocks_three</strong>
+          <small>RoboTwin · six routed stages</small>
+        </div>
+      </div>
+
+      <figure class="judge-live-demo" data-judge-sync data-judge-duration="40" data-judge-excerpt-end="39.9">
+        <div class="judge-sync-grid">
+          <div class="judge-rollout-panel">
+            <div class="judge-panel-label"><strong>Policy rollout</strong><span>RoboTwin</span></div>
+            <video muted loop playsinline preload="none" data-poster="assets/posters/robometer_stack_blocks_three_rollout.jpg" data-judge-video>
+              <source data-src="coaching/assets/videos/02_place_the_blue_block/robotwin_stack_blocks_three_failure18_40s.mp4?v=1" type="video/mp4">
+            </video>
+          </div>
+          <div class="judge-progress-panel">
+            <div class="judge-panel-label"><strong>RoboMeter completion score</strong><small class="seek-hint">Click a stage to seek</small><span><b data-judge-time>0.0</b> / 40.0 s</span></div>
+            <svg class="judge-progress-chart" viewBox="0 0 600 245" role="img" aria-label="Recorded RoboMeter completion scores; hollow points mark threshold confirmations" data-time-start="2.1" data-time-end="27.3">
+              <defs><clipPath id="judge-time-clip"><rect data-judge-trace-window x="42" y="22" width="0" height="194"/></clipPath></defs>
+              <line x1="42" x2="93.619048" y1="23" y2="23" stroke="#2166ac" stroke-width="3"/><text x="67.809524" y="16" text-anchor="middle" fill="#2166ac">P1</text>
+              <line x1="93.619048" x2="158.142857" y1="23" y2="23" stroke="#1b9e77" stroke-width="3"/><text x="125.880952" y="16" text-anchor="middle" fill="#1b9e77">P2</text>
+              <line x1="158.142857" x2="274.285714" y1="23" y2="23" stroke="#7570b3" stroke-width="3"/><text x="216.214286" y="16" text-anchor="middle" fill="#7570b3">P3</text>
+              <line x1="274.285714" x2="364.619048" y1="23" y2="23" stroke="#b78600" stroke-width="3"/><text x="319.452381" y="16" text-anchor="middle" fill="#b78600">P4</text>
+              <line x1="364.619048" x2="467.857143" y1="23" y2="23" stroke="#c31d75" stroke-width="3"/><text x="416.238095" y="16" text-anchor="middle" fill="#c31d75">P5</text>
+              <line x1="467.857143" x2="584" y1="23" y2="23" stroke="#b94e00" stroke-width="3"/><text x="525.928571" y="16" text-anchor="middle" fill="#b94e00">P6</text>
+              <g class="judge-chart-grid"><line x1="42" y1="32" x2="584" y2="32"/><line x1="42" y1="121.5" x2="584" y2="121.5"/><line x1="42" y1="211" x2="584" y2="211"/></g>
+              <g class="judge-chart-axis"><text x="12" y="36">1.0</text><text x="12" y="125">0.5</text><text x="20" y="215">0</text>
+              <text x="42" y="234" text-anchor="start">2.1 s</text>
+              <text x="104.373016" y="234" text-anchor="middle">5 s</text>
+              <text x="211.912698" y="234" text-anchor="middle">10 s</text>
+              <text x="319.452381" y="234" text-anchor="middle">15 s</text>
+              <text x="426.992063" y="234" text-anchor="middle">20 s</text>
+              <text x="584" y="234" text-anchor="end">27.3 s</text>
+              </g><line class="judge-threshold" x1="42" y1="76.75" x2="584" y2="76.75"/><text class="judge-threshold-label" x="578" y="70" text-anchor="end">threshold 0.75</text>
+              <line data-judge-confirm-time="4.5" data-judge-boundary visibility="hidden" x1="93.619048" x2="93.619048" y1="23" y2="211" stroke="#2166ac" stroke-dasharray="3 4" opacity=".65"/>
+              <line data-judge-confirm-time="7.5" data-judge-boundary visibility="hidden" x1="158.142857" x2="158.142857" y1="23" y2="211" stroke="#1b9e77" stroke-dasharray="3 4" opacity=".65"/>
+              <line data-judge-confirm-time="12.9" data-judge-boundary visibility="hidden" x1="274.285714" x2="274.285714" y1="23" y2="211" stroke="#7570b3" stroke-dasharray="3 4" opacity=".65"/>
+              <line data-judge-confirm-time="17.1" data-judge-boundary visibility="hidden" x1="364.619048" x2="364.619048" y1="23" y2="211" stroke="#b78600" stroke-dasharray="3 4" opacity=".65"/>
+              <line data-judge-confirm-time="21.9" data-judge-boundary visibility="hidden" x1="467.857143" x2="467.857143" y1="23" y2="211" stroke="#c31d75" stroke-dasharray="3 4" opacity=".65"/>
+              <g clip-path="url(#judge-time-clip)">
+              <path class="judge-progress-trace" data-stage="1" d="M 42 209.415833 C 46.301587 151.662913 50.603175 121.849609 54.904762 121.849609 C 59.206349 121.849609 63.507937 205.668457 67.809524 205.668457 C 72.111111 205.668457 76.412698 205.134226 80.714286 204.095215 C 85.015873 203.056204 89.31746 120.582275 93.619048 37.59375" stroke="#2166ac"/>
+              <path class="judge-progress-trace" data-stage="2" d="M 145.238095 200.380615 C 149.539683 152.877441 153.84127 105.374268 158.142857 57.871094" stroke="#1b9e77"/>
+              <path class="judge-progress-trace" data-stage="3" d="M 209.761905 209.940247 C 214.063492 209.940247 218.365079 209.657542 222.666667 209.317505 C 226.968254 208.977468 231.269841 206.5955 235.571429 206.498779 C 239.873016 206.402058 244.174603 206.447551 248.47619 206.345825 C 252.777778 206.244099 257.079365 168.668987 261.380952 142.476562 C 265.68254 116.284138 269.984127 80.788717 274.285714 40.390625" stroke="#7570b3"/>
+              <path class="judge-progress-trace" data-stage="4" d="M 325.904762 189.062012 C 330.206349 201.997559 334.507937 209.033447 338.809524 209.033447 C 343.111111 209.033447 347.412698 201.841893 351.714286 191.334473 C 356.015873 180.827052 360.31746 116.408813 364.619048 47.382812" stroke="#b78600"/>
+              <path class="judge-progress-trace" data-stage="5" d="M 416.238095 210.497437 C 420.539683 204.122528 424.84127 200.861328 429.142857 200.861328 C 433.444444 200.861328 437.746032 210.202454 442.047619 210.202454 C 446.349206 210.202454 450.650794 208.015931 454.952381 204.095215 C 459.253968 200.174498 463.555556 123.672312 467.857143 45.285156" stroke="#c31d75"/>
+              <path class="judge-progress-trace" data-stage="6" d="M 519.47619 210.739159 C 523.777778 210.739159 528.079365 204.096369 532.380952 196.84082 C 536.68254 189.585271 540.984127 146.671875 545.285714 146.671875 C 549.587302 146.671875 553.888889 200.49192 558.190476 204.226318 C 562.492063 207.960717 566.793651 210.269202 571.095238 210.431885 C 575.396825 210.594568 579.698413 210.685898 584 210.685898" stroke="#b94e00"/>
+              </g><line data-judge-cursor x1="42" x2="42" y1="23" y2="211" stroke="#88968e" opacity=".5"/>
+              <circle data-judge-confirm-time="4.5" visibility="hidden" cx="93.619048" cy="37.59375" r="4.5" fill="white" stroke="#2166ac" stroke-width="2"/>
+              <circle data-judge-confirm-time="7.5" visibility="hidden" cx="158.142857" cy="57.871094" r="4.5" fill="white" stroke="#1b9e77" stroke-width="2"/>
+              <circle data-judge-confirm-time="12.9" visibility="hidden" cx="274.285714" cy="40.390625" r="4.5" fill="white" stroke="#7570b3" stroke-width="2"/>
+              <circle data-judge-confirm-time="17.1" visibility="hidden" cx="364.619048" cy="47.382812" r="4.5" fill="white" stroke="#b78600" stroke-width="2"/>
+              <circle data-judge-confirm-time="21.9" visibility="hidden" cx="467.857143" cy="45.285156" r="4.5" fill="white" stroke="#c31d75" stroke-width="2"/>
+              </svg>
+          </div>
+        </div>
+        <p class="seek-hint judge-stage-hint">Click a stage to seek</p>
+        <ol class="judge-stage-strip" aria-label="Synchronized routed stage status">
+          <li data-judge-stage data-start="0" data-end="4.5" data-result="Confirmed"><button type="button" data-judge-seek aria-label="Jump to P1: pick red"><span>P1</span><strong>pick red</strong><em>Pending</em></button></li>
+          <li data-judge-stage data-start="4.5" data-end="7.5" data-result="Confirmed"><button type="button" data-judge-seek aria-label="Jump to P2: place red"><span>P2</span><strong>place red</strong><em>Pending</em></button></li>
+          <li data-judge-stage data-start="7.5" data-end="12.9" data-result="Confirmed"><button type="button" data-judge-seek aria-label="Jump to P3: pick green"><span>P3</span><strong>pick green</strong><em>Pending</em></button></li>
+          <li data-judge-stage data-start="12.9" data-end="17.1" data-result="Confirmed"><button type="button" data-judge-seek aria-label="Jump to P4: place green"><span>P4</span><strong>place green</strong><em>Pending</em></button></li>
+          <li data-judge-stage data-start="17.1" data-end="21.9" data-result="Confirmed"><button type="button" data-judge-seek aria-label="Jump to P5: pick blue"><span>P5</span><strong>pick blue</strong><em>Pending</em></button></li>
+          <li data-judge-stage data-start="21.9" data-end="59.7" data-result="First timeout"><button type="button" data-judge-seek aria-label="Jump to P6: place blue"><span>P6</span><strong>place blue</strong><em>Pending</em></button></li>
+        </ol>
+      </figure>
+
+      <ol class="judge-demo-steps" aria-label="How RoboMeter diagnoses a failure">
+        <li>
+          <span>01</span>
+          <div><h3>Score the active stage</h3><p>At each frame, RoboMeter estimates progress for the current routed subtask using only the rollout observed so far.</p></div>
+        </li>
+        <li>
+          <span>02</span>
+          <div><h3>Confirm each transition</h3><p>Crossing the calibrated 0.75 threshold confirms the active stage and moves the trace to the next subtask.</p></div>
+        </li>
+        <li>
+          <span>03</span>
+          <div><h3>Assign the first timeout</h3><p>P1–P5 cross threshold. P6 remains unresolved, localizing the failure to the active placement expert.</p></div>
+        </li>
+      </ol>
+
+      <div class="judge-coaching-flow" aria-label="From rollout diagnosis to targeted coaching">
+        <div class="judge-flow-node judge-flow-diagnosis" data-judge-result>
+          <span class="judge-flow-label">This rollout · Diagnosis</span>
+          <strong>place the blue block on the green block</strong>
+        </div>
+        <span class="judge-flow-arrow" aria-hidden="true">→</span>
+        <div class="judge-flow-node">
+          <span class="judge-flow-label">Across rollouts</span>
+          <strong>Aggregate repeated failures</strong>
+          <p>Rank subtask–expert pairs.</p>
+        </div>
+        <span class="judge-flow-arrow" aria-hidden="true">→</span>
+        <div class="judge-flow-node judge-flow-target">
+          <span class="judge-flow-label">Targeted coaching</span>
+          <strong>place_expert</strong>
+          <p>Request demonstrations for this subtask.</p>
+          <a href="#coaching">View coaching targets <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="coaching" class="section section-coaching" aria-labelledby="coaching-title">
+      <div class="section-heading section-heading-row">
+        <div>
+          <p class="kicker">Coaching round</p>
+          <h2 id="coaching-title">From rollout failures to coaching targets</h2>
+          <p>
+            Follow one evaluation round from <span class="text-highlight">task-level success rates</span> to the two <span class="text-highlight">subtask-expert pairs</span> selected for the next targeted demonstration batch.
+          </p>
+        </div>
+      </div>
+
+      <div class="coaching-round-frame">
+        <div class="coaching-round-framebar" aria-hidden="true">
+          <span class="coaching-round-dots"><i></i><i></i><i></i></span>
+          <span>Frozen MolmoAct2 checkpoint / RoboTwin Core5</span>
+          <span>Interactive report</span>
+        </div>
+        <iframe
+          class="coaching-round-iframe"
+          src="coaching/index.html?embed=1&amp;v=evidence-link-1"
+          title="RoboCoach evaluation round with task success rates and coaching targets"
+          loading="lazy"
+          data-auto-height
+        ></iframe>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Anonymous project page · Under double-blind review</p>
+  </footer>
+</body>
+</html>

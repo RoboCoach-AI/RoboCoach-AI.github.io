@@ -1,0 +1,130 @@
+{
+  "session_id": "095a2beab8f8",
+  "dataset": "robotwin",
+  "episode_uid": "robotwin2:stamp_seal:episode034:head_camera",
+  "episode_id": 6,
+  "chunk_index": 1,
+  "previous_latent": 4,
+  "current_latent": 6,
+  "commit_latents": 2,
+  "inference_steps": 20,
+  "mode": "manual",
+  "timing": {
+    "history_ids": [
+      0,
+      0,
+      0,
+      2,
+      4
+    ],
+    "future_ids": [
+      5,
+      6,
+      6
+    ],
+    "camera_ids": [
+      0,
+      0,
+      0,
+      2,
+      4,
+      5,
+      6,
+      6
+    ],
+    "first_future_latent": 5,
+    "current_boundary_frame": 16,
+    "state_start_frame": 0,
+    "plan_end_frame": 28,
+    "action_window_frames": 29,
+    "chunk_target_ids": [
+      4,
+      5,
+      6
+    ],
+    "decode_context_ids": [
+      0,
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "targets": [
+    {
+      "slot": 1,
+      "u": 178,
+      "v": 283,
+      "depth": 0.5647194981575012,
+      "gripper": 0,
+      "path": [
+        {
+          "u": 406.0887858072917,
+          "v": 170.83484395345053,
+          "depth": 0.5647194981575012,
+          "gripper": 0
+        },
+        {
+          "u": 292.04439290364587,
+          "v": 226.91742197672525,
+          "depth": 0.5647194981575012,
+          "gripper": 0
+        },
+        {
+          "u": 178,
+          "v": 283,
+          "depth": 0.5647194981575012,
+          "gripper": 0
+        }
+      ]
+    }
+  ],
+  "control_signal": [
+    {
+      "slot": 1,
+      "source": "manual_uv_depth",
+      "uv_depth": [
+        178.0,
+        283.0,
+        0.5647194981575012
+      ],
+      "path_uv_depth": [
+        {
+          "u": 406.0887858072917,
+          "v": 170.83484395345053,
+          "depth": 0.5647194981575012,
+          "gripper": 0.0
+        },
+        {
+          "u": 292.04439290364587,
+          "v": 226.91742197672525,
+          "depth": 0.5647194981575012,
+          "gripper": 0.0
+        },
+        {
+          "u": 178.0,
+          "v": 283.0,
+          "depth": 0.5647194981575012,
+          "gripper": 0.0
+        }
+      ],
+      "intermediate_points": 2,
+      "current_xyz": [
+        0.06879912316799164,
+        -0.027764832600951195,
+        0.9607769846916199
+      ],
+      "target_xyz": [
+        -0.1836046427488327,
+        -0.12711119651794434,
+        0.8862672448158264
+      ],
+      "delta_xyz": [
+        -0.25240376591682434,
+        -0.09934636205434799,
+        -0.07450973987579346
+      ],
+      "gripper": 0.0
+    }
+  ]
+}

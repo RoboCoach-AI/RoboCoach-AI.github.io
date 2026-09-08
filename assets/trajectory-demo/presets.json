@@ -1,0 +1,392 @@
+{
+  "scenes": [
+    {
+      "id": "place-container-plate",
+      "label": "Container → plate",
+      "task": "Drop the container onto the dish plate using the cup with blue flowers",
+      "episode": "Episode 040",
+      "episode_uid": "robotwin2:place_container_plate:episode040:head_camera",
+      "session_id": "025692ab03e6",
+      "width": 768,
+      "height": 512,
+      "image": "assets/trajectory-demo/place-container-plate.jpg",
+      "video": "assets/trajectory-demo/place-container-plate.mp4",
+      "record": "assets/trajectory-demo/place-container-plate.json",
+      "duration": 1.8,
+      "fps": 5.0,
+      "inference_steps": 20,
+      "control_duration": 1.6,
+      "initial_image_source": "First decoded frame of chunk_001.mp4.",
+      "initial_point_source": "Session camera trace at previous latent 4; static head camera.",
+      "displayed_slot": 0,
+      "nodes": [
+        {
+          "label": "now",
+          "u": 63.82234191894531,
+          "v": 64.75070190429688,
+          "depth": 0.45064231753349304
+        },
+        {
+          "label": "1",
+          "u": 351.0,
+          "v": 71.0,
+          "depth": 0.4506423175334931,
+          "gripper": 0.0
+        },
+        {
+          "label": "2",
+          "u": 349.0,
+          "v": 195.0,
+          "depth": 0.45064231753349304,
+          "gripper": 0.0
+        },
+        {
+          "label": "target",
+          "u": 348.0,
+          "v": 385.0,
+          "depth": 0.45064231753349304,
+          "gripper": 0.0
+        }
+      ],
+      "segments": [
+        {
+          "label": "now → 1",
+          "start": 0.0,
+          "end": 0.5333333333333333
+        },
+        {
+          "label": "1 → 2",
+          "start": 0.5333333333333333,
+          "end": 1.0666666666666667
+        },
+        {
+          "label": "2 → target",
+          "start": 1.0666666666666667,
+          "end": 1.8
+        }
+      ],
+      "controls": [
+        {
+          "slot": 0,
+          "source": "manual_uv_depth",
+          "uv_depth": [
+            348.0,
+            385.0,
+            0.45064231753349304
+          ],
+          "path_uv_depth": [
+            {
+              "u": 351.0,
+              "v": 71.0,
+              "depth": 0.4506423175334931,
+              "gripper": 0.0
+            },
+            {
+              "u": 349.0,
+              "v": 195.0,
+              "depth": 0.45064231753349304,
+              "gripper": 0.0
+            },
+            {
+              "u": 348.0,
+              "v": 385.0,
+              "depth": 0.45064231753349304,
+              "gripper": 0.0
+            }
+          ],
+          "intermediate_points": 2,
+          "current_xyz": [
+            -0.22019676864147186,
+            -0.08949869871139526,
+            1.0570731163024902
+          ],
+          "target_xyz": [
+            -0.052899137139320374,
+            -0.24039895832538605,
+            0.9438979029655457
+          ],
+          "delta_xyz": [
+            0.1672976315021515,
+            -0.15090025961399078,
+            -0.11317521333694458
+          ],
+          "gripper": 0.0
+        }
+      ]
+    },
+    {
+      "id": "place-mouse-pad",
+      "label": "Mouse → pad",
+      "task": "Lift the mouse with scroll wheel in center and stick it on Blue mat.",
+      "episode": "Episode 041",
+      "episode_uid": "robotwin2:place_mouse_pad:episode041:head_camera",
+      "session_id": "4781345d9c4d",
+      "width": 768,
+      "height": 512,
+      "image": "assets/trajectory-demo/place-mouse-pad.jpg",
+      "video": "assets/trajectory-demo/place-mouse-pad.mp4",
+      "record": "assets/trajectory-demo/place-mouse-pad.json",
+      "duration": 1.8,
+      "fps": 5.0,
+      "inference_steps": 20,
+      "control_duration": 1.6,
+      "initial_image_source": "First decoded frame of chunk_001.mp4.",
+      "initial_point_source": "Session camera trace at previous latent 4; static head camera.",
+      "displayed_slot": 0,
+      "nodes": [
+        {
+          "label": "now",
+          "u": 233.9772491455078,
+          "v": 209.26011657714844,
+          "depth": 0.47307682037353516
+        },
+        {
+          "label": "1",
+          "u": 79.0,
+          "v": 216.0,
+          "depth": 0.5016237894694011,
+          "gripper": 0.2010050266981125
+        },
+        {
+          "label": "2",
+          "u": 74.0,
+          "v": 303.0,
+          "depth": 0.530170758565267,
+          "gripper": 0.402010053396225
+        },
+        {
+          "label": "target",
+          "u": 157.0,
+          "v": 359.0,
+          "depth": 0.5587177276611328,
+          "gripper": 0.6030150651931763
+        }
+      ],
+      "segments": [
+        {
+          "label": "now → 1",
+          "start": 0.0,
+          "end": 0.5333333333333333
+        },
+        {
+          "label": "1 → 2",
+          "start": 0.5333333333333333,
+          "end": 1.0666666666666667
+        },
+        {
+          "label": "2 → target",
+          "start": 1.0666666666666667,
+          "end": 1.8
+        }
+      ],
+      "controls": [
+        {
+          "slot": 0,
+          "source": "manual_uv_depth",
+          "uv_depth": [
+            157.0,
+            359.0,
+            0.5587177276611328
+          ],
+          "path_uv_depth": [
+            {
+              "u": 79.0,
+              "v": 216.0,
+              "depth": 0.5016237894694011,
+              "gripper": 0.2010050266981125
+            },
+            {
+              "u": 74.0,
+              "v": 303.0,
+              "depth": 0.530170758565267,
+              "gripper": 0.402010053396225
+            },
+            {
+              "u": 157.0,
+              "v": 359.0,
+              "depth": 0.5587177276611328,
+              "gripper": 0.6030150651931763
+            }
+          ],
+          "intermediate_points": 2,
+          "current_xyz": [
+            -0.12440741062164307,
+            -0.14303384721279144,
+            0.988878607749939
+          ],
+          "target_xyz": [
+            -0.19732120633125305,
+            -0.17494210600852966,
+            0.8578962683677673
+          ],
+          "delta_xyz": [
+            -0.07291379570960999,
+            -0.03190825879573822,
+            -0.13098233938217163
+          ],
+          "gripper": 0.6030150651931763
+        }
+      ]
+    },
+    {
+      "id": "blocks-ranking-size",
+      "label": "Blocks by size",
+      "task": "Shift large block, medium block, and small block to the center and align by size.",
+      "episode": "Episode 047",
+      "episode_uid": "robotwin2:blocks_ranking_size:episode047:head_camera",
+      "session_id": "bca04883ed8a",
+      "width": 768,
+      "height": 512,
+      "image": "assets/trajectory-demo/blocks-ranking-size.jpg",
+      "video": "assets/trajectory-demo/blocks-ranking-size.mp4",
+      "record": "assets/trajectory-demo/blocks-ranking-size.json",
+      "duration": 1.8,
+      "fps": 5.0,
+      "inference_steps": 20,
+      "control_duration": 1.6,
+      "initial_image_source": "First decoded frame of chunk_001.mp4.",
+      "initial_point_source": "Session camera trace at previous latent 4; static head camera.",
+      "displayed_slot": 0,
+      "nodes": [
+        {
+          "label": "now",
+          "u": 429.8825378417969,
+          "v": 143.96705627441406,
+          "depth": 0.5296840071678162
+        },
+        {
+          "label": "1",
+          "u": 331.0,
+          "v": 338.0,
+          "depth": 0.5308429797490438,
+          "gripper": 0.3333333432674408
+        },
+        {
+          "label": "2",
+          "u": 446.0,
+          "v": 312.0,
+          "depth": 0.5320019523302715,
+          "gripper": 0.6666666865348816
+        },
+        {
+          "label": "target",
+          "u": 542.0,
+          "v": 281.0,
+          "depth": 0.533160924911499,
+          "gripper": 1.0
+        }
+      ],
+      "segments": [
+        {
+          "label": "now → 1",
+          "start": 0.0,
+          "end": 0.5333333333333333
+        },
+        {
+          "label": "1 → 2",
+          "start": 0.5333333333333333,
+          "end": 1.0666666666666667
+        },
+        {
+          "label": "2 → target",
+          "start": 1.0666666666666667,
+          "end": 1.8
+        }
+      ],
+      "controls": [
+        {
+          "slot": 0,
+          "source": "manual_uv_depth",
+          "uv_depth": [
+            542.0,
+            281.0,
+            0.533160924911499
+          ],
+          "path_uv_depth": [
+            {
+              "u": 331.0,
+              "v": 338.0,
+              "depth": 0.5308429797490438,
+              "gripper": 0.3333333432674408
+            },
+            {
+              "u": 446.0,
+              "v": 312.0,
+              "depth": 0.5320019523302715,
+              "gripper": 0.6666666865348816
+            },
+            {
+              "u": 542.0,
+              "v": 281.0,
+              "depth": 0.533160924911499,
+              "gripper": 1.0
+            }
+          ],
+          "intermediate_points": 2,
+          "current_xyz": [
+            9.512977703707293e-05,
+            -0.07014096528291702,
+            0.9727892875671387
+          ],
+          "target_xyz": [
+            0.07839653640985489,
+            -0.14404043555259705,
+            0.913018524646759
+          ],
+          "delta_xyz": [
+            0.07830140739679337,
+            -0.07389947026968002,
+            -0.05977076292037964
+          ],
+          "gripper": 1.0
+        },
+        {
+          "slot": 1,
+          "source": "manual_uv_depth",
+          "uv_depth": [
+            1016.1060180664062,
+            509.41448974609375,
+            0.4095168113708496
+          ],
+          "path_uv_depth": [
+            {
+              "u": 1016.1058959960938,
+              "v": 509.4144490559896,
+              "depth": 0.40951683123906457,
+              "gripper": 1.0
+            },
+            {
+              "u": 1016.10595703125,
+              "v": 509.41446940104163,
+              "depth": 0.4095168213049571,
+              "gripper": 1.0
+            },
+            {
+              "u": 1016.1060180664062,
+              "v": 509.41448974609375,
+              "depth": 0.4095168113708496,
+              "gripper": 1.0
+            }
+          ],
+          "intermediate_points": 2,
+          "current_xyz": [
+            0.3064331114292145,
+            -0.31280073523521423,
+            0.9410033822059631
+          ],
+          "target_xyz": [
+            0.30643317103385925,
+            -0.3128007650375366,
+            0.9410034418106079
+          ],
+          "delta_xyz": [
+            5.960464477539063e-08,
+            -2.9802322387695312e-08,
+            5.960464477539063e-08
+          ],
+          "gripper": 1.0
+        }
+      ]
+    }
+  ]
+}
