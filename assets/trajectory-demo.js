@@ -131,7 +131,6 @@
     scene = scenes[index];
     $("scenes").querySelectorAll("button").forEach((button, i) => button.setAttribute("aria-pressed", String(i === index)));
     $("task").textContent = scene.task;
-    $("episode").textContent = `${scene.episode} · head camera`;
     $("seed").src = scene.image;
     $("seed").alt = `${scene.label}, first decoded frame of the recorded prediction`;
     $("depth").textContent = scene.nodes.map((p) => `${p.depth.toFixed(3)} m`).join(" → ");
