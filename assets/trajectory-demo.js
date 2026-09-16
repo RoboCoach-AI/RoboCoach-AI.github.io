@@ -37,8 +37,9 @@
     }
 
     function updateSelection() {
+      find("full").setAttribute("aria-pressed", String(selected < 0));
       find("ranges").querySelectorAll("button").forEach((button, i) => {
-        button.setAttribute("aria-pressed", String(i - 1 === selected));
+        button.setAttribute("aria-pressed", String(i === selected));
       });
       svg.querySelectorAll(".trajectory-segment").forEach(group => {
         const i = Number(group.dataset.segment);
@@ -126,6 +127,7 @@
       } else video.pause();
     }
     toggle.addEventListener("click", togglePlayback);
+    find("full").addEventListener("click", () => selectRange(-1));
     video.addEventListener("click", togglePlayback);
     video.addEventListener("keydown", event => {
       if (event.key === " " || event.key === "Enter") {
@@ -168,18 +170,18 @@
         scene = next;
         find("title").textContent = scene.label;
         find("ranges").replaceChildren();
-        [{ label: "Full path" }, ...scene.segments].forEach((segment, i) => {
+        scene.segments.forEach((segment, i) => {
           const button = document.createElement("button");
           button.type = "button";
-          if (i > 0) {
-            const swatch = document.createElement("span");
-            swatch.className = "trajectory-swatch";
-            swatch.style.backgroundColor = colors[i - 1];
-            swatch.setAttribute("aria-hidden", "true");
-            button.append(swatch);
-          }
+          button.setAttribute("aria-label", segment.label);
+          const swatch = document.createElement("span");
+          swatch.className = "trajectory-swatch";
+          swatch.style.backgroundColor = colors[i];
+          swatch.textContent = String(i + 1);
+          swatch.setAttribute("aria-hidden", "true");
+          button.append(swatch);
           button.append(segment.label);
-          button.addEventListener("click", () => selectRange(i - 1));
+          button.addEventListener("click", () => selectRange(i));
           find("ranges").append(button);
         });
         video.poster = scene.image;
@@ -195,14 +197,14 @@
   const players = [...root.querySelectorAll("[data-trajectory-panel]")].map(makePlayer);
   function selectPair(index) {
     const pair = pairs[index];
-    $("scenes").querySelectorAll("button").forEach((button, i) => button.setAttribute("aria-pressed", String(i === index)));
+    $("scenes").querySelectorAll("button").forEach(button => button.setAttribute("aria-pressed", String(Number(button.dataset.pairIndex) === index)));
     $("task").textContent = pair.task;
     players.forEach((player, i) => player.load(scenes.find(scene => scene.id === pair.scenes[i])));
     $("status").textContent = "Click a video to pause or play. Replay both to compare from the start.";
   }
   $("replay").addEventListener("click", () => players.forEach(player => player.replay()));
 
-  fetch("assets/trajectory-demo/presets.json?v=distinct-paths-7")
+  fetch("assets/trajectory-demo/presets.json?v=grouped-paths-8")
     .then(response => {
       if (!response.ok) throw new Error(`Recordings: ${response.status}`);
       return response.json();
@@ -211,12 +213,40 @@
       scenes = data.scenes;
       pairs = data.pairs;
       if (!pairs.length) throw new Error("No recorded pairs available.");
-      pairs.forEach((pair, i) => {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.textContent = pair.label;
-        button.addEventListener("click", () => selectPair(i));
-        $("scenes").append(button);
+      const domains = [
+        { label: "Real-world", datasets: ["RoboCoin", "RoboMind", "DROID"] },
+        { label: "Simulation", datasets: ["RoboTwin", "LIBERO"] },
+      ];
+      domains.forEach(domain => {
+        const section = document.createElement("section");
+        section.className = "trajectory-domain";
+        section.setAttribute("aria-label", domain.label);
+        const heading = document.createElement("h4");
+        heading.textContent = domain.label;
+        section.append(heading);
+        domain.datasets.forEach(dataset => {
+          const row = document.createElement("div");
+          row.className = "trajectory-dataset";
+          const label = document.createElement("span");
+          label.className = "trajectory-dataset-name";
+          label.textContent = dataset;
+          row.append(label);
+          const choices = document.createElement("div");
+          choices.className = "trajectory-dataset-choices";
+          pairs.forEach((pair, i) => {
+            if (scenes.find(scene => scene.id === pair.scenes[0]).source_dataset !== dataset) return;
+            const button = document.createElement("button");
+            button.type = "button";
+            button.dataset.pairIndex = String(i);
+            button.textContent = pair.label.split("·").at(-1).trim();
+            button.setAttribute("aria-label", pair.label);
+            button.addEventListener("click", () => selectPair(i));
+            choices.append(button);
+          });
+          row.append(choices);
+          if (choices.children.length) section.append(row);
+        });
+        $("scenes").append(section);
       });
       selectPair(0);
       $("content").hidden = false;

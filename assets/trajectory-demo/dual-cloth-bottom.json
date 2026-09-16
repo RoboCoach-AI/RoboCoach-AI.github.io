@@ -1,6 +1,6 @@
 {
-  "id": "dual-cloth-in",
-  "label": "Both arms \u00b7 Upper routes",
+  "id": "dual-cloth-bottom",
+  "label": "Both arms \u00b7 Lower routes",
   "task": "Fold towels",
   "source_dataset": "RoboCoin",
   "seed_type": "real-world recording",
@@ -8,9 +8,9 @@
   "control_type": "manually specified waypoints",
   "width": 768,
   "height": 512,
-  "image": "assets/trajectory-demo/dual-cloth-in.jpg",
-  "video": "assets/trajectory-demo/dual-cloth-in.mp4",
-  "record": "assets/trajectory-demo/dual-cloth-in.json",
+  "image": "assets/trajectory-demo/dual-cloth-bottom.jpg",
+  "video": "assets/trajectory-demo/dual-cloth-bottom.mp4",
+  "record": "assets/trajectory-demo/dual-cloth-bottom.json",
   "duration": 2.6,
   "control_duration": 2.4,
   "fps": 5,
@@ -26,15 +26,15 @@
     {
       "label": "1",
       "u": 125.98112487792969,
-      "v": 174.4691162109375,
-      "depth": 0.43397761464118956,
+      "v": 244.4691162109375,
+      "depth": 0.4639776146411896,
       "gripper": 0.9599999785423279
     },
     {
       "label": "2",
       "u": 190.9811248779297,
-      "v": 174.4691162109375,
-      "depth": 0.43397761464118956,
+      "v": 244.4691162109375,
+      "depth": 0.4639776146411896,
       "gripper": 0.9599999785423279
     },
     {
@@ -47,7 +47,7 @@
   ],
   "segments": [
     {
-      "label": "Up together",
+      "label": "Down together",
       "start": 0,
       "end": 0.8
     },
@@ -57,7 +57,7 @@
       "end": 1.6
     },
     {
-      "label": "Down together",
+      "label": "Up together",
       "start": 1.6,
       "end": 2.6
     }
@@ -69,14 +69,14 @@
       "path_uv_depth": [
         {
           "u": 125.98112487792969,
-          "v": 174.4691162109375,
-          "depth": 0.43397761464118956,
+          "v": 244.4691162109375,
+          "depth": 0.4639776146411896,
           "gripper": 0.9599999785423279
         },
         {
           "u": 190.9811248779297,
-          "v": 174.4691162109375,
-          "depth": 0.43397761464118956,
+          "v": 244.4691162109375,
+          "depth": 0.4639776146411896,
           "gripper": 0.9599999785423279
         },
         {
@@ -93,14 +93,14 @@
       "path_uv_depth": [
         {
           "u": 683.9629516601562,
-          "v": 209.14759826660156,
-          "depth": 0.4486482846736908,
+          "v": 279.14759826660156,
+          "depth": 0.4786482846736908,
           "gripper": 0.9190000295639038
         },
         {
           "u": 618.9629516601562,
-          "v": 209.14759826660156,
-          "depth": 0.4486482846736908,
+          "v": 279.14759826660156,
+          "depth": 0.4786482846736908,
           "gripper": 0.9190000295639038
         },
         {
@@ -127,15 +127,15 @@
         {
           "label": "1",
           "u": 125.98112487792969,
-          "v": 174.4691162109375,
-          "depth": 0.43397761464118956,
+          "v": 244.4691162109375,
+          "depth": 0.4639776146411896,
           "gripper": 0.9599999785423279
         },
         {
           "label": "2",
           "u": 190.9811248779297,
-          "v": 174.4691162109375,
-          "depth": 0.43397761464118956,
+          "v": 244.4691162109375,
+          "depth": 0.4639776146411896,
           "gripper": 0.9599999785423279
         },
         {
@@ -147,9 +147,9 @@
         }
       ],
       "labels": [
-        "Up",
+        "Down",
         "Right",
-        "Down"
+        "Up"
       ]
     },
     {
@@ -166,15 +166,15 @@
         {
           "label": "1",
           "u": 683.9629516601562,
-          "v": 209.14759826660156,
-          "depth": 0.4486482846736908,
+          "v": 279.14759826660156,
+          "depth": 0.4786482846736908,
           "gripper": 0.9190000295639038
         },
         {
           "label": "2",
           "u": 618.9629516601562,
-          "v": 209.14759826660156,
-          "depth": 0.4486482846736908,
+          "v": 279.14759826660156,
+          "depth": 0.4786482846736908,
           "gripper": 0.9190000295639038
         },
         {
@@ -186,9 +186,9 @@
         }
       ],
       "labels": [
-        "Up",
+        "Down",
         "Left",
-        "Down"
+        "Up"
       ]
     }
   ]

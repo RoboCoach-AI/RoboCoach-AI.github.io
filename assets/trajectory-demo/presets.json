@@ -2,7 +2,7 @@
   "scenes": [
     {
       "id": "bread-step-high",
-      "label": "Bread \u00b7 Lift first",
+      "label": "Bread \u00b7 Upper route",
       "task": "put the bread on the table",
       "source_dataset": "RoboMind",
       "seed_type": "real-world recording",
@@ -92,8 +92,8 @@
       ]
     },
     {
-      "id": "bread-side",
-      "label": "Bread \u00b7 Right \u2192 down \u2192 left",
+      "id": "bread-bottom-safe",
+      "label": "Bread \u00b7 Lower route",
       "task": "put the bread on the table",
       "source_dataset": "RoboMind",
       "seed_type": "real-world recording",
@@ -101,9 +101,9 @@
       "control_type": "manually specified waypoints",
       "width": 768,
       "height": 512,
-      "image": "assets/trajectory-demo/bread-side.jpg",
-      "video": "assets/trajectory-demo/bread-side.mp4",
-      "record": "assets/trajectory-demo/bread-side.json",
+      "image": "assets/trajectory-demo/bread-bottom-safe.jpg",
+      "video": "assets/trajectory-demo/bread-bottom-safe.mp4",
+      "record": "assets/trajectory-demo/bread-bottom-safe.json",
       "duration": 2.6,
       "control_duration": 2.4,
       "fps": 5,
@@ -118,16 +118,16 @@
         },
         {
           "label": "1",
-          "u": 596.6939697265625,
-          "v": 143.52655029296875,
-          "depth": 0.9137453436851501,
+          "u": 466.6939697265625,
+          "v": 188.52655029296875,
+          "depth": 0.8837453436851501,
           "gripper": 0.9030836820602417
         },
         {
           "label": "2",
-          "u": 596.6939697265625,
-          "v": 173.52655029296875,
-          "depth": 0.9237453436851502,
+          "u": 551.6939697265625,
+          "v": 188.52655029296875,
+          "depth": 0.8837453436851501,
           "gripper": 0.9030836820602417
         },
         {
@@ -140,17 +140,17 @@
       ],
       "segments": [
         {
-          "label": "Right",
+          "label": "Down",
           "start": 0,
           "end": 0.8
         },
         {
-          "label": "Down",
+          "label": "Right",
           "start": 0.8,
           "end": 1.6
         },
         {
-          "label": "Left",
+          "label": "Up",
           "start": 1.6,
           "end": 2.6
         }
@@ -161,15 +161,15 @@
           "source": "manual_uv_depth",
           "path_uv_depth": [
             {
-              "u": 596.6939697265625,
-              "v": 143.52655029296875,
-              "depth": 0.9137453436851501,
+              "u": 466.6939697265625,
+              "v": 188.52655029296875,
+              "depth": 0.8837453436851501,
               "gripper": 0.9030836820602417
             },
             {
-              "u": 596.6939697265625,
-              "v": 173.52655029296875,
-              "depth": 0.9237453436851502,
+              "u": 551.6939697265625,
+              "v": 188.52655029296875,
+              "depth": 0.8837453436851501,
               "gripper": 0.9030836820602417
             },
             {
@@ -366,7 +366,7 @@
     },
     {
       "id": "drawer-step-high",
-      "label": "Drawer \u00b7 Lift first",
+      "label": "Drawer \u00b7 Upper route",
       "task": "close drawer",
       "source_dataset": "RoboMind",
       "seed_type": "real-world recording",
@@ -456,8 +456,8 @@
       ]
     },
     {
-      "id": "drawer-side",
-      "label": "Drawer \u00b7 Right \u2192 down \u2192 left",
+      "id": "drawer-bottom",
+      "label": "Drawer \u00b7 Lower route",
       "task": "close drawer",
       "source_dataset": "RoboMind",
       "seed_type": "real-world recording",
@@ -465,9 +465,9 @@
       "control_type": "manually specified waypoints",
       "width": 768,
       "height": 512,
-      "image": "assets/trajectory-demo/drawer-side.jpg",
-      "video": "assets/trajectory-demo/drawer-side.mp4",
-      "record": "assets/trajectory-demo/drawer-side.json",
+      "image": "assets/trajectory-demo/drawer-bottom.jpg",
+      "video": "assets/trajectory-demo/drawer-bottom.mp4",
+      "record": "assets/trajectory-demo/drawer-bottom.json",
       "duration": 2.6,
       "control_duration": 2.4,
       "fps": 5,
@@ -482,15 +482,15 @@
         },
         {
           "label": "1",
-          "u": 576.553955078125,
-          "v": 105.78006744384766,
-          "depth": 0.9435068368911743,
+          "u": 456.553955078125,
+          "v": 185.78006744384766,
+          "depth": 0.9535068368911743,
           "gripper": 0.4669603705406189
         },
         {
           "label": "2",
-          "u": 576.553955078125,
-          "v": 145.78006744384766,
+          "u": 526.553955078125,
+          "v": 185.78006744384766,
           "depth": 0.9535068368911743,
           "gripper": 0.4669603705406189
         },
@@ -504,17 +504,17 @@
       ],
       "segments": [
         {
-          "label": "Right",
+          "label": "Down",
           "start": 0,
           "end": 0.8
         },
         {
-          "label": "Down",
+          "label": "Right",
           "start": 0.8,
           "end": 1.6
         },
         {
-          "label": "Left",
+          "label": "Up",
           "start": 1.6,
           "end": 2.6
         }
@@ -525,14 +525,14 @@
           "source": "manual_uv_depth",
           "path_uv_depth": [
             {
-              "u": 576.553955078125,
-              "v": 105.78006744384766,
-              "depth": 0.9435068368911743,
+              "u": 456.553955078125,
+              "v": 185.78006744384766,
+              "depth": 0.9535068368911743,
               "gripper": 0.4669603705406189
             },
             {
-              "u": 576.553955078125,
-              "v": 145.78006744384766,
+              "u": 526.553955078125,
+              "v": 185.78006744384766,
               "depth": 0.9535068368911743,
               "gripper": 0.4669603705406189
             },
@@ -547,7 +547,7 @@
       ]
     },
     {
-      "id": "shoe-step-high",
+      "id": "shoe-step-high-rgb",
       "label": "Shoe \u00b7 Upper route",
       "task": "Grab the shoe with black heel patch using the right arm and drop it on the mat",
       "source_dataset": "RoboTwin",
@@ -556,9 +556,9 @@
       "control_type": "manually specified waypoints",
       "width": 768,
       "height": 512,
-      "image": "assets/trajectory-demo/shoe-step-high.jpg",
-      "video": "assets/trajectory-demo/shoe-step-high.mp4",
-      "record": "assets/trajectory-demo/shoe-step-high.json",
+      "image": "assets/trajectory-demo/shoe-step-high-rgb.jpg",
+      "video": "assets/trajectory-demo/shoe-step-high-rgb.mp4",
+      "record": "assets/trajectory-demo/shoe-step-high-rgb.json",
       "duration": 2.6,
       "control_duration": 2.4,
       "fps": 5,
@@ -635,10 +635,11 @@
             }
           ]
         }
-      ]
+      ],
+      "display_transform": "swap_red_blue"
     },
     {
-      "id": "shoe-lower",
+      "id": "shoe-bottom-rgb",
       "label": "Shoe \u00b7 Lower route",
       "task": "Grab the shoe with black heel patch using the right arm and drop it on the mat",
       "source_dataset": "RoboTwin",
@@ -647,9 +648,9 @@
       "control_type": "manually specified waypoints",
       "width": 768,
       "height": 512,
-      "image": "assets/trajectory-demo/shoe-lower.jpg",
-      "video": "assets/trajectory-demo/shoe-lower.mp4",
-      "record": "assets/trajectory-demo/shoe-lower.json",
+      "image": "assets/trajectory-demo/shoe-bottom-rgb.jpg",
+      "video": "assets/trajectory-demo/shoe-bottom-rgb.mp4",
+      "record": "assets/trajectory-demo/shoe-bottom-rgb.json",
       "duration": 2.6,
       "control_duration": 2.4,
       "fps": 5,
@@ -665,14 +666,14 @@
         {
           "label": "1",
           "u": 647.01953125,
-          "v": 182.83011627197266,
+          "v": 247.83011627197266,
           "depth": 0.5494558906555176,
           "gripper": 0.0
         },
         {
           "label": "2",
           "u": 422.01953125,
-          "v": 182.83011627197266,
+          "v": 247.83011627197266,
           "depth": 0.5494558906555176,
           "gripper": 0.0
         },
@@ -696,7 +697,7 @@
           "end": 1.6
         },
         {
-          "label": "Down",
+          "label": "Up",
           "start": 1.6,
           "end": 2.6
         }
@@ -708,13 +709,13 @@
           "path_uv_depth": [
             {
               "u": 647.01953125,
-              "v": 182.83011627197266,
+              "v": 247.83011627197266,
               "depth": 0.5494558906555176,
               "gripper": 0.0
             },
             {
               "u": 422.01953125,
-              "v": 182.83011627197266,
+              "v": 247.83011627197266,
               "depth": 0.5494558906555176,
               "gripper": 0.0
             },
@@ -726,11 +727,12 @@
             }
           ]
         }
-      ]
+      ],
+      "display_transform": "swap_red_blue"
     },
     {
-      "id": "cup-step-high",
-      "label": "Cup \u00b7 Lift first",
+      "id": "cup-step-high-rgb",
+      "label": "Cup \u00b7 Upper route",
       "task": "Drop the container onto the dish plate using the cup with blue flowers",
       "source_dataset": "RoboTwin",
       "seed_type": "simulation",
@@ -738,9 +740,9 @@
       "control_type": "manually specified waypoints",
       "width": 768,
       "height": 512,
-      "image": "assets/trajectory-demo/cup-step-high.jpg",
-      "video": "assets/trajectory-demo/cup-step-high.mp4",
-      "record": "assets/trajectory-demo/cup-step-high.json",
+      "image": "assets/trajectory-demo/cup-step-high-rgb.jpg",
+      "video": "assets/trajectory-demo/cup-step-high-rgb.mp4",
+      "record": "assets/trajectory-demo/cup-step-high-rgb.json",
       "duration": 2.6,
       "control_duration": 2.4,
       "fps": 5,
@@ -817,11 +819,12 @@
             }
           ]
         }
-      ]
+      ],
+      "display_transform": "swap_red_blue"
     },
     {
-      "id": "cup-lower",
-      "label": "Cup \u00b7 Descend first",
+      "id": "cup-bottom-rgb",
+      "label": "Cup \u00b7 Lower route",
       "task": "Drop the container onto the dish plate using the cup with blue flowers",
       "source_dataset": "RoboTwin",
       "seed_type": "simulation",
@@ -829,9 +832,9 @@
       "control_type": "manually specified waypoints",
       "width": 768,
       "height": 512,
-      "image": "assets/trajectory-demo/cup-lower.jpg",
-      "video": "assets/trajectory-demo/cup-lower.mp4",
-      "record": "assets/trajectory-demo/cup-lower.json",
+      "image": "assets/trajectory-demo/cup-bottom-rgb.jpg",
+      "video": "assets/trajectory-demo/cup-bottom-rgb.mp4",
+      "record": "assets/trajectory-demo/cup-bottom-rgb.json",
       "duration": 2.6,
       "control_duration": 2.4,
       "fps": 5,
@@ -847,14 +850,14 @@
         {
           "label": "1",
           "u": 63.82234191894531,
-          "v": 149.75070190429688,
+          "v": 224.75070190429688,
           "depth": 0.46064231753349305,
           "gripper": 0.0
         },
         {
           "label": "2",
           "u": 268.8223419189453,
-          "v": 149.75070190429688,
+          "v": 224.75070190429688,
           "depth": 0.46064231753349305,
           "gripper": 0.0
         },
@@ -878,7 +881,7 @@
           "end": 1.6
         },
         {
-          "label": "Down",
+          "label": "Up",
           "start": 1.6,
           "end": 2.6
         }
@@ -890,13 +893,13 @@
           "path_uv_depth": [
             {
               "u": 63.82234191894531,
-              "v": 149.75070190429688,
+              "v": 224.75070190429688,
               "depth": 0.46064231753349305,
               "gripper": 0.0
             },
             {
               "u": 268.8223419189453,
-              "v": 149.75070190429688,
+              "v": 224.75070190429688,
               "depth": 0.46064231753349305,
               "gripper": 0.0
             },
@@ -908,7 +911,8 @@
             }
           ]
         }
-      ]
+      ],
+      "display_transform": "swap_red_blue"
     },
     {
       "id": "libero-mug-high",
@@ -1094,7 +1098,7 @@
     },
     {
       "id": "dual-cloth-in",
-      "label": "Both arms \u00b7 Lift and move inward",
+      "label": "Both arms \u00b7 Upper routes",
       "task": "Fold towels",
       "source_dataset": "RoboCoin",
       "seed_type": "real-world recording",
@@ -1288,8 +1292,8 @@
       ]
     },
     {
-      "id": "dual-cloth-out",
-      "label": "Both arms \u00b7 Spread and lift",
+      "id": "dual-cloth-bottom",
+      "label": "Both arms \u00b7 Lower routes",
       "task": "Fold towels",
       "source_dataset": "RoboCoin",
       "seed_type": "real-world recording",
@@ -1297,9 +1301,9 @@
       "control_type": "manually specified waypoints",
       "width": 768,
       "height": 512,
-      "image": "assets/trajectory-demo/dual-cloth-out.jpg",
-      "video": "assets/trajectory-demo/dual-cloth-out.mp4",
-      "record": "assets/trajectory-demo/dual-cloth-out.json",
+      "image": "assets/trajectory-demo/dual-cloth-bottom.jpg",
+      "video": "assets/trajectory-demo/dual-cloth-bottom.mp4",
+      "record": "assets/trajectory-demo/dual-cloth-bottom.json",
       "duration": 2.6,
       "control_duration": 2.4,
       "fps": 5,
@@ -1314,39 +1318,39 @@
         },
         {
           "label": "1",
-          "u": 90.98112487792969,
-          "v": 209.4691162109375,
-          "depth": 0.4539776146411896,
+          "u": 125.98112487792969,
+          "v": 244.4691162109375,
+          "depth": 0.4639776146411896,
           "gripper": 0.9599999785423279
         },
         {
           "label": "2",
-          "u": 90.98112487792969,
-          "v": 164.4691162109375,
-          "depth": 0.43397761464118956,
+          "u": 190.9811248779297,
+          "v": 244.4691162109375,
+          "depth": 0.4639776146411896,
           "gripper": 0.9599999785423279
         },
         {
           "label": "target",
-          "u": 125.98112487792969,
-          "v": 164.4691162109375,
-          "depth": 0.43397761464118956,
+          "u": 190.9811248779297,
+          "v": 209.4691162109375,
+          "depth": 0.4539776146411896,
           "gripper": 0.9599999785423279
         }
       ],
       "segments": [
         {
-          "label": "Move outward",
+          "label": "Down together",
           "start": 0,
           "end": 0.8
         },
         {
-          "label": "Up together",
+          "label": "Move inward",
           "start": 0.8,
           "end": 1.6
         },
         {
-          "label": "Move inward",
+          "label": "Up together",
           "start": 1.6,
           "end": 2.6
         }
@@ -1357,21 +1361,21 @@
           "source": "manual_uv_depth",
           "path_uv_depth": [
             {
-              "u": 90.98112487792969,
+              "u": 125.98112487792969,
+              "v": 244.4691162109375,
+              "depth": 0.4639776146411896,
+              "gripper": 0.9599999785423279
+            },
+            {
+              "u": 190.9811248779297,
+              "v": 244.4691162109375,
+              "depth": 0.4639776146411896,
+              "gripper": 0.9599999785423279
+            },
+            {
+              "u": 190.9811248779297,
               "v": 209.4691162109375,
               "depth": 0.4539776146411896,
-              "gripper": 0.9599999785423279
-            },
-            {
-              "u": 90.98112487792969,
-              "v": 164.4691162109375,
-              "depth": 0.43397761464118956,
-              "gripper": 0.9599999785423279
-            },
-            {
-              "u": 125.98112487792969,
-              "v": 164.4691162109375,
-              "depth": 0.43397761464118956,
               "gripper": 0.9599999785423279
             }
           ]
@@ -1381,21 +1385,21 @@
           "source": "manual_uv_depth",
           "path_uv_depth": [
             {
-              "u": 718.9629516601562,
+              "u": 683.9629516601562,
+              "v": 279.14759826660156,
+              "depth": 0.4786482846736908,
+              "gripper": 0.9190000295639038
+            },
+            {
+              "u": 618.9629516601562,
+              "v": 279.14759826660156,
+              "depth": 0.4786482846736908,
+              "gripper": 0.9190000295639038
+            },
+            {
+              "u": 618.9629516601562,
               "v": 244.14759826660156,
               "depth": 0.4686482846736908,
-              "gripper": 0.9190000295639038
-            },
-            {
-              "u": 718.9629516601562,
-              "v": 199.14759826660156,
-              "depth": 0.4486482846736908,
-              "gripper": 0.9190000295639038
-            },
-            {
-              "u": 683.9629516601562,
-              "v": 199.14759826660156,
-              "depth": 0.4486482846736908,
               "gripper": 0.9190000295639038
             }
           ]
@@ -1415,30 +1419,30 @@
             },
             {
               "label": "1",
-              "u": 90.98112487792969,
-              "v": 209.4691162109375,
-              "depth": 0.4539776146411896,
+              "u": 125.98112487792969,
+              "v": 244.4691162109375,
+              "depth": 0.4639776146411896,
               "gripper": 0.9599999785423279
             },
             {
               "label": "2",
-              "u": 90.98112487792969,
-              "v": 164.4691162109375,
-              "depth": 0.43397761464118956,
+              "u": 190.9811248779297,
+              "v": 244.4691162109375,
+              "depth": 0.4639776146411896,
               "gripper": 0.9599999785423279
             },
             {
               "label": "target",
-              "u": 125.98112487792969,
-              "v": 164.4691162109375,
-              "depth": 0.43397761464118956,
+              "u": 190.9811248779297,
+              "v": 209.4691162109375,
+              "depth": 0.4539776146411896,
               "gripper": 0.9599999785423279
             }
           ],
           "labels": [
-            "Left",
-            "Up",
-            "Right"
+            "Down",
+            "Right",
+            "Up"
           ]
         },
         {
@@ -1454,30 +1458,30 @@
             },
             {
               "label": "1",
-              "u": 718.9629516601562,
-              "v": 244.14759826660156,
-              "depth": 0.4686482846736908,
+              "u": 683.9629516601562,
+              "v": 279.14759826660156,
+              "depth": 0.4786482846736908,
               "gripper": 0.9190000295639038
             },
             {
               "label": "2",
-              "u": 718.9629516601562,
-              "v": 199.14759826660156,
-              "depth": 0.4486482846736908,
+              "u": 618.9629516601562,
+              "v": 279.14759826660156,
+              "depth": 0.4786482846736908,
               "gripper": 0.9190000295639038
             },
             {
               "label": "target",
-              "u": 683.9629516601562,
-              "v": 199.14759826660156,
-              "depth": 0.4486482846736908,
+              "u": 618.9629516601562,
+              "v": 244.14759826660156,
+              "depth": 0.4686482846736908,
               "gripper": 0.9190000295639038
             }
           ],
           "labels": [
-            "Right",
-            "Up",
-            "Left"
+            "Down",
+            "Left",
+            "Up"
           ]
         }
       ]
@@ -1486,23 +1490,23 @@
   "pairs": [
     {
       "label": "RoboCoin \u00b7 dual-arm cloth",
-      "task": "RoboCoin real-world recording \u00b7 Same starting scene, two manually specified dual-arm motions: lift and move inward versus spread and lift. Both arms are conditioned, with a requested path and marker for each. Both videos are model predictions.",
+      "task": "RoboCoin real-world recording \u00b7 Same starting scene and targets; upper versus lower routes for both arms. Both arms are conditioned, with a requested path and marker for each. Both videos are model predictions.",
       "scenes": [
         "dual-cloth-in",
-        "dual-cloth-out"
+        "dual-cloth-bottom"
       ]
     },
     {
       "label": "RoboMind \u00b7 bread",
-      "task": "RoboMind real-world recording \u00b7 Same starting scene and target; different manually drawn routes and motion orders. Both videos are model predictions.",
+      "task": "RoboMind real-world recording \u00b7 Same starting scene and target; manually drawn upper and lower routes. Both videos are model predictions.",
       "scenes": [
         "bread-step-high",
-        "bread-side"
+        "bread-bottom-safe"
       ]
     },
     {
       "label": "DROID \u00b7 tabletop",
-      "task": "DROID real-world recording \u00b7 Same starting scene and target; different manually drawn routes and motion orders. Both videos are model predictions.",
+      "task": "DROID real-world recording \u00b7 Same starting scene and target; manually drawn upper and lower routes. Both videos are model predictions.",
       "scenes": [
         "table-step-high",
         "table-lower"
@@ -1510,31 +1514,31 @@
     },
     {
       "label": "RoboMind \u00b7 drawer",
-      "task": "RoboMind real-world recording \u00b7 Same starting scene and target; different manually drawn routes and motion orders. Both videos are model predictions.",
+      "task": "RoboMind real-world recording \u00b7 Same starting scene and target; manually drawn upper and lower routes. Both videos are model predictions.",
       "scenes": [
         "drawer-step-high",
-        "drawer-side"
+        "drawer-bottom"
       ]
     },
     {
       "label": "RoboTwin \u00b7 shoe",
-      "task": "RoboTwin simulation \u00b7 Same starting scene and target; different manually drawn routes and motion orders. Both videos are model predictions.",
+      "task": "RoboTwin simulation \u00b7 Same starting scene and target; manually drawn upper and lower routes. Both videos are model predictions.",
       "scenes": [
-        "shoe-step-high",
-        "shoe-lower"
+        "shoe-step-high-rgb",
+        "shoe-bottom-rgb"
       ]
     },
     {
       "label": "RoboTwin \u00b7 cup",
-      "task": "RoboTwin simulation \u00b7 Same starting scene and target; different manually drawn routes and motion orders. Both videos are model predictions.",
+      "task": "RoboTwin simulation \u00b7 Same starting scene and target; manually drawn upper and lower routes. Both videos are model predictions.",
       "scenes": [
-        "cup-step-high",
-        "cup-lower"
+        "cup-step-high-rgb",
+        "cup-bottom-rgb"
       ]
     },
     {
       "label": "LIBERO \u00b7 mug",
-      "task": "LIBERO simulation \u00b7 Same starting scene and target; different manually drawn routes and motion orders. Both videos are model predictions.",
+      "task": "LIBERO simulation \u00b7 Same starting scene and target; manually drawn upper and lower routes. Both videos are model predictions.",
       "scenes": [
         "libero-mug-high",
         "libero-lower"
