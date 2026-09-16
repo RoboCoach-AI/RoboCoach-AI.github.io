@@ -1,6 +1,6 @@
 {
-  "id": "table-step-high",
-  "label": "Tabletop \u00b7 Upper route",
+  "id": "table-lower",
+  "label": "Tabletop \u00b7 Lower route",
   "task": "Take the lid and place it on the teapot",
   "source_dataset": "DROID",
   "seed_type": "real-world recording",
@@ -8,9 +8,9 @@
   "control_type": "manually specified waypoints",
   "width": 768,
   "height": 512,
-  "image": "assets/trajectory-demo/table-step-high.jpg",
-  "video": "assets/trajectory-demo/table-step-high.mp4",
-  "record": "assets/trajectory-demo/table-step-high.json",
+  "image": "assets/trajectory-demo/table-lower.jpg",
+  "video": "assets/trajectory-demo/table-lower.mp4",
+  "record": "assets/trajectory-demo/table-lower.json",
   "duration": 2.6,
   "control_duration": 2.4,
   "fps": 5,
@@ -26,15 +26,15 @@
     {
       "label": "1",
       "u": 437.0771484375,
-      "v": 160.13465881347656,
-      "depth": 0.6628333735466003,
+      "v": 255.13465881347656,
+      "depth": 0.6928333735466004,
       "gripper": 0.0
     },
     {
       "label": "2",
       "u": 507.0771484375,
-      "v": 160.13465881347656,
-      "depth": 0.6628333735466003,
+      "v": 255.13465881347656,
+      "depth": 0.6928333735466004,
       "gripper": 0.0
     },
     {
@@ -47,7 +47,7 @@
   ],
   "segments": [
     {
-      "label": "Up",
+      "label": "Down",
       "start": 0,
       "end": 0.8
     },
@@ -57,7 +57,7 @@
       "end": 1.6
     },
     {
-      "label": "Down",
+      "label": "Up",
       "start": 1.6,
       "end": 2.6
     }
@@ -69,14 +69,14 @@
       "path_uv_depth": [
         {
           "u": 437.0771484375,
-          "v": 160.13465881347656,
-          "depth": 0.6628333735466003,
+          "v": 255.13465881347656,
+          "depth": 0.6928333735466004,
           "gripper": 0.0
         },
         {
           "u": 507.0771484375,
-          "v": 160.13465881347656,
-          "depth": 0.6628333735466003,
+          "v": 255.13465881347656,
+          "depth": 0.6928333735466004,
           "gripper": 0.0
         },
         {

@@ -1,6 +1,6 @@
 {
-  "id": "libero-mug-high",
-  "label": "Mug \u00b7 Upper route",
+  "id": "libero-lower",
+  "label": "Mug \u00b7 Lower route",
   "task": "pick up the yellow and white mug and place it to the right of the caddy",
   "source_dataset": "LIBERO",
   "seed_type": "simulation",
@@ -8,9 +8,9 @@
   "control_type": "manually specified waypoints",
   "width": 768,
   "height": 512,
-  "image": "assets/trajectory-demo/libero-mug-high.jpg",
-  "video": "assets/trajectory-demo/libero-mug-high.mp4",
-  "record": "assets/trajectory-demo/libero-mug-high.json",
+  "image": "assets/trajectory-demo/libero-lower.jpg",
+  "video": "assets/trajectory-demo/libero-lower.mp4",
+  "record": "assets/trajectory-demo/libero-lower.json",
   "duration": 2.6,
   "control_duration": 2.4,
   "fps": 5,
@@ -26,15 +26,15 @@
     {
       "label": "1",
       "u": 428.8602600097656,
-      "v": 277.0185546875,
-      "depth": 0.8195286202430725,
+      "v": 397.0185546875,
+      "depth": 0.8495286202430725,
       "gripper": 0.10883248597383499
     },
     {
       "label": "2",
       "u": 518.8602600097656,
-      "v": 277.0185546875,
-      "depth": 0.8195286202430725,
+      "v": 397.0185546875,
+      "depth": 0.8495286202430725,
       "gripper": 0.10883248597383499
     },
     {
@@ -47,7 +47,7 @@
   ],
   "segments": [
     {
-      "label": "Up",
+      "label": "Down",
       "start": 0,
       "end": 0.8
     },
@@ -57,7 +57,7 @@
       "end": 1.6
     },
     {
-      "label": "Down",
+      "label": "Up",
       "start": 1.6,
       "end": 2.6
     }
@@ -69,14 +69,14 @@
       "path_uv_depth": [
         {
           "u": 428.8602600097656,
-          "v": 277.0185546875,
-          "depth": 0.8195286202430725,
+          "v": 397.0185546875,
+          "depth": 0.8495286202430725,
           "gripper": 0.10883248597383499
         },
         {
           "u": 518.8602600097656,
-          "v": 277.0185546875,
-          "depth": 0.8195286202430725,
+          "v": 397.0185546875,
+          "depth": 0.8495286202430725,
           "gripper": 0.10883248597383499
         },
         {

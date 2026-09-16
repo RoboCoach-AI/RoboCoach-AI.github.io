@@ -16,28 +16,32 @@
   function makePlayer(panel) {
     const find = (name) => panel.querySelector(`[data-trajectory-${name}]`);
     const video = find("video"), svg = find("paths"), toggle = find("toggle");
-    let scene, marker, frame;
+    let scene, frame;
+    let markers = [];
     let selected = -1, completed = false;
     const range = () => selected < 0
       ? { label: "Full path", start: 0, end: scene.duration }
       : scene.segments[selected];
 
     function updateMarker() {
-      if (!scene || !marker) return;
+      if (!scene || !markers.length) return;
       const position = Math.max(0, Math.min(1, video.currentTime / scene.control_duration)) * scene.segments.length;
       const i = Math.min(Math.floor(position), scene.segments.length - 1), t = position - i;
-      const a = scene.nodes[i], b = scene.nodes[i + 1];
-      // Match the backend's 3D interpolation before perspective projection.
-      const depth = a.depth * (1 - t) + b.depth * t;
-      marker.setAttribute("cx", (a.u * a.depth * (1 - t) + b.u * b.depth * t) / depth);
-      marker.setAttribute("cy", (a.v * a.depth * (1 - t) + b.v * b.depth * t) / depth);
+      markers.forEach(({ marker, nodes }) => {
+        const a = nodes[i], b = nodes[i + 1];
+        // Match the backend's 3D interpolation before perspective projection.
+        const depth = a.depth * (1 - t) + b.depth * t;
+        marker.setAttribute("cx", (a.u * a.depth * (1 - t) + b.u * b.depth * t) / depth);
+        marker.setAttribute("cy", (a.v * a.depth * (1 - t) + b.v * b.depth * t) / depth);
+      });
     }
 
     function updateSelection() {
       find("ranges").querySelectorAll("button").forEach((button, i) => {
         button.setAttribute("aria-pressed", String(i - 1 === selected));
       });
-      svg.querySelectorAll(".trajectory-segment").forEach((group, i) => {
+      svg.querySelectorAll(".trajectory-segment").forEach(group => {
+        const i = Number(group.dataset.segment);
         group.classList.toggle("is-selected", selected < 0 || selected === i);
         group.setAttribute("aria-pressed", String(selected === i));
       });
@@ -57,40 +61,47 @@
 
     function drawPath() {
       svg.replaceChildren();
+      markers = [];
       svg.setAttribute("viewBox", `0 0 ${scene.width} ${scene.height}`);
-      scene.segments.forEach((segment, index) => {
-        const a = scene.nodes[index], b = scene.nodes[index + 1];
-        const group = svgElement("g", {
-          class: "trajectory-segment", role: "button", tabindex: "0",
-          "aria-label": `Play ${segment.label}`,
+      (scene.paths || [{ nodes: scene.nodes }]).forEach(path => {
+        scene.segments.forEach((segment, index) => {
+          const a = path.nodes[index], b = path.nodes[index + 1];
+          const direction = path.labels?.[index] || segment.label;
+          const group = svgElement("g", {
+            class: "trajectory-segment", role: "button", tabindex: "0",
+            "aria-label": `Play ${path.arm ? path.arm + ': ' : ''}${direction}`,
+            "data-segment": index,
+          });
+          const d = `M${a.u},${a.v} L${b.u},${b.v}`;
+          const vertical = Math.abs(a.u - b.u) < Math.abs(a.v - b.v);
+          const centerX = (Math.min(...path.nodes.map(p => p.u)) + Math.max(...path.nodes.map(p => p.u))) / 2;
+          const label = svgElement("text", {
+            x: Math.max(38, Math.min(scene.width - 38, (a.u + b.u) / 2 + (vertical ? (a.u < centerX ? -38 : 42) : 0))),
+            y: vertical ? (a.v + b.v) / 2 + 5 : (index === 0 || a.v < 48 ? a.v + 30 : a.v - 20),
+            class: "trajectory-direction", "text-anchor": "middle",
+          });
+          label.textContent = direction;
+          group.append(svgElement("path", { d, class: "trajectory-line", stroke: colors[index] }),
+            svgElement("path", { d, class: "trajectory-hit" }), label);
+          group.addEventListener("click", () => selectRange(index));
+          group.addEventListener("keydown", event => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              selectRange(index);
+            }
+          });
+          svg.append(group);
         });
-        const d = `M${a.u},${a.v} L${b.u},${b.v}`;
-        const vertical = Math.abs(a.u - b.u) < Math.abs(a.v - b.v);
-        const label = svgElement("text", {
-          x: Math.max(38, Math.min(scene.width - 38, (a.u + b.u) / 2 + (vertical ? (index === 0 ? -38 : 42) : 0))),
-          y: vertical ? (a.v + b.v) / 2 + 5 : (a.v < 48 ? a.v + 30 : a.v - 20),
-          class: "trajectory-direction", "text-anchor": "middle",
-        });
-        label.textContent = segment.label;
-        group.append(svgElement("path", { d, class: "trajectory-line", stroke: colors[index] }),
-          svgElement("path", { d, class: "trajectory-hit" }), label);
-        group.addEventListener("click", () => selectRange(index));
-        group.addEventListener("keydown", event => {
-          if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            selectRange(index);
-          }
-        });
-        svg.append(group);
+        const nodes = svgElement("g", { class: "trajectory-nodes", "aria-hidden": "true" });
+        path.nodes.forEach((point, i) => nodes.append(svgElement("circle", {
+          cx: point.u, cy: point.v, r: 7,
+          fill: i === 0 ? "#172d37" : colors[i - 1],
+        })));
+        const marker = svgElement("circle", { r: 12, fill: "none", stroke: "white", "stroke-width": 4 });
+        markers.push({ marker, nodes: path.nodes });
+        nodes.append(marker);
+        svg.append(nodes);
       });
-      const nodes = svgElement("g", { class: "trajectory-nodes", "aria-hidden": "true" });
-      scene.nodes.forEach((point, i) => nodes.append(svgElement("circle", {
-        cx: point.u, cy: point.v, r: 7,
-        fill: i === 0 ? "#172d37" : colors[i - 1],
-      })));
-      marker = svgElement("circle", { r: 12, fill: "none", stroke: "white", "stroke-width": 4 });
-      nodes.append(marker);
-      svg.append(nodes);
       updateMarker();
     }
 
@@ -191,7 +202,7 @@
   }
   $("replay").addEventListener("click", () => players.forEach(player => player.replay()));
 
-  fetch("assets/trajectory-demo/presets.json?v=axis-paths-6")
+  fetch("assets/trajectory-demo/presets.json?v=distinct-paths-7")
     .then(response => {
       if (!response.ok) throw new Error(`Recordings: ${response.status}`);
       return response.json();

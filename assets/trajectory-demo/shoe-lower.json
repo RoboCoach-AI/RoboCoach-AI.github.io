@@ -1,6 +1,6 @@
 {
-  "id": "shoe-step-high",
-  "label": "Shoe \u00b7 Upper route",
+  "id": "shoe-lower",
+  "label": "Shoe \u00b7 Lower route",
   "task": "Grab the shoe with black heel patch using the right arm and drop it on the mat",
   "source_dataset": "RoboTwin",
   "seed_type": "simulation",
@@ -8,9 +8,9 @@
   "control_type": "manually specified waypoints",
   "width": 768,
   "height": 512,
-  "image": "assets/trajectory-demo/shoe-step-high.jpg",
-  "video": "assets/trajectory-demo/shoe-step-high.mp4",
-  "record": "assets/trajectory-demo/shoe-step-high.json",
+  "image": "assets/trajectory-demo/shoe-lower.jpg",
+  "video": "assets/trajectory-demo/shoe-lower.mp4",
+  "record": "assets/trajectory-demo/shoe-lower.json",
   "duration": 2.6,
   "control_duration": 2.4,
   "fps": 5,
@@ -26,15 +26,15 @@
     {
       "label": "1",
       "u": 647.01953125,
-      "v": 52.830116271972656,
-      "depth": 0.5194558906555176,
+      "v": 182.83011627197266,
+      "depth": 0.5494558906555176,
       "gripper": 0.0
     },
     {
       "label": "2",
       "u": 422.01953125,
-      "v": 52.830116271972656,
-      "depth": 0.5194558906555176,
+      "v": 182.83011627197266,
+      "depth": 0.5494558906555176,
       "gripper": 0.0
     },
     {
@@ -47,7 +47,7 @@
   ],
   "segments": [
     {
-      "label": "Up",
+      "label": "Down",
       "start": 0,
       "end": 0.8
     },
@@ -69,14 +69,14 @@
       "path_uv_depth": [
         {
           "u": 647.01953125,
-          "v": 52.830116271972656,
-          "depth": 0.5194558906555176,
+          "v": 182.83011627197266,
+          "depth": 0.5494558906555176,
           "gripper": 0.0
         },
         {
           "u": 422.01953125,
-          "v": 52.830116271972656,
-          "depth": 0.5194558906555176,
+          "v": 182.83011627197266,
+          "depth": 0.5494558906555176,
           "gripper": 0.0
         },
         {

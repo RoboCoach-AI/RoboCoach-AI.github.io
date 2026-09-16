@@ -1,6 +1,6 @@
 {
-  "id": "bread-step-high",
-  "label": "Bread \u00b7 Lift first",
+  "id": "bread-side",
+  "label": "Bread \u00b7 Right \u2192 down \u2192 left",
   "task": "put the bread on the table",
   "source_dataset": "RoboMind",
   "seed_type": "real-world recording",
@@ -8,9 +8,9 @@
   "control_type": "manually specified waypoints",
   "width": 768,
   "height": 512,
-  "image": "assets/trajectory-demo/bread-step-high.jpg",
-  "video": "assets/trajectory-demo/bread-step-high.mp4",
-  "record": "assets/trajectory-demo/bread-step-high.json",
+  "image": "assets/trajectory-demo/bread-side.jpg",
+  "video": "assets/trajectory-demo/bread-side.mp4",
+  "record": "assets/trajectory-demo/bread-side.json",
   "duration": 2.6,
   "control_duration": 2.4,
   "fps": 5,
@@ -25,16 +25,16 @@
     },
     {
       "label": "1",
-      "u": 466.6939697265625,
-      "v": 78.52655029296875,
-      "depth": 0.8937453436851501,
+      "u": 596.6939697265625,
+      "v": 143.52655029296875,
+      "depth": 0.9137453436851501,
       "gripper": 0.9030836820602417
     },
     {
       "label": "2",
-      "u": 551.6939697265625,
-      "v": 78.52655029296875,
-      "depth": 0.8937453436851501,
+      "u": 596.6939697265625,
+      "v": 173.52655029296875,
+      "depth": 0.9237453436851502,
       "gripper": 0.9030836820602417
     },
     {
@@ -47,17 +47,17 @@
   ],
   "segments": [
     {
-      "label": "Up",
+      "label": "Right",
       "start": 0,
       "end": 0.8
     },
     {
-      "label": "Right",
+      "label": "Down",
       "start": 0.8,
       "end": 1.6
     },
     {
-      "label": "Down",
+      "label": "Left",
       "start": 1.6,
       "end": 2.6
     }
@@ -68,15 +68,15 @@
       "source": "manual_uv_depth",
       "path_uv_depth": [
         {
-          "u": 466.6939697265625,
-          "v": 78.52655029296875,
-          "depth": 0.8937453436851501,
+          "u": 596.6939697265625,
+          "v": 143.52655029296875,
+          "depth": 0.9137453436851501,
           "gripper": 0.9030836820602417
         },
         {
-          "u": 551.6939697265625,
-          "v": 78.52655029296875,
-          "depth": 0.8937453436851501,
+          "u": 596.6939697265625,
+          "v": 173.52655029296875,
+          "depth": 0.9237453436851502,
           "gripper": 0.9030836820602417
         },
         {
