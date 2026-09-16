@@ -65,6 +65,11 @@ html[data-theme="light"] .trajectory-demo {
 .trajectory-panel video { width: 100%; height: auto; aspect-ratio: 3 / 2; border-radius: 8px; background: #111c22; object-fit: contain; }
 .trajectory-prediction video { position: absolute; inset: 0; }
 .trajectory-prediction svg { pointer-events: none; }
+.trajectory-prediction .trajectory-hit { pointer-events: stroke; }
+.trajectory-direction { fill: white; font-size: 19px; font-weight: 750; paint-order: stroke; stroke: #10222b; stroke-width: 4px; stroke-linejoin: round; pointer-events: none; }
+.trajectory-panel > .trajectory-ranges { margin: 14px 0 10px; }
+.trajectory-panel > .trajectory-replay { padding: 6px 14px; }
+.trajectory-panel video:focus-visible { outline: 3px solid var(--blue); outline-offset: -3px; }
 .trajectory-controls { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin: 18px 0; }
 .trajectory-swatch { display: inline-block; width: 10px; height: 10px; margin-right: 8px; border-radius: 50%; }
 .trajectory-detail { margin: 10px 0; color: var(--ink); font-size: 14px; }

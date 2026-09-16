@@ -45,17 +45,17 @@
       ],
       "segments": [
         {
-          "label": "now \u2192 1",
+          "label": "Left",
           "start": 0.0,
           "end": 0.8
         },
         {
-          "label": "1 \u2192 2",
+          "label": "Left + down",
           "start": 0.8,
           "end": 1.6
         },
         {
-          "label": "2 \u2192 target",
+          "label": "Down",
           "start": 1.6,
           "end": 2.6
         }
@@ -132,17 +132,17 @@
       ],
       "segments": [
         {
-          "label": "now \u2192 1",
+          "label": "Down",
           "start": 0.0,
           "end": 0.8
         },
         {
-          "label": "1 \u2192 2",
+          "label": "Left + down",
           "start": 0.8,
           "end": 1.6
         },
         {
-          "label": "2 \u2192 target",
+          "label": "Left",
           "start": 1.6,
           "end": 2.6
         }
@@ -219,17 +219,17 @@
       ],
       "segments": [
         {
-          "label": "now \u2192 1",
+          "label": "Up",
           "start": 0.0,
           "end": 0.8
         },
         {
-          "label": "1 \u2192 2",
+          "label": "Down-right",
           "start": 0.8,
           "end": 1.6
         },
         {
-          "label": "2 \u2192 target",
+          "label": "Down",
           "start": 1.6,
           "end": 2.6
         }
@@ -306,17 +306,17 @@
       ],
       "segments": [
         {
-          "label": "now \u2192 1",
+          "label": "Right",
           "start": 0.0,
           "end": 0.8
         },
         {
-          "label": "1 \u2192 2",
+          "label": "Down-right",
           "start": 0.8,
           "end": 1.6
         },
         {
-          "label": "2 \u2192 target",
+          "label": "Down",
           "start": 1.6,
           "end": 2.6
         }
@@ -346,6 +346,24 @@
             }
           ]
         }
+      ]
+    }
+  ],
+  "pairs": [
+    {
+      "label": "Shoe paths",
+      "task": "Same starting scene and target. Two different routes onto the red mat.",
+      "scenes": [
+        "shoe-upper-route",
+        "shoe-lower-route"
+      ]
+    },
+    {
+      "label": "Cup motions",
+      "task": "Two cup scenes: a lift toward the coaster and a gentle arc toward the plate.",
+      "scenes": [
+        "yellow-cup-lift",
+        "cup-gentle-arc"
       ]
     }
   ]

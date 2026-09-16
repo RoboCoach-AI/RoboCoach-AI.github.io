@@ -31,7 +31,7 @@ function syncAutoplay(video) {
 }
 autoplayVideos.forEach((video) => {
   const controlled = video.hasAttribute("data-manual-playback");
-  if (!controlled) video.controls = false;
+  video.controls = false;
   video.autoplay = false;
   video.muted = true;
   video.defaultMuted = true;

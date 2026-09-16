@@ -13,15 +13,15 @@
   <link rel="icon" type="image/png" href="assets/figures/robocoach_mark.png?v=2">
   <link rel="apple-touch-icon" href="assets/figures/robocoach_mark.png?v=2">
   <link rel="stylesheet" href="assets/styles.css?hash=e34ce499d296">
-  <link rel="stylesheet" href="assets/curve-navigation.css?v=3"><script src="assets/curve-navigation.js?v=1" defer></script><script src="assets/video-playback.js?v=visible-3" defer></script>
+  <link rel="stylesheet" href="assets/curve-navigation.css?v=3"><script src="assets/curve-navigation.js?v=1" defer></script><script src="assets/video-playback.js?v=visible-4" defer></script>
   <script src="assets/site.js?v=pick-expert-1" defer></script>
   <script src="assets/teabag-curves.js?v=curve-click-2" defer></script>
   <link rel="stylesheet" href="assets/beige.css?hash=42eea91e89d6" data-theme-style="light">
   <link rel="stylesheet" href="assets/theme.css?hash=16513040dc22">
   <script src="assets/theme.js?hash=659067ef29a1"></script>
   <link rel="canonical" href="index.html">
-  <link rel="stylesheet" href="assets/trajectory-demo.css?v=paths-2">
-  <script src="assets/trajectory-demo.js?v=paths-2" defer></script>
+  <link rel="stylesheet" href="assets/trajectory-demo.css?v=pairs-3">
+  <script src="assets/trajectory-demo.js?v=pairs-3" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -519,40 +519,35 @@
       <div id="trajectory-demo" class="trajectory-demo" data-trajectory-demo aria-labelledby="trajectory-demo-title">
         <p class="kicker">Interactive · Recorded control</p>
         <h3 id="trajectory-demo-title">Choose a path. See the predicted motion.</h3>
-        <p class="trajectory-intro">Compare two paths from the same shoe scene, or explore the cup examples. Predictions play automatically when visible. Click a colored segment to inspect that part of the motion.</p>
-        <div data-trajectory-scenes class="trajectory-scenes" role="group" aria-label="Choose a control scene"></div>
+        <p class="trajectory-intro">Two paths, side by side. Compare the shoe routes or explore the cup motions. Click a named segment to inspect it; videos play automatically when visible.</p>
+        <div data-trajectory-scenes class="trajectory-scenes" role="group" aria-label="Choose a video pair"></div>
         <div data-trajectory-content hidden>
           <div class="trajectory-scene-info"><strong data-trajectory-task></strong></div>
           <div class="trajectory-panels">
-            <figure class="trajectory-panel">
-              <figcaption><strong>Input + control waypoints</strong><span>Click a segment</span></figcaption>
-              <div class="trajectory-canvas">
-                <img data-trajectory-seed alt="" width="768" height="512">
-                <svg data-trajectory-paths viewBox="0 0 768 512" role="group" aria-label="Interactive control path"></svg>
-              </div>
-            </figure>
-            <figure class="trajectory-panel">
-              <figcaption><strong>CoachWorld prediction</strong><span data-trajectory-result-label></span></figcaption>
+            <figure class="trajectory-panel" data-trajectory-panel>
+              <figcaption><strong data-trajectory-title></strong><span data-trajectory-result-label>Full path</span></figcaption>
               <div class="trajectory-canvas trajectory-prediction">
-                <video data-trajectory-video data-manual-playback controls muted playsinline preload="none" width="768" height="512"></video>
-                <svg data-trajectory-result-paths viewBox="0 0 768 512" aria-hidden="true"></svg>
+                <video data-trajectory-video data-manual-playback muted playsinline preload="none" width="768" height="512" tabindex="0"></video>
+                <svg data-trajectory-paths viewBox="0 0 768 512" role="group" aria-label="Requested control path"></svg>
               </div>
+              <div data-trajectory-ranges class="trajectory-ranges" role="group" aria-label="Play a named path segment"></div>
+              <button data-trajectory-toggle class="trajectory-replay" type="button">Pause</button>
+            </figure>
+            <figure class="trajectory-panel" data-trajectory-panel>
+              <figcaption><strong data-trajectory-title></strong><span data-trajectory-result-label>Full path</span></figcaption>
+              <div class="trajectory-canvas trajectory-prediction">
+                <video data-trajectory-video data-manual-playback muted playsinline preload="none" width="768" height="512" tabindex="0"></video>
+                <svg data-trajectory-paths viewBox="0 0 768 512" role="group" aria-label="Requested control path"></svg>
+              </div>
+              <div data-trajectory-ranges class="trajectory-ranges" role="group" aria-label="Play a named path segment"></div>
+              <button data-trajectory-toggle class="trajectory-replay" type="button">Pause</button>
             </figure>
           </div>
           <div class="trajectory-controls">
-            <div data-trajectory-ranges class="trajectory-ranges" role="group" aria-label="Choose full trajectory or a segment"></div>
-            <button data-trajectory-replay class="trajectory-replay" type="button">Replay ↺</button>
+            <p class="trajectory-detail">Same colors mark the first, second, and final path segments.</p>
+            <button data-trajectory-replay class="trajectory-replay" type="button">Replay both ↺</button>
           </div>
-          <p data-trajectory-detail class="trajectory-detail"></p>
-          <details class="trajectory-parameters">
-            <summary>Recorded control details</summary>
-            <dl>
-              <div><dt>Depth · now → 1 → 2 → target</dt><dd data-trajectory-depth></dd></div>
-              <div><dt>Gripper · 1 → 2 → target</dt><dd data-trajectory-gripper></dd></div>
-              <div><dt>Clip</dt><dd data-trajectory-duration></dd></div>
-            </dl>
-          </details>
-          <p class="trajectory-footnote">Colored lines show the requested EEF path; the white marker follows its control timing, not measured motion. The prediction is the original model output with a path overlay. Clips play at 5 fps and pause off screen. These are short control previews, not completed-task demonstrations.</p>
+          <p class="trajectory-footnote">Direction names describe movement in the image. Colored lines show the requested EEF path; the white marker follows control timing, not measured motion. These are original model predictions with a path overlay, not completed-task demonstrations.</p>
         </div>
         <p data-trajectory-status class="trajectory-status" role="status">Loading recorded controls…</p>
         <noscript>Enable JavaScript to switch between the recorded control presets.</noscript>
