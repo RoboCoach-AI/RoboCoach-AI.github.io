@@ -20,8 +20,8 @@
   <link rel="stylesheet" href="assets/theme.css?hash=16513040dc22">
   <script src="assets/theme.js?hash=659067ef29a1"></script>
   <link rel="canonical" href="index.html">
-  <link rel="stylesheet" href="assets/trajectory-demo.css?v=balanced-paths-9">
-  <script src="assets/trajectory-demo.js?v=balanced-paths-9" defer></script>
+  <link rel="stylesheet" href="assets/trajectory-demo.css?v=stable-shoe-10">
+  <script src="assets/trajectory-demo.js?v=stable-shoe-10" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -520,9 +520,13 @@
         <p class="kicker">Interactive · Free-form action control</p>
         <h3 id="trajectory-demo-title">Choose a path. See the predicted motion.</h3>
         <p class="trajectory-intro">One scene, two routes. Compare up → across → down with down → across → up, starting and ending at the same points. Choose a dataset below, then play either full prediction or a single motion segment.</p>
+        <p class="trajectory-note">These are model predictions conditioned on manually drawn paths—not recorded action replays or physical executions. Colors identify the three requested EEF segments; white markers show their timing, not measured motion. Directions refer to the image.</p>
         <div data-trajectory-scenes class="trajectory-scenes" role="group" aria-label="Choose a video pair"></div>
         <div data-trajectory-content hidden>
-          <div class="trajectory-scene-info"><strong data-trajectory-task></strong></div>
+          <div class="trajectory-scene-info">
+            <strong data-trajectory-task></strong>
+            <button data-trajectory-replay class="trajectory-replay" type="button">Replay both ↺</button>
+          </div>
           <div class="trajectory-panels">
             <figure class="trajectory-panel" data-trajectory-panel>
               <figcaption><strong data-trajectory-title></strong><span data-trajectory-result-label>Full path</span></figcaption>
@@ -549,11 +553,6 @@
               <div data-trajectory-ranges class="trajectory-ranges" role="group" aria-label="Play a named path segment"></div>
             </figure>
           </div>
-          <div class="trajectory-controls">
-            <p class="trajectory-detail">Same colors mark the first, second, and final path segments.</p>
-            <button data-trajectory-replay class="trajectory-replay" type="button">Replay both ↺</button>
-          </div>
-          <p class="trajectory-footnote">These are qualitative action-following examples using manually specified paths, not replays of recorded action sequences. Colored lines and the white marker show the requested EEF path and timing, not measured motion. All videos are model predictions, including those initialized from real-world recordings; they are not physical executions of the drawn paths. Direction names refer to movement in the image.</p>
         </div>
         <p data-trajectory-status class="trajectory-status" role="status">Loading recorded controls…</p>
         <noscript>Enable JavaScript to switch between the recorded control presets.</noscript>

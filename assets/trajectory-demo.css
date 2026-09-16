@@ -29,6 +29,7 @@ html[data-theme="light"] .trajectory-demo {
 .trajectory-demo h3 { margin: 4px 0 10px; color: var(--ink); font-size: clamp(24px, 3vw, 34px); line-height: 1.2; }
 .trajectory-demo .kicker { color: var(--teal); }
 .trajectory-intro { max-width: 760px; margin: 0 0 22px; color: var(--muted); }
+.trajectory-note { max-width: 960px; margin: -10px 0 22px; color: var(--muted); font-size: 13px; line-height: 1.6; }
 .trajectory-scenes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
 .trajectory-domain { padding: 16px; border: 1px solid var(--line); border-radius: 10px; }
 .trajectory-domain h4 { margin: 0 0 14px; color: var(--muted); font-size: 11px; font-weight: 750; text-transform: uppercase; letter-spacing: .12em; }
@@ -57,6 +58,8 @@ html[data-theme="light"] .trajectory-demo {
 .trajectory-ranges button { display: flex; align-items: center; justify-content: center; gap: 7px; min-height: 44px; padding: 8px 6px; font-size: 13px; line-height: 1.25; }
 .trajectory-demo button:focus-visible, .trajectory-demo input:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
 .trajectory-scene-info { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; margin: 18px 0 12px; font-size: 14px; }
+.trajectory-scene-info strong { flex: 1 1 280px; align-self: center; }
+.trajectory-scene-info .trajectory-replay { align-self: center; }
 .trajectory-panels { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .trajectory-panel { min-width: 0; margin: 0; }
 .trajectory-panel figcaption { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 40px; font-size: 14px; }
@@ -81,11 +84,12 @@ html[data-theme="light"] .trajectory-demo {
 .trajectory-direction { fill: white; font-size: 19px; font-weight: 750; paint-order: stroke; stroke: #10222b; stroke-width: 4px; stroke-linejoin: round; pointer-events: none; }
 .trajectory-panel > .trajectory-ranges { margin: 0 0 8px; }
 .trajectory-panel video:focus-visible { outline: 3px solid var(--blue); outline-offset: -3px; }
-.trajectory-controls { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin: 18px 0; }
+.trajectory-controls { display: flex; align-items: center; justify-content: flex-end; gap: 12px; margin: 12px 0 0; }
 .trajectory-swatch { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 20px; width: 20px; height: 20px; color: #10222b; font-size: 11px; font-weight: 800; border-radius: 50%; }
 .trajectory-detail { margin: 10px 0; color: var(--ink); font-size: 14px; }
 .trajectory-footnote { margin: 12px 0 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
 .trajectory-status { margin: 8px 0; color: var(--teal); font-size: 14px; }
+.trajectory-status:empty { display: none; }
 .trajectory-parameters { margin-top: 14px; font-size: 14px; }
 .trajectory-parameters summary { cursor: pointer; color: var(--muted); }
 .trajectory-parameters dl { display: flex; flex-wrap: wrap; gap: 12px 28px; margin: 12px 0 0; }

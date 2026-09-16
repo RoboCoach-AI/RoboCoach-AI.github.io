@@ -200,11 +200,11 @@
     $("scenes").querySelectorAll("button").forEach(button => button.setAttribute("aria-pressed", String(Number(button.dataset.pairIndex) === index)));
     $("task").textContent = pair.task;
     players.forEach((player, i) => player.load(scenes.find(scene => scene.id === pair.scenes[i])));
-    $("status").textContent = "Click a video to pause or play. Replay both to compare from the start.";
+    $("status").textContent = "";
   }
   $("replay").addEventListener("click", () => players.forEach(player => player.replay()));
 
-  fetch("assets/trajectory-demo/presets.json?v=balanced-paths-9")
+  fetch("assets/trajectory-demo/presets.json?v=stable-shoe-10")
     .then(response => {
       if (!response.ok) throw new Error(`Recordings: ${response.status}`);
       return response.json();

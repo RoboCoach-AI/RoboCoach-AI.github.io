@@ -1,0 +1,92 @@
+{
+  "id": "shoe-compact-lower-rgb",
+  "label": "Shoe \u00b7 Lower route",
+  "task": "Grab the shoe with black heel patch using the right arm and drop it on the mat",
+  "source_dataset": "RoboTwin",
+  "seed_type": "simulation",
+  "output_type": "world-model prediction",
+  "control_type": "manually specified waypoints",
+  "width": 768,
+  "height": 512,
+  "image": "assets/trajectory-demo/shoe-compact-lower-rgb.jpg",
+  "video": "assets/trajectory-demo/shoe-compact-lower-rgb.mp4",
+  "record": "assets/trajectory-demo/shoe-compact-lower-rgb.json",
+  "duration": 2.6,
+  "control_duration": 2.4,
+  "fps": 5,
+  "inference_steps": 40,
+  "nodes": [
+    {
+      "label": "now",
+      "u": 647.01953125,
+      "v": 102.83011627197266,
+      "depth": 0.5394558906555176,
+      "gripper": 0.0
+    },
+    {
+      "label": "1",
+      "u": 647.01953125,
+      "v": 192.83011627197266,
+      "depth": 0.5394558906555176,
+      "gripper": 0.0
+    },
+    {
+      "label": "2",
+      "u": 477.01953125,
+      "v": 192.83011627197266,
+      "depth": 0.5394558906555176,
+      "gripper": 0.0
+    },
+    {
+      "label": "target",
+      "u": 477.01953125,
+      "v": 162.83011627197266,
+      "depth": 0.5394558906555176,
+      "gripper": 0.0
+    }
+  ],
+  "segments": [
+    {
+      "label": "Down",
+      "start": 0,
+      "end": 0.8
+    },
+    {
+      "label": "Left",
+      "start": 0.8,
+      "end": 1.6
+    },
+    {
+      "label": "Up",
+      "start": 1.6,
+      "end": 2.6
+    }
+  ],
+  "controls": [
+    {
+      "slot": 1,
+      "source": "manual_uv_depth",
+      "path_uv_depth": [
+        {
+          "u": 647.01953125,
+          "v": 192.83011627197266,
+          "depth": 0.5394558906555176,
+          "gripper": 0.0
+        },
+        {
+          "u": 477.01953125,
+          "v": 192.83011627197266,
+          "depth": 0.5394558906555176,
+          "gripper": 0.0
+        },
+        {
+          "u": 477.01953125,
+          "v": 162.83011627197266,
+          "depth": 0.5394558906555176,
+          "gripper": 0.0
+        }
+      ]
+    }
+  ],
+  "display_transform": "swap_red_blue"
+}
