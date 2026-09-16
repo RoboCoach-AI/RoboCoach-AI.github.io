@@ -175,96 +175,9 @@
       ]
     },
     {
-      "id": "yellow-cup-lift",
-      "label": "Yellow cup \u00b7 lift",
-      "task": "Lift the yellow cup and move it toward the coaster.",
-      "width": 768,
-      "height": 512,
-      "image": "assets/trajectory-demo/yellow-cup-lift.jpg",
-      "video": "assets/trajectory-demo/yellow-cup-lift.mp4",
-      "record": "assets/trajectory-demo/yellow-cup-lift.json",
-      "duration": 2.6,
-      "control_duration": 2.4,
-      "fps": 5.0,
-      "inference_steps": 30,
-      "nodes": [
-        {
-          "label": "now",
-          "u": 146.91160583496094,
-          "v": 129.15106201171875,
-          "depth": 0.5792511105537415,
-          "gripper": 0.0
-        },
-        {
-          "label": "1",
-          "u": 120,
-          "v": 65,
-          "depth": 0.535,
-          "gripper": 0.0
-        },
-        {
-          "label": "2",
-          "u": 155,
-          "v": 105,
-          "depth": 0.5,
-          "gripper": 0.0
-        },
-        {
-          "label": "target",
-          "u": 195,
-          "v": 180,
-          "depth": 0.505,
-          "gripper": 0.0
-        }
-      ],
-      "segments": [
-        {
-          "label": "Up",
-          "start": 0.0,
-          "end": 0.8
-        },
-        {
-          "label": "Down-right",
-          "start": 0.8,
-          "end": 1.6
-        },
-        {
-          "label": "Down",
-          "start": 1.6,
-          "end": 2.6
-        }
-      ],
-      "controls": [
-        {
-          "slot": 0,
-          "source": "manual_uv_depth",
-          "path_uv_depth": [
-            {
-              "u": 120,
-              "v": 65,
-              "depth": 0.535,
-              "gripper": 0.0
-            },
-            {
-              "u": 155,
-              "v": 105,
-              "depth": 0.5,
-              "gripper": 0.0
-            },
-            {
-              "u": 195,
-              "v": 180,
-              "depth": 0.505,
-              "gripper": 0.0
-            }
-          ]
-        }
-      ]
-    },
-    {
       "id": "cup-gentle-arc",
-      "label": "Patterned cup \u00b7 arc",
-      "task": "Carry the patterned cup toward the plate along a gentle arc.",
+      "label": "Cup \u00b7 upper path",
+      "task": "Carry the patterned cup toward the plate along the upper path.",
       "width": 768,
       "height": 512,
       "image": "assets/trajectory-demo/cup-gentle-arc.jpg",
@@ -711,6 +624,93 @@
           ]
         }
       ]
+    },
+    {
+      "id": "cup-low-arc",
+      "label": "Cup \u00b7 lower path",
+      "task": "Carry the patterned cup toward the plate along the lower path.",
+      "width": 768,
+      "height": 512,
+      "image": "assets/trajectory-demo/cup-low-arc.jpg",
+      "video": "assets/trajectory-demo/cup-low-arc.mp4",
+      "record": "assets/trajectory-demo/cup-low-arc.json",
+      "duration": 2.6,
+      "control_duration": 2.4,
+      "fps": 5.0,
+      "inference_steps": 30,
+      "nodes": [
+        {
+          "label": "now",
+          "u": 63.82234191894531,
+          "v": 64.75070190429688,
+          "depth": 0.45064231753349304,
+          "gripper": 0.0
+        },
+        {
+          "label": "1",
+          "u": 155,
+          "v": 110,
+          "depth": 0.465,
+          "gripper": 0.0
+        },
+        {
+          "label": "2",
+          "u": 230,
+          "v": 155,
+          "depth": 0.48,
+          "gripper": 0.0
+        },
+        {
+          "label": "target",
+          "u": 280,
+          "v": 205,
+          "depth": 0.495,
+          "gripper": 0.0
+        }
+      ],
+      "segments": [
+        {
+          "label": "Right-down",
+          "start": 0.0,
+          "end": 0.8
+        },
+        {
+          "label": "Right-down",
+          "start": 0.8,
+          "end": 1.6
+        },
+        {
+          "label": "Down-right",
+          "start": 1.6,
+          "end": 2.6
+        }
+      ],
+      "controls": [
+        {
+          "slot": 0,
+          "source": "manual_uv_depth",
+          "path_uv_depth": [
+            {
+              "u": 155,
+              "v": 110,
+              "depth": 0.465,
+              "gripper": 0.0
+            },
+            {
+              "u": 230,
+              "v": 155,
+              "depth": 0.48,
+              "gripper": 0.0
+            },
+            {
+              "u": 280,
+              "v": 205,
+              "depth": 0.495,
+              "gripper": 0.0
+            }
+          ]
+        }
+      ]
     }
   ],
   "pairs": [
@@ -739,11 +739,11 @@
       ]
     },
     {
-      "label": "RoboTwin \u00b7 cup tasks",
-      "task": "RoboTwin simulation \u00b7 Two different tasks and scenes: yellow cup to coaster (left), patterned cup toward plate (right). Each uses a manually specified path.",
+      "label": "RoboTwin \u00b7 cup paths",
+      "task": "RoboTwin simulation \u00b7 Same initial scene and task, two manually specified paths carrying the same patterned cup toward the plate.",
       "scenes": [
-        "yellow-cup-lift",
-        "cup-gentle-arc"
+        "cup-gentle-arc",
+        "cup-low-arc"
       ]
     }
   ]

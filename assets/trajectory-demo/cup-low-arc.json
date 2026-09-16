@@ -1,12 +1,12 @@
 {
-  "id": "cup-gentle-arc",
-  "label": "Cup \u00b7 upper path",
-  "task": "Carry the patterned cup toward the plate along the upper path.",
+  "id": "cup-low-arc",
+  "label": "Cup \u00b7 lower path",
+  "task": "Carry the patterned cup toward the plate along the lower path.",
   "width": 768,
   "height": 512,
-  "image": "assets/trajectory-demo/cup-gentle-arc.jpg",
-  "video": "assets/trajectory-demo/cup-gentle-arc.mp4",
-  "record": "assets/trajectory-demo/cup-gentle-arc.json",
+  "image": "assets/trajectory-demo/cup-low-arc.jpg",
+  "video": "assets/trajectory-demo/cup-low-arc.mp4",
+  "record": "assets/trajectory-demo/cup-low-arc.json",
   "duration": 2.6,
   "control_duration": 2.4,
   "fps": 5.0,
@@ -22,38 +22,38 @@
     {
       "label": "1",
       "u": 155,
-      "v": 75,
-      "depth": 0.43,
+      "v": 110,
+      "depth": 0.465,
       "gripper": 0.0
     },
     {
       "label": "2",
       "u": 230,
-      "v": 120,
-      "depth": 0.445,
+      "v": 155,
+      "depth": 0.48,
       "gripper": 0.0
     },
     {
       "label": "target",
-      "u": 270,
-      "v": 185,
-      "depth": 0.48,
+      "u": 280,
+      "v": 205,
+      "depth": 0.495,
       "gripper": 0.0
     }
   ],
   "segments": [
     {
-      "label": "Right",
+      "label": "Right-down",
       "start": 0.0,
       "end": 0.8
     },
     {
-      "label": "Down-right",
+      "label": "Right-down",
       "start": 0.8,
       "end": 1.6
     },
     {
-      "label": "Down",
+      "label": "Down-right",
       "start": 1.6,
       "end": 2.6
     }
@@ -65,20 +65,20 @@
       "path_uv_depth": [
         {
           "u": 155,
-          "v": 75,
-          "depth": 0.43,
+          "v": 110,
+          "depth": 0.465,
           "gripper": 0.0
         },
         {
           "u": 230,
-          "v": 120,
-          "depth": 0.445,
+          "v": 155,
+          "depth": 0.48,
           "gripper": 0.0
         },
         {
-          "u": 270,
-          "v": 185,
-          "depth": 0.48,
+          "u": 280,
+          "v": 205,
+          "depth": 0.495,
           "gripper": 0.0
         }
       ]
