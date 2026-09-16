@@ -1,0 +1,91 @@
+{
+  "id": "droid-egg-lower",
+  "label": "Checkered Table \u00b7 Lower route",
+  "task": "Put the egg on the table in the red bowl on the right",
+  "source_dataset": "DROID",
+  "seed_type": "real-world recording",
+  "output_type": "world-model prediction",
+  "control_type": "manually specified waypoints",
+  "width": 768,
+  "height": 512,
+  "image": "assets/trajectory-demo/droid-egg-lower.jpg",
+  "video": "assets/trajectory-demo/droid-egg-lower.mp4",
+  "record": "assets/trajectory-demo/droid-egg-lower.json",
+  "duration": 2.6,
+  "control_duration": 2.4,
+  "fps": 5,
+  "inference_steps": 30,
+  "nodes": [
+    {
+      "label": "now",
+      "u": 453.81146240234375,
+      "v": 215.114013671875,
+      "depth": 0.7285498380661011,
+      "gripper": 0.0
+    },
+    {
+      "label": "1",
+      "u": 453.81146240234375,
+      "v": 245.114013671875,
+      "depth": 0.7185498380661011,
+      "gripper": 0.0
+    },
+    {
+      "label": "2",
+      "u": 393.81146240234375,
+      "v": 245.114013671875,
+      "depth": 0.7185498380661011,
+      "gripper": 0.0
+    },
+    {
+      "label": "target",
+      "u": 393.81146240234375,
+      "v": 215.114013671875,
+      "depth": 0.7285498380661011,
+      "gripper": 0.0
+    }
+  ],
+  "segments": [
+    {
+      "label": "Down",
+      "start": 0,
+      "end": 0.8
+    },
+    {
+      "label": "Left",
+      "start": 0.8,
+      "end": 1.6
+    },
+    {
+      "label": "Up",
+      "start": 1.6,
+      "end": 2.6
+    }
+  ],
+  "controls": [
+    {
+      "slot": 0,
+      "source": "manual_uv_depth",
+      "path_uv_depth": [
+        {
+          "u": 453.81146240234375,
+          "v": 245.114013671875,
+          "depth": 0.7185498380661011,
+          "gripper": 0.0
+        },
+        {
+          "u": 393.81146240234375,
+          "v": 245.114013671875,
+          "depth": 0.7185498380661011,
+          "gripper": 0.0
+        },
+        {
+          "u": 393.81146240234375,
+          "v": 215.114013671875,
+          "depth": 0.7285498380661011,
+          "gripper": 0.0
+        }
+      ]
+    }
+  ]
+}

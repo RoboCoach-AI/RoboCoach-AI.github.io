@@ -1,0 +1,195 @@
+{
+  "id": "dual-tubes-lower",
+  "label": "Dual-Arm Tubes \u00b7 Lower route",
+  "task": "Put the test tube on the table back onto the test tube rack.",
+  "source_dataset": "RoboCoin",
+  "seed_type": "real-world recording",
+  "output_type": "world-model prediction",
+  "control_type": "manually specified waypoints",
+  "width": 768,
+  "height": 512,
+  "image": "assets/trajectory-demo/dual-tubes-lower.jpg",
+  "video": "assets/trajectory-demo/dual-tubes-lower.mp4",
+  "record": "assets/trajectory-demo/dual-tubes-lower.json",
+  "duration": 2.6,
+  "control_duration": 2.4,
+  "fps": 5,
+  "inference_steps": 30,
+  "nodes": [
+    {
+      "label": "now",
+      "u": 193.72816467285156,
+      "v": 244.68170166015625,
+      "depth": 0.31789836287498474,
+      "gripper": 0.9975490570068359
+    },
+    {
+      "label": "1",
+      "u": 193.72816467285156,
+      "v": 274.68170166015625,
+      "depth": 0.30789836287498473,
+      "gripper": 0.9975490570068359
+    },
+    {
+      "label": "2",
+      "u": 233.72816467285156,
+      "v": 274.68170166015625,
+      "depth": 0.30789836287498473,
+      "gripper": 0.9975490570068359
+    },
+    {
+      "label": "target",
+      "u": 233.72816467285156,
+      "v": 244.68170166015625,
+      "depth": 0.31789836287498474,
+      "gripper": 0.9975490570068359
+    }
+  ],
+  "segments": [
+    {
+      "label": "Down together",
+      "start": 0,
+      "end": 0.8
+    },
+    {
+      "label": "Move inward",
+      "start": 0.8,
+      "end": 1.6
+    },
+    {
+      "label": "Up together",
+      "start": 1.6,
+      "end": 2.6
+    }
+  ],
+  "controls": [
+    {
+      "slot": 0,
+      "source": "manual_uv_depth",
+      "path_uv_depth": [
+        {
+          "u": 193.72816467285156,
+          "v": 274.68170166015625,
+          "depth": 0.30789836287498473,
+          "gripper": 0.9975490570068359
+        },
+        {
+          "u": 233.72816467285156,
+          "v": 274.68170166015625,
+          "depth": 0.30789836287498473,
+          "gripper": 0.9975490570068359
+        },
+        {
+          "u": 233.72816467285156,
+          "v": 244.68170166015625,
+          "depth": 0.31789836287498474,
+          "gripper": 0.9975490570068359
+        }
+      ]
+    },
+    {
+      "slot": 1,
+      "source": "manual_uv_depth",
+      "path_uv_depth": [
+        {
+          "u": 573.5787963867188,
+          "v": 271.6437530517578,
+          "depth": 0.2945520484447479,
+          "gripper": 0.01724136807024479
+        },
+        {
+          "u": 533.5787963867188,
+          "v": 271.6437530517578,
+          "depth": 0.2945520484447479,
+          "gripper": 0.01724136807024479
+        },
+        {
+          "u": 533.5787963867188,
+          "v": 241.6437530517578,
+          "depth": 0.3045520484447479,
+          "gripper": 0.01724136807024479
+        }
+      ]
+    }
+  ],
+  "paths": [
+    {
+      "arm": "Left arm",
+      "slot": 0,
+      "nodes": [
+        {
+          "label": "now",
+          "u": 193.72816467285156,
+          "v": 244.68170166015625,
+          "depth": 0.31789836287498474,
+          "gripper": 0.9975490570068359
+        },
+        {
+          "label": "1",
+          "u": 193.72816467285156,
+          "v": 274.68170166015625,
+          "depth": 0.30789836287498473,
+          "gripper": 0.9975490570068359
+        },
+        {
+          "label": "2",
+          "u": 233.72816467285156,
+          "v": 274.68170166015625,
+          "depth": 0.30789836287498473,
+          "gripper": 0.9975490570068359
+        },
+        {
+          "label": "target",
+          "u": 233.72816467285156,
+          "v": 244.68170166015625,
+          "depth": 0.31789836287498474,
+          "gripper": 0.9975490570068359
+        }
+      ],
+      "labels": [
+        "Down",
+        "Right",
+        "Up"
+      ]
+    },
+    {
+      "arm": "Right arm",
+      "slot": 1,
+      "nodes": [
+        {
+          "label": "now",
+          "u": 573.5787963867188,
+          "v": 241.6437530517578,
+          "depth": 0.3045520484447479,
+          "gripper": 0.01724136807024479
+        },
+        {
+          "label": "1",
+          "u": 573.5787963867188,
+          "v": 271.6437530517578,
+          "depth": 0.2945520484447479,
+          "gripper": 0.01724136807024479
+        },
+        {
+          "label": "2",
+          "u": 533.5787963867188,
+          "v": 271.6437530517578,
+          "depth": 0.2945520484447479,
+          "gripper": 0.01724136807024479
+        },
+        {
+          "label": "target",
+          "u": 533.5787963867188,
+          "v": 241.6437530517578,
+          "depth": 0.3045520484447479,
+          "gripper": 0.01724136807024479
+        }
+      ],
+      "labels": [
+        "Down",
+        "Left",
+        "Up"
+      ]
+    }
+  ]
+}

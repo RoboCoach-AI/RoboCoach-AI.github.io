@@ -204,7 +204,7 @@
   }
   $("replay").addEventListener("click", () => players.forEach(player => player.replay()));
 
-  fetch("assets/trajectory-demo/presets.json?v=grouped-paths-8")
+  fetch("assets/trajectory-demo/presets.json?v=balanced-paths-9")
     .then(response => {
       if (!response.ok) throw new Error(`Recordings: ${response.status}`);
       return response.json();
