@@ -65,8 +65,10 @@
           "aria-label": `Play ${segment.label}`,
         });
         const d = `M${a.u},${a.v} L${b.u},${b.v}`;
+        const vertical = Math.abs(a.u - b.u) < Math.abs(a.v - b.v);
         const label = svgElement("text", {
-          x: (a.u + b.u) / 2, y: (a.v + b.v) / 2 - (index === 1 ? 38 : 15),
+          x: Math.max(38, Math.min(scene.width - 38, (a.u + b.u) / 2 + (vertical ? (index === 0 ? -38 : 42) : 0))),
+          y: vertical ? (a.v + b.v) / 2 + 5 : (a.v < 48 ? a.v + 30 : a.v - 20),
           class: "trajectory-direction", "text-anchor": "middle",
         });
         label.textContent = segment.label;
@@ -189,7 +191,7 @@
   }
   $("replay").addEventListener("click", () => players.forEach(player => player.replay()));
 
-  fetch("assets/trajectory-demo/presets.json?v=same-scene-5")
+  fetch("assets/trajectory-demo/presets.json?v=axis-paths-6")
     .then(response => {
       if (!response.ok) throw new Error(`Recordings: ${response.status}`);
       return response.json();

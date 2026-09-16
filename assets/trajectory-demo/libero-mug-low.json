@@ -1,0 +1,91 @@
+{
+  "id": "libero-mug-low",
+  "label": "Mug \u00b7 Lower lift",
+  "task": "pick up the yellow and white mug and place it to the right of the caddy",
+  "source_dataset": "LIBERO",
+  "seed_type": "simulation",
+  "output_type": "world-model prediction",
+  "control_type": "manually specified waypoints",
+  "width": 768,
+  "height": 512,
+  "image": "assets/trajectory-demo/libero-mug-low.jpg",
+  "video": "assets/trajectory-demo/libero-mug-low.mp4",
+  "record": "assets/trajectory-demo/libero-mug-low.json",
+  "duration": 2.6,
+  "control_duration": 2.4,
+  "fps": 5,
+  "inference_steps": 30,
+  "nodes": [
+    {
+      "label": "now",
+      "u": 428.8602600097656,
+      "v": 367.0185546875,
+      "depth": 0.8395286202430725,
+      "gripper": 0.10883248597383499
+    },
+    {
+      "label": "1",
+      "u": 428.8602600097656,
+      "v": 317.0185546875,
+      "depth": 0.8195286202430725,
+      "gripper": 0.10883248597383499
+    },
+    {
+      "label": "2",
+      "u": 518.8602600097656,
+      "v": 317.0185546875,
+      "depth": 0.8195286202430725,
+      "gripper": 0.10883248597383499
+    },
+    {
+      "label": "target",
+      "u": 518.8602600097656,
+      "v": 367.0185546875,
+      "depth": 0.8495286202430725,
+      "gripper": 0.10883248597383499
+    }
+  ],
+  "segments": [
+    {
+      "label": "Up",
+      "start": 0,
+      "end": 0.8
+    },
+    {
+      "label": "Right",
+      "start": 0.8,
+      "end": 1.6
+    },
+    {
+      "label": "Down",
+      "start": 1.6,
+      "end": 2.6
+    }
+  ],
+  "controls": [
+    {
+      "slot": 0,
+      "source": "manual_uv_depth",
+      "path_uv_depth": [
+        {
+          "u": 428.8602600097656,
+          "v": 317.0185546875,
+          "depth": 0.8195286202430725,
+          "gripper": 0.10883248597383499
+        },
+        {
+          "u": 518.8602600097656,
+          "v": 317.0185546875,
+          "depth": 0.8195286202430725,
+          "gripper": 0.10883248597383499
+        },
+        {
+          "u": 518.8602600097656,
+          "v": 367.0185546875,
+          "depth": 0.8495286202430725,
+          "gripper": 0.10883248597383499
+        }
+      ]
+    }
+  ]
+}

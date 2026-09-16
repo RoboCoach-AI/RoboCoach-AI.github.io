@@ -1,0 +1,91 @@
+{
+  "id": "drawer-step-high",
+  "label": "Drawer \u00b7 Higher lift",
+  "task": "close drawer",
+  "source_dataset": "RoboMind",
+  "seed_type": "real-world recording",
+  "output_type": "world-model prediction",
+  "control_type": "manually specified waypoints",
+  "width": 768,
+  "height": 512,
+  "image": "assets/trajectory-demo/drawer-step-high.jpg",
+  "video": "assets/trajectory-demo/drawer-step-high.mp4",
+  "record": "assets/trajectory-demo/drawer-step-high.json",
+  "duration": 2.6,
+  "control_duration": 2.4,
+  "fps": 5,
+  "inference_steps": 30,
+  "nodes": [
+    {
+      "label": "now",
+      "u": 456.553955078125,
+      "v": 105.78006744384766,
+      "depth": 0.9435068368911743,
+      "gripper": 0.4669603705406189
+    },
+    {
+      "label": "1",
+      "u": 456.553955078125,
+      "v": 55.780067443847656,
+      "depth": 0.9235068368911743,
+      "gripper": 0.4669603705406189
+    },
+    {
+      "label": "2",
+      "u": 526.553955078125,
+      "v": 55.780067443847656,
+      "depth": 0.9235068368911743,
+      "gripper": 0.4669603705406189
+    },
+    {
+      "label": "target",
+      "u": 526.553955078125,
+      "v": 145.78006744384766,
+      "depth": 0.9535068368911743,
+      "gripper": 0.4669603705406189
+    }
+  ],
+  "segments": [
+    {
+      "label": "Up",
+      "start": 0,
+      "end": 0.8
+    },
+    {
+      "label": "Right",
+      "start": 0.8,
+      "end": 1.6
+    },
+    {
+      "label": "Down",
+      "start": 1.6,
+      "end": 2.6
+    }
+  ],
+  "controls": [
+    {
+      "slot": 0,
+      "source": "manual_uv_depth",
+      "path_uv_depth": [
+        {
+          "u": 456.553955078125,
+          "v": 55.780067443847656,
+          "depth": 0.9235068368911743,
+          "gripper": 0.4669603705406189
+        },
+        {
+          "u": 526.553955078125,
+          "v": 55.780067443847656,
+          "depth": 0.9235068368911743,
+          "gripper": 0.4669603705406189
+        },
+        {
+          "u": 526.553955078125,
+          "v": 145.78006744384766,
+          "depth": 0.9535068368911743,
+          "gripper": 0.4669603705406189
+        }
+      ]
+    }
+  ]
+}
