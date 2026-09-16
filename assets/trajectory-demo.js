@@ -13,6 +13,7 @@
   let pendingPlay = false;
   let completed = false;
   let playbackFrame;
+  let marker;
 
   function svgElement(tag, attributes) {
     const element = document.createElementNS(svgNS, tag);
@@ -63,6 +64,32 @@
       nodes.append(label);
     });
     svg.append(nodes);
+    const overlay = $("result-paths");
+    overlay.replaceChildren();
+    overlay.setAttribute("viewBox", `0 0 ${scene.width} ${scene.height}`);
+    scene.segments.forEach((segment, index) => {
+      const a = scene.nodes[index], b = scene.nodes[index + 1];
+      overlay.append(svgElement("path", {
+        d: `M${a.u},${a.v} L${b.u},${b.v}`, class: "trajectory-line",
+        stroke: colors[index], opacity: "0.85",
+      }));
+    });
+    overlay.append(nodes.cloneNode(true));
+    marker = svgElement("circle", { r: 12, fill: "none", stroke: "white", "stroke-width": 4 });
+    overlay.append(marker);
+    updateMarker();
+  }
+
+  function updateMarker() {
+    if (!scene || !marker) return;
+    const position = Math.max(0, Math.min(1, video.currentTime / scene.control_duration)) * scene.segments.length;
+    const i = Math.min(Math.floor(position), scene.segments.length - 1);
+    const t = position - i;
+    const a = scene.nodes[i], b = scene.nodes[i + 1];
+    // The backend interpolates in 3D; perspective projection weights pixels by depth.
+    const depth = a.depth * (1 - t) + b.depth * t;
+    marker.setAttribute("cx", (a.u * a.depth * (1 - t) + b.u * b.depth * t) / depth);
+    marker.setAttribute("cy", (a.v * a.depth * (1 - t) + b.v * b.depth * t) / depth);
   }
 
   function updateSelection() {
@@ -97,6 +124,7 @@
 
   function watchPlayback() {
     if (video.paused) return;
+    updateMarker();
     if (selected >= 0 && !video.seeking && video.currentTime >= range().end) {
       finishRange();
       return;
@@ -105,15 +133,14 @@
   }
 
   function playVideo() {
-    video.play().catch((error) => {
-      if (error.name === "NotAllowedError") status.textContent = "Press play on the video to start playback.";
-    });
+    window.roboCoachMedia?.sync(video);
   }
 
   function selectRange(index, play) {
     video.pause();
     stopWatch();
     selected = index;
+    video.loop = selected < 0;
     completed = false;
     pendingPlay = play;
     updateSelection();
@@ -121,8 +148,8 @@
     if (video.readyState >= 1) {
       video.currentTime = range().start;
       pendingPlay = false;
-      if (play) playVideo();
     }
+    if (play) playVideo();
   }
 
   function selectScene(index, play) {
@@ -153,13 +180,15 @@
     });
     drawPath();
     video.poster = scene.image;
-    video.src = scene.video;
+    video.removeAttribute("src");
+    video.dataset.src = scene.video;
     video.load();
     selectRange(-1, play);
   }
 
   $("replay").addEventListener("click", () => selectRange(selected, true));
   video.addEventListener("loadedmetadata", () => {
+    if (!scene) return;
     video.currentTime = range().start;
     if (pendingPlay) {
       pendingPlay = false;
@@ -167,6 +196,7 @@
     }
   });
   video.addEventListener("play", () => {
+    if (!scene) return;
     // Native play also replays the selected range after it has finished.
     if (completed || video.currentTime < range().start || video.currentTime >= range().end) {
       video.currentTime = range().start;
@@ -183,13 +213,12 @@
     if (scene && !completed && !video.ended) status.textContent = `Paused · ${range().label}.`;
   });
   video.addEventListener("ended", finishRange);
+  video.addEventListener("seeked", updateMarker);
+  video.addEventListener("timeupdate", updateMarker);
   video.addEventListener("error", () => {
     status.textContent = "This video could not be loaded. Select another scene or reload the page.";
   });
-  document.addEventListener("visibilitychange", () => { if (document.hidden) video.pause(); });
-  new IntersectionObserver(([entry]) => { if (!entry.isIntersecting) video.pause(); }).observe(root);
-
-  fetch("assets/trajectory-demo/presets.json")
+  fetch("assets/trajectory-demo/presets.json?v=paths-2")
     .then((response) => {
       if (!response.ok) throw new Error(`Recordings: ${response.status}`);
       return response.json();
@@ -204,7 +233,7 @@
         button.addEventListener("click", () => selectScene(index, true));
         $("scenes").append(button);
       });
-      selectScene(0, false);
+      selectScene(0, true);
       $("content").hidden = false;
     })
     .catch(() => {

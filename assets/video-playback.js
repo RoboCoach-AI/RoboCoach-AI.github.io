@@ -1,7 +1,7 @@
 "use strict";
 
 // Assign media URLs only near the viewport; play only visible videos.
-const autoplayVideos = [...document.querySelectorAll("video:not([data-manual-playback])")];
+const autoplayVideos = [...document.querySelectorAll("video")];
 const visibleVideos = new Set();
 function prepareVideo(video) {
   if (video.closest("[hidden]")) return;
@@ -30,13 +30,14 @@ function syncAutoplay(video) {
   }
 }
 autoplayVideos.forEach((video) => {
-  video.controls = false;
+  const controlled = video.hasAttribute("data-manual-playback");
+  if (!controlled) video.controls = false;
   video.autoplay = false;
   video.muted = true;
   video.defaultMuted = true;
-  video.loop = !video.hasAttribute("data-tea-advance");
+  if (!controlled) video.loop = !video.hasAttribute("data-tea-advance");
   video.playsInline = true;
-  if (video.getAttribute("aria-hidden") !== "true") {
+  if (!controlled && video.getAttribute("aria-hidden") !== "true") {
     video.tabIndex = 0;
     video.title = "Click or press Space to pause or play";
     if (!video.hasAttribute("aria-label")) video.setAttribute("aria-label", "Robot rollout video; click or press Space to pause or play");

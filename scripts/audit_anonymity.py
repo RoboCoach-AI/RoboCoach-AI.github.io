@@ -12,7 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 TEXT_SUFFIXES = {".html", ".css", ".js", ".md", ".json", ".txt", ".xml"}
 EMAIL = re.compile(r"(?i)\b[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}\b")
-HOME_PATH = re.compile(r"/(?:root|home|mnt|data)/[^\s\"'<>]+")
+HOME_PATH = re.compile(r"/(?:root|home|mnt|data|opt|Users)/[^\s\"'<>]+")
 URL = re.compile(r"https?://[^\s\"'<>]+", re.IGNORECASE)
 FORBIDDEN_HOST_HINTS = ("github.com/", "github.io", "modelscope", "huggingface.co/")
 

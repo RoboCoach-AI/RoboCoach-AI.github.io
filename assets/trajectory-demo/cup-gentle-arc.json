@@ -1,0 +1,87 @@
+{
+  "id": "cup-gentle-arc",
+  "label": "Patterned cup \u00b7 arc",
+  "task": "Carry the patterned cup toward the plate along a gentle arc.",
+  "width": 768,
+  "height": 512,
+  "image": "assets/trajectory-demo/cup-gentle-arc.jpg",
+  "video": "assets/trajectory-demo/cup-gentle-arc.mp4",
+  "record": "assets/trajectory-demo/cup-gentle-arc.json",
+  "duration": 2.6,
+  "control_duration": 2.4,
+  "fps": 5.0,
+  "inference_steps": 30,
+  "nodes": [
+    {
+      "label": "now",
+      "u": 63.82234191894531,
+      "v": 64.75070190429688,
+      "depth": 0.45064231753349304,
+      "gripper": 0.0
+    },
+    {
+      "label": "1",
+      "u": 155,
+      "v": 75,
+      "depth": 0.43,
+      "gripper": 0.0
+    },
+    {
+      "label": "2",
+      "u": 230,
+      "v": 120,
+      "depth": 0.445,
+      "gripper": 0.0
+    },
+    {
+      "label": "target",
+      "u": 270,
+      "v": 185,
+      "depth": 0.48,
+      "gripper": 0.0
+    }
+  ],
+  "segments": [
+    {
+      "label": "now \u2192 1",
+      "start": 0.0,
+      "end": 0.8
+    },
+    {
+      "label": "1 \u2192 2",
+      "start": 0.8,
+      "end": 1.6
+    },
+    {
+      "label": "2 \u2192 target",
+      "start": 1.6,
+      "end": 2.6
+    }
+  ],
+  "controls": [
+    {
+      "slot": 0,
+      "source": "manual_uv_depth",
+      "path_uv_depth": [
+        {
+          "u": 155,
+          "v": 75,
+          "depth": 0.43,
+          "gripper": 0.0
+        },
+        {
+          "u": 230,
+          "v": 120,
+          "depth": 0.445,
+          "gripper": 0.0
+        },
+        {
+          "u": 270,
+          "v": 185,
+          "depth": 0.48,
+          "gripper": 0.0
+        }
+      ]
+    }
+  ]
+}
