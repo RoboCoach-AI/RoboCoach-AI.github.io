@@ -347,20 +347,400 @@
           ]
         }
       ]
+    },
+    {
+      "id": "real-bread-right",
+      "label": "Bread \u00b7 right path",
+      "task": "put the bread on the table",
+      "source_dataset": "RoboMind",
+      "seed_type": "real-world recording",
+      "output_type": "world-model prediction",
+      "control_type": "manually specified waypoints",
+      "width": 768,
+      "height": 512,
+      "image": "assets/trajectory-demo/real-bread-right.jpg",
+      "video": "assets/trajectory-demo/real-bread-right.mp4",
+      "record": "assets/trajectory-demo/real-bread-right.json",
+      "duration": 2.6,
+      "control_duration": 2.4,
+      "fps": 5.0,
+      "inference_steps": 30,
+      "nodes": [
+        {
+          "label": "now",
+          "u": 466.6939697265625,
+          "v": 143.52655029296875,
+          "depth": 0.9137453436851501,
+          "gripper": 0.9030836820602417
+        },
+        {
+          "label": "1",
+          "u": 490,
+          "v": 120,
+          "depth": 0.89,
+          "gripper": 0.9030836820602417
+        },
+        {
+          "label": "2",
+          "u": 530,
+          "v": 145,
+          "depth": 0.91,
+          "gripper": 0.9030836820602417
+        },
+        {
+          "label": "target",
+          "u": 560,
+          "v": 175,
+          "depth": 0.94,
+          "gripper": 0.9030836820602417
+        }
+      ],
+      "segments": [
+        {
+          "label": "Up-right",
+          "start": 0.0,
+          "end": 0.8
+        },
+        {
+          "label": "Down-right",
+          "start": 0.8,
+          "end": 1.6
+        },
+        {
+          "label": "Down-right",
+          "start": 1.6,
+          "end": 2.6
+        }
+      ],
+      "controls": [
+        {
+          "slot": 0,
+          "source": "manual_uv_depth",
+          "path_uv_depth": [
+            {
+              "u": 490,
+              "v": 120,
+              "depth": 0.89,
+              "gripper": 0.9030836820602417
+            },
+            {
+              "u": 530,
+              "v": 145,
+              "depth": 0.91,
+              "gripper": 0.9030836820602417
+            },
+            {
+              "u": 560,
+              "v": 175,
+              "depth": 0.94,
+              "gripper": 0.9030836820602417
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "real-bread-left",
+      "label": "Bread \u00b7 left path",
+      "task": "put the bread on the table",
+      "source_dataset": "RoboMind",
+      "seed_type": "real-world recording",
+      "output_type": "world-model prediction",
+      "control_type": "manually specified waypoints",
+      "width": 768,
+      "height": 512,
+      "image": "assets/trajectory-demo/real-bread-left.jpg",
+      "video": "assets/trajectory-demo/real-bread-left.mp4",
+      "record": "assets/trajectory-demo/real-bread-left.json",
+      "duration": 2.6,
+      "control_duration": 2.4,
+      "fps": 5.0,
+      "inference_steps": 30,
+      "nodes": [
+        {
+          "label": "now",
+          "u": 466.6939697265625,
+          "v": 143.52655029296875,
+          "depth": 0.9137453436851501,
+          "gripper": 0.9030836820602417
+        },
+        {
+          "label": "1",
+          "u": 435,
+          "v": 125,
+          "depth": 0.9,
+          "gripper": 0.9030836820602417
+        },
+        {
+          "label": "2",
+          "u": 400,
+          "v": 135,
+          "depth": 0.91,
+          "gripper": 0.9030836820602417
+        },
+        {
+          "label": "target",
+          "u": 380,
+          "v": 175,
+          "depth": 0.94,
+          "gripper": 0.9030836820602417
+        }
+      ],
+      "segments": [
+        {
+          "label": "Up-left",
+          "start": 0.0,
+          "end": 0.8
+        },
+        {
+          "label": "Left",
+          "start": 0.8,
+          "end": 1.6
+        },
+        {
+          "label": "Down-left",
+          "start": 1.6,
+          "end": 2.6
+        }
+      ],
+      "controls": [
+        {
+          "slot": 0,
+          "source": "manual_uv_depth",
+          "path_uv_depth": [
+            {
+              "u": 435,
+              "v": 125,
+              "depth": 0.9,
+              "gripper": 0.9030836820602417
+            },
+            {
+              "u": 400,
+              "v": 135,
+              "depth": 0.91,
+              "gripper": 0.9030836820602417
+            },
+            {
+              "u": 380,
+              "v": 175,
+              "depth": 0.94,
+              "gripper": 0.9030836820602417
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "real-lid-upper",
+      "label": "Tabletop \u00b7 upper path",
+      "task": "Take the lid and place it on the teapot",
+      "source_dataset": "DROID",
+      "seed_type": "real-world recording",
+      "output_type": "world-model prediction",
+      "control_type": "manually specified waypoints",
+      "width": 768,
+      "height": 512,
+      "image": "assets/trajectory-demo/real-lid-upper.jpg",
+      "video": "assets/trajectory-demo/real-lid-upper.mp4",
+      "record": "assets/trajectory-demo/real-lid-upper.json",
+      "duration": 2.6,
+      "control_duration": 2.4,
+      "fps": 5.0,
+      "inference_steps": 30,
+      "nodes": [
+        {
+          "label": "now",
+          "u": 437.0771484375,
+          "v": 220.13465881347656,
+          "depth": 0.6828333735466003,
+          "gripper": 0.0
+        },
+        {
+          "label": "1",
+          "u": 450,
+          "v": 190,
+          "depth": 0.68,
+          "gripper": 0.0
+        },
+        {
+          "label": "2",
+          "u": 485,
+          "v": 190,
+          "depth": 0.68,
+          "gripper": 0.0
+        },
+        {
+          "label": "target",
+          "u": 510,
+          "v": 215,
+          "depth": 0.69,
+          "gripper": 0.0
+        }
+      ],
+      "segments": [
+        {
+          "label": "Up",
+          "start": 0.0,
+          "end": 0.8
+        },
+        {
+          "label": "Right",
+          "start": 0.8,
+          "end": 1.6
+        },
+        {
+          "label": "Down-right",
+          "start": 1.6,
+          "end": 2.6
+        }
+      ],
+      "controls": [
+        {
+          "slot": 0,
+          "source": "manual_uv_depth",
+          "path_uv_depth": [
+            {
+              "u": 450,
+              "v": 190,
+              "depth": 0.68,
+              "gripper": 0.0
+            },
+            {
+              "u": 485,
+              "v": 190,
+              "depth": 0.68,
+              "gripper": 0.0
+            },
+            {
+              "u": 510,
+              "v": 215,
+              "depth": 0.69,
+              "gripper": 0.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "real-lid-lower",
+      "label": "Tabletop \u00b7 lower path",
+      "task": "Take the lid and place it on the teapot",
+      "source_dataset": "DROID",
+      "seed_type": "real-world recording",
+      "output_type": "world-model prediction",
+      "control_type": "manually specified waypoints",
+      "width": 768,
+      "height": 512,
+      "image": "assets/trajectory-demo/real-lid-lower.jpg",
+      "video": "assets/trajectory-demo/real-lid-lower.mp4",
+      "record": "assets/trajectory-demo/real-lid-lower.json",
+      "duration": 2.6,
+      "control_duration": 2.4,
+      "fps": 5.0,
+      "inference_steps": 30,
+      "nodes": [
+        {
+          "label": "now",
+          "u": 437.0771484375,
+          "v": 220.13465881347656,
+          "depth": 0.6828333735466003,
+          "gripper": 0.0
+        },
+        {
+          "label": "1",
+          "u": 450,
+          "v": 255,
+          "depth": 0.69,
+          "gripper": 0.0
+        },
+        {
+          "label": "2",
+          "u": 485,
+          "v": 260,
+          "depth": 0.69,
+          "gripper": 0.0
+        },
+        {
+          "label": "target",
+          "u": 510,
+          "v": 215,
+          "depth": 0.69,
+          "gripper": 0.0
+        }
+      ],
+      "segments": [
+        {
+          "label": "Down",
+          "start": 0.0,
+          "end": 0.8
+        },
+        {
+          "label": "Right",
+          "start": 0.8,
+          "end": 1.6
+        },
+        {
+          "label": "Up-right",
+          "start": 1.6,
+          "end": 2.6
+        }
+      ],
+      "controls": [
+        {
+          "slot": 0,
+          "source": "manual_uv_depth",
+          "path_uv_depth": [
+            {
+              "u": 450,
+              "v": 255,
+              "depth": 0.69,
+              "gripper": 0.0
+            },
+            {
+              "u": 485,
+              "v": 260,
+              "depth": 0.69,
+              "gripper": 0.0
+            },
+            {
+              "u": 510,
+              "v": 215,
+              "depth": 0.69,
+              "gripper": 0.0
+            }
+          ]
+        }
+      ]
     }
   ],
   "pairs": [
     {
-      "label": "Shoe paths",
-      "task": "Same starting scene and target. Two different routes onto the red mat.",
+      "label": "Real \u00b7 bread",
+      "task": "RoboMind real-world seed \u00b7 Same starting scene, manually specified left/right paths. Both videos are model predictions.",
+      "scenes": [
+        "real-bread-left",
+        "real-bread-right"
+      ]
+    },
+    {
+      "label": "Real \u00b7 tabletop",
+      "task": "DROID real-world seed \u00b7 Same starting scene and target, manually specified upper/lower paths. Both videos are model predictions.",
+      "scenes": [
+        "real-lid-upper",
+        "real-lid-lower"
+      ]
+    },
+    {
+      "label": "RoboTwin \u00b7 shoe paths",
+      "task": "RoboTwin simulation \u00b7 Same initial scene and target, two manually specified action paths.",
       "scenes": [
         "shoe-upper-route",
         "shoe-lower-route"
       ]
     },
     {
-      "label": "Cup motions",
-      "task": "Two cup scenes: a lift toward the coaster and a gentle arc toward the plate.",
+      "label": "RoboTwin \u00b7 cup tasks",
+      "task": "RoboTwin simulation \u00b7 Two different tasks and scenes: yellow cup to coaster (left), patterned cup toward plate (right). Each uses a manually specified path.",
       "scenes": [
         "yellow-cup-lift",
         "cup-gentle-arc"

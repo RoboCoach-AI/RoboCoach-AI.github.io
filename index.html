@@ -20,8 +20,8 @@
   <link rel="stylesheet" href="assets/theme.css?hash=16513040dc22">
   <script src="assets/theme.js?hash=659067ef29a1"></script>
   <link rel="canonical" href="index.html">
-  <link rel="stylesheet" href="assets/trajectory-demo.css?v=pairs-3">
-  <script src="assets/trajectory-demo.js?v=pairs-3" defer></script>
+  <link rel="stylesheet" href="assets/trajectory-demo.css?v=real-paths-4">
+  <script src="assets/trajectory-demo.js?v=real-paths-4" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -517,9 +517,9 @@
       </div>
 
       <div id="trajectory-demo" class="trajectory-demo" data-trajectory-demo aria-labelledby="trajectory-demo-title">
-        <p class="kicker">Interactive · Recorded control</p>
+        <p class="kicker">Interactive · Free-form action control</p>
         <h3 id="trajectory-demo-title">Choose a path. See the predicted motion.</h3>
-        <p class="trajectory-intro">Two paths, side by side. Compare the shoe routes or explore the cup motions. Click a named segment to inspect it; videos play automatically when visible.</p>
+        <p class="trajectory-intro">Manually drawn, free-form waypoint paths condition these predictions. Compare how the model responds to different action trajectories, then click a named segment to inspect the motion.</p>
         <div data-trajectory-scenes class="trajectory-scenes" role="group" aria-label="Choose a video pair"></div>
         <div data-trajectory-content hidden>
           <div class="trajectory-scene-info"><strong data-trajectory-task></strong></div>
@@ -547,7 +547,7 @@
             <p class="trajectory-detail">Same colors mark the first, second, and final path segments.</p>
             <button data-trajectory-replay class="trajectory-replay" type="button">Replay both ↺</button>
           </div>
-          <p class="trajectory-footnote">Direction names describe movement in the image. Colored lines show the requested EEF path; the white marker follows control timing, not measured motion. These are original model predictions with a path overlay, not completed-task demonstrations.</p>
+          <p class="trajectory-footnote">These are qualitative action-following examples using manually specified paths, not replays of recorded action sequences. Colored lines and the white marker show the requested EEF path and timing, not measured motion. All videos are model predictions, including those initialized from real-world recordings; they are not physical executions of the drawn paths. Direction names refer to movement in the image.</p>
         </div>
         <p data-trajectory-status class="trajectory-status" role="status">Loading recorded controls…</p>
         <noscript>Enable JavaScript to switch between the recorded control presets.</noscript>

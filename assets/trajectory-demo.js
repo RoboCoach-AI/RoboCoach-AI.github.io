@@ -189,7 +189,7 @@
   }
   $("replay").addEventListener("click", () => players.forEach(player => player.replay()));
 
-  fetch("assets/trajectory-demo/presets.json?v=pairs-3")
+  fetch("assets/trajectory-demo/presets.json?v=real-paths-4")
     .then(response => {
       if (!response.ok) throw new Error(`Recordings: ${response.status}`);
       return response.json();
