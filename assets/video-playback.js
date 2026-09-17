@@ -1,7 +1,7 @@
 "use strict";
 
 // Assign media URLs only near the viewport; play only visible videos.
-const autoplayVideos = [...document.querySelectorAll("video")];
+const autoplayVideos = [...document.querySelectorAll("video:not([data-teaser-player])")];
 const visibleVideos = new Set();
 function prepareVideo(video) {
   if (video.closest("[hidden]")) return;

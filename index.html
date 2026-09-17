@@ -8,12 +8,12 @@
   <meta name="color-scheme" content="light dark">
   <meta property="og:title" content="RoboCoach: World Models as Active Coaches for Compositional Robot Skills">
   <meta property="og:description" content="Anonymous project page for a double-blind submission.">
-  <meta property="og:image" content="assets/figures/robocoach_overview.png?hash=90d2eeae565d">
+  <meta property="og:image" content="assets/figures/teaser.png?v=20260918">
   <title>RoboCoach | World Models as Active Coaches</title>
   <link rel="icon" type="image/png" href="assets/figures/robocoach_mark.png?v=2">
   <link rel="apple-touch-icon" href="assets/figures/robocoach_mark.png?v=2">
   <link rel="stylesheet" href="assets/styles.css?hash=e34ce499d296">
-  <link rel="stylesheet" href="assets/curve-navigation.css?v=3"><script src="assets/curve-navigation.js?v=1" defer></script><script src="assets/video-playback.js?v=visible-4" defer></script>
+  <link rel="stylesheet" href="assets/curve-navigation.css?v=3"><script src="assets/curve-navigation.js?v=1" defer></script><script src="assets/video-playback.js?v=teaser-5" defer></script>
   <script src="assets/site.js?v=pick-expert-1" defer></script>
   <script src="assets/teabag-curves.js?v=curve-click-2" defer></script>
   <link rel="stylesheet" href="assets/beige.css?hash=42eea91e89d6" data-theme-style="light">
@@ -22,6 +22,8 @@
   <link rel="canonical" href="index.html">
   <link rel="stylesheet" href="assets/trajectory-demo.css?v=stable-shoe-10">
   <script src="assets/trajectory-demo.js?v=stable-shoe-10" defer></script>
+  <link rel="stylesheet" href="assets/rollout-carousel.css?v=20260918-1">
+  <script src="assets/rollout-carousel.js?v=20260918-1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -64,6 +66,11 @@
           A world-model-guided framework that <span class="text-highlight">attributes the first timeout</span> to the active subtask–expert pair and directs <span class="text-highlight">limited demonstrations</span> to modular VLA experts.
         </p>
         <div class="resource-dock" aria-label="Project resources">
+          <a class="resource-pill teaser-link" href="#teaser" aria-label="Watch the RoboCoach teaser">
+            <svg class="resource-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M11 6 27 16 11 26Z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            <span class="resource-copy"><strong>Video</strong><small>Watch teaser</small></span>
+            <span class="resource-arrow" aria-hidden="true">↗</span>
+          </a>
           <span class="resource-pill" aria-label="arXiv paper coming soon">
             <img class="resource-icon resource-icon-arxiv" src="assets/icons/arxiv-logomark.svg" alt="" width="25" height="34">
             <span class="resource-copy"><strong>Paper</strong><small>Coming soon</small></span>
@@ -87,6 +94,14 @@
       <p>World models should do <span class="thesis-accent">more</span> than <span class="thesis-accent thesis-accent-teal">simulate experience</span>. They should <span class="thesis-accent">decide</span> where scarce real experience is <span class="thesis-accent thesis-accent-teal">most valuable</span>.</p>
     </section>
 
+    <section id="teaser" class="section section-teaser" aria-labelledby="teaser-heading">
+      <div class="section-heading"><p class="kicker">RoboCoach in action</p><h2 id="teaser-heading">Watch the teaser</h2></div>
+      <video class="teaser-player" data-teaser-player controls playsinline preload="none" poster="assets/posters/teaser.jpg?v=20260918" aria-label="RoboCoach teaser video with narration and music">
+        <source src="assets/videos/teaser.mp4?v=20260918" type="video/mp4">
+        Your browser does not support embedded video. <a href="assets/videos/teaser.mp4">Download the teaser</a>.
+      </video>
+    </section>
+
     <section id="overview" class="section section-overview">
       <div class="section-heading">
         <p class="kicker">System overview</p>
@@ -99,8 +114,8 @@
       <div class="overview-figure-layout">
         <figure class="overview-figure">
           <div class="overview-figure-panel">
-            <img class="overview-figure-image overview-figure-dark" src="assets/figures/robocoach_overview.png?hash=90d2eeae565d" alt="RoboCoach system overview showing routing, world-model rollout, progress judging, and targeted expert improvement" loading="lazy">
-            <img class="overview-figure-image overview-figure-light" src="assets/figures/robocoach_overview_light.png" alt="RoboCoach system overview showing routing, world-model rollout, progress judging, and targeted expert improvement" loading="lazy">
+            <img class="overview-figure-image overview-figure-dark" src="assets/figures/teaser.png?v=20260918" alt="RoboCoach system overview showing routing, world-model rollout, progress judging, and targeted expert improvement" loading="lazy">
+            <img class="overview-figure-image overview-figure-light" src="assets/figures/teaser.png?v=20260918" alt="RoboCoach system overview showing routing, world-model rollout, progress judging, and targeted expert improvement" loading="lazy">
           </div>
           <figcaption>One closed loop turns a long-horizon task failure into a targeted update for one modular expert.</figcaption>
         </figure>
@@ -593,130 +608,119 @@
       </div>
       <p class="table-note">Each domain contains 180 view-specific episodes. Two blind annotators independently score Instruction Following from 1 to 5 on a fixed 30-episode subset; scores are averaged across annotators and episodes, then divided by five to normalize them to [0,1].</p>
 
-      <div id="rollouts" class="coachworld-rollout-browser">
-        <div class="coachworld-rollout-toolbar">
-          <p>Closed-loop rollout comparisons</p>
-        <div class="segmented" role="group" aria-label="Filter rollouts by embodiment">
-          <button type="button" class="is-active" data-rollout-filter="single" aria-pressed="true">Single-arm</button>
-          <button type="button" data-rollout-filter="dual" aria-pressed="false">Bimanual</button>
-        </div>
-      </div>
-
-      <div class="rollout-grid" data-rollout-grid>
-        <article class="rollout-card" data-rollout="single">
-          <header class="rollout-meta"><div><span>Single-arm rollouts</span><h3>Real-World</h3></div><p>2 prompted episodes</p></header>
-          <div class="rollout-pair">
-            <div class="rollout-video-panel">
-              <p class="rollout-video-caption"><strong>Put potatoes on a ceramic plate</strong><span>5.8 s</span></p>
-              <div class="video-shell">
-                <video playsinline preload="none" data-poster="assets/posters/rollouts/robomind_009.jpg?v=refresh1" muted loop>
-                  <source data-src="assets/videos/rollouts/robomind_009.mp4?v=refresh1&media=20260907" type="video/mp4">
-                </video>
-                <span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span>
-              </div>
-            </div>
-            <div class="rollout-video-panel">
-              <p class="rollout-video-caption"><strong>Move the marker to the right</strong><span>14.6 s</span></p>
-              <div class="video-shell">
-                <video playsinline preload="none" data-poster="assets/posters/rollouts/droid_000.jpg?v=refresh1" muted loop>
-                  <source data-src="assets/videos/rollouts/droid_000.mp4?v=refresh1&media=20260907" type="video/mp4">
-                </video>
-                <span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span>
-              </div>
-            </div>
+      <div id="rollouts" class="coachworld-rollout-browser"><div class="coachworld-rollout-toolbar"><p>Closed-loop rollout comparisons</p></div>
+        <section class="rollout-carousel" data-rollout-carousel aria-roledescription="carousel" aria-label="Single-arm rollout comparisons">
+          <header class="rollout-row-heading"><h3>Single-arm</h3><div class="rollout-navigation">
+            <span class="rollout-count" data-rollout-count aria-live="polite" aria-atomic="true">1–2 / 12</span>
+            <button type="button" data-rollout-prev aria-label="Previous single-arm comparisons" aria-controls="single-comparisons"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 5-7 7 7 7"/></svg></button>
+            <button type="button" data-rollout-next aria-label="Next single-arm comparisons" aria-controls="single-comparisons"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 5 7 7-7 7"/></svg></button>
+          </div></header><div class="rollout-slides" id="single-comparisons">
+            <article class="comparison-slide" data-rollout-slide role="group" aria-roledescription="slide" aria-label="1 of 12: Put potatoes on a ceramic plate">
+              <div class="comparison-caption"><span class="comparison-domain">Real-World</span><h4>Put potatoes on a ceramic plate</h4><span class="comparison-duration">5.8 s</span></div>
+              <div class="video-shell"><video muted loop playsinline preload="none" data-poster="assets/posters/comparisons/single-01.jpg" aria-label="Put potatoes on a ceramic plate: ground truth on the left, CoachWorld on the right"><source data-src="assets/videos/comparisons/single-01.mp4" type="video/mp4"></video><span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span></div>
+            </article>
+            <article class="comparison-slide" data-rollout-slide role="group" aria-roledescription="slide" aria-label="2 of 12: Move the marker to the right">
+              <div class="comparison-caption"><span class="comparison-domain">Real-World</span><h4>Move the marker to the right</h4><span class="comparison-duration">14.6 s</span></div>
+              <div class="video-shell"><video muted loop playsinline preload="none" data-poster="assets/posters/comparisons/single-02.jpg" aria-label="Move the marker to the right: ground truth on the left, CoachWorld on the right"><source data-src="assets/videos/comparisons/single-02.mp4" type="video/mp4"></video><span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span></div>
+            </article>
+            <article class="comparison-slide" data-rollout-slide role="group" aria-roledescription="slide" aria-label="3 of 12: Pick up all the objects surrounding the white plate and arrange them on the plate" hidden>
+              <div class="comparison-caption"><span class="comparison-domain">Real-World</span><h4>Pick up all the objects surrounding the white plate and arrange them on the plate</h4><span class="comparison-duration">63.4 s</span></div>
+              <div class="video-shell"><video muted loop playsinline preload="none" data-poster="assets/posters/comparisons/single-03.jpg" aria-label="Pick up all the objects surrounding the white plate and arrange them on the plate: ground truth on the left, CoachWorld on the right"><source data-src="assets/videos/comparisons/single-03.mp4" type="video/mp4"></video><span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span></div>
+            </article>
+            <article class="comparison-slide" data-rollout-slide role="group" aria-roledescription="slide" aria-label="4 of 12: Pile the white rope, towels, t-shirts and radish together on the right side of the table" hidden>
+              <div class="comparison-caption"><span class="comparison-domain">Real-World</span><h4>Pile the white rope, towels, t-shirts and radish together on the right side of the table</h4><span class="comparison-duration">51.4 s</span></div>
+              <div class="video-shell"><video muted loop playsinline preload="none" data-poster="assets/posters/comparisons/single-04.jpg" aria-label="Pile the white rope, towels, t-shirts and radish together on the right side of the table: ground truth on the left, CoachWorld on the right"><source data-src="assets/videos/comparisons/single-04.mp4" type="video/mp4"></video><span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span></div>
+            </article>
+            <article class="comparison-slide" data-rollout-slide role="group" aria-roledescription="slide" aria-label="5 of 12: Put the bread into the pan, then close the lid" hidden>
+              <div class="comparison-caption"><span class="comparison-domain">Real-World</span><h4>Put the bread into the pan, then close the lid</h4><span class="comparison-duration">26.6 s</span></div>
+              <div class="video-shell"><video muted loop playsinline preload="none" data-poster="assets/posters/comparisons/single-05.jpg" aria-label="Put the bread into the pan, then close the lid: ground truth on the left, CoachWorld on the right"><source data-src="assets/videos/comparisons/single-05.mp4" type="video/mp4"></video><span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span></div>
+            </article>
+            <article class="comparison-slide" data-rollout-slide role="group" aria-roledescription="slide" aria-label="6 of 12: Close the laptop, then pull the lamp cord" hidden>
+              <div class="comparison-caption"><span class="comparison-domain">Real-World</span><h4>Close the laptop, then pull the lamp cord</h4><span class="comparison-duration">85.8 s</span></div>
+              <div class="video-shell"><video muted loop playsinline preload="none" data-poster="assets/posters/comparisons/single-06.jpg" aria-label="Close the laptop, then pull the lamp cord: ground truth on the left, CoachWorld on the right"><source data-src="assets/videos/comparisons/single-06.mp4" type="video/mp4"></video><span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span></div>
+            </article>
+            <article class="comparison-slide" data-rollout-slide role="group" aria-roledescription="slide" aria-label="7 of 12: Close the bottom drawer of the cabinet" hidden>
+              <div class="comparison-caption"><span class="comparison-domain">Simulation</span><h4>Close the bottom drawer of the cabinet</h4><span class="comparison-duration">5.0 s</span></div>
+              <div class="video-shell"><video muted loop playsinline preload="none" data-poster="assets/posters/comparisons/single-07.jpg" aria-label="Close the bottom drawer of the cabinet: ground truth on the left, CoachWorld on the right"><source data-src="assets/videos/comparisons/single-07.mp4" type="video/mp4"></video><span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span></div>
+            </article>
+            <article class="comparison-slide" data-rollout-slide role="group" aria-roledescription="slide" aria-label="8 of 12: Push the plate to the front of the stove" hidden>
+              <div class="comparison-caption"><span class="comparison-domain">Simulation</span><h4>Push the plate to the front of the stove</h4><span class="comparison-duration">9.0 s</span></div>
+              <div class="video-shell"><video muted loop playsinline preload="none" data-poster="assets/posters/comparisons/single-08.jpg" aria-label="Push the plate to the front of the stove: ground truth on the left, CoachWorld on the right"><source data-src="assets/videos/comparisons/single-08.mp4" type="video/mp4"></video><span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span></div>
+            </article>
+            <article class="comparison-slide" data-rollout-slide role="group" aria-roledescription="slide" aria-label="9 of 12: Put the white mug on the plate and the chocolate pudding to its right" hidden>
+              <div class="comparison-caption"><span class="comparison-domain">Simulation</span><h4>Put the white mug on the plate and the chocolate pudding to its right</h4><span class="comparison-duration">23.4 s</span></div>
+              <div class="video-shell"><video muted loop playsinline preload="none" data-poster="assets/posters/comparisons/single-09.jpg" aria-label="Put the white mug on the plate and the chocolate pudding to its right: ground truth on the left, CoachWorld on the right"><source data-src="assets/videos/comparisons/single-09.mp4" type="video/mp4"></video><span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span></div>
+            </article>
+            <article class="comparison-slide" data-rollout-slide role="group" aria-roledescription="slide" aria-label="10 of 12: Put the white mug on the left plate and the yellow-and-white mug on the right plate" hidden>
+              <div class="comparison-caption"><span class="comparison-domain">Simulation</span><h4>Put the white mug on the left plate and the yellow-and-white mug on the right plate</h4><span class="comparison-duration">23.4 s</span></div>
+              <div class="video-shell"><video muted loop playsinline preload="none" data-poster="assets/posters/comparisons/single-10.jpg" aria-label="Put the white mug on the left plate and the yellow-and-white mug on the right plate: ground truth on the left, CoachWorld on the right"><source data-src="assets/videos/comparisons/single-10.mp4" type="video/mp4"></video><span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span></div>
+            </article>
+            <article class="comparison-slide" data-rollout-slide role="group" aria-roledescription="slide" aria-label="11 of 12: Put the alphabet soup and cream cheese box in the basket" hidden>
+              <div class="comparison-caption"><span class="comparison-domain">Simulation</span><h4>Put the alphabet soup and cream cheese box in the basket</h4><span class="comparison-duration">26.6 s</span></div>
+              <div class="video-shell"><video muted loop playsinline preload="none" data-poster="assets/posters/comparisons/single-11.jpg" aria-label="Put the alphabet soup and cream cheese box in the basket: ground truth on the left, CoachWorld on the right"><source data-src="assets/videos/comparisons/single-11.mp4" type="video/mp4"></video><span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span></div>
+            </article>
+            <article class="comparison-slide" data-rollout-slide role="group" aria-roledescription="slide" aria-label="12 of 12: Pick up the book and place it in the back compartment of the caddy" hidden>
+              <div class="comparison-caption"><span class="comparison-domain">Simulation</span><h4>Pick up the book and place it in the back compartment of the caddy</h4><span class="comparison-duration">21.0 s</span></div>
+              <div class="video-shell"><video muted loop playsinline preload="none" data-poster="assets/posters/comparisons/single-12.jpg" aria-label="Pick up the book and place it in the back compartment of the caddy: ground truth on the left, CoachWorld on the right"><source data-src="assets/videos/comparisons/single-12.mp4" type="video/mp4"></video><span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span></div>
+            </article>
           </div>
-        </article>
-
-        <article class="rollout-card" data-rollout="single">
-          <header class="rollout-meta"><div><span>Single-arm rollouts</span><h3>Simulation</h3></div><p>2 prompted episodes</p></header>
-          <div class="rollout-pair">
-            <div class="rollout-video-panel">
-              <p class="rollout-video-caption"><strong>Close the bottom drawer of the cabinet</strong><span>5.0 s</span></p>
-              <div class="video-shell">
-                <video playsinline preload="none" data-poster="assets/posters/rollouts/libero_013.jpg?v=refresh1" muted loop>
-                  <source data-src="assets/videos/rollouts/libero_013.mp4?v=refresh1&media=20260907" type="video/mp4">
-                </video>
-                <span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span>
-              </div>
-            </div>
-            <div class="rollout-video-panel">
-              <p class="rollout-video-caption"><strong>Push the plate to the front of the stove</strong><span>9.0 s</span></p>
-              <div class="video-shell">
-                <video playsinline preload="none" data-poster="assets/posters/rollouts/libero_015.jpg?v=refresh1" muted loop>
-                  <source data-src="assets/videos/rollouts/libero_015.mp4?v=refresh1&media=20260907" type="video/mp4">
-                </video>
-                <span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span>
-              </div>
-            </div>
+        </section>
+        <section class="rollout-carousel" data-rollout-carousel aria-roledescription="carousel" aria-label="Bimanual rollout comparisons">
+          <header class="rollout-row-heading"><h3>Bimanual</h3><div class="rollout-navigation">
+            <span class="rollout-count" data-rollout-count aria-live="polite" aria-atomic="true">1–2 / 12</span>
+            <button type="button" data-rollout-prev aria-label="Previous bimanual comparisons" aria-controls="dual-comparisons"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 5-7 7 7 7"/></svg></button>
+            <button type="button" data-rollout-next aria-label="Next bimanual comparisons" aria-controls="dual-comparisons"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 5 7 7-7 7"/></svg></button>
+          </div></header><div class="rollout-slides" id="dual-comparisons">
+            <article class="comparison-slide" data-rollout-slide role="group" aria-roledescription="slide" aria-label="1 of 12: Stack the cup and cola can">
+              <div class="comparison-caption"><span class="comparison-domain">Real-World</span><h4>Stack the cup and cola can</h4><span class="comparison-duration">9.0 s</span></div>
+              <div class="video-shell"><video muted loop playsinline preload="none" data-poster="assets/posters/comparisons/dual-01.jpg" aria-label="Stack the cup and cola can: ground truth on the left, CoachWorld on the right"><source data-src="assets/videos/comparisons/dual-01.mp4" type="video/mp4"></video><span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span></div>
+            </article>
+            <article class="comparison-slide" data-rollout-slide role="group" aria-roledescription="slide" aria-label="2 of 12: Stack three colored cubes">
+              <div class="comparison-caption"><span class="comparison-domain">Real-World</span><h4>Stack three colored cubes</h4><span class="comparison-duration">7.4 s</span></div>
+              <div class="video-shell"><video muted loop playsinline preload="none" data-poster="assets/posters/comparisons/dual-02.jpg" aria-label="Stack three colored cubes: ground truth on the left, CoachWorld on the right"><source data-src="assets/videos/comparisons/dual-02.mp4" type="video/mp4"></video><span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span></div>
+            </article>
+            <article class="comparison-slide" data-rollout-slide role="group" aria-roledescription="slide" aria-label="3 of 12: Fold towels" hidden>
+              <div class="comparison-caption"><span class="comparison-domain">Real-World</span><h4>Fold towels</h4><span class="comparison-duration">22.6 s</span></div>
+              <div class="video-shell"><video muted loop playsinline preload="none" data-poster="assets/posters/comparisons/dual-03.jpg" aria-label="Fold towels: ground truth on the left, CoachWorld on the right"><source data-src="assets/videos/comparisons/dual-03.mp4" type="video/mp4"></video><span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span></div>
+            </article>
+            <article class="comparison-slide" data-rollout-slide role="group" aria-roledescription="slide" aria-label="4 of 12: Make sandwiches" hidden>
+              <div class="comparison-caption"><span class="comparison-domain">Real-World</span><h4>Make sandwiches</h4><span class="comparison-duration">56.2 s</span></div>
+              <div class="video-shell"><video muted loop playsinline preload="none" data-poster="assets/posters/comparisons/dual-04.jpg" aria-label="Make sandwiches: ground truth on the left, CoachWorld on the right"><source data-src="assets/videos/comparisons/dual-04.mp4" type="video/mp4"></video><span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span></div>
+            </article>
+            <article class="comparison-slide" data-rollout-slide role="group" aria-roledescription="slide" aria-label="5 of 12: Place the red block in the drawer, then close the drawer" hidden>
+              <div class="comparison-caption"><span class="comparison-domain">Real-World</span><h4>Place the red block in the drawer, then close the drawer</h4><span class="comparison-duration">33.4 s</span></div>
+              <div class="video-shell"><video muted loop playsinline preload="none" data-poster="assets/posters/comparisons/dual-05.jpg" aria-label="Place the red block in the drawer, then close the drawer: ground truth on the left, CoachWorld on the right"><source data-src="assets/videos/comparisons/dual-05.mp4" type="video/mp4"></video><span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span></div>
+            </article>
+            <article class="comparison-slide" data-rollout-slide role="group" aria-roledescription="slide" aria-label="6 of 12: Put both shoes in the shoebox, then close the shoebox" hidden>
+              <div class="comparison-caption"><span class="comparison-domain">Real-World</span><h4>Put both shoes in the shoebox, then close the shoebox</h4><span class="comparison-duration">58.0 s</span></div>
+              <div class="video-shell"><video muted loop playsinline preload="none" data-poster="assets/posters/comparisons/dual-06.jpg" aria-label="Put both shoes in the shoebox, then close the shoebox: ground truth on the left, CoachWorld on the right"><source data-src="assets/videos/comparisons/dual-06.mp4" type="video/mp4"></video><span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span></div>
+            </article>
+            <article class="comparison-slide" data-rollout-slide role="group" aria-roledescription="slide" aria-label="7 of 12: Place the tea bag in the cup, pour water, then return the teapot to the table" hidden>
+              <div class="comparison-caption"><span class="comparison-domain">Real-World</span><h4>Place the tea bag in the cup, pour water, then return the teapot to the table</h4><span class="comparison-duration">47.4 s</span></div>
+              <div class="video-shell"><video muted loop playsinline preload="none" data-poster="assets/posters/comparisons/dual-07.jpg" aria-label="Place the tea bag in the cup, pour water, then return the teapot to the table: ground truth on the left, CoachWorld on the right"><source data-src="assets/videos/comparisons/dual-07.mp4" type="video/mp4"></video><span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span></div>
+            </article>
+            <article class="comparison-slide" data-rollout-slide role="group" aria-roledescription="slide" aria-label="8 of 12: Stack the green block on the red block" hidden>
+              <div class="comparison-caption"><span class="comparison-domain">Simulation</span><h4>Stack the green block on the red block</h4><span class="comparison-duration">9.8 s</span></div>
+              <div class="video-shell"><video muted loop playsinline preload="none" data-poster="assets/posters/comparisons/dual-08.jpg" aria-label="Stack the green block on the red block: ground truth on the left, CoachWorld on the right"><source data-src="assets/videos/comparisons/dual-08.mp4" type="video/mp4"></video><span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span></div>
+            </article>
+            <article class="comparison-slide" data-rollout-slide role="group" aria-roledescription="slide" aria-label="9 of 12: Place two bread loaves in the breadbasket" hidden>
+              <div class="comparison-caption"><span class="comparison-domain">Simulation</span><h4>Place two bread loaves in the breadbasket</h4><span class="comparison-duration">7.4 s</span></div>
+              <div class="video-shell"><video muted loop playsinline preload="none" data-poster="assets/posters/comparisons/dual-09.jpg" aria-label="Place two bread loaves in the breadbasket: ground truth on the left, CoachWorld on the right"><source data-src="assets/videos/comparisons/dual-09.mp4" type="video/mp4"></video><span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span></div>
+            </article>
+            <article class="comparison-slide" data-rollout-slide role="group" aria-roledescription="slide" aria-label="10 of 12: Place the three bottles into the black bin one at a time" hidden>
+              <div class="comparison-caption"><span class="comparison-domain">Simulation</span><h4>Place the three bottles into the black bin one at a time</h4><span class="comparison-duration">13.0 s</span></div>
+              <div class="video-shell"><video muted loop playsinline preload="none" data-poster="assets/posters/comparisons/dual-10.jpg" aria-label="Place the three bottles into the black bin one at a time: ground truth on the left, CoachWorld on the right"><source data-src="assets/videos/comparisons/dual-10.mp4" type="video/mp4"></video><span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span></div>
+            </article>
+            <article class="comparison-slide" data-rollout-slide role="group" aria-roledescription="slide" aria-label="11 of 12: Transfer the large, medium, and small blocks to the center in size order" hidden>
+              <div class="comparison-caption"><span class="comparison-domain">Simulation</span><h4>Transfer the large, medium, and small blocks to the center in size order</h4><span class="comparison-duration">9.0 s</span></div>
+              <div class="video-shell"><video muted loop playsinline preload="none" data-poster="assets/posters/comparisons/dual-11.jpg" aria-label="Transfer the large, medium, and small blocks to the center in size order: ground truth on the left, CoachWorld on the right"><source data-src="assets/videos/comparisons/dual-11.mp4" type="video/mp4"></video><span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span></div>
+            </article>
+            <article class="comparison-slide" data-rollout-slide role="group" aria-roledescription="slide" aria-label="12 of 12: Stack three bowls" hidden>
+              <div class="comparison-caption"><span class="comparison-domain">Simulation</span><h4>Stack three bowls</h4><span class="comparison-duration">19.4 s</span></div>
+              <div class="video-shell"><video muted loop playsinline preload="none" data-poster="assets/posters/comparisons/dual-12.jpg" aria-label="Stack three bowls: ground truth on the left, CoachWorld on the right"><source data-src="assets/videos/comparisons/dual-12.mp4" type="video/mp4"></video><span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span></div>
+            </article>
           </div>
-        </article>
-
-        <article class="rollout-card" data-rollout="dual" hidden>
-          <header class="rollout-meta"><div><span>Bimanual rollouts</span><h3>Real-World</h3></div><p>4 prompted episodes</p></header>
-          <div class="rollout-pair">
-            <div class="rollout-video-panel">
-              <p class="rollout-video-caption"><strong>Stack the cup and cola can</strong><span>9.0 s</span></p>
-              <div class="video-shell">
-                <video playsinline preload="none" data-poster="assets/posters/rollouts/vifailback_005.jpg?v=refresh1" muted loop>
-                  <source data-src="assets/videos/rollouts/vifailback_005.mp4?v=refresh1&media=20260907" type="video/mp4">
-                </video>
-                <span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span>
-              </div>
-            </div>
-            <div class="rollout-video-panel">
-              <p class="rollout-video-caption"><strong>Stack three colored cubes</strong><span>7.4 s</span></p>
-              <div class="video-shell">
-                <video playsinline preload="none" data-poster="assets/posters/rollouts/vifailback_009.jpg?v=refresh1" muted loop>
-                  <source data-src="assets/videos/rollouts/vifailback_009.mp4?v=refresh1&media=20260907" type="video/mp4">
-                </video>
-                <span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span>
-              </div>
-            </div>
-            <div class="rollout-video-panel">
-              <p class="rollout-video-caption"><strong>Fold towels</strong><span>22.6 s</span></p>
-              <div class="video-shell">
-                <video playsinline preload="none" data-poster="assets/posters/rollouts/robocoin_008.jpg?v=refresh1" muted loop>
-                  <source data-src="assets/videos/rollouts/robocoin_008.mp4?v=refresh1&media=20260907" type="video/mp4">
-                </video>
-                <span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span>
-              </div>
-            </div>
-            <div class="rollout-video-panel">
-              <p class="rollout-video-caption"><strong>Make sandwiches</strong><span>56.2 s</span></p>
-              <div class="video-shell">
-                <video playsinline preload="none" data-poster="assets/posters/rollouts/robocoin_009.jpg?v=refresh1" muted loop>
-                  <source data-src="assets/videos/rollouts/robocoin_009.mp4?v=refresh1&media=20260907" type="video/mp4">
-                </video>
-                <span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="rollout-card" data-rollout="dual" hidden>
-          <header class="rollout-meta"><div><span>Bimanual rollouts</span><h3>Simulation</h3></div><p>2 prompted episodes</p></header>
-          <div class="rollout-pair">
-            <div class="rollout-video-panel">
-              <p class="rollout-video-caption"><strong>Stack the green block on the red block</strong><span>9.8 s</span></p>
-              <div class="video-shell">
-                <video playsinline preload="none" data-poster="assets/posters/rollouts/robotwin_000.jpg?v=refresh1" muted loop>
-                  <source data-src="assets/videos/rollouts/robotwin_000.mp4?v=refresh1&media=20260907" type="video/mp4">
-                </video>
-                <span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span>
-              </div>
-            </div>
-            <div class="rollout-video-panel">
-              <p class="rollout-video-caption"><strong>Place two bread loaves in the breadbasket</strong><span>7.4 s</span></p>
-              <div class="video-shell">
-                <video playsinline preload="none" data-poster="assets/posters/rollouts/robotwin_001.jpg?v=refresh1" muted loop>
-                  <source data-src="assets/videos/rollouts/robotwin_001.mp4?v=refresh1&media=20260907" type="video/mp4">
-                </video>
-                <span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span>
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
+        </section>
       </div>
     </section>
 
