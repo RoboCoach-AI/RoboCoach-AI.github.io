@@ -85,20 +85,27 @@ copyButton?.addEventListener("click", async () => {
   }
 });
 
-const sectionObserver = new IntersectionObserver(
-  (entries) => {
-    const current = entries
-      .filter((entry) => entry.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-    if (!current) return;
-    navLinks.forEach((link) => {
-      link.classList.toggle("is-active", link.getAttribute("href") === `#${current.target.id}`);
-    });
-  },
-  { rootMargin: "-18% 0px -64%", threshold: [0.05, 0.3] },
-);
-
-observedSections.forEach((section) => sectionObserver.observe(section));
+let navFrame = null;
+function updateSectionNavigation() {
+  navFrame = null;
+  const line = Math.max(140, window.innerHeight * .28);
+  const candidates = observedSections.map(section => ({section, rect:section.getBoundingClientRect()}))
+    .filter(item => item.rect.top <= line && item.rect.bottom > line)
+    .sort((a,b) => b.rect.top - a.rect.top);
+  const current = candidates[0]?.section.id;
+  navLinks.forEach(link => {
+    const active = link.getAttribute('href') === '#' + current;
+    link.classList.toggle('is-active',active);
+    if (active) link.setAttribute('aria-current','location');
+    else link.removeAttribute('aria-current');
+  });
+}
+function queueNavigation() { if (navFrame === null) navFrame = requestAnimationFrame(updateSectionNavigation); }
+window.addEventListener('scroll',queueNavigation,{passive:true});
+window.addEventListener('resize',queueNavigation,{passive:true});
+window.addEventListener('load',queueNavigation);
+document.addEventListener('toggle',queueNavigation,true);
+updateSectionNavigation();
 
 const revealSections = [...document.querySelectorAll("main > .section")];
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -334,7 +341,7 @@ const teaModuleDetails = {
     description: "Roll the routed experts forward in CoachWorld. The right-hand video shows the predicted execution alongside the real-world rollout on the left."
   },
   diagnose: {
-    title: "Diagnose · RoboMeter",
+    title: "Diagnose · Progress judge",
     description: "Score the active subtask from the observed video prefix. In the failure example, S1 never confirms, localizing the problem to tea-bag pickup."
   },
   improve: {
@@ -359,6 +366,7 @@ function selectTeaChapter(chapter) {
   teaButtons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.teaCase === chapter)));
   teaPanels.forEach((panel) => {
     panel.hidden = panel.dataset.teaPanel !== chapter;
+    panel.setAttribute("aria-hidden",String(panel.hidden));
     panel.querySelectorAll("video").forEach((video) => {
       if (panel.hidden) video.pause();
       else {

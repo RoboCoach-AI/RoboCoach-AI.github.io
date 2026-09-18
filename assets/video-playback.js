@@ -1,7 +1,7 @@
 "use strict";
 
 // Assign media URLs only near the viewport; play only visible videos.
-const autoplayVideos = [...document.querySelectorAll("video:not([data-teaser-player])")];
+const autoplayVideos = [...document.querySelectorAll("video:not([data-teaser-player]):not([data-ridi-managed])")];
 const visibleVideos = new Set();
 function prepareVideo(video) {
   if (video.closest("[hidden]")) return;
@@ -22,6 +22,7 @@ function prepareVideo(video) {
   }
 }
 function syncAutoplay(video) {
+  if (video.hasAttribute("data-ridi-managed")) return;
   if (visibleVideos.has(video) && !document.hidden && !video.closest("[hidden]")) {
     prepareVideo(video);
     video.play()?.catch(() => {}); // A click can start playback if autoplay is blocked.

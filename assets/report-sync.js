@@ -46,7 +46,7 @@ document.querySelectorAll(".evidence").forEach((evidence) => {
       const button = row.querySelector("[data-route-seek]");
       if (active) button?.setAttribute("aria-current", "step");
       else button?.removeAttribute("aria-current");
-      if (status) status.textContent = button?.disabled ? "Not reached" : complete ? "RoboMeter confirmed" : timeout ? "First timeout" : active ? "Active" : failed ? "Not reached" : "Pending";
+      if (status) status.textContent = button?.disabled ? "Not reached" : complete ? "Judge confirmed" : timeout ? "First timeout" : active ? "Active" : failed ? "Not reached" : "Pending";
     });
   };
   const cancel = () => {

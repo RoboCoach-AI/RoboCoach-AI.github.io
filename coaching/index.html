@@ -1,7 +1,8 @@
-<!doctype html>
-<html lang="en" data-theme="light"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex,nofollow,noarchive">
+<!DOCTYPE html>
+
+<html data-theme="dark" lang="en"><head><meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="noindex,nofollow,noarchive" name="robots"/>
 <title>RoboCoach | Evaluation and Coaching</title>
 <script>if (new URLSearchParams(location.search).has('embed')) document.documentElement.classList.add('is-embedded');</script>
 <style>
@@ -109,36 +110,25 @@ footer { display:flex; justify-content:space-between; gap:20px; max-width:1220px
   .route-step { grid-template-columns:28px minmax(0,1fr); } .route-step > b { grid-column:2; }
   footer { align-items:flex-start; flex-direction:column; } }
 </style>
-<link rel="stylesheet" href="../assets/beige-report.css?hash=9c29c38cf174" data-theme-style="light">
-<link rel="stylesheet" href="../assets/dark-report.css?hash=0296164bbd05" data-theme-style="dark" media="not all">
-<link rel="stylesheet" href="../assets/theme.css?hash=16513040dc22">
+<link data-theme-style="light" href="../assets/beige-report.css?hash=9c29c38cf174" rel="stylesheet"/>
+<link data-theme-style="dark" href="../assets/dark-report.css?hash=0296164bbd05" media="not all" rel="stylesheet"/>
+<link href="../assets/theme.css?hash=16513040dc22" rel="stylesheet"/>
 <script src="../assets/theme.js?hash=659067ef29a1"></script>
-</head><body>
-<header class="topbar"><div class="topbar-left"><div class="window-dots" aria-hidden="true"><span class="dot red"></span><span class="dot amber"></span><span class="dot green"></span></div><div class="brand"><strong>RoboCoach</strong><span>Round view: evaluation - diagnosis - coaching</span></div></div><div class="report-header-actions"><a class="site-home" href="../index.html">&larr; Project page</a><button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme" title="Switch to dark theme">
-      <svg class="theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 13.2A8.7 8.7 0 0 1 10.8 3.1 9 9 0 1 0 20.8 13.2Z"/></svg>
-      <svg class="theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
-    </button></div></header>
-
-<section class="narrative"><div class="narrative-copy"><p class="eyebrow">Round view</p><h1>From rollout failures to coaching targets</h1>
-<p>Inspect a RoboTwin Core5 diagnostic snapshot: compare task success rates, attribute each first timeout to its routed subtask-expert pair, and select coaching targets with the paper's task-balanced score.</p></div></section>
-<section class="summary">
-<div class="task"><span>Diagnostic snapshot</span><strong>MolmoAct2 / RoboTwin Core5</strong><small>250 episodes / selected five-task slice / single-high camera</small></div>
-<div class="metric"><strong>250</strong><span>rollouts</span></div>
-<div class="metric"><strong>5</strong><span>tasks</span></div>
-<div class="metric"><strong>60.0%</strong><span>success rate</span></div>
-<div class="metric"><strong>100</strong><span>failed rollouts</span></div>
-<div class="metric"><strong>2</strong><span>top targets</span></div>
-</section>
-<main><section class="report-section"><div class="section-head"><div><p class="eyebrow">Evaluation summary</p><h2>Task success rates</h2>
-<p>Successful valid rollouts for every task in this evaluation round.</p></div></div>
-<div class="table-wrap"><table><thead><tr><th>Task</th><th>Success</th><th>Success rate</th><th>Failures</th><th>Invalid</th>
-</tr></thead><tbody><tr><td><strong>blocks_ranking_rgb</strong><small>arrange the red, green, and blue blocks by color</small></td><td>22 / 50</td><td><div class="rate-cell"><span>44.0%</span><i><b style="width:44.0%"></b></i></div></td><td>28</td><td>0</td></tr><tr><td><strong>blocks_ranking_size</strong><small>arrange the three blocks by size</small></td><td>29 / 50</td><td><div class="rate-cell"><span>58.0%</span><i><b style="width:58.0%"></b></i></div></td><td>21</td><td>0</td></tr><tr><td><strong>put_bottles_dustbin</strong><small>put three bottles into the dustbin</small></td><td>40 / 50</td><td><div class="rate-cell"><span>80.0%</span><i><b style="width:80.0%"></b></i></div></td><td>10</td><td>0</td></tr><tr><td><strong>stack_blocks_three</strong><small>stack three blocks</small></td><td>22 / 50</td><td><div class="rate-cell"><span>44.0%</span><i><b style="width:44.0%"></b></i></div></td><td>28</td><td>0</td></tr><tr><td><strong>stack_bowls_three</strong><small>stack three bowls</small></td><td>37 / 50</td><td><div class="rate-cell"><span>74.0%</span><i><b style="width:74.0%"></b></i></div></td><td>13</td><td>0</td></tr></tbody></table></div></section>
-<section class="report-section"><div class="section-head"><div><p class="eyebrow">RoboMeter diagnosis</p><h2>Top-2 coaching targets</h2>
-<p>Ranked by mean per-task first-timeout frequency across 5 supported tasks; pairs must be reached by at least 5 valid rollouts.</p></div></div>
-<div class="table-wrap"><table><thead><tr><th>Rank</th><th>Subtask</th><th>Task</th><th>Expert</th>
-<th>Evidence</th>
-</tr></thead><tbody><tr><td class="rank"><span class="rank-static">01</span></td><td><strong>pick the largest block</strong></td><td>blocks_ranking_size</td><td>pick_expert</td><td><a class="selected evidence-link" href="demos/01_pick_the_largest_block/index.html?v=subtask-seek-1">Open evidence</a></td></tr><tr><td class="rank"><span class="rank-static">02</span></td><td><strong>place the blue block on the green block</strong></td><td>stack_blocks_three</td><td>place_expert</td><td><a class="selected evidence-link" href="demos/02_place_the_blue_block_on_the_green_block/index.html?v=subtask-seek-1">Open evidence</a></td></tr></tbody></table></div></section></main>
-
+<link href="../assets/review-report.css?v=1" rel="stylesheet"/><script defer="" src="../assets/review-report.js?v=1"></script><link href="../assets/review-type.css?v=1" rel="stylesheet"/><link as="font" crossorigin="" href="../assets/fonts/InterVariable.woff2" rel="preload" type="font/woff2"/></head><body class="coaching-overview">
+<header class="topbar"><div class="topbar-left"><div aria-hidden="true" class="window-dots"><span class="dot red"></span><span class="dot amber"></span><span class="dot green"></span></div><div class="brand"><strong><span class="report-robo">Robo</span><span class="report-coach">Coach</span></strong><span>Round view: evaluation - diagnosis - coaching</span></div></div><div class="report-header-actions"><a class="site-home" href="../index.html">← Project page</a><button aria-label="Switch to dark theme" class="theme-toggle" data-theme-toggle="" title="Switch to dark theme" type="button">
+<svg aria-hidden="true" class="theme-icon-moon" viewbox="0 0 24 24"><path d="M20.8 13.2A8.7 8.7 0 0 1 10.8 3.1 9 9 0 1 0 20.8 13.2Z"></path></svg>
+<svg aria-hidden="true" class="theme-icon-sun" viewbox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg>
+</button></div></header>
+<section class="narrative"><div class="narrative-copy"><p class="eyebrow">Round view</p><h1>A coaching round</h1>
+<p>Trace task-level failures to selected subtask–expert pairs and inspect their rollout evidence.</p></div></section>
+<section class="summary"><div class="task"><span>Evaluation snapshot</span><strong>RoboTwin Core5</strong><small>MolmoAct2 · Single-high camera</small></div><div class="metric"><strong>250</strong><span>evaluated rollouts</span></div><div class="metric"><strong>57.2%</strong><span>task success</span></div><div class="metric"><strong>2</strong><span>coaching targets</span></div></section>
+<main><section class="report-section task-scorecard"><div class="section-head"><div><p class="eyebrow">Evaluation summary</p><h2>Task performance</h2>
+<p>Success rate: low → high · 50 rollouts per task</p></div></div>
+<div class="table-wrap"><table><thead><tr><th>Task</th><th>Success</th><th aria-sort="ascending">Success rate</th><th>Failures</th>
+</tr></thead><tbody><tr aria-label="Order blocks by color blocks_ranking_rgb 22 / 50 44.0% 28" data-task-link="blocks_ranking_rgb" tabindex="0"><td><strong>Order blocks by color</strong><small>blocks_ranking_rgb</small></td><td>22 / 50</td><td><div class="rate-cell"><span>44.0%</span><i><b style="width:44.0%"></b></i></div></td><td>28</td></tr><tr aria-label="Stack three blocks stack_blocks_three 22 / 50 44.0% 28" data-task-link="stack_blocks_three" tabindex="0"><td><strong>Stack three blocks</strong><small>stack_blocks_three</small></td><td>22 / 50</td><td><div class="rate-cell"><span>44.0%</span><i><b style="width:44.0%"></b></i></div></td><td>28</td></tr><tr aria-label="Order blocks by size blocks_ranking_size 22 / 50 44.0% 28" data-task-link="blocks_ranking_size" tabindex="0"><td><strong>Order blocks by size</strong><small>blocks_ranking_size</small></td><td>22 / 50</td><td><div class="rate-cell"><span>44.0%</span><i><b style="width:44.0%"></b></i></div></td><td>28</td></tr><tr aria-label="Stack three bowls stack_bowls_three 37 / 50 74.0% 13" data-task-link="stack_bowls_three" tabindex="0"><td><strong>Stack three bowls</strong><small>stack_bowls_three</small></td><td>37 / 50</td><td><div class="rate-cell"><span>74.0%</span><i><b style="width:74.0%"></b></i></div></td><td>13</td></tr><tr aria-label="Put bottles in the bin put_bottles_dustbin 40 / 50 80.0% 10" data-task-link="put_bottles_dustbin" tabindex="0"><td><strong>Put bottles in the bin</strong><small>put_bottles_dustbin</small></td><td>40 / 50</td><td><div class="rate-cell"><span>80.0%</span><i><b style="width:80.0%"></b></i></div></td><td>10</td></tr></tbody></table></div></section>
+<section class="report-section target-scorecard"><div class="section-head"><div><p class="eyebrow">Failure diagnosis</p><h2>Selected coaching targets</h2>
+<p>Point to a target to highlight its task. Select it to inspect the evidence.</p></div></div>
+<div class="coaching-target-cards"><a class="coaching-target-card" data-task-link="blocks_ranking_size" href="demos/01_pick_the_largest_block/index.html?v=subtask-seek-1"><span class="target-card-rank">Target 01</span><h3>Pick the largest block</h3><span class="target-card-expert">Pick expert</span><span class="target-card-task">blocks_ranking_size</span><span class="target-card-open">Open rollout evidence <b aria-hidden="true">↗</b></span></a><a class="coaching-target-card" data-task-link="stack_blocks_three" href="demos/02_place_the_blue_block_on_the_green_block/index.html?v=subtask-seek-1"><span class="target-card-rank">Target 02</span><h3>Place the blue block on the green block</h3><span class="target-card-expert">Place expert</span><span class="target-card-task">stack_blocks_three</span><span class="target-card-open">Open rollout evidence <b aria-hidden="true">↗</b></span></a></div><details class="score-details" open=""><summary>How targets are ranked</summary><p>Tasks are displayed by success rate. Coaching targets are ranked separately by mean per-task first-timeout frequency across five supported tasks. Pairs must be reached by at least five valid rollouts. All 250 rollouts are valid, with 107 failures in this round.</p></details></section></main>
 <script>
 const isEmbedded = new URLSearchParams(location.search).has('embed');
 if (isEmbedded) {

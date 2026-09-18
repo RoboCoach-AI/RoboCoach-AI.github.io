@@ -1,0 +1,27 @@
+(() => {
+  'use strict';
+  // Deep links into folded technical explanations still open their destination.
+  const revealDestination = (hash) => {
+    if (!hash || !hash.startsWith('#')) return;
+    const target = document.getElementById(decodeURIComponent(hash.slice(1)));
+    let parent = target?.parentElement;
+    while (parent) { if (parent.tagName === 'DETAILS') parent.open = true; parent = parent.parentElement; }
+  };
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href^="#"]');
+    if (link) revealDestination(link.getAttribute('href'));
+  }, true);
+  window.addEventListener('hashchange', () => revealDestination(location.hash));
+  revealDestination(location.hash);
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-in-view'); observer.unobserve(entry.target); } });
+  },{threshold:.25});
+  document.querySelectorAll('.result-comparison').forEach(card => observer.observe(card));
+  const scenePicker = document.querySelector('.scene-picker');
+  scenePicker?.addEventListener('click', event => {
+    const button = event.target.closest('[data-pair-index]');
+    if (!button) return;
+    const description = button.getAttribute('aria-label') || button.textContent.trim();
+    scenePicker.querySelector('[data-current-scene]').textContent = description;
+  });
+})();

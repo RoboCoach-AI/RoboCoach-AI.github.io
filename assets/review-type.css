@@ -1,0 +1,53 @@
+/* One typography contract shared by the project page and evidence pages. */
+@font-face { font-family:'RoboCoach Inter'; src:url('fonts/InterVariable.woff2') format('woff2'); font-weight:100 900; font-style:normal; font-display:swap; }
+@font-face { font-family:'RoboCoach Inter'; src:url('fonts/InterVariable-Italic.woff2') format('woff2'); font-weight:100 900; font-style:italic; font-display:swap; }
+:root { --rc-body:'RoboCoach Inter',Arial,sans-serif; --rc-heading:Georgia,'Times New Roman',serif; }
+/* Reset legacy component-specific Arial, system, serif and monospace choices. */
+body,body * { font-family:var(--rc-body) !important; }
+body { font-size:16px; font-weight:400; font-optical-sizing:auto; }
+h1,h1 *,h2,h2 *,h3,h3 *,.thesis-band p,.thesis-band p * { font-family:var(--rc-heading) !important; }
+h1,h2,h3 { font-weight:400; }
+.section h2,.tea-demo h2 { font-size:clamp(32px,3.3vw,44px); line-height:1.16; letter-spacing:-.025em; }
+.hardware-row-heading h3,.coachworld-method > h3,.research-subheading,.judge-evaluation > h3 { font-size:28px; line-height:1.25; letter-spacing:-.015em; }
+/* Brand and small card titles belong to the interface, not the reading hierarchy. */
+#hero-title,#hero-title *, .brand,.brand *, .demo-brand,.demo-brand *,
+.overview-stage h3,.overview-stage h3 *, .coaching-target-card h3,.coaching-target-card h3 *,
+.judge-demo-steps h3,.judge-demo-steps h3 *,
+.composition-strip h3,.composition-strip h3 * { font-family:var(--rc-body) !important; }
+.overview-stage h3,.coaching-target-card h3 { font-weight:600; }
+.coaching-target-card h3 { font-size:21px; line-height:1.4; }
+.narrative h1 { font-size:32px; line-height:1.2; }
+.ridi-stage-rail > span { font-size:18px; font-weight:500; }
+.ridi-explanation > span:first-child { font-size:15px; font-weight:600; }
+.ridi-picked-expert strong { font-size:21px; font-weight:600; }
+.result-main > strong { font-weight:500; letter-spacing:-.055em; }
+table,.metric,.result-main,.tea-chart-card,.judge-progress-chart { font-variant-numeric:tabular-nums lining-nums; }
+table { font-size:14px; }
+.section .section-heading p:not(.kicker),.judge-demo-heading > div > p:last-child { font-size:17px; line-height:1.75; }
+.research-reading > p { font-size:16px; line-height:1.75; }
+.research-reading > p > strong { font-size:14px; font-weight:600; }
+button,input,select,textarea { font-family:var(--rc-body) !important; }
+pre,code,pre *,code * { font-family:ui-monospace,Consolas,monospace !important; }
+
+/* Match the prediction-table interaction, with keyboard and light-theme support. */
+.judge-evaluation tbody tr > * { transition:background-color 180ms ease,color 180ms ease,box-shadow 180ms ease,transform 180ms ease; }
+.judge-evaluation tbody tr:is(:hover,:focus-visible) > * {
+ background:color-mix(in srgb,var(--review-accent) 14%,var(--review-surface));
+ color:var(--review-text);
+ box-shadow:inset 0 1px color-mix(in srgb,var(--review-accent) 20%,transparent),inset 0 -1px color-mix(in srgb,var(--review-accent) 20%,transparent);
+}
+.judge-evaluation tbody tr:is(:hover,:focus-visible) > :first-child {
+ color:var(--review-accent); transform:translateX(3px);
+ box-shadow:inset 3px 0 var(--review-accent),inset 0 1px var(--review-line),inset 0 -1px var(--review-line);
+}
+.judge-evaluation tbody .selected-judge:is(:hover,:focus-visible) > * { background:color-mix(in srgb,var(--review-accent) 23%,var(--review-surface)); }
+.judge-evaluation tbody tr:focus-visible { outline:none; }
+@media(max-width:600px) {
+ .ridi-stage-rail > span { font-size:14px; }
+ .section .section-heading p:not(.kicker),.research-reading > p { font-size:15px; }
+ .hardware-row-heading h3,.coachworld-method > h3,.judge-evaluation > h3 { font-size:25px; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .judge-evaluation tbody tr > * { transition:none; }
+ .judge-evaluation tbody tr:is(:hover,:focus-visible) > :first-child { transform:none; }
+}

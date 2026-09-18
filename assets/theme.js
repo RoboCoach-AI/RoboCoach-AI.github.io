@@ -1,9 +1,10 @@
 (() => {
   "use strict";
   const key = "robocoach-theme";
-  let theme = "light";
+  let theme = "dark";
   try {
-    if (localStorage.getItem(key) === "dark") theme = "dark";
+    const saved = localStorage.getItem(key);
+    if (saved === "light" || saved === "dark") theme = saved;
   } catch {}
 
   function apply(next, persist = false) {
@@ -42,6 +43,6 @@
     apply(theme);
   });
   window.addEventListener("storage", event => {
-    if (event.key === key || event.key === null) apply(event.newValue);
+    if (event.key === key || event.key === null) apply(event.newValue === "light" ? "light" : "dark");
   });
 })();
