@@ -1,6 +1,6 @@
 /* Review proposal: typography, progressive disclosure, and purposeful feedback. */
 html[data-theme="dark"] { --review-text:#edf1ed; --review-muted:#a8b7ae; --review-line:#2b3c33; --review-surface:#0d1712; --review-accent:#b8d6bf; }
-html[data-theme="light"] { --review-text:#25332c; --review-muted:#627268; --review-line:#d8d9cc; --review-surface:#fffcf6; --review-accent:#416c53; }
+html[data-theme="light"] { --review-text:#41474d; --review-muted:#41474d; --review-line:#d8d9cc; --review-surface:#fffcf6; --review-accent:#007b67; }
 html { scroll-padding-top:88px; }
 .section[id],#rollouts,#trajectory-demo { scroll-margin-top:0; }
 body { color:var(--review-text); }
@@ -15,9 +15,10 @@ html[data-theme="dark"] .brand-robo { color:#f2f4f1; }
 .brand-coach { color:#57a6ec; }
 .hero .hero-title-robo { color:#f2f4f1; }
 .hero .hero-title-coach { color:#57a6ec; }
-html[data-theme="light"] .hero-title-robo,html[data-theme="light"] .brand-robo { color:#25332c; }
-html[data-theme="light"] .hero .hero-summary { color:#42544a; }
-html[data-theme="light"] .hero-title-coach { color:#226aae; }
+html[data-theme="light"] .hero-title-robo,html[data-theme="light"] .brand-robo { color:#087ff5; }
+html[data-theme="light"] .hero .hero-summary { color:#41474d; }
+html[data-theme="light"] .hero-title-coach,html[data-theme="light"] .brand-coach { color:#008f78; }
+html[data-theme="light"] .section h2,html[data-theme="light"] #coachworld h2 { color:#155cb8; }
 html[data-theme="dark"] .section .kicker,html[data-theme="dark"] .tea-flow-eyebrow { color:#9ec4b5; }
 #teabag-diagnostics > h2 { font-weight:400; font-size:clamp(32px,3.7vw,49px); }
 .resource-dock { gap:10px; }
