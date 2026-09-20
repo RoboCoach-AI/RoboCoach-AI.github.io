@@ -52,9 +52,9 @@ html[data-theme="dark"] .coaching-round-framebar > span:last-child { color:#79d5
 }
 
 
-.overview-figure-panel { background:#fff; overflow:hidden; border-radius:12px; }
+.overview-figure-panel { background:transparent; overflow:visible; border-radius:0; }
 .overview-figure-dark { display:none; }
-html[data-theme="dark"] .overview-figure-panel { background:#000; }
+html[data-theme="dark"] .overview-figure-panel { background:transparent; }
 html[data-theme="dark"] .overview-figure-dark { display:block; }
 html[data-theme="dark"] .overview-figure-light { display:none; }
 
