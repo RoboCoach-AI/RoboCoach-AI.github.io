@@ -57,9 +57,11 @@
   function setRail(progress=0) {
     const index = ['route','imagine','diagnose','improve'].indexOf(phases[phase].stage);
     stages.forEach((stage,i) => {
+      const stageProgress = i < index || phase === 'complete' ? 1 : i === index ? progress : 0;
       stage.classList.toggle('is-current',i === index && phase !== 'complete');
       stage.classList.toggle('is-complete',i < index || phase === 'complete');
-      stage.style.setProperty('--phase-progress',i < index || phase === 'complete' ? '1' : i === index ? String(progress) : '0');
+      stage.classList.toggle('has-progress',stageProgress > .001);
+      stage.style.setProperty('--phase-progress',String(stageProgress));
     });
   }
 

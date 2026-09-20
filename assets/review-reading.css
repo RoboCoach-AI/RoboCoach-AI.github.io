@@ -38,13 +38,14 @@
 .ridi-stage-rail > .is-current { color:var(--review-text); }
 .ridi-stage-rail > .is-current b { background:var(--review-accent); color:var(--review-surface); border-color:var(--review-accent); }
 .ridi-stage-rail > .is-complete b { border-color:var(--review-accent); color:var(--review-accent); }
-.ridi-stage-rail > span::after { content:''; position:absolute; bottom:0; left:36px; right:0; height:1px; background:var(--review-accent); transform:scaleX(var(--phase-progress,0)); transform-origin:left; }
+.ridi-stage-rail > span::after { content:''; position:absolute; bottom:0; left:36px; right:0; height:1px; background:var(--review-accent); opacity:0; transform:scaleX(var(--phase-progress,0)); transform-origin:left; }
+.ridi-stage-rail > span.has-progress::after { opacity:1; }
 .modularity-finding { background:var(--review-surface); border-left-color:var(--review-accent); }
 .modularity-finding p { color:var(--review-muted); }
 .modularity-finding > span,.modularity-finding strong { color:var(--review-accent); }
 .ridi-stage-body { display:grid; min-height:490px; transition:opacity .24s ease,transform .4s var(--ridi-ease); }
 .ridi-stage-body > .tea-flow-panel { grid-area:1 / 1; align-self:start; min-width:0; }
-.ridi-stage-body > .tea-flow-panel[hidden] { display:block !important; visibility:hidden; pointer-events:none; }
+.ridi-stage-body > .tea-flow-panel[hidden] { display:none !important; }
 .ridi-walkthrough.is-switching .ridi-stage-body { opacity:0; transform:translateY(5px); }
 .ridi-stage-body .tea-flow-panel:not([hidden]) { animation:ridi-arrive .6s var(--ridi-ease) both; }
 .ridi-stage-body .tea-flow-context { padding:18px 22px 14px; }
