@@ -1,0 +1,49 @@
+WEBVTT
+
+00:00:06.000 --> 00:00:11.500
+Long-horizon robot tasks can combine familiar actions in countless ways.
+
+00:00:11.500 --> 00:00:17.800
+As these compositions grow longer, complete demonstrations become sparse and costly.
+
+00:00:18.200 --> 00:00:24.600
+A practical approach is to learn reusable skills and compose them into diverse task routes.
+
+00:00:25.000 --> 00:00:29.700
+But failure alone does not reveal which skill needs improvement.
+
+00:00:29.700 --> 00:00:35.850
+We argue that a world model can locate bottlenecks and turn failures into targeted improvement signals.
+
+00:00:36.700 --> 00:00:46.000
+We propose RoboCoach, a world-model-guided active intervention selector organized around a Route-Imagine-Diagnose-Improve loop.
+
+00:00:47.500 --> 00:00:55.800
+Given the current observation and task prompt, the router assigns the first unfinished subtask to the corresponding skill expert.
+
+00:00:58.500 --> 00:01:04.000
+The expert then acts inside CoachWorld, our action-conditioned world model.
+
+00:01:05.000 --> 00:01:15.100
+A progress judge identifies the bottleneck and prompts the human to collect additional demonstrations for that subtask, improving the policy locally.
+
+00:01:27.000 --> 00:01:33.400
+Once the bottleneck is resolved, the modular expert can complete the entire task efficiently.
+
+00:01:35.500 --> 00:01:43.500
+CoachWorld provides faithful interactions for both single- and dual-arm robots, in the real world and in simulation.
+
+00:02:07.000 --> 00:02:11.300
+Across four experiments, RoboCoach achieves the strongest performance.
+
+00:02:11.300 --> 00:02:15.500
+The gains are especially pronounced on real robots.
+
+00:02:16.000 --> 00:02:26.000
+Specialized skill experts also transfer to new task compositions through appropriate routing, including reordering, recombination, and continuation.
+
+00:02:26.000 --> 00:02:36.500
+RoboCoach achieves success rates of twenty-five, fifteen, and sixty-five percent on these three tasks, while the vanilla VLA baseline solves none.
+
+00:02:40.000 --> 00:02:43.600
+For more details, please visit our project page.

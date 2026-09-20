@@ -1,5 +1,6 @@
 .section-teaser { padding-bottom: 32px; }
 .teaser-player { display:block; width:100%; aspect-ratio:16/9; object-fit:contain; border-radius:8px; background:#080e0c; border:1px solid var(--page-line, #d4c9b5); }
+.teaser-player::cue { color:#fff; background:rgba(7,13,11,.88); font-family:Inter,Arial,sans-serif; font-size:18px; line-height:1.35; }
 .teaser-link { text-decoration:none; }
 #rollouts { scroll-margin-top:100px; }
 .rollout-carousel { margin-top:24px; }
