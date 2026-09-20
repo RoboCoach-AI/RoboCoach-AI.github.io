@@ -54,14 +54,14 @@
     });
   }
 
-  function setRail(progress=0) {
+  function setRail() {
     const index = ['route','imagine','diagnose','improve'].indexOf(phases[phase].stage);
     stages.forEach((stage,i) => {
-      const stageProgress = i < index || phase === 'complete' ? 1 : i === index ? progress : 0;
-      stage.classList.toggle('is-current',i === index && phase !== 'complete');
+      const current = i === index && phase !== 'complete';
+      stage.classList.toggle('is-current',current);
       stage.classList.toggle('is-complete',i < index || phase === 'complete');
-      stage.classList.toggle('has-progress',stageProgress > .001);
-      stage.style.setProperty('--phase-progress',String(stageProgress));
+      if (current) stage.setAttribute('aria-current','step');
+      else stage.removeAttribute('aria-current');
     });
   }
 
@@ -147,14 +147,15 @@
   });
   root.querySelector('[data-ridi-restart]').addEventListener('click',start);
 
-  function explore() {
+  function explore(preferredPhase) {
+    const requestedPhase = typeof preferredPhase === 'string' ? preferredPhase : null;
     mode = 'manual'; transition = null; resetVideo = null;
     root.classList.remove('is-switching');
     videos.forEach(video => video.pause());
     setTimeout(() => {
       const panel = root.querySelector('.tea-flow-panel:not([hidden])');
       const chapter = panel.dataset.teaPanel;
-      phase = {route:'route',failure:'imagine',collection:'collect',success:'reevaluate'}[chapter];
+      phase = requestedPhase || {route:'route',failure:'imagine',collection:'collect',success:'reevaluate'}[chapter];
       root.dataset.ridiPhase = phase;
       root.dataset.routeReveal = '3'; root.classList.add('route-dispatched');
       captionLabel.textContent = phases[phase].label;
@@ -171,6 +172,13 @@
       status();
     },0);
   }
+  const stageEntryPhases = {route:'route',imagine:'imagine',diagnose:'diagnose',improve:'collect'};
+  stages.forEach(stage => stage.addEventListener('click',() => {
+    const targetPhase = stageEntryPhases[stage.dataset.ridiStage];
+    selectTeaChapter(phases[targetPhase].chapter);
+    selectTeaModule(phases[targetPhase].stage);
+    explore(targetPhase);
+  }));
   // Real user navigation cancels the automatic sequence; scripted dispatch does not.
   section.addEventListener('click',event => {
     if (!event.isTrusted) return;
