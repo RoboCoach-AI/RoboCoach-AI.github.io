@@ -147,6 +147,16 @@
   });
   root.querySelector('[data-ridi-restart]').addEventListener('click',start);
 
+  function playManualVideo(video) {
+    if (!video || mode !== 'manual' || !visible || document.hidden || video.closest('[hidden]')) return;
+    prepareVideo(video);
+    const play = () => {
+      if (mode === 'manual' && visible && !document.hidden && !video.closest('[hidden]')) video.play()?.catch(()=>{});
+    };
+    if (video.readyState >= 2) play();
+    else video.addEventListener('canplay',play,{once:true});
+  }
+
   function explore(preferredPhase) {
     const requestedPhase = typeof preferredPhase === 'string' ? preferredPhase : null;
     mode = 'manual'; transition = null; resetVideo = null;
@@ -167,7 +177,7 @@
         manualVideo.loop = true; manualVideo.playbackRate = 1;
         prepareVideo(manualVideo);
         if (manualVideo.ended) manualVideo.currentTime = 0;
-        if (visible && !document.hidden) manualVideo.play()?.catch(()=>{});
+        playManualVideo(manualVideo);
       }
       status();
     },0);
@@ -227,6 +237,7 @@
     if (mode === 'armed' && visible && !reduced) start();
     else if (mode === 'manual') {
       if (!visible) videos.forEach(video=>video.pause());
+      else playManualVideo(manualVideo);
     } else { status(); schedule(); }
   }
   let visibilityFrame = null;
@@ -238,7 +249,7 @@
   window.addEventListener('resize',updateVisibility,{passive:true});
   document.addEventListener('visibilitychange',()=>{
     if (document.hidden) videos.forEach(video=>video.pause());
-    else if (mode === 'manual' && visible && manualVideo) manualVideo.play()?.catch(()=>{});
+    else playManualVideo(manualVideo);
     status(); schedule();
   });
   root.dataset.ridiPhase='route';
