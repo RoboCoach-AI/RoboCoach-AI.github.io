@@ -22,9 +22,9 @@
       text:'The diagnosis becomes a focused request: collect additional demonstrations of tea-bag pickup.'},
     update: {chapter:'collection',stage:'improve',label:'Update',seconds:4,
       text:'Update only the Pick expert’s LoRA. The placement and pouring experts remain unchanged.'},
-    reevaluate: {chapter:'success',stage:'improve',label:'Re-evaluate',rate:2,
+    reevaluate: {chapter:'success',stage:'success',label:'Success',rate:2,
       text:'Run the same task with the updated expert library. Judge-confirmed completion returns control to the router for the next subtask.'},
-    complete: {chapter:'success',stage:'improve',label:'Task completed',
+    complete: {chapter:'success',stage:'success',label:'Task completed',
       text:'Pickup, placement, and pouring complete the tea-making task. The recorded progress traces remain available for inspection.'}
   };
   let phase = 'route', mode = 'armed', elapsed = 0, visible = false;
@@ -39,7 +39,7 @@
     root.classList.toggle('is-manual',mode === 'manual');
     toggle.textContent = mode === 'playing' ? 'Pause walkthrough' : mode === 'paused' ? 'Resume walkthrough' : mode === 'complete' ? 'Replay walkthrough' : 'Play walkthrough';
     toggle.setAttribute('aria-pressed',String(mode === 'playing'));
-    stateText.textContent = mode === 'armed' ? (reduced ? 'Play or explore individual chapters' : 'Starts when this case comes into view') : mode === 'manual' ? 'Manual exploration' : mode === 'complete' ? 'Walkthrough complete · Explore or replay' : !visible || document.hidden ? 'Paused outside the viewport' : mode === 'paused' ? 'Paused · Inspect the evidence' : 'Playing · '+phases[phase].label;
+    stateText.textContent = mode === 'armed' ? 'Autoplay starts when this case comes into view' : mode === 'manual' ? 'Manual exploration' : mode === 'complete' ? 'Walkthrough complete · Explore or replay' : !visible || document.hidden ? 'Paused outside the viewport' : mode === 'paused' ? 'Paused · Inspect the evidence' : 'Playing · '+phases[phase].label;
     root.querySelectorAll('.interaction-arcs').forEach(svg => {
       if (running && phase === 'imagine' && !reduced) svg.unpauseAnimations?.();
       else svg.pauseAnimations?.();
@@ -55,7 +55,7 @@
   }
 
   function setRail() {
-    const index = ['route','imagine','diagnose','improve'].indexOf(phases[phase].stage);
+    const index = ['route','imagine','diagnose','improve','success'].indexOf(phases[phase].stage);
     stages.forEach((stage,i) => {
       const current = i === index && phase !== 'complete';
       stage.classList.toggle('is-current',current);
@@ -73,7 +73,7 @@
     root.dataset.routeReveal = '0';
     root.classList.remove('route-dispatched','is-switching');
     if (previousChapter !== phases[phase].chapter || restartMedia) selectTeaChapter(phases[phase].chapter);
-    selectTeaModule(phases[phase].stage);
+    selectTeaModule(phases[phase].stage === 'success' ? 'improve' : phases[phase].stage);
     captionLabel.textContent = phases[phase].label;
     caption.textContent = phases[phase].text;
     speed.textContent = phases[phase].rate === 2 ? '2× playback' : '';
@@ -168,6 +168,7 @@
       phase = requestedPhase || {route:'route',failure:'imagine',collection:'collect',success:'reevaluate'}[chapter];
       root.dataset.ridiPhase = phase;
       root.dataset.routeReveal = '3'; root.classList.add('route-dispatched');
+      selectTeaModule(phases[phase].stage === 'success' ? 'improve' : phases[phase].stage);
       captionLabel.textContent = phases[phase].label;
       caption.textContent = phases[phase].text;
       speed.textContent = '';
@@ -182,11 +183,11 @@
       status();
     },0);
   }
-  const stageEntryPhases = {route:'route',imagine:'imagine',diagnose:'diagnose',improve:'collect'};
+  const stageEntryPhases = {route:'route',imagine:'imagine',diagnose:'diagnose',improve:'collect',success:'reevaluate'};
   stages.forEach(stage => stage.addEventListener('click',() => {
     const targetPhase = stageEntryPhases[stage.dataset.ridiStage];
     selectTeaChapter(phases[targetPhase].chapter);
-    selectTeaModule(phases[targetPhase].stage);
+    selectTeaModule(phases[targetPhase].stage === 'success' ? 'improve' : phases[targetPhase].stage);
     explore(targetPhase);
   }));
   // Real user navigation cancels the automatic sequence; scripted dispatch does not.
@@ -231,10 +232,11 @@
   function visibility() {
     const box = root.getBoundingClientRect();
     const available = Math.max(0,Math.min(box.bottom,innerHeight)-Math.max(box.top,80));
-    const next = available >= Math.min(box.height,Math.max(1,innerHeight-80))*.55;
+    const required = Math.min(240,Math.max(80,Math.min(box.height,Math.max(1,innerHeight-80))*.25));
+    const next = available >= required;
     if (next === visible) return;
     visible = next;
-    if (mode === 'armed' && visible && !reduced) start();
+    if (mode === 'armed' && visible) start();
     else if (mode === 'manual') {
       if (!visible) videos.forEach(video=>video.pause());
       else playManualVideo(manualVideo);

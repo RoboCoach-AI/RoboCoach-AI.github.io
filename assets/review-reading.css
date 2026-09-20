@@ -74,7 +74,12 @@
 .interaction-arcs path { fill:none; stroke:var(--review-muted); stroke-width:1; }
 .interaction-arcs text { fill:var(--review-muted); font:11px system-ui,sans-serif; text-anchor:middle; }
 .interaction-arcs circle { fill:var(--review-accent); }
-.ridi-timeout-note { position:absolute; left:12px; right:12px; bottom:80px; padding:10px 12px; border-left:2px solid #dcb18a; color:#f1d1b5; font-size:12px; background:rgba(28,24,20,.94); opacity:0; transform:translateY(7px); transition:opacity .5s,transform .5s; pointer-events:none; }
+.ridi-timeout-note { position:absolute; left:16px; right:16px; bottom:76px; display:grid; grid-template-columns:minmax(0,1fr) 38px minmax(0,1fr); align-items:center; gap:12px; padding:12px 14px; border:1px solid rgba(220,177,138,.48); border-radius:6px; color:#f7e4d1; background:rgba(24,22,19,.95); box-shadow:0 12px 30px rgba(0,0,0,.24); opacity:0; transform:translateY(7px); transition:opacity .5s,transform .5s; pointer-events:none; }
+.ridi-timeout-note > span:not(.ridi-timeout-arrow) { display:flex; min-width:0; flex-direction:column; gap:3px; }
+.ridi-timeout-note small { color:#c7a98d; font-size:9px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+.ridi-timeout-note strong { color:#fff7ef; font-size:12px; font-weight:600; line-height:1.35; }
+.ridi-timeout-arrow { display:grid; place-items:center; width:32px; height:32px; justify-self:center; border:1px solid rgba(220,177,138,.5); border-radius:50%; color:#f1c79e; background:rgba(220,177,138,.1); }
+.ridi-timeout-arrow svg { width:17px; height:17px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
 [data-ridi-phase="diagnose"] .ridi-timeout-note { opacity:1; transform:none; }
 [data-ridi-phase="diagnose"] .ridi-media video { animation:ridi-timeout 1.4s ease 2; }
 .ridi-explanation { display:flex; align-items:center; gap:18px; padding:15px 22px; border-top:1px solid var(--review-line); height:94px; box-sizing:border-box; background:color-mix(in srgb,var(--review-accent) 4%,var(--review-surface)); }
@@ -145,6 +150,11 @@
  .ridi-judging .tea-chart-grid { grid-template-columns:1fr; }
  .ridi-interaction { gap:10px; }
  .interaction-arcs { width:128px; }
+ .ridi-timeout-note { left:6px; right:6px; bottom:72px; grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr); gap:7px; padding:9px; }
+ .ridi-timeout-note small { font-size:8px; }
+ .ridi-timeout-note strong { font-size:10px; }
+ .ridi-timeout-arrow { width:26px; height:26px; }
+ .ridi-timeout-arrow svg { width:14px; height:14px; }
  .ridi-explanation { align-items:flex-start; flex-wrap:wrap; gap:8px; padding:14px; height:190px; }
  .ridi-explanation p { flex-basis:100% !important; order:3; }
  .ridi-speed { margin-left:auto; }
