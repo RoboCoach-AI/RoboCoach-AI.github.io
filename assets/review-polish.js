@@ -17,24 +17,16 @@
   if (loopToggle) {
     let playing = true;
     try { playing = localStorage.getItem('coaching-chart-loop') !== 'false'; } catch (_) {}
-    const updateChart = (freeze = false) => {
+    const updateChart = () => {
       document.querySelectorAll('.coaching-rounds-image').forEach(image => {
         const theme = image.classList.contains('coaching-rounds-image-dark') ? 'dark' : 'light';
-        if (!playing && freeze && image.complete && image.naturalWidth) {
-          const canvas = document.createElement('canvas');
-          canvas.width = image.naturalWidth;
-          canvas.height = image.naturalHeight;
-          canvas.getContext('2d').drawImage(image, 0, 0);
-          image.src = canvas.toDataURL('image/png');
-        } else {
-          image.src = `assets/figures/coaching-rounds-${playing ? 'animated' : 'static'}-${theme}.png?v=original-style-2`;
-        }
+        image.src = `assets/figures/coaching-rounds-${playing ? 'animated' : 'static'}-${theme}.png?v=original-style-2`;
       });
       loopToggle.textContent = playing ? 'Pause animation' : 'Play animation';
       loopToggle.setAttribute('aria-pressed', String(playing));
       try { localStorage.setItem('coaching-chart-loop', String(playing)); } catch (_) {}
     };
-    loopToggle.addEventListener('click', () => { playing = !playing; updateChart(true); });
+    loopToggle.addEventListener('click', () => { playing = !playing; updateChart(); });
     updateChart();
   }
   const observer = new IntersectionObserver(entries => {

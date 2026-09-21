@@ -159,29 +159,21 @@
 
   function explore(preferredPhase) {
     const requestedPhase = typeof preferredPhase === 'string' ? preferredPhase : null;
-    mode = 'manual'; transition = null; resetVideo = null;
+    transition = null;
+    resetVideo = null;
     root.classList.remove('is-switching');
     videos.forEach(video => video.pause());
     setTimeout(() => {
       const panel = root.querySelector('.tea-flow-panel:not([hidden])');
-      const chapter = panel.dataset.teaPanel;
-      phase = requestedPhase || {route:'route',failure:'imagine',collection:'collect',success:'reevaluate'}[chapter];
-      root.dataset.ridiPhase = phase;
-      root.dataset.routeReveal = '3'; root.classList.add('route-dispatched');
-      selectTeaModule(phases[phase].stage === 'success' ? 'improve' : phases[phase].stage);
-      captionLabel.textContent = phases[phase].label;
-      caption.textContent = phases[phase].text;
-      speed.textContent = '';
-      setRail();
-      manualVideo = panel.querySelector('video');
-      if (manualVideo) {
-        manualVideo.loop = true; manualVideo.playbackRate = 1;
-        prepareVideo(manualVideo);
-        if (manualVideo.ended) manualVideo.currentTime = 0;
-        playManualVideo(manualVideo);
-      }
+      if (!panel) return;
+      const next = requestedPhase || {route:'route',failure:'imagine',collection:'collect',success:'reevaluate'}[panel.dataset.teaPanel];
+      mode = 'playing';
+      enter(next, !!requestedPhase);
+      const video = activeVideo();
+      if (video?.ended && phases[next].rate) video.currentTime = 0;
       status();
-    },0);
+      schedule();
+    }, 0);
   }
   const stageEntryPhases = {route:'route',imagine:'imagine',diagnose:'diagnose',improve:'collect',success:'reevaluate'};
   stages.forEach(stage => stage.addEventListener('click',() => {
@@ -190,7 +182,7 @@
     selectTeaModule(phases[targetPhase].stage === 'success' ? 'improve' : phases[targetPhase].stage);
     explore(targetPhase);
   }));
-  // Real user navigation cancels the automatic sequence; scripted dispatch does not.
+  // Continue the sequence from the chapter selected by user navigation.
   section.addEventListener('click',event => {
     if (!event.isTrusted) return;
     if (event.target.closest('[data-tea-case],[data-tea-route-step],[data-tea-module],[data-tea-continue],[data-tea-back],.tea-chart-legend [role="button"],.tea-live-curves svg')) explore();
