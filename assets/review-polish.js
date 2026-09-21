@@ -51,6 +51,7 @@
     const definitions = node('defs');
     svg.append(definitions);
     const legend = node('g', { class: 'chart-legend' });
+    legend.append(node('rect', { class: 'chart-legend-frame', x: 482, y: 8, width: 840, height: 82 }));
     [
       ['uniform', 500, 34], ['random', 960, 34],
       ['targeted', 500, 72], ['ours', 960, 72],
