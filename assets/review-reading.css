@@ -66,6 +66,32 @@
 .ridi-judging .tea-chart-title strong { font-size:12px; }
 .ridi-judging .tea-chart-heading { padding:6px 9px; font-size:11px; }
 .ridi-judging .tea-chart-card { border-radius:4px; overflow:hidden; }
+.coaching-animation-controls { display:flex; justify-content:flex-end; margin-bottom:12px; }
+.coaching-animation-controls label { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--page-text); cursor:pointer; }
+.coaching-animation-controls input { accent-color:#55a868; width:16px; height:16px; }
+html[data-theme="dark"] video,
+html[data-theme="dark"] .video-shell { background:#080e0c; border-color:#30413e; }
+html[data-theme="dark"] .coachworld-architecture { background:#101a18; border-color:#30413e; }
+html[data-theme="dark"] .coachworld-architecture img,
+html[data-theme="dark"] .coachworld-architecture:hover img { filter:brightness(.72); }
+html[data-theme="dark"] .judge-progress-chart { background:#0d1718; }
+html[data-theme="dark"] .judge-chart-grid line { stroke:#354943; }
+html[data-theme="dark"] .judge-chart-axis { fill:#b4c6bf; }
+html[data-theme="dark"] .judge-threshold { stroke:#e5ad60; }
+html[data-theme="dark"] .judge-threshold-label { fill:#e5ad60; }
+html[data-theme="dark"] .judge-progress-chart circle { fill:#0d1718; }
+html[data-theme="dark"] .judge-progress-chart [stroke="#2166ac"] { stroke:#71b6f5; }
+html[data-theme="dark"] .judge-progress-chart text[fill="#2166ac"] { fill:#71b6f5; }
+html[data-theme="dark"] .judge-progress-chart [stroke="#1b9e77"] { stroke:#58cda7; }
+html[data-theme="dark"] .judge-progress-chart text[fill="#1b9e77"] { fill:#58cda7; }
+html[data-theme="dark"] .judge-progress-chart [stroke="#7570b3"] { stroke:#aaa0e4; }
+html[data-theme="dark"] .judge-progress-chart text[fill="#7570b3"] { fill:#aaa0e4; }
+html[data-theme="dark"] .judge-progress-chart [stroke="#b78600"] { stroke:#e1bd53; }
+html[data-theme="dark"] .judge-progress-chart text[fill="#b78600"] { fill:#e1bd53; }
+html[data-theme="dark"] .judge-progress-chart [stroke="#c31d75"] { stroke:#ed81bc; }
+html[data-theme="dark"] .judge-progress-chart text[fill="#c31d75"] { fill:#ed81bc; }
+html[data-theme="dark"] .judge-progress-chart [stroke="#b94e00"] { stroke:#eea263; }
+html[data-theme="dark"] .judge-progress-chart text[fill="#b94e00"] { fill:#eea263; }
 html[data-theme="dark"] .tea-chart-card[data-curve-source="real"] { --source-bg:#111c25; --source-border:#30485b; --source-ink:#83b9f0; }
 html[data-theme="dark"] .tea-chart-card[data-curve-source="wm"] { --source-bg:#10231f; --source-border:#2c4c43; --source-ink:#80ceba; }
 html[data-theme="dark"] .tea-chart-card svg { background:#0d1718; }

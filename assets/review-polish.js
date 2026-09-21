@@ -13,6 +13,19 @@
   }, true);
   window.addEventListener('hashchange', () => revealDestination(location.hash));
   revealDestination(location.hash);
+  const loopToggle = document.querySelector('[data-chart-loop]');
+  if (loopToggle) {
+    try { loopToggle.checked = localStorage.getItem('coaching-chart-loop') !== 'false'; } catch (_) {}
+    const updateChart = () => {
+      document.querySelectorAll('.coaching-rounds-image').forEach(image => {
+        const theme = image.classList.contains('coaching-rounds-image-dark') ? 'dark' : 'light';
+        image.src = `assets/figures/coaching-rounds-${loopToggle.checked ? 'animated' : 'static'}-${theme}.png?v=original-style-2`;
+      });
+      try { localStorage.setItem('coaching-chart-loop', String(loopToggle.checked)); } catch (_) {}
+    };
+    loopToggle.addEventListener('change', updateChart);
+    updateChart();
+  }
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-in-view'); observer.unobserve(entry.target); } });
   },{threshold:.25});
