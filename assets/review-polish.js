@@ -15,15 +15,26 @@
   revealDestination(location.hash);
   const loopToggle = document.querySelector('[data-chart-loop]');
   if (loopToggle) {
-    try { loopToggle.checked = localStorage.getItem('coaching-chart-loop') !== 'false'; } catch (_) {}
-    const updateChart = () => {
+    let playing = true;
+    try { playing = localStorage.getItem('coaching-chart-loop') !== 'false'; } catch (_) {}
+    const updateChart = (freeze = false) => {
       document.querySelectorAll('.coaching-rounds-image').forEach(image => {
         const theme = image.classList.contains('coaching-rounds-image-dark') ? 'dark' : 'light';
-        image.src = `assets/figures/coaching-rounds-${loopToggle.checked ? 'animated' : 'static'}-${theme}.png?v=original-style-2`;
+        if (!playing && freeze && image.complete && image.naturalWidth) {
+          const canvas = document.createElement('canvas');
+          canvas.width = image.naturalWidth;
+          canvas.height = image.naturalHeight;
+          canvas.getContext('2d').drawImage(image, 0, 0);
+          image.src = canvas.toDataURL('image/png');
+        } else {
+          image.src = `assets/figures/coaching-rounds-${playing ? 'animated' : 'static'}-${theme}.png?v=original-style-2`;
+        }
       });
-      try { localStorage.setItem('coaching-chart-loop', String(loopToggle.checked)); } catch (_) {}
+      loopToggle.textContent = playing ? 'Pause animation' : 'Play animation';
+      loopToggle.setAttribute('aria-pressed', String(playing));
+      try { localStorage.setItem('coaching-chart-loop', String(playing)); } catch (_) {}
     };
-    loopToggle.addEventListener('change', updateChart);
+    loopToggle.addEventListener('click', () => { playing = !playing; updateChart(true); });
     updateChart();
   }
   const observer = new IntersectionObserver(entries => {

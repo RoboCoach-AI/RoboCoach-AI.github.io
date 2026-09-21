@@ -37,7 +37,7 @@
     const running = active();
     root.classList.toggle('tour-paused',!running && mode !== 'manual');
     root.classList.toggle('is-manual',mode === 'manual');
-    toggle.textContent = mode === 'playing' ? 'Pause walkthrough' : mode === 'paused' ? 'Resume walkthrough' : mode === 'complete' ? 'Replay walkthrough' : 'Play walkthrough';
+    toggle.textContent = mode === 'playing' ? 'Pause animation' : 'Play animation';
     toggle.setAttribute('aria-pressed',String(mode === 'playing'));
     stateText.textContent = mode === 'armed' ? 'Autoplay starts when this case comes into view' : mode === 'manual' ? 'Manual exploration' : mode === 'complete' ? 'Walkthrough complete · Explore or replay' : !visible || document.hidden ? 'Paused outside the viewport' : mode === 'paused' ? 'Paused · Inspect the evidence' : 'Playing · '+phases[phase].label;
     root.querySelectorAll('.interaction-arcs').forEach(svg => {

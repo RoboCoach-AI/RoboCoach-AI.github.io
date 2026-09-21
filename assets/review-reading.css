@@ -67,8 +67,12 @@
 .ridi-judging .tea-chart-heading { padding:6px 9px; font-size:11px; }
 .ridi-judging .tea-chart-card { border-radius:4px; overflow:hidden; }
 .coaching-animation-controls { display:flex; justify-content:flex-end; margin-bottom:12px; }
-.coaching-animation-controls label { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--page-text); cursor:pointer; }
-.coaching-animation-controls input { accent-color:#55a868; width:16px; height:16px; }
+.coaching-animation-controls button,
+.ridi-tour-controls [data-ridi-toggle] { min-width:166px; min-height:42px; padding:10px 18px; border:1px solid #4d7164; border-radius:4px; background:#244b3d; color:#fff; opacity:1; font-size:14px; font-weight:600; cursor:pointer; }
+.coaching-animation-controls button:hover,
+.ridi-tour-controls [data-ridi-toggle]:hover { background:#31614e; }
+.coaching-animation-controls button:focus-visible,
+.ridi-tour-controls [data-ridi-toggle]:focus-visible { outline:2px solid #80ceba; outline-offset:3px; }
 html[data-theme="dark"] video,
 html[data-theme="dark"] .video-shell { background:#080e0c; border-color:#30413e; }
 html[data-theme="dark"] .coachworld-architecture { background:#101a18; border-color:#30413e; }
