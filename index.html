@@ -25,7 +25,7 @@
 <script defer="" src="assets/trajectory-demo.js?v=stable-shoe-10"></script>
 <link href="assets/rollout-carousel.css?v=embodiment-tabs-2" rel="stylesheet"/>
 <script defer="" src="assets/rollout-carousel.js?v=embodiment-tabs-1"></script>
-<link href="assets/review-polish.css?v=5" rel="stylesheet"/><script defer="" src="assets/review-polish.js?v=research-folds-1"></script><link href="assets/review-reading.css?v=compact-judge-1" rel="stylesheet"/><script defer="" src="assets/ridi-walkthrough.js?v=8"></script><link href="assets/review-type.css?v=2" rel="stylesheet"/><link as="font" crossorigin="" href="assets/fonts/InterVariable.woff2" rel="preload" type="font/woff2"/></head>
+<link href="assets/review-polish.css?v=5" rel="stylesheet"/><script defer="" src="assets/review-polish.js?v=manual-action-fold-1"></script><link href="assets/review-reading.css?v=manual-action-fold-1" rel="stylesheet"/><script defer="" src="assets/ridi-walkthrough.js?v=8"></script><link href="assets/review-type.css?v=2" rel="stylesheet"/><link as="font" crossorigin="" href="assets/fonts/InterVariable.woff2" rel="preload" type="font/woff2"/></head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <div aria-hidden="true" class="reading-progress"><span data-reading-progress=""></span></div>
@@ -42,7 +42,7 @@
 <a href="#results">Results</a>
 <a href="#hardware">Robot tasks</a>
 <a href="#coachworld">CoachWorld</a>
-<a href="#trajectory-demo">Action control</a>
+<a href="#trajectory-details">Action control</a>
 <a href="#coaching">Coaching</a></nav>
 <button aria-label="Switch to dark theme" class="theme-toggle" data-theme-toggle="" title="Switch to dark theme" type="button">
 <svg aria-hidden="true" class="theme-icon-moon" viewbox="0 0 24 24"><path d="M20.8 13.2A8.7 8.7 0 0 1 10.8 3.1 9 9 0 1 0 20.8 13.2Z"></path></svg>
@@ -599,9 +599,10 @@
 </li>
 </ol>
 </div></section>
+<div id="trajectory-demo">
 <details class="research-details" data-research-fold="" id="trajectory-details">
 <summary>Steer the predicted motion<span aria-hidden="true">+</span></summary>
-<div aria-labelledby="trajectory-demo-title" class="trajectory-demo" data-trajectory-demo="" id="trajectory-demo">
+<div aria-labelledby="trajectory-demo-title" class="trajectory-demo" data-trajectory-demo="">
 <p class="kicker">Interactive · Action control</p>
 <h3 id="trajectory-demo-title">Steer the predicted motion</h3>
 <p class="trajectory-intro">One scene, two routes. Compare up → across → down with down → across → up, starting and ending at the same points. Choose a dataset below, then play either full prediction or a single motion segment.</p>
@@ -643,6 +644,7 @@
 <noscript>Enable JavaScript to switch between the recorded control presets.</noscript>
 </div>
 </details>
+</div>
 <h3 class="research-subheading" id="prediction-evaluation-title">Action-conditioned video prediction</h3>
 <p class="evaluation-summary">On DROID-180, mixed-domain CoachWorld leads in LPIPS, FVD, all three trajectory metrics, and instruction following.</p>
 <details class="research-details" data-research-fold="" id="prediction-evaluation-details">

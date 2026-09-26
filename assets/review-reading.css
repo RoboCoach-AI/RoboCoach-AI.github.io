@@ -282,6 +282,7 @@ html[data-theme="dark"] .tea-chart-card [data-confirm-time] { fill:#0d1718; }
   #results .result-bar-row:not(.baseline) > strong { font-size:22px; }
 }
 .research-details > summary > span { flex:0 0 24px; }
+#trajectory-demo,#trajectory-details { scroll-margin-top:100px; }
 .research-details > .trajectory-demo { margin:0; padding-top:8px; border-top:0; }
 .research-details .metric-table-wrap,.research-details .judge-evaluation-table { max-width:100%; }
 .research-details [role="region"]:focus-visible { outline:2px solid var(--review-accent); outline-offset:3px; }
