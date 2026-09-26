@@ -1,0 +1,64 @@
+.coachworld-snapshot {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 36px;
+  margin-top: 28px;
+}
+
+.coachworld-snapshot > div {
+  min-width: 0;
+  padding-top: 15px;
+  border-top: 1px solid var(--review-line);
+}
+
+.coachworld-snapshot strong {
+  display: block;
+  color: var(--review-text);
+  font-size: 20px;
+  font-weight: 650;
+  line-height: 1.3;
+}
+
+.coachworld-snapshot p {
+  margin: 7px 0 0;
+  color: var(--review-muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.results-takeaway {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--review-line);
+  color: var(--review-text);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.results-takeaway > strong {
+  font-size: 17px;
+  font-weight: 650;
+}
+
+.results-takeaway p {
+  margin: 6px 0 0;
+  color: var(--review-muted);
+}
+
+.results-takeaway p span {
+  margin-right: 12px;
+  color: var(--review-text);
+  font-weight: 650;
+}
+
+.results-takeaway p b {
+  color: var(--review-text);
+  font-weight: 650;
+}
+
+@media (max-width: 700px) {
+  .coachworld-snapshot {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}

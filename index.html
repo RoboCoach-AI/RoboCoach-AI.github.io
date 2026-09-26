@@ -25,7 +25,7 @@
 <script defer="" src="assets/trajectory-demo.js?v=stable-shoe-10"></script>
 <link href="assets/rollout-carousel.css?v=embodiment-tabs-2" rel="stylesheet"/>
 <script defer="" src="assets/rollout-carousel.js?v=embodiment-tabs-1"></script>
-<link href="assets/review-polish.css?v=7" rel="stylesheet"/><script defer="" src="assets/review-polish.js?v=action-unfolded-1"></script><link href="assets/review-reading.css?v=action-unfolded-1" rel="stylesheet"/><script defer="" src="assets/ridi-walkthrough.js?v=8"></script><link href="assets/review-type.css?v=2" rel="stylesheet"/><link href="assets/hero-background.css?v=2" rel="stylesheet"/><link as="font" crossorigin="" href="assets/fonts/InterVariable.woff2" rel="preload" type="font/woff2"/></head>
+<link href="assets/review-polish.css?v=7" rel="stylesheet"/><script defer="" src="assets/review-polish.js?v=action-unfolded-1"></script><link href="assets/review-reading.css?v=action-unfolded-1" rel="stylesheet"/><script defer="" src="assets/ridi-walkthrough.js?v=8"></script><link href="assets/review-type.css?v=2" rel="stylesheet"/><link href="assets/hero-background.css?v=2" rel="stylesheet"/><link href="assets/reading-highlights.css?v=1" rel="stylesheet"/><link as="font" crossorigin="" href="assets/fonts/InterVariable.woff2" rel="preload" type="font/woff2"/></head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <div aria-hidden="true" class="reading-progress"><span data-reading-progress=""></span></div>
@@ -58,7 +58,7 @@
 <div class="hero-content">
 <h1 id="hero-title"><span class="hero-title-robo">Robo</span><span class="hero-title-coach">Coach</span></h1>
 <p class="hero-subtitle">World Models as Active Coaches for Compositional Robot Skills</p>
-<p class="hero-summary">A world-model-guided framework that <strong>identifies skill bottlenecks</strong> in imagined rollouts and targets <strong>new demonstrations</strong> to improve the corresponding skill experts.</p>
+<p class="hero-summary">RoboCoach finds the <strong>first skill bottleneck</strong> in imagined rollouts and requests <strong>targeted demonstrations</strong> for that expert.</p>
 <div aria-label="Project resources" class="resource-dock resource-dock-pending-code">
 <a aria-label="Watch the RoboCoach teaser" class="resource-pill teaser-link" href="#teaser">
 <svg aria-hidden="true" class="resource-icon" viewbox="0 0 32 32"><path d="M11 6 27 16 11 26Z" fill="none" stroke="currentColor" stroke-width="2"></path></svg>
@@ -98,7 +98,7 @@
 <p class="kicker">System overview</p>
 <h2>From imagined execution to targeted improvement</h2>
 <p>
-          RoboCoach connects two closed loops: an <span class="text-highlight">execution loop</span> that routes modular experts through an imagined rollout, and a <span class="text-highlight">coaching loop</span> that converts consistent first-timeout diagnoses into a focused data request.
+          RoboCoach routes experts through imagined rollouts, then turns repeated first-timeout failures into targeted data requests.
         </p>
 </div>
 <div class="overview-figure-layout">
@@ -114,7 +114,7 @@
 <span class="overview-stage-number">01</span>
 <div>
 <h3>Route</h3>
-<p>Identify the first unfinished subtask from the instruction, current observation, and completed stages. Then dispatch its matching expert.</p>
+<p>Dispatch the matching expert for the first unfinished subtask.</p>
 </div>
 </a>
 </li>
@@ -132,7 +132,7 @@
 <span class="overview-stage-number">03</span>
 <div>
 <h3>Diagnose</h3>
-<p>The progress judge scores the observed video prefix. Completion advances the route. The first missed deadline identifies the active subtask–expert pair.</p>
+<p>Score the observed rollout; the first missed deadline identifies the stalled subtask and expert.</p>
 </div>
 </a>
 </li>
@@ -146,7 +146,7 @@
 </a>
 </li>
 </ol>
-</div><div class="research-reading"><p><strong>Execution loop</strong><span>The router is queried at initialization and after each judge-confirmed completion. The active expert acts inside CoachWorld. Each predicted video chunk supplies the observation for its next decision.</span></p><p><strong>Coaching loop</strong><span>Across imagined trials, consistent first-timeout diagnoses determine where the next demonstration budget goes. Only selected expert LoRAs are updated. The world model, router, judge, and VLA backbone remain fixed.</span></p></div>
+</div><div class="research-reading"><p><strong>Execution loop</strong><span>Route the active expert; each predicted video chunk becomes its next observation until the subtask is confirmed.</span></p><p><strong>Coaching loop</strong><span>Recurring first timeouts direct demonstrations to selected expert LoRAs. The world model, router, judge, and VLA backbone stay fixed.</span></p></div>
 </section>
 <section aria-labelledby="tea-demo-title" class="section tea-demo" id="teabag-diagnostics">
 <div class="tea-flow-eyebrow">
@@ -159,7 +159,6 @@
 <nav aria-label="RIDI stages" class="ridi-stage-rail"><button aria-controls="tea-route" data-ridi-stage="route" type="button"><b>01</b><span>Route</span></button><i aria-hidden="true">→</i><button aria-controls="tea-failure" data-ridi-stage="imagine" type="button"><b>02</b><span>Imagine</span></button><i aria-hidden="true">→</i><button aria-controls="tea-failure" data-ridi-stage="diagnose" type="button"><b>03</b><span>Diagnose</span></button><i aria-hidden="true">→</i><button aria-controls="tea-collection" data-ridi-stage="improve" type="button"><b>04</b><span>Improve</span></button><i aria-hidden="true">→</i><button aria-controls="tea-success" data-ridi-stage="success" type="button"><b>05</b><span>Success</span></button></nav><div class="ridi-stage-body"><section aria-hidden="false" class="tea-flow-panel" data-tea-panel="route" id="tea-route">
 <div class="tea-flow-context">
 <h3>Turn one instruction into an expert sequence</h3>
-<p>Decompose the task, order the subtasks, and dispatch the matching skill expert. Select a planned step to inspect its assignment.</p>
 </div>
 <div class="tea-route-plan">
 <div class="tea-route-instruction"><svg aria-hidden="true" class="ridi-person" viewbox="0 0 32 32"><circle cx="16" cy="9" r="5"></circle><path d="M5 29v-4a11 11 0 0 1 22 0v4Z"></path></svg><span>Task instruction</span><strong>“Place the tea bag into the cup, then pour water to brew tea.”</strong></div>
@@ -186,7 +185,7 @@
               The tea bag is not picked up
             </h3>
 <p>
-              CoachWorld and the real-world rollout both expose a missed pickup. the progress judge leaves S1 unconfirmed, identifying the stage that needs attention.
+              Both rollouts miss pickup; the progress judge leaves S1 unconfirmed.
             </p>
 </div><div class="ridi-evidence"><div class="ridi-media"><div class="tea-flow-sources">
 <strong>
@@ -363,15 +362,16 @@
 </div></div>
 <details class="research-details" data-research-fold="" id="results-evaluation-details">
 <summary>Comparison details<span aria-hidden="true">+</span></summary>
-<div class="details-body"><p>Three coaching rounds add 100 accepted subtask demonstrations per round in simulation and 50 on hardware. Within each domain, comparisons match demonstration budgets, optimization, replay exposure, and evaluation trials. We report complete-task success across four budget checkpoints.</p>
-<p>RoboCoach and Single VLA + Uniform both start from 13.3% success on Franka and 40.0% on AgileX.</p>
-<p>In simulation only, expert-specific updates using the same world-model-selected demonstrations improve final success over a shared adapter by 3.4 points on LIBERO and 13.2 points on RoboTwin.</p></div>
+<div class="details-body"><p><strong>Budget:</strong> three rounds of 100 accepted subtask demonstrations in simulation or 50 per hardware platform.</p>
+<p><strong>Matched comparison:</strong> budgets, optimization, replay exposure, and evaluation trials align within each domain; success is reported at four checkpoints.</p>
+<p><strong>Shared start:</strong> RoboCoach and Single VLA + Uniform begin at 13.3% on Franka and 40.0% on AgileX.</p></div>
 </details>
 <figure class="paper-results-figure coaching-results-figure">
 <div class="coaching-animation-controls"><button type="button" data-chart-loop="" aria-pressed="true">Pause animation</button></div>
 <img alt="Complete-task success with bootstrap confidence intervals on LIBERO, RoboTwin, Franka, and AgileX, grouped into simulation and real-robot experiments" class="coaching-rounds-image coaching-rounds-image-dark" loading="lazy" src="assets/figures/coaching-improvement-animated-dark.png?v=ci-2"/>
 <img alt="" aria-hidden="true" class="coaching-rounds-image coaching-rounds-image-light" loading="lazy" src="assets/figures/coaching-improvement-animated-light.png?v=ci-2"/>
 </figure>
+<div class="results-takeaway"><strong>RoboCoach leads at the final budget across all four platforms.</strong><p><span>Simulation ablation</span><b>+3.4 pp</b> LIBERO · <b>+13.2 pp</b> RoboTwin over a shared adapter, using the same targeted demonstrations.</p></div>
 </section>
 <section aria-labelledby="hardware-title" class="section section-hardware" id="hardware">
 <div class="section-heading section-heading-row">
@@ -429,10 +429,8 @@
 <div class="section-heading">
 <p class="kicker">Predictive model</p>
 <h2>CoachWorld: our camera-aware action-conditioned world model across embodiments</h2>
-<p>
-          CoachWorld starts from Wan2.2 TI2V-5B and predicts future video from sparse visual history and future robot states. A <span class="text-highlight">shared two-slot state contract</span> supports Franka and bimanual systems. <span class="text-highlight">Calibrated intrinsics and extrinsics</span> ground state conditioning in each camera view.
-        </p><p class="coachworld-long-interaction">CoachWorld sustains closed-loop interaction for over a minute. <strong>The longest example below runs for 85.8 seconds.</strong> Predicted observations feed back into the policy as it continues to act, extending the interaction across successive video chunks.</p>
-</div><div class="coachworld-rollout-browser" id="rollouts"><div class="coachworld-rollout-toolbar"><p>Closed-loop rollout comparisons</p><span class="rollout-order-note">Longest interactions first</span></div>
+<div class="coachworld-snapshot" aria-label="CoachWorld highlights"><div><strong>One model, two embodiments</strong><p>A shared two-slot state format and calibrated cameras condition Wan2.2 TI2V-5B for Franka and bimanual robots.</p></div><div><strong>85.8 s closed-loop example</strong><p>Predicted frames feed back into the policy across successive video chunks.</p></div></div>
+</div><div class="coachworld-rollout-browser" id="rollouts"><div class="coachworld-rollout-toolbar"><p>Closed-loop rollout comparisons</p></div>
 <div aria-label="Robot embodiment" class="rollout-embodiment-tabs" data-rollout-tabs="" hidden="" role="tablist">
 <button aria-controls="single-rollout-panel" aria-selected="true" id="single-rollout-tab" role="tab" type="button">Single Arm</button>
 <button aria-controls="dual-rollout-panel" aria-selected="false" id="dual-rollout-tab" role="tab" tabindex="-1" type="button">Bimanual</button>
@@ -591,7 +589,7 @@
 <h3 class="research-subheading" id="action-control-title">Action control</h3>
 <div aria-labelledby="trajectory-demo-title" class="trajectory-demo" data-trajectory-demo="">
 <h3 id="trajectory-demo-title">Steer the predicted motion</h3>
-<p class="trajectory-intro">Two model-predicted routes follow different manually drawn paths between the same start and goal; they are not physical robot executions.</p>
+<p class="trajectory-intro">Two model-predicted routes follow different manually drawn paths between the same start and goal; they are <strong>not physical robot executions</strong>.</p>
 <details class="scene-picker" open=""><summary><span>Change scene</span><span class="scene-picker-current" data-current-scene="">RoboCoin · Cloth</span><span aria-hidden="true">⌄</span></summary><div aria-label="Choose a video pair" class="trajectory-scenes" data-trajectory-scenes="" role="group"></div></details>
 <div data-trajectory-content="" hidden="">
 <div class="trajectory-scene-info">
@@ -634,7 +632,8 @@
 <details class="research-details" data-research-fold="" id="prediction-evaluation-details">
 <summary>Full prediction evaluation<span aria-hidden="true">+</span></summary>
 <div class="details-body">
-<p class="prediction-evaluation-intro">All models receive matched visual histories and future actions. Mixed- and single-domain CoachWorld use matched training volume. LPIPS and FVD measure visual fidelity; HSD, nDTW, and DYN measure end-effector trajectory agreement.</p>
+<p class="prediction-evaluation-intro"><strong>Matched inputs:</strong> the same visual histories and future actions; CoachWorld variants have matched training volume.</p>
+<p><strong>Metrics:</strong> LPIPS and FVD measure visual fidelity; HSD, nDTW, and DYN measure end-effector trajectory agreement.</p>
 <div aria-label="Full prediction evaluation table" class="metric-table-wrap" role="region" tabindex="0">
 <table aria-labelledby="prediction-evaluation-title" class="metric-table" id="prediction-evaluation-table">
 <thead><tr><th scope="col">Method</th><th scope="col">LPIPS ↓</th><th scope="col">FVD ↓</th><th scope="col">HSD ↑</th><th scope="col">nDTW ↑</th><th scope="col">DYN ↑</th><th scope="col">Physics<br/>adherence ↑</th><th scope="col">Instruction<br/>following ↑</th></tr></thead>
@@ -661,7 +660,7 @@
 </div>
 <details class="research-details" data-research-fold="" id="judge-reading-details">
 <summary>How the progress judge works<span aria-hidden="true">+</span></summary>
-<div class="details-body"><p>Completion thresholds and deadlines are calibrated on held-out trajectories and then frozen. This video shows an observed prefix: an unresolved stage in a shortened clip is labelled unconfirmed.</p>
+<div class="details-body"><p><strong>Frozen calibration:</strong> thresholds and deadlines come from held-out trajectories. A stage unfinished in the shortened clip is marked unconfirmed.</p>
 <ol aria-label="How progress judge diagnoses a failure" class="judge-demo-steps">
 <li>
 <span>01</span>
@@ -761,7 +760,8 @@
 <tr class="selected-judge"><th scope="row">CoachWorld rollout</th><td>0.815</td><td>62.73</td><td>0.638</td><td>96/87/23/14</td><td>80.67</td><td>87.27</td><td>83.84</td></tr></tbody></table></div>
 <details class="research-details" data-research-fold="" id="judge-comparison-details">
 <summary>Full progress-judge comparison<span aria-hidden="true">+</span></summary>
-<div class="details-body"><p>All six judges receive the same causal reference-video replay, streaming protocol, and frozen routing. Switch metrics evaluate stage-transition timing; Spearman ρ measures terminal-stage rank agreement. Outcome metrics evaluate binary failure detection, treating failure as the positive class. Completion thresholds are calibrated on a shared held-out split and frozen for evaluation.</p>
+<div class="details-body"><p><strong>Matched protocol:</strong> all six judges see the same causal video stream and frozen routing. Thresholds are calibrated on a held-out split.</p>
+<p><strong>Metrics:</strong> switch timing, terminal-stage rank agreement (Spearman ρ), and binary failure detection (failure is positive).</p>
 <div aria-label="Full progress-judge comparison table" class="judge-evaluation-table" role="region" tabindex="0">
 <table id="judge-comparison-table"><caption>Progress-judge comparison on causal reference-video replay</caption>
 <thead><tr><th scope="col">Judge</th><th scope="col">Switch MAE<br/>(s) ↓</th><th scope="col">Switch recall<br/>@1.0 s (%) ↑</th><th scope="col">Spearman<br/>ρ ↑</th><th scope="col">TP/TN/FP/FN</th><th scope="col">Outcome<br/>precision (%) ↑</th><th scope="col">Outcome<br/>recall (%) ↑</th><th scope="col">Outcome<br/>F1 (%) ↑</th></tr></thead>
