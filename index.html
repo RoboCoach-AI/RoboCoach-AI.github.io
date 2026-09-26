@@ -25,7 +25,7 @@
 <script defer="" src="assets/trajectory-demo.js?v=stable-shoe-10"></script>
 <link href="assets/rollout-carousel.css?v=embodiment-tabs-2" rel="stylesheet"/>
 <script defer="" src="assets/rollout-carousel.js?v=embodiment-tabs-1"></script>
-<link href="assets/review-polish.css?v=5" rel="stylesheet"/><script defer="" src="assets/review-polish.js?v=research-folds-1"></script><link href="assets/review-reading.css?v=fold-emphasis-1" rel="stylesheet"/><script defer="" src="assets/ridi-walkthrough.js?v=8"></script><link href="assets/review-type.css?v=2" rel="stylesheet"/><link as="font" crossorigin="" href="assets/fonts/InterVariable.woff2" rel="preload" type="font/woff2"/></head>
+<link href="assets/review-polish.css?v=5" rel="stylesheet"/><script defer="" src="assets/review-polish.js?v=research-folds-1"></script><link href="assets/review-reading.css?v=compact-results-1" rel="stylesheet"/><script defer="" src="assets/ridi-walkthrough.js?v=8"></script><link href="assets/review-type.css?v=2" rel="stylesheet"/><link as="font" crossorigin="" href="assets/fonts/InterVariable.woff2" rel="preload" type="font/woff2"/></head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <div aria-hidden="true" class="reading-progress"><span data-reading-progress=""></span></div>
@@ -358,8 +358,22 @@
 <p class="kicker">Closed-loop improvement</p>
 <h2 id="results-title">Three coaching rounds across four platforms</h2>
 </div>
-</div><div class="research-reading"><p><strong>Results</strong><span>With 150 accepted hardware demonstrations, RoboCoach reaches 75.0% success on Franka and 83.8% on AgileX, compared with 30.0% and 47.5% for Single VLA + Uniform. Both methods start from 13.3% and 40.0%, respectively.</span></p><p><strong>Evaluation</strong><span>Three coaching rounds add 100 accepted subtask demonstrations per round in simulation and 50 on hardware. Within each domain, comparisons match demonstration budgets, optimization, replay exposure, and evaluation trials. We report complete-task success across four budget checkpoints.</span></p></div>
-<div aria-label="Real robot final success rates" class="review-results-lead"><div class="result-context">Real-robot results <span>150 additional demonstrations · Same budget</span></div><div class="result-comparisons"><article class="result-comparison"><header><h3>Franka</h3><span>+45.0 percentage points</span></header><div class="result-main"><strong>75.0<small>%</small></strong><p>RoboCoach<br/><span>complete-task success</span></p></div><div class="result-bar-row"><span>RoboCoach</span><i><b style="--result-width:75.0%"></b></i><strong>75.0%</strong></div><div class="result-bar-row baseline"><span>VLA + uniform</span><i><b style="--result-width:30.0%"></b></i><strong>30.0%</strong></div></article><article class="result-comparison"><header><h3>AgileX</h3><span>+36.3 percentage points</span></header><div class="result-main"><strong>83.8<small>%</small></strong><p>RoboCoach<br/><span>complete-task success</span></p></div><div class="result-bar-row"><span>RoboCoach</span><i><b style="--result-width:83.8%"></b></i><strong>83.8%</strong></div><div class="result-bar-row baseline"><span>VLA + uniform</span><i><b style="--result-width:47.5%"></b></i><strong>47.5%</strong></div></article></div><p class="result-baseline-note">Compared with Single VLA + Uniform at the same final budget.</p></div>
+</div>
+<div aria-label="Real robot final success rates" class="review-results-lead">
+<div class="result-context">Real-robot complete-task success <span>150 additional demonstrations per platform · Same budget</span></div>
+<div class="result-comparisons">
+<article class="result-comparison"><header><h3>Franka</h3><span>+45.0 percentage points</span></header>
+<div class="result-bar-row"><span>RoboCoach</span><i><b style="--result-width:75.0%"></b></i><strong>75.0%</strong></div>
+<div class="result-bar-row baseline"><span>Single VLA + Uniform</span><i><b style="--result-width:30.0%"></b></i><strong>30.0%</strong></div></article>
+<article class="result-comparison"><header><h3>AgileX</h3><span>+36.3 percentage points</span></header>
+<div class="result-bar-row"><span>RoboCoach</span><i><b style="--result-width:83.8%"></b></i><strong>83.8%</strong></div>
+<div class="result-bar-row baseline"><span>Single VLA + Uniform</span><i><b style="--result-width:47.5%"></b></i><strong>47.5%</strong></div></article>
+</div></div>
+<details class="research-details" data-research-fold="" id="results-evaluation-details">
+<summary>Evaluation protocol<span aria-hidden="true">+</span></summary>
+<div class="details-body"><p>Three coaching rounds add 100 accepted subtask demonstrations per round in simulation and 50 on hardware. Within each domain, comparisons match demonstration budgets, optimization, replay exposure, and evaluation trials. We report complete-task success across four budget checkpoints.</p>
+<p>RoboCoach and Single VLA + Uniform both start from 13.3% success on Franka and 40.0% on AgileX.</p></div>
+</details>
 <figure class="paper-results-figure coaching-results-figure">
 <div class="coaching-animation-controls"><button type="button" data-chart-loop="" aria-pressed="true">Pause animation</button></div>
 <img alt="Complete-task success with bootstrap confidence intervals on LIBERO, RoboTwin, Franka, and AgileX, grouped into simulation and real-robot experiments" class="coaching-rounds-image coaching-rounds-image-dark" loading="lazy" src="assets/figures/coaching-improvement-animated-dark.png?v=ci-2"/>

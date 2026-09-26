@@ -237,6 +237,25 @@ html[data-theme="dark"] .tea-chart-card [data-confirm-time] { fill:#0d1718; }
 
 .evaluation-summary { max-width:960px; margin:20px 0 24px; color:var(--review-muted); font-size:15px; line-height:1.75; letter-spacing:0; }
 .evaluation-summary strong { color:var(--review-text); font-weight:650; }
+#results > .section-heading { margin-bottom:20px; }
+#results .review-results-lead { margin:16px 0; }
+#results .result-context { margin-bottom:12px; font-size:13px; }
+#results .result-comparisons { gap:16px; }
+#results .result-comparison { padding:16px 20px; border-radius:6px; }
+#results .result-comparison h3 { font-size:22px; }
+#results .result-comparison header { margin-bottom:14px; }
+#results .result-comparison header > span { font-size:12px; }
+#results .result-bar-row { grid-template-columns:144px minmax(0,1fr) 68px; gap:12px; margin:10px 0 0; font-size:13px; line-height:1.5; }
+#results .result-bar-row:not(.baseline) > strong { font-size:24px; font-weight:650; color:var(--review-accent); letter-spacing:0; }
+#results .result-bar-row.baseline > strong { font-size:16px; }
+#results .result-bar-row i { height:6px; }
+#results-evaluation-details { margin:16px 0 20px; }
+#results-evaluation-details > summary { padding:12px 0; font-size:14px; }
+@media(max-width:760px) {
+  #results .result-comparison { padding:14px 16px; }
+  #results .result-bar-row { grid-template-columns:108px minmax(0,1fr) 60px; gap:8px; }
+  #results .result-bar-row:not(.baseline) > strong { font-size:22px; }
+}
 .research-details > summary > span { flex:0 0 24px; }
 .research-details > .trajectory-demo { margin:0; padding-top:8px; border-top:0; }
 .research-details .metric-table-wrap,.research-details .judge-evaluation-table { max-width:100%; }
