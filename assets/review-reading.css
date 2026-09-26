@@ -268,7 +268,7 @@ html[data-theme="dark"] .tea-chart-card [data-confirm-time] { fill:#0d1718; }
 .coaching-full-view a { color:var(--review-accent); }
 #coaching-details .coaching-round-frame { margin-top:0; margin-bottom:24px; }
 
-:is(#trajectory-details,#prediction-evaluation-details) {
+:is(#trajectory-details,#prediction-evaluation-details,#judge-comparison-details) {
   --fold-bg:#e1eee8;
   --fold-hover:#d2e6dc;
   --fold-text:#174b40;
@@ -276,14 +276,14 @@ html[data-theme="dark"] .tea-chart-card [data-confirm-time] { fill:#0d1718; }
   --fold-accent:#167660;
   border:0;
 }
-html[data-theme="dark"] :is(#trajectory-details,#prediction-evaluation-details) {
+html[data-theme="dark"] :is(#trajectory-details,#prediction-evaluation-details,#judge-comparison-details) {
   --fold-bg:#173c34;
   --fold-hover:#204b40;
   --fold-text:#e9f8f1;
   --fold-line:#3c7463;
   --fold-accent:#73dcc0;
 }
-:is(#trajectory-details,#prediction-evaluation-details) > summary {
+:is(#trajectory-details,#prediction-evaluation-details,#judge-comparison-details) > summary {
   min-height:72px;
   box-sizing:border-box;
   padding:18px 22px;
@@ -298,17 +298,17 @@ html[data-theme="dark"] :is(#trajectory-details,#prediction-evaluation-details) 
   gap:16px;
   transition:background .18s,border-color .18s;
 }
-:is(#trajectory-details,#prediction-evaluation-details) > summary:hover {
+:is(#trajectory-details,#prediction-evaluation-details,#judge-comparison-details) > summary:hover {
   background:var(--fold-hover);
   color:var(--fold-text);
   border-color:var(--fold-accent);
 }
-:is(#trajectory-details,#prediction-evaluation-details) > summary:focus-visible {
+:is(#trajectory-details,#prediction-evaluation-details,#judge-comparison-details) > summary:focus-visible {
   outline:2px solid var(--fold-accent);
   outline-offset:4px;
   color:var(--fold-text);
 }
-:is(#trajectory-details,#prediction-evaluation-details) > summary > span {
+:is(#trajectory-details,#prediction-evaluation-details,#judge-comparison-details) > summary > span {
   display:grid;
   place-items:center;
   flex:0 0 32px;
@@ -323,14 +323,14 @@ html[data-theme="dark"] :is(#trajectory-details,#prediction-evaluation-details) 
   transform:none;
   transition:none;
 }
-:is(#trajectory-details,#prediction-evaluation-details) > summary > span::before {
+:is(#trajectory-details,#prediction-evaluation-details,#judge-comparison-details) > summary > span::before {
   content:"+";
   font-size:24px;
   font-weight:500;
 }
-:is(#trajectory-details,#prediction-evaluation-details)[open] > summary > span::before { content:"-"; }
-:is(#trajectory-details,#prediction-evaluation-details)[open] > summary { margin-bottom:16px; }
+:is(#trajectory-details,#prediction-evaluation-details,#judge-comparison-details)[open] > summary > span::before { content:"-"; }
+:is(#trajectory-details,#prediction-evaluation-details,#judge-comparison-details)[open] > summary { margin-bottom:16px; }
 @media (max-width:600px) {
-  :is(#trajectory-details,#prediction-evaluation-details) > summary { padding:16px; font-size:16px; }
+  :is(#trajectory-details,#prediction-evaluation-details,#judge-comparison-details) > summary { padding:16px; font-size:16px; }
 }
 .prediction-evaluation-intro { margin:0 0 24px; font-size:16px; line-height:1.75; color:var(--review-muted); }
