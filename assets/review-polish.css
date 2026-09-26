@@ -23,6 +23,7 @@ html[data-theme="dark"] .section .kicker,html[data-theme="dark"] .tea-flow-eyebr
 #teabag-diagnostics > h2 { font-weight:400; font-size:clamp(32px,3.7vw,49px); }
 .resource-dock { gap:10px; }
 .resource-pill { transition:border-color .2s,background-color .2s,transform .2s; }
+a.resource-pill { text-decoration:none; }
 a.resource-pill:hover,a.resource-pill:focus-visible { transform:translateY(-2px); }
 .resource-pill:not(a) { opacity:.6; }
 .thesis-band { padding-block:32px; }
