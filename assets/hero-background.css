@@ -1,0 +1,21 @@
+html[data-theme="light"] .hero {
+  background: #edf4ef;
+}
+
+html[data-theme="light"] .hero-media {
+  opacity: 1;
+  filter: saturate(.78) contrast(.94);
+}
+
+html[data-theme="light"] .hero-shade {
+  background: linear-gradient(180deg, rgba(237, 244, 239, .46), rgba(237, 244, 239, .62) 46%, #f6f0e5 100%);
+}
+
+html[data-theme="dark"] .hero-media {
+  opacity: 1;
+  filter: saturate(.72) brightness(.48);
+}
+
+html[data-theme="dark"] .hero-shade {
+  background: linear-gradient(180deg, rgba(5, 12, 11, .4), rgba(5, 12, 11, .5) 46%, #07100f 100%);
+}
