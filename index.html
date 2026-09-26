@@ -23,8 +23,8 @@
 <link href="index.html" rel="canonical"/>
 <link href="assets/trajectory-demo.css?v=stable-shoe-10" rel="stylesheet"/>
 <script defer="" src="assets/trajectory-demo.js?v=stable-shoe-10"></script>
-<link href="assets/rollout-carousel.css?v=teaser-captions-1" rel="stylesheet"/>
-<script defer="" src="assets/rollout-carousel.js?v=20260918-1"></script>
+<link href="assets/rollout-carousel.css?v=embodiment-tabs-1" rel="stylesheet"/>
+<script defer="" src="assets/rollout-carousel.js?v=embodiment-tabs-1"></script>
 <link href="assets/review-polish.css?v=5" rel="stylesheet"/><script defer="" src="assets/review-polish.js?v=research-folds-1"></script><link href="assets/review-reading.css?v=fold-emphasis-1" rel="stylesheet"/><script defer="" src="assets/ridi-walkthrough.js?v=8"></script><link href="assets/review-type.css?v=2" rel="stylesheet"/><link as="font" crossorigin="" href="assets/fonts/InterVariable.woff2" rel="preload" type="font/woff2"/></head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -430,7 +430,11 @@
           CoachWorld starts from Wan2.2 TI2V-5B and predicts future video from sparse visual history and future robot states. A <span class="text-highlight">shared two-slot state contract</span> supports Franka and bimanual systems. <span class="text-highlight">Calibrated intrinsics and extrinsics</span> ground state conditioning in each camera view.
         </p><p class="coachworld-long-interaction">CoachWorld sustains closed-loop interaction for over a minute. <strong>The longest example below runs for 85.8 seconds.</strong> Predicted observations feed back into the policy as it continues to act, extending the interaction across successive video chunks.</p>
 </div><div class="coachworld-rollout-browser" id="rollouts"><div class="coachworld-rollout-toolbar"><p>Closed-loop rollout comparisons</p><span class="rollout-order-note">Longest interactions first</span></div>
-<section aria-label="Single-arm rollout comparisons" aria-roledescription="carousel" class="rollout-carousel" data-rollout-carousel="">
+<div aria-label="Robot embodiment" class="rollout-embodiment-tabs" data-rollout-tabs="" hidden="" role="tablist">
+<button aria-controls="single-rollout-panel" aria-selected="true" id="single-rollout-tab" role="tab" type="button">Single Arm</button>
+<button aria-controls="dual-rollout-panel" aria-selected="false" id="dual-rollout-tab" role="tab" tabindex="-1" type="button">Bimanual</button>
+</div>
+<section aria-labelledby="single-rollout-tab" class="rollout-carousel" data-rollout-carousel="" id="single-rollout-panel" role="tabpanel">
 <header class="rollout-row-heading"><h3>Single-arm</h3><div class="rollout-navigation">
 <span aria-atomic="true" aria-live="polite" class="rollout-count" data-rollout-count="">1–2 / 12</span>
 <button aria-controls="single-comparisons" aria-label="Previous single-arm comparisons" data-rollout-prev="" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m14 5-7 7 7 7"></path></svg></button>
@@ -486,7 +490,7 @@
 <div class="video-shell"><video aria-label="Close the bottom drawer of the cabinet: ground truth on the left, CoachWorld on the right" data-poster="assets/posters/comparisons/single-07.jpg" loop="" muted="" playsinline="" preload="none"><source data-src="assets/videos/comparisons/single-07.mp4" type="video/mp4"/></video><span class="video-label video-label-left">Ground truth</span><span class="video-label video-label-right">CoachWorld</span></div>
 </article></div>
 </section>
-<section aria-label="Bimanual rollout comparisons" aria-roledescription="carousel" class="rollout-carousel" data-rollout-carousel="">
+<section aria-labelledby="dual-rollout-tab" class="rollout-carousel" data-rollout-carousel="" id="dual-rollout-panel" role="tabpanel">
 <header class="rollout-row-heading"><h3>Bimanual</h3><div class="rollout-navigation">
 <span aria-atomic="true" aria-live="polite" class="rollout-count" data-rollout-count="">1–2 / 12</span>
 <button aria-controls="dual-comparisons" aria-label="Previous bimanual comparisons" data-rollout-prev="" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m14 5-7 7 7 7"></path></svg></button>
