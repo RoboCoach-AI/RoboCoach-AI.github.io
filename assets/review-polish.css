@@ -128,9 +128,9 @@ html[data-theme="dark"] .tea-flow-chapters button[aria-pressed="true"] small { c
 @media(max-width:760px) { .section { padding-block:48px; } .section h2 { font-size:34px; } .hero-summary { font-size:16px; } .result-comparisons { grid-template-columns:1fr;gap:14px; } .result-comparison { padding:20px; } .result-main > strong { font-size:60px; } .result-context { display:block; } .result-context > span { display:block;margin-top:5px; } .trajectory-demo { padding:20px 14px; } .trajectory-demo h3 { font-size:29px; } .scene-picker-current { font-size:12px; } .coaching-round-framebar { padding:12px; } .coaching-round-framebar > span:last-child { display:none; } }
 @media(prefers-reduced-motion:reduce) { .tea-flow-panel,.result-bar-row b { animation:none !important; } .overview-stage,.resource-pill,.tea-flow-module,.tea-route-steps button,.tea-flow-chapters button,.trajectory-replay,.trajectory-ranges button,.trajectory-canvas { transition:none !important; } }
 @media(max-width:600px) {
- .resource-dock { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
- .resource-dock > a { grid-column:1/-1; }
- .resource-dock .resource-pill:not(a) { min-width:0; padding:12px 8px; justify-content:center; }
+ .resource-dock { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+ .resource-dock > a { grid-column:1/-1; order:0; }
+ .resource-dock .resource-pill:not(a) { min-width:0; padding:12px 8px; justify-content:center; order:1; }
  .resource-dock .resource-pill:not(a) .resource-icon { display:none; }
  .resource-dock .resource-pill:not(a) strong { font-size:12px; }
  .resource-dock .resource-pill:not(a) small { font-size:8px; }

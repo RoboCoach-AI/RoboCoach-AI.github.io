@@ -1,13 +1,8 @@
 (() => {
   "use strict";
-  const key = "robocoach-theme";
-  let theme = "dark";
-  try {
-    const saved = localStorage.getItem(key);
-    if (saved === "light" || saved === "dark") theme = saved;
-  } catch {}
+  let theme = "light";
 
-  function apply(next, persist = false) {
+  function apply(next) {
     theme = next === "dark" ? "dark" : "light";
     document.documentElement.dataset.theme = theme;
     document.documentElement.style.colorScheme = theme;
@@ -21,9 +16,6 @@
       button.setAttribute("aria-label", label);
       button.title = label;
     });
-    if (persist) {
-      try { localStorage.setItem(key, theme); } catch {}
-    }
     document.querySelectorAll("iframe").forEach(frame => {
       try { frame.contentWindow.RoboCoachTheme?.apply(theme); } catch {}
     });
@@ -33,7 +25,7 @@
   apply(theme);
   document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll("[data-theme-toggle]").forEach(button => {
-      button.addEventListener("click", () => apply(theme === "light" ? "dark" : "light", true));
+      button.addEventListener("click", () => apply(theme === "light" ? "dark" : "light"));
     });
     document.querySelectorAll("iframe").forEach(frame => {
       frame.addEventListener("load", () => {
@@ -41,8 +33,5 @@
       });
     });
     apply(theme);
-  });
-  window.addEventListener("storage", event => {
-    if (event.key === key || event.key === null) apply(event.newValue === "light" ? "light" : "dark");
   });
 })();
