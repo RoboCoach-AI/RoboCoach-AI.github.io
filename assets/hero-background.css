@@ -19,3 +19,13 @@ html[data-theme="dark"] .hero-media {
 html[data-theme="dark"] .hero-shade {
   background: linear-gradient(180deg, rgba(5, 12, 11, .4), rgba(5, 12, 11, .5) 46%, #07100f 100%);
 }
+
+.resource-dock-pending-code .resource-pill:not(a) .resource-arrow {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .resource-dock.resource-dock-pending-code {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
