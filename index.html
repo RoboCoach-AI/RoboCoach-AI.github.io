@@ -107,7 +107,6 @@
 <img alt="RoboCoach system overview showing routing, world-model rollout, progress judging, and targeted expert improvement" class="overview-figure-image overview-figure-dark" height="1756" loading="lazy" src="assets/figures/teaser-green.png?v=1" width="3872"/>
 <img alt="RoboCoach system overview showing routing, world-model rollout, progress judging, and targeted expert improvement" class="overview-figure-image overview-figure-light" height="1756" loading="lazy" src="assets/figures/teaser-green.png?v=1" width="3872"/>
 </div>
-<figcaption>One closed loop turns a long-horizon task failure into a targeted update for one modular expert.</figcaption>
 </figure>
 <ol aria-label="Four stages of the RoboCoach loop" class="overview-stages">
 <li class="overview-stage stage-route">
@@ -156,9 +155,6 @@
 <h2 id="tea-demo-title">
         A coaching loop, through one task
       </h2>
-<p class="tea-flow-intro">
-        Follow the tea-making task from expert routing and imagined execution to failure diagnosis, targeted demonstrations, and successful execution.
-      </p>
 <div class="tea-flow-story ridi-walkthrough" id="ridi-walkthrough"><div class="ridi-tour-toolbar"><div><span class="ridi-tour-label">Guided walkthrough</span><span data-ridi-state="">Autoplay starts when this case comes into view</span></div><div class="ridi-tour-controls"><button data-ridi-toggle="" type="button">Play animation</button><button aria-label="Restart walkthrough" data-ridi-restart="" type="button">↺ Restart</button></div></div>
 <nav aria-label="RIDI stages" class="ridi-stage-rail"><button aria-controls="tea-route" data-ridi-stage="route" type="button"><b>01</b><span>Route</span></button><i aria-hidden="true">→</i><button aria-controls="tea-failure" data-ridi-stage="imagine" type="button"><b>02</b><span>Imagine</span></button><i aria-hidden="true">→</i><button aria-controls="tea-failure" data-ridi-stage="diagnose" type="button"><b>03</b><span>Diagnose</span></button><i aria-hidden="true">→</i><button aria-controls="tea-collection" data-ridi-stage="improve" type="button"><b>04</b><span>Improve</span></button><i aria-hidden="true">→</i><button aria-controls="tea-success" data-ridi-stage="success" type="button"><b>05</b><span>Success</span></button></nav><div class="ridi-stage-body"><section aria-hidden="false" class="tea-flow-panel" data-tea-panel="route" id="tea-route">
 <div class="tea-flow-context">
@@ -298,10 +294,7 @@
               Successful execution
             </strong>
 </button>
-</div></div><details class="research-details module-guide"><summary>Read the four module roles<span aria-hidden="true">+</span></summary><div class="tea-module-heading">
-<h3>RoboCoach modules</h3>
-<p class="tea-flow-module-hint">Select a module to explore its role in this task.</p>
-</div><div aria-label="Explore the four modules of RoboCoach" class="tea-flow-modules" role="group">
+</div></div><details class="research-details module-guide"><summary>Read the four module roles<span aria-hidden="true">+</span></summary><div aria-label="Explore the four modules of RoboCoach" class="tea-flow-modules" role="group">
 <button aria-controls="tea-module-detail" aria-pressed="true" class="tea-flow-module is-active" data-tea-module="route" id="tea-module-route" type="button">
 <small>
             Execution
@@ -369,19 +362,16 @@
 <div class="result-bar-row baseline"><span>Single VLA + Uniform</span><i><b style="--result-width:47.5%"></b></i><strong>47.5%</strong></div></article>
 </div></div>
 <details class="research-details" data-research-fold="" id="results-evaluation-details">
-<summary>Evaluation protocol<span aria-hidden="true">+</span></summary>
+<summary>Comparison details<span aria-hidden="true">+</span></summary>
 <div class="details-body"><p>Three coaching rounds add 100 accepted subtask demonstrations per round in simulation and 50 on hardware. Within each domain, comparisons match demonstration budgets, optimization, replay exposure, and evaluation trials. We report complete-task success across four budget checkpoints.</p>
-<p>RoboCoach and Single VLA + Uniform both start from 13.3% success on Franka and 40.0% on AgileX.</p></div>
+<p>RoboCoach and Single VLA + Uniform both start from 13.3% success on Franka and 40.0% on AgileX.</p>
+<p>In simulation only, expert-specific updates using the same world-model-selected demonstrations improve final success over a shared adapter by 3.4 points on LIBERO and 13.2 points on RoboTwin.</p></div>
 </details>
 <figure class="paper-results-figure coaching-results-figure">
 <div class="coaching-animation-controls"><button type="button" data-chart-loop="" aria-pressed="true">Pause animation</button></div>
 <img alt="Complete-task success with bootstrap confidence intervals on LIBERO, RoboTwin, Franka, and AgileX, grouped into simulation and real-robot experiments" class="coaching-rounds-image coaching-rounds-image-dark" loading="lazy" src="assets/figures/coaching-improvement-animated-dark.png?v=ci-2"/>
 <img alt="" aria-hidden="true" class="coaching-rounds-image coaching-rounds-image-light" loading="lazy" src="assets/figures/coaching-improvement-animated-light.png?v=ci-2"/>
 </figure>
-<div class="modularity-finding">
-<span>Why modularity matters</span>
-<p>With the same world-model-selected demonstrations, expert-specific updates improve final success by <strong>+3.4 points on LIBERO</strong> and <strong>+13.2 points on RoboTwin</strong> over a shared adapter.</p>
-</div>
 </section>
 <section aria-labelledby="hardware-title" class="section section-hardware" id="hardware">
 <div class="section-heading section-heading-row">
@@ -565,7 +555,6 @@
 <img alt="CoachWorld architecture showing multi-view heterogeneous robot data, unified camera calibration, sparse visual history, noised future video, text and state conditioning, and temporal state injection into Wan DiT blocks" loading="lazy" src="assets/figures/coachworld_architecture.png"/>
 <span aria-hidden="true" class="architecture-open">↗</span>
 </a>
-<figcaption>Calibrated two-slot end-effector trajectories condition video prediction across single-arm and bimanual embodiments. Sparse and generated histories support autoregressive rollout.</figcaption>
 </figure>
 <ol aria-label="Four design elements of CoachWorld" class="overview-stages coachworld-stages">
 <li class="overview-stage coachworld-stage coachworld-adapt">
@@ -601,14 +590,12 @@
 <div id="trajectory-demo">
 <h3 class="research-subheading" id="action-control-title">Action control</h3>
 <div aria-labelledby="trajectory-demo-title" class="trajectory-demo" data-trajectory-demo="">
-<p class="kicker">Interactive · Action control</p>
 <h3 id="trajectory-demo-title">Steer the predicted motion</h3>
-<p class="trajectory-intro">One scene, two routes. Compare up → across → down with down → across → up, starting and ending at the same points. Choose a dataset below, then play either full prediction or a single motion segment.</p>
-<p class="trajectory-note">These are model predictions conditioned on manually drawn paths—not recorded action replays or physical executions. Colors identify the three requested EEF segments. White markers indicate the requested timing rather than measured motion. Directions refer to the image.</p>
+<p class="trajectory-intro">Two model-predicted routes follow different manually drawn paths between the same start and goal; they are not physical robot executions.</p>
 <details class="scene-picker" open=""><summary><span>Change scene</span><span class="scene-picker-current" data-current-scene="">RoboCoin · Cloth</span><span aria-hidden="true">⌄</span></summary><div aria-label="Choose a video pair" class="trajectory-scenes" data-trajectory-scenes="" role="group"></div></details>
 <div data-trajectory-content="" hidden="">
 <div class="trajectory-scene-info">
-<details class="trajectory-context"><summary>About these predictions</summary><strong data-trajectory-task=""></strong></details>
+<details class="trajectory-context"><summary>About these predictions</summary><strong data-trajectory-task=""></strong><p>Colors identify the three requested end-effector segments. White markers indicate requested timing, not measured motion. Directions refer to the image.</p></details>
 <button class="trajectory-replay" data-trajectory-replay="" type="button">Replay both ↺</button>
 </div>
 <div class="trajectory-panels">
@@ -665,7 +652,6 @@
 <div>
 <p class="kicker">Progress judge</p>
 <h2 id="judge-demo-title">Track progress and identify the first unfinished subtask</h2>
-<p>We use RoboMeter to track subtask progress and attribute the first timeout to the active subtask–expert pair.</p>
 </div>
 <div aria-label="Demonstration details" class="judge-case-label">
 <span>Live diagnosis</span>
@@ -739,7 +725,6 @@
 </svg>
 </div>
 </div>
-<p class="seek-hint judge-stage-hint">Click a stage to seek</p>
 <ol aria-label="Synchronized routed stage status" class="judge-stage-strip">
 <li data-end="4.5" data-judge-stage="" data-result="Confirmed" data-start="0"><button aria-label="Jump to P1: pick red" data-judge-seek="" type="button"><span>P1</span><strong>pick red</strong><em>Pending</em></button></li>
 <li data-end="7.5" data-judge-stage="" data-result="Confirmed" data-start="4.5"><button aria-label="Jump to P2: place red" data-judge-seek="" type="button"><span>P2</span><strong>place red</strong><em>Pending</em></button></li>
