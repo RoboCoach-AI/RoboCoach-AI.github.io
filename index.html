@@ -25,7 +25,7 @@
 <script defer="" src="assets/trajectory-demo.js?v=stable-shoe-10"></script>
 <link href="assets/rollout-carousel.css?v=embodiment-tabs-2" rel="stylesheet"/>
 <script defer="" src="assets/rollout-carousel.js?v=embodiment-tabs-1"></script>
-<link href="assets/review-polish.css?v=5" rel="stylesheet"/><script defer="" src="assets/review-polish.js?v=research-folds-1"></script><link href="assets/review-reading.css?v=judge-emphasis-1" rel="stylesheet"/><script defer="" src="assets/ridi-walkthrough.js?v=8"></script><link href="assets/review-type.css?v=2" rel="stylesheet"/><link as="font" crossorigin="" href="assets/fonts/InterVariable.woff2" rel="preload" type="font/woff2"/></head>
+<link href="assets/review-polish.css?v=5" rel="stylesheet"/><script defer="" src="assets/review-polish.js?v=research-folds-1"></script><link href="assets/review-reading.css?v=compact-judge-1" rel="stylesheet"/><script defer="" src="assets/ridi-walkthrough.js?v=8"></script><link href="assets/review-type.css?v=2" rel="stylesheet"/><link as="font" crossorigin="" href="assets/fonts/InterVariable.woff2" rel="preload" type="font/woff2"/></head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <div aria-hidden="true" class="reading-progress"><span data-reading-progress=""></span></div>
@@ -666,16 +666,32 @@
 <div>
 <p class="kicker">Progress judge</p>
 <h2 id="judge-demo-title">Track progress and identify the first unfinished subtask</h2>
-<p>We use RoboMeter as the progress judge.
-            For every routed subtask, the progress judge scores progress from the causal video prefix. A stage is confirmed only when its trace crosses a calibrated threshold. The first timeout identifies the active subtask–expert pair.
-          </p>
+<p>We use RoboMeter to track subtask progress and attribute the first timeout to the active subtask–expert pair.</p>
 </div>
 <div aria-label="Demonstration details" class="judge-case-label">
 <span>Live diagnosis</span>
 <strong>stack_blocks_three</strong>
 <small>RoboTwin · six routed stages</small>
 </div>
-</div><div class="research-reading"><p><strong>Reading the trace</strong><span>Completion thresholds and deadlines are calibrated on held-out trajectories and then frozen. A threshold crossing returns control to the router. If a stage remains unfinished at its deadline, the system records the active subtask–expert pair. The video below shows the observed prefix. An unresolved stage in a shortened clip is labelled unconfirmed.</span></p></div>
+</div>
+<details class="research-details" data-research-fold="" id="judge-reading-details">
+<summary>How the progress judge works<span aria-hidden="true">+</span></summary>
+<div class="details-body"><p>Completion thresholds and deadlines are calibrated on held-out trajectories and then frozen. This video shows an observed prefix: an unresolved stage in a shortened clip is labelled unconfirmed.</p>
+<ol aria-label="How progress judge diagnoses a failure" class="judge-demo-steps">
+<li>
+<span>01</span>
+<div><h3>Score the active stage</h3><p>At each frame, the progress judge estimates progress for the current routed subtask using only the rollout observed so far.</p></div>
+</li>
+<li>
+<span>02</span>
+<div><h3>Confirm each transition</h3><p>Crossing the calibrated 0.75 threshold confirms the active stage and moves the trace to the next subtask.</p></div>
+</li>
+<li>
+<span>03</span>
+<div><h3>Assign the first timeout</h3><p>P1–P5 cross threshold. P6 remains unresolved, localizing the failure to the active placement expert.</p></div>
+</li>
+</ol>
+</div></details>
 <figure class="judge-live-demo" data-judge-duration="40" data-judge-excerpt-end="39.9" data-judge-sync="">
 <div class="judge-sync-grid">
 <div class="judge-rollout-panel">
@@ -734,20 +750,6 @@
 <li data-end="59.7" data-judge-stage="" data-result="First timeout" data-start="21.9"><button aria-label="Jump to P6: place blue" data-judge-seek="" type="button"><span>P6</span><strong>place blue</strong><em>Pending</em></button></li>
 </ol>
 </figure>
-<ol aria-label="How progress judge diagnoses a failure" class="judge-demo-steps">
-<li>
-<span>01</span>
-<div><h3>Score the active stage</h3><p>At each frame, the progress judge estimates progress for the current routed subtask using only the rollout observed so far.</p></div>
-</li>
-<li>
-<span>02</span>
-<div><h3>Confirm each transition</h3><p>Crossing the calibrated 0.75 threshold confirms the active stage and moves the trace to the next subtask.</p></div>
-</li>
-<li>
-<span>03</span>
-<div><h3>Assign the first timeout</h3><p>P1–P5 cross threshold. P6 remains unresolved, localizing the failure to the active placement expert.</p></div>
-</li>
-</ol>
 <div aria-label="From rollout diagnosis to targeted coaching" class="judge-coaching-flow">
 <div class="judge-flow-node judge-flow-diagnosis" data-judge-result="">
 <span class="judge-flow-label">This rollout · Diagnosis</span>
@@ -763,8 +765,7 @@
 <div class="judge-flow-node judge-flow-target">
 <span class="judge-flow-label">Targeted coaching</span>
 <strong>place_expert</strong>
-<p>Request demonstrations for this subtask.</p>
-<a href="#coaching">View coaching targets <span aria-hidden="true">→</span></a>
+<a href="#coaching">Request demonstrations <span aria-hidden="true">→</span></a>
 </div>
 </div>
 <section aria-labelledby="judge-evaluation-title" class="judge-evaluation"><h3 id="judge-evaluation-title">How reliable is the progress judge?</h3>

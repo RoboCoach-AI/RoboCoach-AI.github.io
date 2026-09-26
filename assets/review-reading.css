@@ -237,6 +237,31 @@ html[data-theme="dark"] .tea-chart-card [data-confirm-time] { fill:#0d1718; }
 
 .evaluation-summary { max-width:960px; margin:20px 0 24px; color:var(--review-muted); font-size:15px; line-height:1.75; letter-spacing:0; }
 .evaluation-summary strong { color:var(--review-text); font-weight:650; }
+#judge .judge-demo-heading { display:block; margin-bottom:16px; }
+#judge .judge-demo-heading h2 { max-width:none; font-size:36px; line-height:1.2; letter-spacing:0; }
+#judge .judge-demo-heading > div:first-child > p:last-child { max-width:none; margin-top:12px; font-size:16px; line-height:1.6; }
+#judge .judge-case-label { display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 14px; padding:0; margin-top:14px; border:0; }
+#judge .judge-case-label strong { font-size:14px; }
+#judge .judge-case-label small { font-size:12px; }
+#judge-reading-details { margin:14px 0 20px; }
+#judge-reading-details > summary { padding:12px 0; font-size:14px; }
+#judge-reading-details .judge-demo-steps { margin:16px 0; border:0; background:none; gap:20px; }
+#judge-reading-details .judge-demo-steps li { padding:0; background:none; grid-template-columns:24px minmax(0,1fr); gap:8px; }
+#judge .judge-coaching-flow { margin-top:16px; padding:14px 0; gap:14px; border:0; border-block:1px solid var(--review-line); border-radius:0; background:none; }
+#judge .judge-flow-node { padding-left:12px; }
+#judge .judge-flow-label { margin-bottom:4px; font-size:11px; }
+#judge .judge-flow-node strong { font-size:14px; line-height:1.45; }
+#judge .judge-flow-node p { margin-top:4px; font-size:12px; }
+#judge .judge-flow-target a { margin-top:4px; font-size:12px; }
+@media(max-width:760px) {
+  #judge .judge-demo-heading h2 { font-size:28px; }
+  #judge .judge-demo-heading > div:first-child > p:last-child { font-size:15px; }
+  #judge .judge-coaching-flow { gap:12px; }
+  #judge .judge-flow-arrow { display:none; }
+  #judge .judge-flow-node { display:grid; grid-template-columns:82px minmax(0,1fr); column-gap:10px; align-items:baseline; }
+  #judge .judge-flow-label { grid-row:1 / 3; margin:0; }
+  #judge .judge-flow-node strong,#judge .judge-flow-node p,#judge .judge-flow-target a { grid-column:2; }
+}
 #results > .section-heading { margin-bottom:20px; }
 #results .review-results-lead { margin:16px 0; }
 #results .result-context { margin-bottom:12px; font-size:13px; }
