@@ -12,6 +12,14 @@ html[data-theme="dark"] .rollout-embodiment-tabs button[aria-selected="true"] { 
 .rollout-embodiment-tabs button:hover { border-color:var(--review-accent); }
 .rollout-embodiment-tabs button:focus-visible { outline:2px solid var(--review-accent); outline-offset:2px; }
 .coachworld-rollout-browser.has-embodiment-tabs .rollout-carousel { margin-top:20px; padding-top:0; border-top:0; }
+.coachworld-rollout-browser.has-embodiment-tabs { display:grid; grid-template-columns:minmax(0,1fr) auto; column-gap:24px; align-items:center; }
+.has-embodiment-tabs .coachworld-rollout-toolbar { flex-direction:column; align-items:flex-start; justify-content:center; gap:6px; min-width:0; margin-bottom:0; }
+.has-embodiment-tabs .rollout-embodiment-tabs { justify-self:end; width:280px; margin-top:0; }
+.has-embodiment-tabs .rollout-carousel { grid-column:1 / -1; min-width:0; }
+@media(max-width:600px) {
+  .coachworld-rollout-browser.has-embodiment-tabs { grid-template-columns:minmax(0,1fr); row-gap:16px; }
+  .coachworld-rollout-browser.has-embodiment-tabs .rollout-carousel { margin-top:0; }
+}
 .rollout-carousel + .rollout-carousel { margin-top:34px; padding-top:28px; border-top:1px solid var(--page-line, #d4c9b5); }
 .rollout-row-heading { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:16px; }
 .rollout-row-heading h3 { margin:0; font-family:Georgia,"Times New Roman",serif; font-size:26px; line-height:1.2; }
