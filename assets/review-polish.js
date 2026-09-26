@@ -3,10 +3,24 @@
   // Deep links into folded technical explanations still open their destination.
   const revealDestination = (hash) => {
     if (!hash || !hash.startsWith('#')) return;
-    const target = document.getElementById(decodeURIComponent(hash.slice(1)));
-    let parent = target?.parentElement;
+    let id;
+    try { id = decodeURIComponent(hash.slice(1)); } catch (_) { return; }
+    const target = document.getElementById(id);
+    let parent = target;
     while (parent) { if (parent.tagName === 'DETAILS') parent.open = true; parent = parent.parentElement; }
   };
+  document.querySelectorAll('details[data-research-fold]').forEach(details => {
+    details.addEventListener('toggle', () => {
+      if (details.open) {
+        details.querySelectorAll('iframe[data-src]').forEach(frame => {
+          frame.src = frame.dataset.src;
+          delete frame.dataset.src;
+        });
+      } else {
+        details.querySelectorAll('video').forEach(video => video.pause());
+      }
+    });
+  });
   document.addEventListener('click', event => {
     const link = event.target.closest('a[href^="#"]');
     if (link) revealDestination(link.getAttribute('href'));

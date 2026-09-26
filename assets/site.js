@@ -146,9 +146,9 @@ revealSections.forEach((section) => {
 });
 
 function revealHashTarget() {
-  const target = window.location.hash
-    ? document.getElementById(decodeURIComponent(window.location.hash.slice(1)))
-    : null;
+  let id;
+  try { id = decodeURIComponent(window.location.hash.slice(1)); } catch (_) { return; }
+  const target = document.getElementById(id);
   if (target?.classList.contains("section-reveal")) target.classList.add("is-visible");
 }
 

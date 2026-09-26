@@ -234,4 +234,18 @@ html[data-theme="dark"] .tea-chart-card [data-confirm-time] { fill:#0d1718; }
 .judge-evaluation .selected-judge { background:color-mix(in srgb,var(--review-accent) 8%,var(--review-surface)); }
 .judge-evaluation .selected-judge th,.judge-evaluation .selected-judge td { color:var(--review-accent); font-weight:650; }
 .judge-evaluation-note { color:var(--review-muted); font-size:13px; line-height:1.7; margin-top:16px; }
+
+.evaluation-summary { max-width:960px; margin:20px 0 24px; color:var(--review-muted); font-size:15px; line-height:1.75; letter-spacing:0; }
+.evaluation-summary strong { color:var(--review-text); font-weight:650; }
+.research-details > summary > span { flex:0 0 24px; }
+.research-details > .trajectory-demo { margin:0; padding-top:8px; border-top:0; }
+.research-details .metric-table-wrap,.research-details .judge-evaluation-table { max-width:100%; }
+.research-details [role="region"]:focus-visible { outline:2px solid var(--review-accent); outline-offset:3px; }
+#prediction-evaluation-table { font-variant-numeric:tabular-nums; }
+.judge-evaluation #judge-observation-table { min-width:940px; }
+.judge-evaluation #judge-comparison-table { min-width:940px; }
+.judge-evaluation td:nth-child(5) { white-space:nowrap; }
+.coaching-full-view { margin:0 0 16px; font-size:14px; }
+.coaching-full-view a { color:var(--review-accent); }
+#coaching-details .coaching-round-frame { margin-top:0; margin-bottom:24px; }
 .prediction-evaluation-intro { margin:0 0 24px; font-size:16px; line-height:1.75; color:var(--review-muted); }
