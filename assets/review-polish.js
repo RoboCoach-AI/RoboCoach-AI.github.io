@@ -5,6 +5,17 @@
     if (!hash || !hash.startsWith('#')) return;
     let id;
     try { id = decodeURIComponent(hash.slice(1)); } catch (_) { return; }
+    if (id === 'coaching' || id === 'coaching-details') {
+      const judge = document.getElementById('judge');
+      if (!judge) return;
+      if (location.hash === hash) {
+        const url = new URL(location.href);
+        url.hash = 'judge';
+        history.replaceState(history.state, '', url);
+      }
+      requestAnimationFrame(() => judge.scrollIntoView({ block: 'start' }));
+      return '#judge';
+    }
     if (id === 'trajectory-demo') id = 'trajectory-details';
     const target = document.getElementById(id);
     const manualFold = target?.closest('#trajectory-details');

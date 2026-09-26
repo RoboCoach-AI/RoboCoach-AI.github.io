@@ -25,7 +25,7 @@
 <script defer="" src="assets/trajectory-demo.js?v=stable-shoe-10"></script>
 <link href="assets/rollout-carousel.css?v=embodiment-tabs-2" rel="stylesheet"/>
 <script defer="" src="assets/rollout-carousel.js?v=embodiment-tabs-1"></script>
-<link href="assets/review-polish.css?v=5" rel="stylesheet"/><script defer="" src="assets/review-polish.js?v=manual-action-fold-1"></script><link href="assets/review-reading.css?v=manual-action-fold-1" rel="stylesheet"/><script defer="" src="assets/ridi-walkthrough.js?v=8"></script><link href="assets/review-type.css?v=2" rel="stylesheet"/><link as="font" crossorigin="" href="assets/fonts/InterVariable.woff2" rel="preload" type="font/woff2"/></head>
+<link href="assets/review-polish.css?v=5" rel="stylesheet"/><script defer="" src="assets/review-polish.js?v=coaching-judge-1"></script><link href="assets/review-reading.css?v=manual-action-fold-1" rel="stylesheet"/><script defer="" src="assets/ridi-walkthrough.js?v=8"></script><link href="assets/review-type.css?v=2" rel="stylesheet"/><link as="font" crossorigin="" href="assets/fonts/InterVariable.woff2" rel="preload" type="font/woff2"/></head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <div aria-hidden="true" class="reading-progress"><span data-reading-progress=""></span></div>
@@ -43,7 +43,7 @@
 <a href="#hardware">Robot tasks</a>
 <a href="#coachworld">CoachWorld</a>
 <a href="#trajectory-details">Action control</a>
-<a href="#coaching">Coaching</a></nav>
+<a href="#judge">Coaching</a></nav>
 <button aria-label="Switch to dark theme" class="theme-toggle" data-theme-toggle="" title="Switch to dark theme" type="button">
 <svg aria-hidden="true" class="theme-icon-moon" viewbox="0 0 24 24"><path d="M20.8 13.2A8.7 8.7 0 0 1 10.8 3.1 9 9 0 1 0 20.8 13.2Z"></path></svg>
 <svg aria-hidden="true" class="theme-icon-sun" viewbox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg>
@@ -88,9 +88,8 @@
 </section>
 <section aria-labelledby="teaser-heading" class="section section-teaser" id="teaser">
 <div class="section-heading"><p class="kicker">RoboCoach in action</p><h2 id="teaser-heading">Watch the teaser</h2></div>
-<video aria-label="RoboCoach teaser video with narration and music" class="teaser-player" controls="" data-teaser-player="" playsinline="" poster="assets/posters/teaser.jpg?v=20260918" preload="none">
-<source src="assets/videos/teaser.mp4?v=narrated-20260921-v2" type="video/mp4"/>
-<track default="" kind="captions" label="English" srclang="en" src="assets/captions/teaser-en.vtt?v=1"/>
+<video aria-label="RoboCoach teaser video with narration, captions, and music" class="teaser-player" controls="" data-teaser-player="" playsinline="" poster="assets/posters/teaser.webp?v=20260926" preload="none">
+<source src="assets/videos/teaser.mp4?v=narrated-20260926-constant-music" type="video/mp4"/>
         Your browser does not support embedded video. <a href="assets/videos/teaser.mp4">Download the teaser</a>.
       </video>
 </section>
@@ -767,7 +766,7 @@
 <div class="judge-flow-node judge-flow-target">
 <span class="judge-flow-label">Targeted coaching</span>
 <strong>place_expert</strong>
-<a href="#coaching">Request demonstrations <span aria-hidden="true">→</span></a>
+<a href="coaching/index.html">Request demonstrations <span aria-hidden="true">→</span></a>
 </div>
 </div>
 <section aria-labelledby="judge-evaluation-title" class="judge-evaluation"><h3 id="judge-evaluation-title">How reliable is the progress judge?</h3>
@@ -792,25 +791,6 @@
 <tr class="selected-judge" tabindex="0"><th scope="row">RoboMeter</th><td>0.414</td><td>82.73</td><td>0.727</td><td>101/92/18/9</td><td>84.87</td><td>91.82</td><td>88.21</td></tr>
 </tbody></table></div><p class="judge-evaluation-note">† Adapted to the shared causal evaluation setting.</p>
 </div></details></section></section>
-<section aria-labelledby="coaching-title" class="section section-coaching" id="coaching">
-<div class="section-heading section-heading-row">
-<div>
-<p class="kicker">Coaching round</p>
-<h2 id="coaching-title">From rollout failures to coaching targets</h2>
-<p>
-            Follow one evaluation round from <span class="text-highlight">task-level success rates</span> to the two <span class="text-highlight">subtask-expert pairs</span> selected for the next targeted demonstration batch.
-          </p>
-</div>
-</div>
-<p class="coaching-full-view"><a href="coaching/index.html">Open full view ↗</a></p>
-<details class="research-details" data-research-fold="" id="coaching-details">
-<summary>Coaching round details<span aria-hidden="true">+</span></summary>
-<div class="coaching-round-frame">
-<div class="coaching-round-framebar"><span>Coaching round · RoboTwin</span><a href="coaching/index.html">Open full view ↗</a></div>
-<iframe class="coaching-round-iframe" data-auto-height="" data-src="coaching/index.html?embed=1&amp;v=review-1" loading="lazy" title="RoboCoach evaluation round with task success rates and coaching targets"></iframe>
-</div>
-</details>
-</section>
 </main>
 <footer class="site-footer">
 <p>Anonymous project page · Under double-blind review</p>
