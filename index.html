@@ -773,7 +773,7 @@
 <table id="judge-observation-table"><caption>RoboMeter under reference and world-model observations</caption>
 <thead><tr><th scope="col">Observation source</th><th scope="col">Switch MAE<br/>(s) ↓</th><th scope="col">Switch recall<br/>@1.0 s (%) ↑</th><th scope="col">Spearman<br/>ρ ↑</th><th scope="col">TP/TN/FP/FN</th><th scope="col">Outcome<br/>precision (%) ↑</th><th scope="col">Outcome<br/>recall (%) ↑</th><th scope="col">Outcome<br/>F1 (%) ↑</th></tr></thead>
 <tbody><tr><th scope="row">Reference video</th><td>0.414</td><td>82.73</td><td>0.727</td><td>101/92/18/9</td><td>84.87</td><td>91.82</td><td>88.21</td></tr>
-<tr class="selected-judge"><th scope="row">CoachWorld rollout</th><td>0.830</td><td>65.45</td><td>0.638</td><td>96/87/23/14</td><td>80.67</td><td>87.27</td><td>83.84</td></tr></tbody></table></div>
+<tr class="selected-judge"><th scope="row">CoachWorld rollout</th><td>0.815</td><td>62.73</td><td>0.638</td><td>96/87/23/14</td><td>80.67</td><td>87.27</td><td>83.84</td></tr></tbody></table></div>
 <details class="research-details" data-research-fold="" id="judge-comparison-details">
 <summary>Full progress-judge comparison<span aria-hidden="true">+</span></summary>
 <div class="details-body"><p>All six judges receive the same causal reference-video replay, streaming protocol, and frozen routing. Switch metrics evaluate stage-transition timing; Spearman ρ measures terminal-stage rank agreement. Outcome metrics evaluate binary failure detection, treating failure as the positive class. Completion thresholds are calibrated on a shared held-out split and frozen for evaluation.</p>
