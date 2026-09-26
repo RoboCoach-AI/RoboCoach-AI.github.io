@@ -58,4 +58,6 @@ html[data-theme="dark"] .overview-figure-panel { background:transparent; }
 html[data-theme="dark"] .overview-figure-dark { display:block; }
 html[data-theme="dark"] .overview-figure-light { display:none; }
 
-.overview-figure-light { width:calc(100% * 1870 / 1854); max-width:none; }
+.overview-figure-image { width:100%; max-width:100%; height:auto; }
+html[data-theme="dark"] .overview-figure-image,
+html[data-theme="dark"] .overview-figure:hover .overview-figure-image { filter:brightness(.78); }

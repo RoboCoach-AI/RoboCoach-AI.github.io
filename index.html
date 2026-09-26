@@ -9,7 +9,7 @@
 <meta content="light dark" name="color-scheme"/>
 <meta content="RoboCoach: World Models as Active Coaches for Compositional Robot Skills" property="og:title"/>
 <meta content="Anonymous project page for a double-blind submission." property="og:description"/>
-<meta content="assets/figures/teaser.png?v=transparent-20260921" property="og:image"/>
+<meta content="assets/figures/teaser-green.png?v=1" property="og:image"/>
 <title>RoboCoach | World Models as Active Coaches</title>
 <link href="assets/figures/robocoach_mark.png?v=2" rel="icon" type="image/png"/>
 <link href="assets/figures/robocoach_mark.png?v=2" rel="apple-touch-icon"/>
@@ -18,14 +18,14 @@
 <script defer="" src="assets/site.js?v=pick-expert-1"></script>
 <script defer="" src="assets/teabag-curves.js?v=curve-click-2"></script>
 <link data-theme-style="light" href="assets/beige.css?hash=42eea91e89d6" media="not all" rel="stylesheet"/>
-<link href="assets/theme.css?v=transparent-teaser-1" rel="stylesheet"/>
+<link href="assets/theme.css?v=teaser-green-1" rel="stylesheet"/>
 <script src="assets/theme.js?hash=659067ef29a1"></script>
 <link href="index.html" rel="canonical"/>
 <link href="assets/trajectory-demo.css?v=stable-shoe-10" rel="stylesheet"/>
 <script defer="" src="assets/trajectory-demo.js?v=stable-shoe-10"></script>
 <link href="assets/rollout-carousel.css?v=teaser-captions-1" rel="stylesheet"/>
 <script defer="" src="assets/rollout-carousel.js?v=20260918-1"></script>
-<link href="assets/review-polish.css?v=5" rel="stylesheet"/><script defer="" src="assets/review-polish.js?v=7"></script><link href="assets/review-reading.css?v=8" rel="stylesheet"/><script defer="" src="assets/ridi-walkthrough.js?v=8"></script><link href="assets/review-type.css?v=2" rel="stylesheet"/><link as="font" crossorigin="" href="assets/fonts/InterVariable.woff2" rel="preload" type="font/woff2"/></head>
+<link href="assets/review-polish.css?v=5" rel="stylesheet"/><script defer="" src="assets/review-polish.js?v=ci-2"></script><link href="assets/review-reading.css?v=8" rel="stylesheet"/><script defer="" src="assets/ridi-walkthrough.js?v=8"></script><link href="assets/review-type.css?v=2" rel="stylesheet"/><link as="font" crossorigin="" href="assets/fonts/InterVariable.woff2" rel="preload" type="font/woff2"/></head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <div aria-hidden="true" class="reading-progress"><span data-reading-progress=""></span></div>
@@ -105,8 +105,8 @@
 <div class="overview-figure-layout">
 <figure class="overview-figure">
 <div class="overview-figure-panel">
-<img alt="RoboCoach system overview showing routing, world-model rollout, progress judging, and targeted expert improvement" class="overview-figure-image overview-figure-dark" loading="lazy" src="assets/figures/teaser.png?v=transparent-20260921"/>
-<img alt="RoboCoach system overview showing routing, world-model rollout, progress judging, and targeted expert improvement" class="overview-figure-image overview-figure-light" loading="lazy" src="assets/figures/teaser.png?v=transparent-20260921"/>
+<img alt="RoboCoach system overview showing routing, world-model rollout, progress judging, and targeted expert improvement" class="overview-figure-image overview-figure-dark" height="1756" loading="lazy" src="assets/figures/teaser-green.png?v=1" width="3872"/>
+<img alt="RoboCoach system overview showing routing, world-model rollout, progress judging, and targeted expert improvement" class="overview-figure-image overview-figure-light" height="1756" loading="lazy" src="assets/figures/teaser-green.png?v=1" width="3872"/>
 </div>
 <figcaption>One closed loop turns a long-horizon task failure into a targeted update for one modular expert.</figcaption>
 </figure>
@@ -362,8 +362,8 @@
 <div aria-label="Real robot final success rates" class="review-results-lead"><div class="result-context">Real-robot results <span>150 additional demonstrations · Same budget</span></div><div class="result-comparisons"><article class="result-comparison"><header><h3>Franka</h3><span>+45.0 percentage points</span></header><div class="result-main"><strong>75.0<small>%</small></strong><p>RoboCoach<br/><span>complete-task success</span></p></div><div class="result-bar-row"><span>RoboCoach</span><i><b style="--result-width:75.0%"></b></i><strong>75.0%</strong></div><div class="result-bar-row baseline"><span>VLA + uniform</span><i><b style="--result-width:30.0%"></b></i><strong>30.0%</strong></div></article><article class="result-comparison"><header><h3>AgileX</h3><span>+36.3 percentage points</span></header><div class="result-main"><strong>83.8<small>%</small></strong><p>RoboCoach<br/><span>complete-task success</span></p></div><div class="result-bar-row"><span>RoboCoach</span><i><b style="--result-width:83.8%"></b></i><strong>83.8%</strong></div><div class="result-bar-row baseline"><span>VLA + uniform</span><i><b style="--result-width:47.5%"></b></i><strong>47.5%</strong></div></article></div><p class="result-baseline-note">Compared with Single VLA + Uniform at the same final budget.</p></div>
 <figure class="paper-results-figure coaching-results-figure">
 <div class="coaching-animation-controls"><button type="button" data-chart-loop="" aria-pressed="true">Pause animation</button></div>
-<img alt="Complete-task success over three coaching rounds on LIBERO-Long, RoboTwin 2.0, Franka, and AgileX" class="coaching-rounds-image coaching-rounds-image-dark" loading="lazy" src="assets/figures/coaching-rounds-animated-dark.png?v=original-style-2"/>
-<img alt="" aria-hidden="true" class="coaching-rounds-image coaching-rounds-image-light" loading="lazy" src="assets/figures/coaching-rounds-animated-light.png?v=original-style-2"/>
+<img alt="Complete-task success with bootstrap confidence intervals on LIBERO, RoboTwin, Franka, and AgileX, grouped into simulation and real-robot experiments" class="coaching-rounds-image coaching-rounds-image-dark" loading="lazy" src="assets/figures/coaching-improvement-animated-dark.png?v=ci-2"/>
+<img alt="" aria-hidden="true" class="coaching-rounds-image coaching-rounds-image-light" loading="lazy" src="assets/figures/coaching-improvement-animated-light.png?v=ci-2"/>
 </figure>
 <div class="modularity-finding">
 <span>Why modularity matters</span>

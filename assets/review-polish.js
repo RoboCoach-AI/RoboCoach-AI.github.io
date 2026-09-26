@@ -20,7 +20,7 @@
     const updateChart = () => {
       document.querySelectorAll('.coaching-rounds-image').forEach(image => {
         const theme = image.classList.contains('coaching-rounds-image-dark') ? 'dark' : 'light';
-        image.src = `assets/figures/coaching-rounds-${playing ? 'animated' : 'static'}-${theme}.png?v=original-style-2`;
+        image.src = `assets/figures/coaching-improvement-${playing ? 'animated' : 'static'}-${theme}.png?v=ci-2`;
       });
       loopToggle.textContent = playing ? 'Pause animation' : 'Play animation';
       loopToggle.setAttribute('aria-pressed', String(playing));
