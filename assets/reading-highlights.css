@@ -40,9 +40,19 @@
   line-height: 1.6;
 }
 
-.results-takeaway > strong {
+.results-takeaway .results-overall {
+  margin: 0;
+  color: var(--review-text);
   font-size: 17px;
-  font-weight: 650;
+  font-weight: 400;
+}
+
+.results-takeaway .results-overall strong {
+  font-weight: 700;
+}
+
+.results-takeaway .results-overall strong:last-child {
+  white-space: nowrap;
 }
 
 .results-takeaway p {

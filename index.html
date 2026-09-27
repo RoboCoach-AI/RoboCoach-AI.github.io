@@ -25,7 +25,7 @@
 <script defer="" src="assets/trajectory-demo.js?v=stable-shoe-10"></script>
 <link href="assets/rollout-carousel.css?v=embodiment-tabs-2" rel="stylesheet"/>
 <script defer="" src="assets/rollout-carousel.js?v=embodiment-tabs-1"></script>
-<link href="assets/review-polish.css?v=7" rel="stylesheet"/><script defer="" src="assets/review-polish.js?v=action-unfolded-1"></script><link href="assets/review-reading.css?v=action-unfolded-1" rel="stylesheet"/><script defer="" src="assets/ridi-walkthrough.js?v=8"></script><link href="assets/review-type.css?v=2" rel="stylesheet"/><link href="assets/hero-background.css?v=2" rel="stylesheet"/><link href="assets/reading-highlights.css?v=3" rel="stylesheet"/><link as="font" crossorigin="" href="assets/fonts/InterVariable.woff2" rel="preload" type="font/woff2"/></head>
+<link href="assets/review-polish.css?v=7" rel="stylesheet"/><script defer="" src="assets/review-polish.js?v=action-unfolded-1"></script><link href="assets/review-reading.css?v=action-unfolded-1" rel="stylesheet"/><script defer="" src="assets/ridi-walkthrough.js?v=8"></script><link href="assets/review-type.css?v=2" rel="stylesheet"/><link href="assets/hero-background.css?v=2" rel="stylesheet"/><link href="assets/reading-highlights.css?v=4" rel="stylesheet"/><link as="font" crossorigin="" href="assets/fonts/InterVariable.woff2" rel="preload" type="font/woff2"/></head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <div aria-hidden="true" class="reading-progress"><span data-reading-progress=""></span></div>
@@ -97,9 +97,6 @@
 <div class="section-heading">
 <p class="kicker">System overview</p>
 <h2>From imagined execution to targeted improvement</h2>
-<p>
-          RoboCoach routes experts through imagined rollouts, then turns repeated first-timeout failures into targeted data requests.
-        </p>
 </div>
 <div class="overview-figure-layout">
 <figure class="overview-figure">
@@ -114,7 +111,7 @@
 <span class="overview-stage-number">01</span>
 <div>
 <h3>Route</h3>
-<p>Dispatch the matching expert for the first unfinished subtask.</p>
+<p>Send the first unfinished subtask to its expert.</p>
 </div>
 </a>
 </li>
@@ -123,7 +120,7 @@
 <span class="overview-stage-number">02</span>
 <div>
 <h3>Imagine</h3>
-<p>CoachWorld rolls the routed experts forward in closed loop and predicts the full visual outcome.</p>
+<p>Predict the routed expert's closed-loop rollout.</p>
 </div>
 </a>
 </li>
@@ -132,7 +129,7 @@
 <span class="overview-stage-number">03</span>
 <div>
 <h3>Diagnose</h3>
-<p>Score the observed rollout; the first missed deadline identifies the stalled subtask and expert.</p>
+<p>Locate the first missed deadline and responsible expert.</p>
 </div>
 </a>
 </li>
@@ -141,12 +138,12 @@
 <span class="overview-stage-number">04</span>
 <div>
 <h3>Improve</h3>
-<p>Collect targeted demonstrations, update only the selected LoRA, and return it to the expert bank.</p>
+<p>Update only that expert's LoRA with targeted demonstrations.</p>
 </div>
 </a>
 </li>
 </ol>
-</div><div class="research-reading"><p><strong>Execution loop</strong><span>Route the active expert; each predicted video chunk becomes its next observation until the subtask is confirmed.</span></p><p><strong>Coaching loop</strong><span>Recurring first timeouts direct demonstrations to selected expert LoRAs. The world model, router, judge, and VLA backbone stay fixed.</span></p></div>
+</div><div class="research-reading"><p><strong>Execution loop</strong><span>Predicted video becomes the expert's next observation until the subtask is complete.</span></p><p><strong>Coaching loop</strong><span>Repeated first timeouts trigger targeted LoRA updates; the world model, router, judge, and VLA backbone stay fixed.</span></p></div>
 </section>
 <section aria-labelledby="tea-demo-title" class="section tea-demo" id="teabag-diagnostics">
 <div class="tea-flow-eyebrow">
@@ -371,7 +368,7 @@
 <img alt="Complete-task success with bootstrap confidence intervals on LIBERO, RoboTwin, Franka, and AgileX, grouped into simulation and real-robot experiments" class="coaching-rounds-image coaching-rounds-image-dark" loading="lazy" src="assets/figures/coaching-improvement-animated-dark.png?v=ci-2"/>
 <img alt="" aria-hidden="true" class="coaching-rounds-image coaching-rounds-image-light" loading="lazy" src="assets/figures/coaching-improvement-animated-light.png?v=ci-2"/>
 </figure>
-<div class="results-takeaway"><strong>RoboCoach leads at the final budget across all four platforms.</strong><p><span>Simulation ablation</span><b>+3.4 pp</b> LIBERO · <b>+13.2 pp</b> RoboTwin over a shared adapter, using the same targeted demonstrations.</p></div>
+<div class="results-takeaway"><p class="results-overall">At the final budget, <strong>RoboCoach leads</strong> on <strong>all four platforms</strong>.</p><p><span>Simulation ablation</span><b>+3.4 pp</b> LIBERO · <b>+13.2 pp</b> RoboTwin over a shared adapter, using the same targeted demonstrations.</p></div>
 </section>
 <section aria-labelledby="hardware-title" class="section section-hardware" id="hardware">
 <div class="section-heading section-heading-row">
@@ -395,7 +392,7 @@
 </div>
 <section aria-labelledby="composition-title" class="hardware-composition" id="compositional-generalization">
 <header class="composition-heading"><h3 id="composition-title">Compositional Generalization</h3></header>
-<p class="evaluation-summary">Across four held-out task compositions, RoboCoach achieves <strong>35.0% average success</strong>, compared with <strong>0% for Single VLA + Uniform</strong> (20 trials per composition).</p>
+<p class="evaluation-summary">RoboCoach: <strong>35.0%</strong> average success across four held-out compositions. Single VLA + Uniform: <strong>0%</strong> (20 trials per composition).</p>
 <div aria-label="Three ways to compose subtasks" class="composition-pattern-grid">
 <article class="composition-pattern" data-composition-kind="reordering" id="composition-reordering">
 <h4>Reordering</h4>
@@ -751,7 +748,7 @@
 </div>
 </div>
 <section aria-labelledby="judge-evaluation-title" class="judge-evaluation"><h3 id="judge-evaluation-title">How reliable is the progress judge?</h3>
-<p class="evaluation-summary">RoboMeter achieves <strong>88.21% outcome F1 on reference video</strong> and <strong>83.84% on CoachWorld rollouts</strong>.</p>
+<p class="evaluation-summary">Outcome F1: <strong>88.21%</strong> on reference video; <strong>83.84%</strong> on CoachWorld rollouts.</p>
 <div aria-label="RoboMeter observation-source comparison" class="judge-evaluation-table" role="region" tabindex="0">
 <table id="judge-observation-table"><caption>RoboMeter under reference and world-model observations</caption>
 <thead><tr><th scope="col">Observation source</th><th scope="col">Switch MAE<br/>(s) ↓</th><th scope="col">Switch recall<br/>@1.0 s (%) ↑</th><th scope="col">Spearman<br/>ρ ↑</th><th scope="col">TP/TN/FP/FN</th><th scope="col">Outcome<br/>precision (%) ↑</th><th scope="col">Outcome<br/>recall (%) ↑</th><th scope="col">Outcome<br/>F1 (%) ↑</th></tr></thead>
