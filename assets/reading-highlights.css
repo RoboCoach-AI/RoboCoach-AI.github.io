@@ -11,7 +11,7 @@
   border-top: 1px solid var(--review-line);
 }
 
-.coachworld-snapshot strong {
+.coachworld-snapshot > div > strong {
   display: block;
   color: var(--review-text);
   font-size: 20px;
@@ -24,6 +24,11 @@
   color: var(--review-muted);
   font-size: 15px;
   line-height: 1.6;
+}
+
+.coachworld-snapshot p strong {
+  color: var(--review-text);
+  font-weight: 700;
 }
 
 .results-takeaway {
