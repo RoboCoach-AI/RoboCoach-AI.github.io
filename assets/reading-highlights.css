@@ -11,11 +11,11 @@
   border-top: 1px solid var(--review-line);
 }
 
-.coachworld-snapshot > div > strong {
-  display: block;
+.coachworld-snapshot .snapshot-heading {
+  margin: 0;
   color: var(--review-text);
   font-size: 20px;
-  font-weight: 650;
+  font-weight: 400;
   line-height: 1.3;
 }
 
