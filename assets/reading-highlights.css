@@ -71,9 +71,91 @@
   font-weight: 650;
 }
 
+#coachworld .prediction-self-metrics {
+  margin: 18px 0 16px;
+}
+
+#coachworld .prediction-metric-table {
+  min-width: 960px;
+  table-layout: fixed;
+}
+
+#coachworld .prediction-metric-table th:first-child {
+  width: 25%;
+}
+
+#prediction-evaluation-details .metric-table-wrap {
+  margin-top: 18px;
+}
+
+.prediction-self-metrics .metric-mobile-label {
+  display: none;
+}
+
 @media (max-width: 700px) {
   .coachworld-snapshot {
     grid-template-columns: 1fr;
     gap: 18px;
+  }
+
+  #coachworld .prediction-self-metrics {
+    overflow: visible;
+  }
+
+  #coachworld .prediction-self-metrics .prediction-metric-table,
+  #coachworld .prediction-self-metrics tbody {
+    display: block;
+    min-width: 0;
+  }
+
+  #coachworld .prediction-self-metrics thead {
+    display: none;
+  }
+
+  #coachworld .prediction-self-metrics tbody tr {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 18px;
+    padding: 14px 16px;
+  }
+
+  #coachworld .prediction-self-metrics .metric-highlight th,
+  #coachworld .prediction-self-metrics .metric-highlight td {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  #coachworld .prediction-self-metrics tbody th {
+    grid-column: 1 / -1;
+    width: auto;
+    padding: 0 0 10px;
+    border-top: 0;
+    font-size: 15px;
+  }
+
+  #coachworld .prediction-self-metrics tbody td {
+    padding: 8px 0;
+    border-top: 1px solid var(--review-line);
+    text-align: left;
+    white-space: normal;
+    font-size: 16px;
+  }
+
+  #coachworld .prediction-self-metrics tbody td:last-child {
+    grid-column: 1 / -1;
+  }
+
+  #coachworld .prediction-self-metrics .metric-mobile-label {
+    display: block;
+    margin-bottom: 2px;
+    color: var(--review-muted);
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  #coachworld .prediction-self-metrics td strong {
+    display: block;
   }
 }

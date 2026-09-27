@@ -25,7 +25,7 @@
 <script defer="" src="assets/trajectory-demo.js?v=stable-shoe-10"></script>
 <link href="assets/rollout-carousel.css?v=embodiment-tabs-2" rel="stylesheet"/>
 <script defer="" src="assets/rollout-carousel.js?v=embodiment-tabs-1"></script>
-<link href="assets/review-polish.css?v=7" rel="stylesheet"/><script defer="" src="assets/review-polish.js?v=action-unfolded-1"></script><link href="assets/review-reading.css?v=action-unfolded-1" rel="stylesheet"/><script defer="" src="assets/ridi-walkthrough.js?v=8"></script><link href="assets/review-type.css?v=2" rel="stylesheet"/><link href="assets/hero-background.css?v=2" rel="stylesheet"/><link href="assets/reading-highlights.css?v=4" rel="stylesheet"/><link as="font" crossorigin="" href="assets/fonts/InterVariable.woff2" rel="preload" type="font/woff2"/></head>
+<link href="assets/review-polish.css?v=7" rel="stylesheet"/><script defer="" src="assets/review-polish.js?v=action-unfolded-1"></script><link href="assets/review-reading.css?v=action-unfolded-1" rel="stylesheet"/><script defer="" src="assets/ridi-walkthrough.js?v=8"></script><link href="assets/review-type.css?v=2" rel="stylesheet"/><link href="assets/hero-background.css?v=2" rel="stylesheet"/><link href="assets/reading-highlights.css?v=5" rel="stylesheet"/><link as="font" crossorigin="" href="assets/fonts/InterVariable.woff2" rel="preload" type="font/woff2"/></head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <div aria-hidden="true" class="reading-progress"><span data-reading-progress=""></span></div>
@@ -623,20 +623,24 @@
 </div>
 </div>
 <h3 class="research-subheading" id="prediction-evaluation-title">Action-conditioned video prediction</h3>
-<p class="evaluation-summary">On DROID-180, mixed-domain CoachWorld leads in LPIPS, FVD, all three trajectory metrics, and instruction following.</p>
+<p class="evaluation-summary">On DROID-180, mixed-domain CoachWorld leads in <strong>six of seven metrics</strong>.</p>
+<div aria-label="CoachWorld mixed-domain metrics" class="metric-table-wrap prediction-self-metrics" role="region" tabindex="0">
+<table aria-labelledby="prediction-evaluation-title" class="metric-table prediction-metric-table" id="prediction-coachworld-table">
+<thead><tr><th scope="col">Method</th><th scope="col">LPIPS ↓</th><th scope="col">FVD ↓</th><th scope="col">HSD ↑</th><th scope="col">nDTW ↑</th><th scope="col">DYN ↑</th><th scope="col">Physics<br/>adherence ↑</th><th scope="col">Instruction<br/>following ↑</th></tr></thead>
+<tbody><tr class="metric-highlight"><th scope="row">CoachWorld mixed-domain</th><td><span class="metric-mobile-label">LPIPS ↓</span><strong>0.0996</strong></td><td><span class="metric-mobile-label">FVD ↓</span><strong>51.71</strong></td><td><span class="metric-mobile-label">HSD ↑</span><strong>0.2633</strong></td><td><span class="metric-mobile-label">nDTW ↑</span><strong>0.2812</strong></td><td><span class="metric-mobile-label">DYN ↑</span><strong>0.0959</strong></td><td><span class="metric-mobile-label">Physics adherence ↑</span>0.7467</td><td><span class="metric-mobile-label">Instruction following ↑</span><strong>0.8800</strong></td></tr></tbody>
+</table></div>
 <details class="research-details" data-research-fold="" id="prediction-evaluation-details">
-<summary>Full prediction evaluation<span aria-hidden="true">+</span></summary>
+<summary>Compare with other methods<span aria-hidden="true">+</span></summary>
 <div class="details-body">
 <p class="prediction-evaluation-intro"><strong>Matched inputs:</strong> the same visual histories and future actions; CoachWorld variants have matched training volume.</p>
 <p><strong>Metrics:</strong> LPIPS and FVD measure visual fidelity; HSD, nDTW, and DYN measure end-effector trajectory agreement.</p>
-<div aria-label="Full prediction evaluation table" class="metric-table-wrap" role="region" tabindex="0">
-<table aria-labelledby="prediction-evaluation-title" class="metric-table" id="prediction-evaluation-table">
+<div aria-label="Other prediction methods and CoachWorld single-domain" class="metric-table-wrap" role="region" tabindex="0">
+<table aria-labelledby="prediction-evaluation-title" class="metric-table prediction-metric-table" id="prediction-evaluation-table">
 <thead><tr><th scope="col">Method</th><th scope="col">LPIPS ↓</th><th scope="col">FVD ↓</th><th scope="col">HSD ↑</th><th scope="col">nDTW ↑</th><th scope="col">DYN ↑</th><th scope="col">Physics<br/>adherence ↑</th><th scope="col">Instruction<br/>following ↑</th></tr></thead>
 <tbody>
 <tr><th scope="row">Ctrl-World</th><td>0.2078</td><td>102.97</td><td>0.2234</td><td>0.2323</td><td>0.0668</td><td>0.6067</td><td>0.7867</td></tr>
 <tr><th scope="row">Cosmos 3</th><td>0.2830</td><td>140.62</td><td>0.1702</td><td>0.1698</td><td>0.0571</td><td>0.7267</td><td>0.5467</td></tr>
 <tr><th scope="row">OSCAR-2B</th><td>0.2248</td><td>101.92</td><td>0.1785</td><td>0.1838</td><td>0.0456</td><td>0.5267</td><td>0.5467</td></tr>
-<tr class="metric-highlight"><th scope="row">CoachWorld mixed-domain</th><td><strong>0.0996</strong></td><td><strong>51.71</strong></td><td><strong>0.2633</strong></td><td><strong>0.2812</strong></td><td><strong>0.0959</strong></td><td>0.7467</td><td><strong>0.8800</strong></td></tr>
 <tr><th scope="row">CoachWorld single-domain</th><td>0.1067</td><td>56.56</td><td>0.2441</td><td>0.2599</td><td>0.0723</td><td><strong>0.7533</strong></td><td>0.8667</td></tr>
 </tbody></table></div>
 <p class="table-note">Evaluation uses 180 DROID episodes. Physics Adherence and Instruction Following are mean blind human ratings on a 1–5 scale, divided by five. Bold marks the best value in each column.</p>
