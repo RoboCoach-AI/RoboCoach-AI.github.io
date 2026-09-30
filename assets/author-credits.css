@@ -1,0 +1,139 @@
+.hero-subtitle {
+  text-wrap: balance;
+}
+
+html[data-theme="dark"] .hero-subtitle {
+  color: #e6efec;
+}
+
+.hero-subtitle-lead {
+  display: block;
+}
+
+.hero-subtitle-last {
+  white-space: nowrap;
+}
+
+.hero-authors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 22px;
+  row-gap: 8px;
+  max-width: 820px;
+  margin: 25px auto 0;
+  color: #1d3340;
+  font-size: 17px;
+  line-height: 1.5;
+  font-weight: 570;
+}
+
+.hero-authors > span {
+  white-space: nowrap;
+}
+
+.hero-authors sup {
+  margin-left: 2px;
+  color: #136e67;
+  font-size: 11px;
+  font-weight: 750;
+  vertical-align: super;
+}
+
+html[data-theme="dark"] .hero-authors {
+  color: #e1eeea;
+}
+
+html[data-theme="dark"] .hero-authors sup {
+  color: #9ce0d2;
+}
+
+.affiliations-band {
+  border-bottom: 1px solid rgba(87, 103, 91, .16);
+  background: #f6f0e5;
+}
+
+html[data-theme="dark"] .affiliations-band {
+  border-bottom-color: rgba(164, 204, 191, .16);
+  background: #07100f;
+}
+
+.affiliations-inner {
+  width: min(1080px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 27px 0 25px;
+  text-align: center;
+}
+
+.affiliations-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 27px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.affiliations-list li {
+  white-space: nowrap;
+}
+
+.affiliations-list li span {
+  margin-right: 5px;
+  color: #087a69;
+  font-size: 12px;
+  font-weight: 760;
+}
+
+.author-contributions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 20px;
+  margin: 12px 0 0;
+  color: #61716d;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+html[data-theme="dark"] .affiliations-list li span {
+  color: #90dbca;
+}
+
+html[data-theme="dark"] .author-contributions {
+  color: #9eada8;
+}
+
+@media (max-width: 600px) {
+  .hero-authors {
+    column-gap: 13px;
+    row-gap: 4px;
+    margin-top: 19px;
+    font-size: 14px;
+  }
+
+  .hero-authors sup {
+    font-size: 9px;
+  }
+
+  .affiliations-inner {
+    width: calc(100% - 32px);
+    padding: 22px 0;
+  }
+
+  .affiliations-list {
+    gap: 6px 18px;
+    font-size: 12px;
+  }
+
+  .affiliations-list li {
+    white-space: normal;
+  }
+
+  .author-contributions {
+    font-size: 11px;
+  }
+}
