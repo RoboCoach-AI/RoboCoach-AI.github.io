@@ -32,6 +32,20 @@ html[data-theme="dark"] .hero-subtitle {
   white-space: nowrap;
 }
 
+.hero-authors a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition: color .15s ease, text-decoration-color .15s ease;
+}
+
+.hero-authors a:hover,
+.hero-authors a:focus-visible {
+  color: #087a69;
+  text-decoration-color: currentColor;
+}
+
 .hero-authors sup {
   margin-left: 2px;
   color: #136e67;
@@ -42,6 +56,11 @@ html[data-theme="dark"] .hero-subtitle {
 
 html[data-theme="dark"] .hero-authors {
   color: #e1eeea;
+}
+
+html[data-theme="dark"] .hero-authors a:hover,
+html[data-theme="dark"] .hero-authors a:focus-visible {
+  color: #9ce0d2;
 }
 
 html[data-theme="dark"] .hero-authors sup {
