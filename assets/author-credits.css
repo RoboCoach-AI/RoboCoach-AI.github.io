@@ -67,20 +67,9 @@ html[data-theme="dark"] .hero-authors sup {
   color: #9ce0d2;
 }
 
-.affiliations-band {
-  border-bottom: 1px solid rgba(87, 103, 91, .16);
-  background: #f6f0e5;
-}
-
-html[data-theme="dark"] .affiliations-band {
-  border-bottom-color: rgba(164, 204, 191, .16);
-  background: #07100f;
-}
-
-.affiliations-inner {
-  width: min(1080px, calc(100% - 48px));
-  margin: 0 auto;
-  padding: 27px 0 25px;
+.hero-affiliations {
+  max-width: 900px;
+  margin: 12px auto 0;
   text-align: center;
 }
 
@@ -88,12 +77,13 @@ html[data-theme="dark"] .affiliations-band {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 8px 27px;
+  gap: 4px 19px;
   margin: 0;
   padding: 0;
   list-style: none;
-  font-size: 14px;
-  line-height: 1.5;
+  color: #52635f;
+  font-size: 12px;
+  line-height: 1.45;
 }
 
 .affiliations-list li {
@@ -103,7 +93,7 @@ html[data-theme="dark"] .affiliations-band {
 .affiliations-list li span {
   margin-right: 5px;
   color: #087a69;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 760;
 }
 
@@ -112,10 +102,14 @@ html[data-theme="dark"] .affiliations-band {
   flex-wrap: wrap;
   justify-content: center;
   gap: 4px 20px;
-  margin: 12px 0 0;
+  margin: 6px 0 0;
   color: #61716d;
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.4;
+}
+
+html[data-theme="dark"] .affiliations-list {
+  color: #b2c4be;
 }
 
 html[data-theme="dark"] .affiliations-list li span {
@@ -127,10 +121,19 @@ html[data-theme="dark"] .author-contributions {
 }
 
 @media (max-width: 600px) {
+  .hero .hero-content {
+    padding-top: 84px;
+    padding-bottom: 12px;
+  }
+
+  .hero .hero-subtitle {
+    margin-top: 12px;
+  }
+
   .hero-authors {
     column-gap: 13px;
     row-gap: 4px;
-    margin-top: 19px;
+    margin-top: 10px;
     font-size: 14px;
   }
 
@@ -138,14 +141,13 @@ html[data-theme="dark"] .author-contributions {
     font-size: 9px;
   }
 
-  .affiliations-inner {
-    width: calc(100% - 32px);
-    padding: 22px 0;
+  .hero-affiliations {
+    margin-top: 10px;
   }
 
   .affiliations-list {
-    gap: 6px 18px;
-    font-size: 12px;
+    gap: 3px 12px;
+    font-size: 11px;
   }
 
   .affiliations-list li {
@@ -153,6 +155,45 @@ html[data-theme="dark"] .author-contributions {
   }
 
   .author-contributions {
-    font-size: 11px;
+    font-size: 10px;
+  }
+
+  .hero .hero-summary {
+    margin-top: 12px;
+  }
+
+  .hero .resource-dock {
+    margin-top: 14px;
+  }
+}
+
+@media (max-width: 359px) {
+  .hero .hero-content {
+    padding-top: 82px;
+    padding-bottom: 0;
+  }
+
+  .hero .hero-subtitle {
+    margin-top: 8px;
+  }
+
+  .hero-authors {
+    margin-top: 6px;
+  }
+
+  .hero-affiliations {
+    margin-top: 6px;
+  }
+
+  .author-contributions {
+    margin-top: 4px;
+  }
+
+  .hero .hero-summary {
+    margin-top: 8px;
+  }
+
+  .hero .resource-dock {
+    margin-top: 8px;
   }
 }
